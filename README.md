@@ -1,1 +1,3 @@
-# desktop-plugin-samples
+# Desktop Plugin Samples
+
+This repository host Desktop Plugin Samples

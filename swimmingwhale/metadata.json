@@ -1,0 +1,12 @@
+{
+    "desktop-plugin-version":"1.0",
+    "desktop-plugin-name":"SwimmingWhale",
+    "ui":{
+        "dashboard-tab":
+        {
+            "title":"SwimmingWhale",
+            "root":"/swim",
+            "src":"index.html"
+        }
+    }
+}

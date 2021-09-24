@@ -6,9 +6,14 @@
   <style>
     @import url('https://fonts.googleapis.com/css?family=Bungee');
     body {
-      background-color: #BDEDFF;
       padding: 0px;
       margin: 0px;
+    }
+    #world {
+      background-color: #BDEDFF;
+      position: absolute;
+      width: 100%;
+      z-index: -10;
     }
     #whale {
       position: absolute;
@@ -55,10 +60,12 @@
   </style>
 </head>
 <body>
-  <img id="whale" src="whale300.png"/>
-  <div id="waves"></div>
-  <div id="sea">
-    <div id="hello">Hello from Docker !</div>
+  <div id="world">
+    <img id="whale" src="whale300.png"/>
+    <div id="waves"></div>
+    <div id="sea">
+      <div id="hello">Hello from Docker !</div>
+    </div>
   </div>
 </body>
 </html>

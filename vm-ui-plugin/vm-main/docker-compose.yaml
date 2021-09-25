@@ -1,0 +1,10 @@
+services:
+  devenv-volumes:
+    image: ${DESKTOP_PLUGIN_IMAGE}
+    command: /volume-service -socket /run/guest-services/plugin-experiment.sock
+    cap_add:
+      - DAC_OVERRIDE
+      - FOWNER
+    volumes:
+      - /run/guest-services:/run/guest-services
+      - /var/lib/docker:/var/lib/docker

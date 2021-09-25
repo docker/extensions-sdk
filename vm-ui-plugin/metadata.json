@@ -1,0 +1,18 @@
+{
+    "desktop-plugin-version":"1.0",
+    "desktop-plugin-name":"volume-sample",
+    "vm": {
+        "composefile":"docker-compose.yaml",
+        "isolation":"docekrd",
+        "exposes":{"socket": "plugin-experiment.sock"}
+    },
+    "ui":{
+        "dashboard-tab":
+        {
+            "title":"Volumes",
+            "root":"/plugin-ui",
+            "src":"index.html",
+            "backend":{"socket": "plugin-experiment.sock"}
+        }
+    }
+}

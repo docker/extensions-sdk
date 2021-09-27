@@ -7,14 +7,29 @@
 
   <body>
     <h1>Connect your Docker Desktop containers to your Tailscale network</h1>
+    <h2>
+      Your containers will be visible only to other machines on the same
+      Tailscale network.
+    </h2>
 
-    <p>Tailscale authentication token: </p>
-    <input type="textarea" name="textfield" id="text">
-    <button type="button" id="connect" onclick="connectTailscale()">Connect</button>
-    <button type="button" id="disconnect" onclick="disconnectTailscale()">Disonnect</button>
-    <button type="button" id="disconnect" onclick="logoutTailscale()">Logout</button>
-    <button type="button" id="update" onclick="updatetStatus()">Refresh Status</button>
-    <p>Status: </p>
+    <p>Tailscale authentication token:</p>
+    <input type="textarea" name="textfield" id="text" />
+    <button type="button" id="connect" onclick="connectTailscale()">
+      Connect
+    </button>
+    <button type="button" id="disconnect" onclick="disconnectTailscale()">
+      Disonnect
+    </button>
+    <button type="button" id="disconnect" onclick="logoutTailscale()">
+      Logout
+    </button>
+    <button type="button" id="update" onclick="updatetStatus()">
+      Refresh Status
+    </button>
+    <button type="button" id="list-ctrs" onclick="listContainers()">
+      List containers
+    </button>
+    <p>Status:</p>
     <p id="status">Not connected</p>
   </body>
 </html>

@@ -1,0 +1,16 @@
+{
+    "desktop-plugin-version":"1.0",
+    "desktop-plugin-name":"tailscale",
+    "vm": {
+        "composefile":"docker-compose.yaml",
+        "isolation":"containerd"
+    },
+    "ui":{
+        "dashboard-tab":
+        {
+            "title":"Tailscale",
+            "root":"/ui",
+            "src":"index.html"
+        }
+    }
+}

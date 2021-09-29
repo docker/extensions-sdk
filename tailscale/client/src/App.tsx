@@ -1,5 +1,4 @@
-import { Console } from 'console';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Container
 export interface Container {
@@ -14,12 +13,11 @@ export interface Port {
 
 // TailscaleStatusResponse
 export interface TailscaleStatusResponse {
-  BackendState: string; // e.g. "Running", "NeedsLogin", etc.
+  BackendState: string; // e.g. "Running", "Stopped", "NeedsLogin", etc.
   Self: Self;
 }
 
 export interface Self {
-  HostName: string;
   DNSName: string;
   TailscaleIPs: string[];
 }
@@ -28,6 +26,13 @@ export function App() {
   const [status, setStatus] = useState<TailscaleStatusResponse>();
   const [containers, setContainers] = useState<Container[]>();
   const [token, setToken] = useState<string>();
+
+  useEffect(() => {
+    if (status == undefined) {
+      updateStatus();
+      listContainers();
+    }
+  }, [status]); // Only re-run the effect if Tailscale status changes
 
   function connectTailscale() {
     console.log(`connecting with token ${token}`);
@@ -41,19 +46,23 @@ export function App() {
   }
 
   function disconnectTailscale() {
-    console.log(`disconnecting`);
+    console.log(
+      `Disconnects from Tailscale. When disconnected, you cannot reach devices over Tailscale.`,
+    );
     window.ddClient
       .backend('tailscale')
       .execInContainer('tailscale_service', `/app/tailscale down`)
-      .then(() => updateStatus());
+      .then(() => setStatus(undefined));
   }
 
   function logoutTailscale() {
-    console.log(`disconnecting`);
+    console.log(
+      `Log out disconnects from Tailscale and expires the current log in. The next time you run tailscale up, you'll need to reauthenticate your device.`,
+    );
     window.ddClient
       .backend('tailscale')
       .execInContainer('tailscale_service', `/app/tailscale logout`)
-      .then(() => updateStatus());
+      .then(() => setStatus(undefined));
   }
 
   function updateStatus() {
@@ -71,11 +80,6 @@ export function App() {
   }
 
   function listContainers() {
-    // Get Tailscale status in case we haven't
-    if (status == undefined) {
-      updateStatus();
-    }
-
     window.ddClient
       .listContainers()
       .then((value: Container[]) => {
@@ -89,12 +93,81 @@ export function App() {
   function PrintTableHeaders() {
     return (
       <tr>
-        {['Container', 'Published ports', 'Magic DNS', 'Tailscale IP'].map(
+        {['Container', 'Published ports', 'Tailscale URL', 'Tailscale IP'].map(
           (h) => (
             <td key={h}>{h}</td>
           ),
         )}
       </tr>
+    );
+  }
+
+  function DisplayTailscaleURLs(container: Container) {
+    let tailscaleURL = '-';
+    let tailscaleURLs: string[] = [];
+
+    for (var i = 0; i < container.Ports.length; i++) {
+      let port = container.Ports[i].PublicPort;
+
+      if (status?.Self.DNSName && container.Ports.length > 0) {
+        tailscaleURL =
+          'http://' + status?.Self.DNSName.slice(0, -1) + ':' + port;
+      } else if (
+        status?.Self.TailscaleIPs &&
+        status?.Self.TailscaleIPs.length > 0 &&
+        container.Ports.length > 0
+      ) {
+        tailscaleURL = 'http://' + status?.Self.TailscaleIPs[0] + ':' + port;
+      }
+
+      tailscaleURLs.push(tailscaleURL);
+    }
+
+    return (
+      <td key={'url-' + container.Names[0]}>
+        {tailscaleURLs.length > 0 ? (
+          tailscaleURLs.map((u) => <pre>{u}</pre>)
+        ) : (
+          <pre>-</pre>
+        )}
+      </td>
+    );
+  }
+
+  function DisplayContainerPorts(container: Container) {
+    let publishedPorts: string[] = [];
+
+    for (var i = 0; i < container.Ports.length; i++) {
+      let type = container.Ports[i].Type.toUpperCase();
+      let port = container.Ports[i].PublicPort;
+      let publishedPort = '(' + type + ')' + ' ' + port;
+      publishedPorts.push(publishedPort);
+    }
+
+    return (
+      <td key={'ports-' + container.Names[0]}>
+        {publishedPorts.length > 0 ? (
+          publishedPorts.map((p) => <pre>{p}</pre>)
+        ) : (
+          <pre>-</pre>
+        )}
+      </td>
+    );
+  }
+
+  function DisplayTailscaleIPs(container: Container) {
+    let ips: string[] = [];
+
+    if (status !== undefined) {
+      for (var i = 0; i < status?.Self.TailscaleIPs.length; i++) {
+        ips.push(status?.Self.TailscaleIPs[i]);
+      }
+    }
+
+    return (
+      <td key={'ips-' + container.Names[0]}>
+        {ips.length > 0 ? ips.map((i) => <pre>{i}</pre>) : <pre>-</pre>}
+      </td>
     );
   }
 
@@ -109,40 +182,19 @@ export function App() {
       containers &&
       containers.map((container) => (
         <React.Fragment>
-          <td key={'ctr-name-' + container.Names[0]}>
-            {container.Names[0].substring(1)}
-          </td>
-
-          {container.Ports.length > 0 ? (
-            <td key={'port-' + container.Names[0]}>
-              ({container.Ports[0].Type.toUpperCase()}){' '}
-              {container.Ports[0].PublicPort}
+          <tr>
+            <td key={'ctr-name-' + container.Names[0]}>
+              {container.Names[0].substring(1)}
             </td>
-          ) : (
-            console.log('No ports')
-          )}
 
-          {status?.Self.DNSName && container.Ports.length > 0 ? (
-            <td key={'magic-dns-' + container.Names[0]}>
-              {'http://' +
-                status?.Self.DNSName.slice(0, -1) +
-                ':' +
-                container.Ports[0].PublicPort}
-            </td>
-          ) : (
-            console.log('No Magic DNS')
-          )}
+            {DisplayContainerPorts(container)}
 
-          {status?.Self.TailscaleIPs && status?.Self.TailscaleIPs.length > 0 ? (
-            <td key={'ip-' + container.Names[0]}>
-              <pre>
-                {status?.Self.TailscaleIPs[0]} {'\n'}
-                {status?.Self.TailscaleIPs[1]}
-              </pre>
-            </td>
-          ) : (
-            console.log('No Tailscale IPs')
-          )}
+            {status?.BackendState == 'Running' &&
+              DisplayTailscaleURLs(container)}
+
+            {status?.BackendState == 'Running' &&
+              DisplayTailscaleIPs(container)}
+          </tr>
         </React.Fragment>
       ))
     );
@@ -150,47 +202,65 @@ export function App() {
 
   return (
     <div>
-      <h1>Connect your Docker Desktop containers to your Tailscale network</h1>
-      <h2>
-        Your containers will be visible only to other machines on the same
-        Tailscale network.
-      </h2>
-      <label>
-        Tailscale authentication token:
-        <input
-          type="textarea"
-          name="token"
-          value={token}
-          onChange={(e) => setToken(e.target.value)}
-        />
-      </label>
-      <button type="button" onClick={() => connectTailscale()}>
-        Connect
-      </button>
-      <button
-        type="button"
-        id="disconnect"
-        onClick={() => disconnectTailscale()}
-      >
-        Disconnect
-      </button>
-      <button type="button" onClick={() => logoutTailscale()}>
-        Logout
-      </button>
-      <button type="button" onClick={() => updateStatus()}>
-        Refresh Status
-      </button>
-      <button type="button" onClick={() => listContainers()}>
-        List containers
-      </button>
-      <p>Status: {status?.BackendState}</p>
+      <div style={{ textAlign: 'center' }}>
+        <h1>Containers and teams, connected in one seamless experience.</h1>
+        <h2>
+          We bring containers and teams closer, connecting them under a secure
+          private network, powered by Tailscale.
+        </h2>
+        <h4>
+          Your containers will be visible only to other devices on the same
+          Tailscale network.
+        </h4>
+      </div>
+      <div>
+        {(status === undefined ||
+          status.BackendState == 'Stopped' ||
+          status.BackendState == 'NeedsLogin') && (
+          <React.Fragment>
+            <label>
+              Tailscale authentication token:
+              <input
+                type="textarea"
+                name="token"
+                value={token}
+                placeholder="tskey-3f6..."
+                onChange={(e) => setToken(e.target.value)}
+              />
+            </label>
 
-      <table style={{ width: '100%' }}>
-        <thead>
-          {PrintTableHeaders()}
-          {PrintTableRows()}
-        </thead>
-      </table>
+            <button type="button" onClick={() => connectTailscale()}>
+              Connect
+            </button>
+          </React.Fragment>
+        )}
+
+        {status?.BackendState === 'Running' && (
+          <button
+            type="button"
+            id="disconnect"
+            onClick={() => disconnectTailscale()}
+          >
+            Disconnect
+          </button>
+        )}
+
+        {status?.BackendState === 'Running' && (
+          <button type="button" onClick={() => logoutTailscale()}>
+            Logout
+          </button>
+        )}
+
+        <p>Status: {status?.BackendState}</p>
+      </div>
+      <div>
+        <table style={{ width: '100%' }}>
+          <thead>
+            {PrintTableHeaders()}
+            {PrintTableRows()}
+          </thead>
+        </table>
+      </div>
     </div>
   );
 }

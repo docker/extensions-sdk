@@ -156,17 +156,17 @@ export function App() {
   }
 
   function DisplayTailscaleIPs(container: Container) {
-    let ips: string[] = [];
-
-    if (status !== undefined) {
-      for (var i = 0; i < status?.Self.TailscaleIPs.length; i++) {
-        ips.push(status?.Self.TailscaleIPs[i]);
-      }
+    if (status == undefined) {
+      return;
     }
 
     return (
-      <td key={'ips-' + container.Names[0]}>
-        {ips.length > 0 ? ips.map((i) => <pre>{i}</pre>) : <pre>-</pre>}
+      <td key={'ip-' + container.Names[0]}>
+        {status?.Self.TailscaleIPs.length > 0 ? (
+          <pre>{status?.Self.TailscaleIPs[0]}</pre>
+        ) : (
+          <pre>-</pre>
+        )}
       </td>
     );
   }

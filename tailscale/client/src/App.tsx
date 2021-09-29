@@ -176,27 +176,27 @@ export function App() {
       return;
     }
 
-    for (var i = 0; i < containers?.length; i++) {}
-
     return (
       containers &&
-      containers.map((container) => (
-        <React.Fragment>
-          <tr>
-            <td key={'ctr-name-' + container.Names[0]}>
-              {container.Names[0].substring(1)}
-            </td>
+      containers
+        .filter((c: Container) => c.Ports.length > 0) // only display containers that expose ports
+        .map((container) => (
+          <React.Fragment>
+            <tr>
+              <td key={'ctr-name-' + container.Names[0]}>
+                {container.Names[0].substring(1)}
+              </td>
 
-            {DisplayContainerPorts(container)}
+              {DisplayContainerPorts(container)}
 
-            {status?.BackendState == 'Running' &&
-              DisplayTailscaleURLs(container)}
+              {status?.BackendState == 'Running' &&
+                DisplayTailscaleURLs(container)}
 
-            {status?.BackendState == 'Running' &&
-              DisplayTailscaleIPs(container)}
-          </tr>
-        </React.Fragment>
-      ))
+              {status?.BackendState == 'Running' &&
+                DisplayTailscaleIPs(container)}
+            </tr>
+          </React.Fragment>
+        ))
     );
   }
 

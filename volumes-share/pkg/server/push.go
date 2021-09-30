@@ -13,8 +13,20 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+type PushRequest struct {
+	Reference string `json:"reference"`
+}
+
 func (vs *volumeServer) pushVolume(c echo.Context) error {
+	var request PushRequest
+	if err := c.Bind(&request); err != nil {
+		fmt.Println("ughughughu")
+		return err
+	}
 	name := c.Param("name")
+
+	fmt.Printf("%+v\n%s\n", request, name)
+
 	authEncoded := c.Request().Header.Get("X-Registry-Auth")
 	authConfig := &dockertypes.AuthConfig{}
 
@@ -26,7 +38,7 @@ func (vs *volumeServer) pushVolume(c echo.Context) error {
 		}
 	}
 
-	err := vs.backend.Push(c.Request().Context(), name, types.VolumePushOpts{
+	err := vs.backend.Push(c.Request().Context(), request.Reference, name, types.VolumePushOpts{
 		Resolver: createResolver(authConfig),
 	})
 	if err != nil {

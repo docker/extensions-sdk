@@ -11,7 +11,18 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+type PullRequest struct {
+	Reference string `json:"reference"`
+}
+
 func (vs *volumeServer) pullVolume(c echo.Context) error {
+	var request PullRequest
+	if err := c.Bind(&request); err != nil {
+		return err
+	}
+	ref := request.Reference
+	name := c.Param("name")
+
 	authEncoded := c.Request().Header.Get("X-Registry-Auth")
 	authConfig := &dockertypes.AuthConfig{}
 
@@ -24,11 +35,14 @@ func (vs *volumeServer) pullVolume(c echo.Context) error {
 		}
 	}
 
-	if err := vs.backend.Pull(c.Request().Context(), "asdf", types.VolumePullOpts{}); err != nil {
+	desc, err := vs.backend.Pull(c.Request().Context(), ref, name, types.VolumePullOpts{
+		Resolver: createResolver(authConfig),
+	})
+	if err != nil {
 		return err
 	}
 
-	fmt.Printf("%+v\n", authConfig)
+	fmt.Printf("%+v\n", desc)
 
 	return c.JSON(200, "test")
 }

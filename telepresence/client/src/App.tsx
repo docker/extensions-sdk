@@ -118,9 +118,9 @@ export function App() {
       <div>
         Remote Kubernetes clusters:
         <ul>
-          <li>Cluster 1</li>
-          <li>Cluster 2</li>
-          <li>Cluster 3</li>
+          <li>TODO</li>
+          <li>TODO</li>
+          <li>TODO</li>
         </ul>
       </div>
 
@@ -128,15 +128,15 @@ export function App() {
         Kubernetes services:
         <ul>
           {services.map((s) => (
-            <React.Fragment>
-              <li>Name: {s.Name}</li>
+            <li>
+              {s.Name}{' '}
               <button
                 type="button"
                 onClick={() => intercept(s.Name, s.Port)}
                 disabled={s.Intercepted}
               >
                 Intercept
-              </button>
+              </button>{' '}
               <button
                 type="button"
                 onClick={() => leave(s.Name)}
@@ -144,7 +144,7 @@ export function App() {
               >
                 Leave
               </button>
-            </React.Fragment>
+            </li>
           ))}
         </ul>
       </div>
@@ -152,7 +152,7 @@ export function App() {
       <div>
         Containers:
         <ul>
-          <li>Container 1</li>
+          <li>TODO</li>
         </ul>
       </div>
     </React.Fragment>

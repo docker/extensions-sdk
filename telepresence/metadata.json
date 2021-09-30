@@ -1,0 +1,15 @@
+{
+  "desktop-plugin-version": "1.0",
+  "desktop-plugin-name": "telepresence",
+  "vm": {
+    "composefile": "docker-compose.yaml",
+    "isolation": "containerd"
+  },
+  "ui": {
+    "dashboard-tab": {
+      "title": "Telepresence",
+      "root": "/ui",
+      "src": "index.html"
+    }
+  }
+}

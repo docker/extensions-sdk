@@ -1,0 +1,5 @@
+services:
+  desktop-telepresence:
+    container_name: telepresence_service
+    image: ${DESKTOP_PLUGIN_IMAGE}
+    command: '/bin/sh -c "while sleep 3600; do :; done"'

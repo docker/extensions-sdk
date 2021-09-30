@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export function App() {
+  const [cluster, setCluster] = useState<string>('');
+
+  useEffect(() => {
+    if (cluster == '') {
+      connect();
+    }
+  }, [cluster]); // Only re-run the effect if Tailscale status changes
+
+  function connect() {
+    console.log(`connecting to remote Kubernetes cluster ${cluster}`);
+    console.log(window.ddClient.backend('telepresence'));
+    window.ddClient
+      .backend('telepresence')
+      .execHostCmd('telepresence list')
+      .then((value: any) => console.log(value))
+      .catch((err: Error) => {
+        console.log(err);
+      });
+  }
+
   return (
     <React.Fragment>
       <div style={{ textAlign: 'center' }}>

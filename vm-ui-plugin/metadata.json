@@ -12,7 +12,7 @@
             "title":"Volumes",
             "root":"/plugin-ui",
             "src":"index.html",
-            "backend":{"socket": "plugin-experiment.sock"}
+            "backend":{"host-socket": "plugin-experiment.sock", "named-pipe": "\\\\.\\pipe\\dockerDesktopPluginExperiment"}
         }
     }
 }

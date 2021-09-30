@@ -1,8 +1,38 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// Container
+export interface Container {
+  Names: string[];
+  Ports: Port[];
+}
+
+export interface Port {
+  PublicPort: number;
+  Type: string;
+}
+
+// TailscaleStatusResponse
+export interface TailscaleStatusResponse {
+  BackendState: string; // e.g. "Running", "Stopped", "NeedsLogin", etc.
+  Self: Self;
+}
+
+export interface Self {
+  DNSName: string;
+  TailscaleIPs: string[];
+}
 
 export function App() {
-  const [status, setStatus] = useState('Not connected');
+  const [status, setStatus] = useState<TailscaleStatusResponse>();
+  const [containers, setContainers] = useState<Container[]>();
   const [token, setToken] = useState<string>();
+
+  useEffect(() => {
+    if (status == undefined) {
+      updateStatus();
+      listContainers();
+    }
+  }, [status]); // Only re-run the effect if Tailscale status changes
 
   function connectTailscale() {
     console.log(`connecting with token ${token}`);
@@ -16,64 +46,221 @@ export function App() {
   }
 
   function disconnectTailscale() {
-    console.log(`disconnecting`);
+    console.log(
+      `Disconnects from Tailscale. When disconnected, you cannot reach devices over Tailscale.`,
+    );
     window.ddClient
       .backend('tailscale')
       .execInContainer('tailscale_service', `/app/tailscale down`)
-      .then(() => updateStatus());
+      .then(() => setStatus(undefined));
   }
 
   function logoutTailscale() {
-    console.log(`disconnecting`);
+    console.log(
+      `Log out disconnects from Tailscale and expires the current log in. The next time you run tailscale up, you'll need to reauthenticate your device.`,
+    );
     window.ddClient
       .backend('tailscale')
       .execInContainer('tailscale_service', `/app/tailscale logout`)
-      .then(() => updateStatus());
+      .then(() => setStatus(undefined));
   }
 
   function updateStatus() {
     window.ddClient
       .backend('tailscale')
-      .execInContainer('tailscale_service', `/app/tailscale status`)
+      .execInContainer('tailscale_service', `/app/tailscale status -json`)
       .then((value: any) => {
-        setStatus(value.stdout);
+        let res: TailscaleStatusResponse = JSON.parse(value.stdout);
+        setStatus(res);
       })
       .catch((err: Error) => {
         console.log(err);
-        setStatus('Logged out');
+        setStatus(undefined);
       });
+  }
+
+  function listContainers() {
+    window.ddClient
+      .listContainers()
+      .then((value: Container[]) => {
+        setContainers(value);
+      })
+      .catch((err: Error) => {
+        console.log(err);
+      });
+  }
+
+  function PrintTableHeaders() {
+    return (
+      <tr>
+        {['Container', 'Published ports', 'Tailscale URL', 'Tailscale IP'].map(
+          (h) => (
+            <td key={h}>{h}</td>
+          ),
+        )}
+      </tr>
+    );
+  }
+
+  function DisplayTailscaleURLs(container: Container) {
+    let tailscaleURL = '-';
+    let tailscaleURLs: string[] = [];
+
+    for (var i = 0; i < container.Ports.length; i++) {
+      let port = container.Ports[i].PublicPort;
+
+      if (status?.Self.DNSName && container.Ports.length > 0) {
+        tailscaleURL =
+          'http://' + status?.Self.DNSName.slice(0, -1) + ':' + port;
+      } else if (
+        status?.Self.TailscaleIPs &&
+        status?.Self.TailscaleIPs.length > 0 &&
+        container.Ports.length > 0
+      ) {
+        tailscaleURL = 'http://' + status?.Self.TailscaleIPs[0] + ':' + port;
+      }
+
+      tailscaleURLs.push(tailscaleURL);
+    }
+
+    return (
+      <td key={'url-' + container.Names[0]}>
+        {tailscaleURLs.length > 0 ? (
+          tailscaleURLs.map((u) => <pre>{u}</pre>)
+        ) : (
+          <pre>-</pre>
+        )}
+      </td>
+    );
+  }
+
+  function DisplayContainerPorts(container: Container) {
+    let publishedPorts: string[] = [];
+
+    for (var i = 0; i < container.Ports.length; i++) {
+      let type = container.Ports[i].Type.toUpperCase();
+      let port = container.Ports[i].PublicPort;
+      let publishedPort = '(' + type + ')' + ' ' + port;
+      publishedPorts.push(publishedPort);
+    }
+
+    return (
+      <td key={'ports-' + container.Names[0]}>
+        {publishedPorts.length > 0 ? (
+          publishedPorts.map((p) => <pre>{p}</pre>)
+        ) : (
+          <pre>-</pre>
+        )}
+      </td>
+    );
+  }
+
+  function DisplayTailscaleIPs(container: Container) {
+    if (status == undefined) {
+      return;
+    }
+
+    return (
+      <td key={'ip-' + container.Names[0]}>
+        {status?.Self.TailscaleIPs.length > 0 ? (
+          <pre>{status?.Self.TailscaleIPs[0]}</pre>
+        ) : (
+          <pre>-</pre>
+        )}
+      </td>
+    );
+  }
+
+  function PrintTableRows() {
+    if (containers == undefined) {
+      return;
+    }
+
+    return (
+      containers &&
+      containers
+        .filter((c: Container) => c.Ports.length > 0) // only display containers that expose ports
+        .map((container) => (
+          <React.Fragment>
+            <tr>
+              <td key={'ctr-name-' + container.Names[0]}>
+                {container.Names[0].substring(1)}
+              </td>
+
+              {DisplayContainerPorts(container)}
+
+              {status?.BackendState == 'Running' &&
+                DisplayTailscaleURLs(container)}
+
+              {status?.BackendState == 'Running' &&
+                DisplayTailscaleIPs(container)}
+            </tr>
+          </React.Fragment>
+        ))
+    );
   }
 
   return (
     <div>
-      <h1>Connect your Docker Desktop containers to your Tailscale network</h1>
+      <div style={{ textAlign: 'center' }}>
+        <h1>Containers and teams, connected in one seamless experience.</h1>
+        <h2>
+          We bring containers and teams closer, connecting them under a secure
+          private network, powered by Tailscale.
+        </h2>
+        <h4>
+          Your containers will be visible only to other devices on the same
+          Tailscale network.
+        </h4>
+      </div>
+      <div>
+        {(status === undefined ||
+          status.BackendState == 'Stopped' ||
+          status.BackendState == 'NeedsLogin') && (
+          <React.Fragment>
+            <label>
+              Tailscale authentication token:
+              <input
+                type="textarea"
+                name="token"
+                value={token}
+                placeholder="tskey-3f6..."
+                onChange={(e) => setToken(e.target.value)}
+              />
+            </label>
 
-      <label>
-        Tailscale authentication token:
-        <input
-          type="textarea"
-          name="token"
-          value={token}
-          onChange={(e) => setToken(e.target.value)}
-        />
-      </label>
-      <button type="button" onClick={() => connectTailscale()}>
-        Connect
-      </button>
-      <button
-        type="button"
-        id="disconnect"
-        onClick={() => disconnectTailscale()}
-      >
-        Disconnect
-      </button>
-      <button type="button" onClick={() => logoutTailscale()}>
-        Logout
-      </button>
-      <button type="button" onClick={() => updateStatus()}>
-        Refresh Status
-      </button>
-      <p>Status: {status}</p>
+            <button type="button" onClick={() => connectTailscale()}>
+              Connect
+            </button>
+          </React.Fragment>
+        )}
+
+        {status?.BackendState === 'Running' && (
+          <button
+            type="button"
+            id="disconnect"
+            onClick={() => disconnectTailscale()}
+          >
+            Disconnect
+          </button>
+        )}
+
+        {status?.BackendState === 'Running' && (
+          <button type="button" onClick={() => logoutTailscale()}>
+            Logout
+          </button>
+        )}
+
+        <p>Status: {status?.BackendState}</p>
+      </div>
+      <div>
+        <table style={{ width: '100%' }}>
+          <thead>
+            {PrintTableHeaders()}
+            {PrintTableRows()}
+          </thead>
+        </table>
+      </div>
     </div>
   );
 }

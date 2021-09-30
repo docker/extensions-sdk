@@ -1,0 +1,7 @@
+{
+    "desktop-plugin-version":"1.0",
+    "desktop-plugin-name":"telepresence",
+    "host": {
+        "binaries":[{"darwin":"/darwin/telepresence"}]
+    }
+}

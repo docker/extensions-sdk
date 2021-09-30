@@ -11,7 +11,9 @@ import (
 	"strings"
 
 	"github.com/containerd/containerd/log"
+	"github.com/containerd/containerd/reference/docker"
 	"github.com/containerd/containerd/remotes"
+	"github.com/docker/distribution/reference"
 	"github.com/docker/volumes-share/pkg/types"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 	"github.com/sirupsen/logrus"
@@ -20,6 +22,7 @@ import (
 )
 
 func (vb *volumesBackend) Push(ctx context.Context, ref string, volume string, opts types.VolumePushOpts) error {
+
 	dir, err := ioutil.TempDir("/tmp", volume)
 	if err != nil {
 		return err
@@ -103,6 +106,12 @@ func withMutedContext(ctx context.Context) context.Context {
 }
 
 func push(ctx context.Context, ref string, dir string, resolver remotes.Resolver) error {
+	r, err := reference.ParseNormalizedNamed(ref)
+	if err != nil {
+		return err
+	}
+	taggedReference := docker.TagNameOnly(r)
+
 	logrus.Debugf("Pushing %s to %s\n", dir, ref)
 	customMediaType := "application/vnd.unknown.layer.v1+txt"
 
@@ -133,7 +142,7 @@ func push(ctx context.Context, ref string, dir string, resolver remotes.Resolver
 	pushContents := []ocispec.Descriptor{desc}
 
 	ctx = withMutedContext(ctx)
-	desc, err = oras.Push(ctx, resolver, ref, fileStore, pushContents, oras.WithConfig(config))
+	desc, err = oras.Push(ctx, resolver, taggedReference.String(), fileStore, pushContents, oras.WithConfig(config))
 	if err != nil {
 		return err
 	}

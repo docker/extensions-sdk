@@ -8,6 +8,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/containerd/containerd/reference/docker"
+	"github.com/docker/distribution/reference"
 	"github.com/docker/docker/api/types/volume"
 	"github.com/docker/volumes-share/pkg/types"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
@@ -16,9 +18,14 @@ import (
 )
 
 func (vb *volumesBackend) Pull(ctx context.Context, ref string, name string, opts types.VolumePullOpts) (ocispec.Descriptor, error) {
+	r, err := reference.ParseNormalizedNamed(ref)
+	if err != nil {
+		return ocispec.Descriptor{}, err
+	}
+	taggedReference := docker.TagNameOnly(r)
 	customMediaType := "application/vnd.unknown.layer.v1+txt"
 
-	_, err := vb.c.VolumeCreate(ctx, volume.VolumeCreateBody{
+	_, err = vb.c.VolumeCreate(ctx, volume.VolumeCreateBody{
 		Name: name,
 		Labels: map[string]string{
 			"ref": ref,
@@ -34,7 +41,7 @@ func (vb *volumesBackend) Pull(ctx context.Context, ref string, name string, opt
 	defer fileStore.Close()
 
 	allowedMediaTypes := []string{customMediaType}
-	desc, _, err := oras.Pull(ctx, opts.Resolver, ref, fileStore, oras.WithAllowedMediaTypes(allowedMediaTypes))
+	desc, _, err := oras.Pull(ctx, opts.Resolver, taggedReference.String(), fileStore, oras.WithAllowedMediaTypes(allowedMediaTypes))
 	if err != nil {
 		return ocispec.Descriptor{}, err
 	}

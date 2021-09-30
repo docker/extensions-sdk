@@ -3,12 +3,12 @@ package server
 import (
 	"encoding/base64"
 	"encoding/json"
-	"fmt"
 	"strings"
 
 	dockertypes "github.com/docker/docker/api/types"
 	"github.com/docker/volumes-share/pkg/types"
 	"github.com/labstack/echo/v4"
+	"github.com/sirupsen/logrus"
 )
 
 type PullRequest struct {
@@ -42,7 +42,7 @@ func (vs *volumeServer) pullVolume(c echo.Context) error {
 		return err
 	}
 
-	fmt.Printf("%+v\n", desc)
+	logrus.Debugf("%+v\n", desc)
 
 	return c.JSON(200, "test")
 }

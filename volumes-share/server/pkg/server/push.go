@@ -3,7 +3,6 @@ package server
 import (
 	"encoding/base64"
 	"encoding/json"
-	"fmt"
 	"strings"
 
 	"github.com/containerd/containerd/remotes"
@@ -20,12 +19,9 @@ type PushRequest struct {
 func (vs *volumeServer) pushVolume(c echo.Context) error {
 	var request PushRequest
 	if err := c.Bind(&request); err != nil {
-		fmt.Println("ughughughu")
 		return err
 	}
 	name := c.Param("name")
-
-	fmt.Printf("%+v\n%s\n", request, name)
 
 	authEncoded := c.Request().Header.Get("X-Registry-Auth")
 	authConfig := &dockertypes.AuthConfig{}
@@ -33,7 +29,6 @@ func (vs *volumeServer) pushVolume(c echo.Context) error {
 	if authEncoded != "" {
 		authJSON := base64.NewDecoder(base64.URLEncoding, strings.NewReader(authEncoded))
 		if err := json.NewDecoder(authJSON).Decode(authConfig); err != nil {
-			fmt.Println(err)
 			return err
 		}
 	}

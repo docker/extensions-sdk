@@ -4,7 +4,6 @@ import (
 	"archive/tar"
 	"compress/gzip"
 	"context"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -104,7 +103,7 @@ func withMutedContext(ctx context.Context) context.Context {
 }
 
 func push(ctx context.Context, ref string, dir string, resolver remotes.Resolver) error {
-	fmt.Printf("Pushing %s to %s\n", dir, ref)
+	logrus.Debugf("Pushing %s to %s\n", dir, ref)
 	customMediaType := "application/vnd.unknown.layer.v1+txt"
 
 	fileStore := orascontent.NewFileStore(dir)
@@ -133,15 +132,13 @@ func push(ctx context.Context, ref string, dir string, resolver remotes.Resolver
 
 	pushContents := []ocispec.Descriptor{desc}
 
-	fmt.Printf("Pushing to %s...\n", ref)
-
 	ctx = withMutedContext(ctx)
 	desc, err = oras.Push(ctx, resolver, ref, fileStore, pushContents, oras.WithConfig(config))
 	if err != nil {
 		return err
 	}
 
-	fmt.Printf("Pushed to %s with digest %s\n", ref, desc.Digest)
+	logrus.Debugf("Pushed to %s with digest %s\n", ref, desc.Digest)
 
 	return nil
 }

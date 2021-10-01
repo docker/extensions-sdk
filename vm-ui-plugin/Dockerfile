@@ -3,9 +3,7 @@ ENV CGO_ENABLED=0
 RUN apk add --update make
 WORKDIR /plugin
 COPY . .
-RUN --mount=type=cache,target=/go/pkg/mod \
-    --mount=type=cache,target=/root/.cache/go-build \
-    make bin
+RUN make bin
 
 FROM alpine
 COPY --from=builder /plugin/bin/volume-service /

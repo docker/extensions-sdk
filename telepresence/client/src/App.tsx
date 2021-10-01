@@ -19,6 +19,12 @@ export function App() {
     }
   }, [services]); // Only re-run the effect if intercepted services changes
 
+  const getPort = async (serviceName: string): Promise<unknown> => {
+    return window.ddClient.execHostCmd(
+      `kubectl get svc ${serviceName} -o jsonpath='{.spec.ports[].port}'`,
+    );
+  };
+
   function list() {
     console.log(
       `listing current intercepts (they could be intercepted or not)`,
@@ -26,25 +32,22 @@ export function App() {
 
     window.ddClient
       .execHostCmd(`telepresence list | grep 'intercept'`)
-      .then((value: any) => {
+      .then(async (value: any) => {
         let services: Service[] = [];
         let strs = value.stdout.split('\n');
 
         for (var i = 0; i < strs.length; i++) {
           if (strs[i].length > 0) {
             let line = strs[i].split(':');
-            let name = line[0].trimEnd();
-            let description = line[1].trimEnd();
+            let serviceName = line[0].trimEnd();
+            let intercepted = line[1].trimEnd().includes('intercepted');
+            let port: any = await getPort(serviceName);
 
             const service: Service = {
-              Name: name,
-              Port: 8080, // TODO: Get port from kubectl?
-              Intercepted: false,
+              Name: serviceName,
+              Port: Number(port.stdout),
+              Intercepted: intercepted,
             };
-
-            if (description.includes('intercepted')) {
-              service.Intercepted = true;
-            }
 
             services.push(service);
           }
@@ -117,7 +120,7 @@ export function App() {
         <ul>
           {services.map((s) => (
             <li>
-              {s.Name}{' '}
+              {s.Name}, Port: {s.Port}{' '}
               <button
                 type="button"
                 onClick={() => intercept(s.Name, s.Port)}

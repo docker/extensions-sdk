@@ -25,7 +25,6 @@ export function App() {
     );
 
     window.ddClient
-      .backend('telepresence')
       .execHostCmd(`telepresence list | grep 'intercept'`)
       .then((value: any) => {
         let services: Service[] = [];
@@ -61,7 +60,6 @@ export function App() {
   function intercept(serviceName: string, port: number) {
     console.log(`intercepting service ${serviceName} on port ${port}`);
     window.ddClient
-      .backend('telepresence')
       .execHostCmd(`telepresence intercept ${serviceName} --port ${port}`)
       .then((value: any) => {
         console.log(value.stdout);
@@ -85,7 +83,6 @@ export function App() {
   function leave(serviceName: string) {
     console.log(`stopping to intercept service ${serviceName}`);
     window.ddClient
-      .backend('telepresence')
       .execHostCmd(`telepresence leave ${serviceName}`)
       .then((value: any) => {
         console.log(value.stdout);

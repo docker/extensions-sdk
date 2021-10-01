@@ -23,11 +23,11 @@ bin: ## Build the binary for the current plarform
 prepare-buildx: ## Create buildx builder for multi-arch build, if not exists
 	docker buildx inspect $(BUILDER) || docker buildx create --name=$(BUILDER) --driver=docker-container --driver-opt=network=host
 
-plugin-image: prepare-buildx ## Build service image to be deployed as a desktop plugin: make plugin-image tag=0.1.
-	docker buildx build --load --builder=$(BUILDER) --build-arg TAG=${tag)} --tag=gtardif/desktop-volume-plugin:$(tag) .
+plugin: ## Build service image to be deployed as a desktop plugin
+	docker build --tag=desktop-volume-plugin .
 
 push-plugin: ## Build & Upload plugin image to hub. Do not push if tag already exists: make push-plugin tag=0.1
-	docker pull gtardif/desktop-volume-plugin:$(tag) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=${tag)} --tag=gtardif/desktop-volume-plugin:$(tag) .
+	docker pull docker/desktop-volume-plugin:$(tag) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=${tag)} --tag=docker/desktop-volume-plugin:$(tag) .
 
 package: ## package the docker plugin sample
 	@echo "$(INFO_COLOR)Building docker image...$(NO_COLOR)"
@@ -37,4 +37,4 @@ help: ## Show this help
 	@echo Please specify a build target. The choices are:
 	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "$(INFO_COLOR)%-30s$(NO_COLOR) %s\n", $$1, $$2}'
 
-.PHONY: bin deploy help
+.PHONY: bin plugin push-plugin help

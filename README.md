@@ -45,16 +45,6 @@ To remove the plugin, run:
 docker desktop plugin rm my-plugin
 ```
 
-## Development workflow of a plugin
-
-In a plugin directory, run `yarn start` (or equivalent depending on the plugin UI code and packaging tools) to start the plugin UI on a specific port, for example 3000.
-
-In the pinata repository, go to `client/desktop-ui` and run `yarn dev`.
-
-In the pinata repository, go to `client/desktop` and run `yarn dev --plugin-<my-plugin>-devPort=3000`.
-
-Finally, open the plugin tab in the Docker Desktop UI. Any code changes should reflect live as you modify your plugin code.
-
 ## Plugin API
 
 The plugin API exposes a set of [functions](https://github.com/docker/pinata/blob/desktop-plugins/client/plugin-preload/src/index.ts#L8-L19) that can be used to run commands in the host or in container inside the VM, e.g:
@@ -76,3 +66,13 @@ window.ddClient.backend
   .execInContainer("pluginContainerName", `binaryShippedInTheVm`)
   .then((value: any) => console.log(value));
 ```
+
+## Development workflow of a plugin
+
+In a plugin directory, run `yarn start` (or equivalent depending on the plugin UI code and packaging tools) to start the plugin UI on a specific port, for example 3000. If yoru plugin UI is using `yarn`, you can hot-reload the UI part while developing the plugin.
+
+In the pinata repository, go to `client/desktop-ui` and run `yarn dev`.
+
+In the pinata repository, go to `client/desktop` and run `yarn dev --plugin-<my-plugin>-devPort=3000`.
+
+Finally, open the plugin tab in the Docker Desktop UI. Any code changes should reflect live as you modify your plugin code.

@@ -62,7 +62,7 @@ To run a command in your host:
 
 ```typescript
 window.ddClient
-  .execHostCmd(`telepresence list | grep 'intercept'`)
+  .execHostCmd(`myBinaryShippedInPlugin xxx`)
   .then((value: any) => {
     console.log(value);
   });
@@ -72,6 +72,6 @@ To run a command in the container inside the VM:
 
 ```typescript
 window.ddClient.backend
-  .execInContainer("tailscale_service", `/app/tailscale up --authkey ${token}`)
+  .execInContainer("pluginContainerName", `binaryShippedInTheVm`)
   .then((value: any) => console.log(value));
 ```

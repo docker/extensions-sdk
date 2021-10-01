@@ -1,6 +1,7 @@
 FROM alpine:3.14.2
 
-COPY metadata.json .
+COPY docker.svg .
 COPY ui ./swim
+COPY metadata.json .
 
 CMD cat /metadata.json

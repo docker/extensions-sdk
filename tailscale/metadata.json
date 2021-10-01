@@ -1,6 +1,7 @@
 {
     "desktop-plugin-version":"1.0",
     "desktop-plugin-name":"tailscale",
+    "icon":"tailscale.svg",
     "vm": {
         "composefile":"docker-compose.yaml",
         "isolation":"containerd"

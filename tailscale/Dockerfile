@@ -26,6 +26,7 @@ RUN chmod +x start.sh
 WORKDIR /
 COPY vm/docker-compose.yaml .
 COPY --from=client-builder /app/client/dist ui
+COPY tailscale.svg .
 COPY metadata.json .
 
 CMD cat /metadata.json

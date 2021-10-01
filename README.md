@@ -18,6 +18,7 @@ Build the plugin:
 
 ```cli
 make plugin
+# or docker build -t my-plugin .
 ```
 
 Install the plugin:

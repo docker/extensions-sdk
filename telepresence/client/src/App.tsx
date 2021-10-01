@@ -116,15 +116,6 @@ export function App() {
       </div>
 
       <div>
-        Remote Kubernetes clusters:
-        <ul>
-          <li>TODO</li>
-          <li>TODO</li>
-          <li>TODO</li>
-        </ul>
-      </div>
-
-      <div>
         Kubernetes services:
         <ul>
           {services.map((s) => (
@@ -146,13 +137,6 @@ export function App() {
               </button>
             </li>
           ))}
-        </ul>
-      </div>
-
-      <div>
-        Containers:
-        <ul>
-          <li>TODO</li>
         </ul>
       </div>
     </React.Fragment>

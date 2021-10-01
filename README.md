@@ -2,7 +2,7 @@
 
 This repository host Desktop Plugin Samples.
 
-:warning: **This work is experimental**
+:warning: **This work is experimental and still in progress, features and APIS detailed are subject to change **
 
 ## Prerequisites
 

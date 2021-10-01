@@ -8,6 +8,7 @@ COPY client/yarn.lock /app/client/yarn.lock
 RUN yarn
 COPY client /app/client
 
+RUN yarn
 RUN yarn build
 
 FROM debian:bullseye

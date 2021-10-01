@@ -36,8 +36,7 @@ export function App() {
 
   function connectTailscale() {
     console.log(`connecting with token ${token}`);
-    window.ddClient
-      .backend('tailscale')
+    window.ddClient.backend
       .execInContainer(
         'tailscale_service',
         `/app/tailscale up --authkey ${token}`,
@@ -49,8 +48,7 @@ export function App() {
     console.log(
       `Disconnects from Tailscale. When disconnected, you cannot reach devices over Tailscale.`,
     );
-    window.ddClient
-      .backend('tailscale')
+    window.ddClient.backend
       .execInContainer('tailscale_service', `/app/tailscale down`)
       .then(() => setStatus(undefined));
   }
@@ -59,15 +57,13 @@ export function App() {
     console.log(
       `Log out disconnects from Tailscale and expires the current log in. The next time you run tailscale up, you'll need to reauthenticate your device.`,
     );
-    window.ddClient
-      .backend('tailscale')
+    window.ddClient.backend
       .execInContainer('tailscale_service', `/app/tailscale logout`)
       .then(() => setStatus(undefined));
   }
 
   function updateStatus() {
-    window.ddClient
-      .backend('tailscale')
+    window.ddClient.backend
       .execInContainer('tailscale_service', `/app/tailscale status -json`)
       .then((value: any) => {
         let res: TailscaleStatusResponse = JSON.parse(value.stdout);

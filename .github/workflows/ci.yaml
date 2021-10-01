@@ -7,12 +7,15 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  build:
     name: Build plugins
+    strategy:
+      matrix:
+        sample: ['swimmingwhale', 'tailscale', 'telepresence', 'vm-ui-plugin']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build all
-        run: make all
+      - name: Build sample ${{ matrix.sample }}
+        run: cd ${{ matrix.sample }} ; make plugin

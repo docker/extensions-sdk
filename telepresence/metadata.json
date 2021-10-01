@@ -1,0 +1,14 @@
+{
+  "desktop-plugin-version": "1.0",
+  "desktop-plugin-name": "telepresence",
+  "ui": {
+    "dashboard-tab": {
+      "title": "Telepresence",
+      "root": "/ui",
+      "src": "index.html"
+    }
+  },
+  "host": {
+    "binaries": [{ "darwin": "/darwin/telepresence" }]
+  }
+}

@@ -32,8 +32,8 @@ You can list the plugins that are installed:
 docker desktop plugin ls
 
 PLUGIN              IMAGE                                        UI                    VM                  HOST
-tailscale           gtardif/desktop-tailscale-plugin:0.1         1 tab(Tailscale)      Created(1)          -
-telepresence        felipecruz/desktop-telepresence-plugin:0.1   1 tab(Telepresence)   -                   1 binarie(s)
+tailscale           docker/desktop-tailscale-plugin:0.1          1 tab(Tailscale)      Created(1)          -
+telepresence        docker/desktop-telepresence-plugin:0.1       1 tab(Telepresence)   -                   1 binarie(s)
 ```
 
 (Your plugin should appear there).

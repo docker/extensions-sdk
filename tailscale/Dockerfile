@@ -19,7 +19,8 @@ RUN apt-get update
 RUN apt-get install -y wget tar iptables iproute2
 ENV TSFILE=tailscale_1.14.3_amd64.tgz
 RUN wget https://pkgs.tailscale.com/stable/${TSFILE} && \
-    tar xzf ${TSFILE} --strip-components=1
+    tar xzf ${TSFILE} --strip-components=1 && \
+    rm ${TSFILE}
 
 WORKDIR /
 COPY vm/docker-compose.yaml .
@@ -27,4 +28,4 @@ COPY --from=client-builder /app/client/dist ui
 COPY tailscale.svg .
 COPY metadata.json .
 
-CMD cat /metadata.json
+CMD /app/tailscaled --state=tailscaled.state --tun=userspace-networking

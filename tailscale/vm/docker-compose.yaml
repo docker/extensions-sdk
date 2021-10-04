@@ -2,4 +2,3 @@ services:
   desktop-tailscale:
     container_name: tailscale_service
     image: ${DESKTOP_PLUGIN_IMAGE}
-    command: "/app/tailscaled --state=tailscaled.state --tun=userspace-networking"

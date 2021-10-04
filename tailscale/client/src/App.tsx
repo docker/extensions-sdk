@@ -88,7 +88,7 @@ export function App() {
 
   function PrintTableHeaders() {
     return (
-      <tr>
+      <tr key="headers">
         {['Container', 'Published ports', 'Tailscale URL', 'Tailscale IP'].map(
           (h) => (
             <td key={h}>{h}</td>
@@ -104,6 +104,9 @@ export function App() {
 
     for (var i = 0; i < container.Ports.length; i++) {
       let port = container.Ports[i].PublicPort;
+      if (!port) {
+        continue;
+      }
 
       if (status?.Self.DNSName && container.Ports.length > 0) {
         tailscaleURL =
@@ -135,7 +138,7 @@ export function App() {
 
     for (var i = 0; i < container.Ports.length; i++) {
       let type = container.Ports[i].Type.toUpperCase();
-      let port = container.Ports[i].PublicPort;
+      let port = container.Ports[i].PublicPort ?? '-';
       let publishedPort = '(' + type + ')' + ' ' + port;
       publishedPorts.push(publishedPort);
     }
@@ -175,10 +178,12 @@ export function App() {
     return (
       containers &&
       containers
-        .filter((c: Container) => c.Ports.length > 0) // only display containers that expose ports
+        .filter(
+          (c: Container) => c.Ports.filter((p) => p.PublicPort).length > 0,
+        ) // only display containers that expose ports
         .map((container) => (
           <React.Fragment>
-            <tr>
+            <tr key={'ctr-row-' + container.Names[0]}>
               <td key={'ctr-name-' + container.Names[0]}>
                 {container.Names[0].substring(1)}
               </td>
@@ -212,6 +217,7 @@ export function App() {
       <div>
         {(status === undefined ||
           status.BackendState == 'Stopped' ||
+          status.BackendState == 'NoState' ||
           status.BackendState == 'NeedsLogin') && (
           <React.Fragment>
             <label>

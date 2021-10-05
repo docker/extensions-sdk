@@ -45,11 +45,58 @@ To remove the plugin, run:
 docker desktop plugin rm my-plugin
 ```
 
-## Plugin API
+## Plugin Structure
 
-The plugin API exposes a set of [functions](https://github.com/docker/pinata/blob/desktop-plugins/client/plugin-preload/src/index.ts#L8-L19) that can be used to run commands in the host or in container inside the VM, e.g:
+A plugin is shared as a Docker image, and must have a metadata.json file at the root of the image filesystem.
+This metdata.json file describes the content of the plugin.
 
-To run a command in your host:
+A plugin can contain (each part is optional):
+
+- A UI part, adding a tab to the Docker Desktop Dashboard
+- A VM service, executed in the Desktop VM as one (or several) Docker container(s), in its own containerd namespace
+- A list of binaries to be installed on the host
+
+The UI part of the plugin will be able to communicate at runtime with the plugin VM service, or invoke the plugin binaries deployed on the host via the Plugin API defined below.
+
+The VM Service can define a socket that it exposes, so that the UI can communicate using this socket from the host. The UI also has the option to send CLI commands to the VM service (like running a `docker exec` inside the VM service)
+
+## Plugin UI API
+
+The plugin UI has access to a plugin API, allowing:
+
+### Common functions
+
+Listing running containers
+
+```typescript
+window.ddClient.listContainers();
+```
+
+Displaying an error in a red banner in the Dashboard
+
+```typescript
+window.ddClient.toastError("Something went wrong");
+```
+
+### Communication with the plugin backend
+
+Accessing a socket exposed by your plugin VM service:
+
+```typescript
+window.ddClient.backend
+  .get("/some/service")
+  .then((value: any) => console.log(value));
+```
+
+Running a command in the container inside the VM:
+
+```typescript
+window.ddClient.backend
+  .execInContainer("pluginContainerName", `binaryShippedInTheVm`)
+  .then((value: any) => console.log(value));
+```
+
+Invoking a plugin binary on your host:
 
 ```typescript
 window.ddClient
@@ -57,14 +104,6 @@ window.ddClient
   .then((value: any) => {
     console.log(value);
   });
-```
-
-To run a command in the container inside the VM:
-
-```typescript
-window.ddClient.backend
-  .execInContainer("pluginContainerName", `binaryShippedInTheVm`)
-  .then((value: any) => console.log(value));
 ```
 
 ## Development workflow of a plugin

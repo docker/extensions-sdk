@@ -104,11 +104,11 @@ export function App() {
 
   function intercept(namespace: string, serviceName: string) {
     console.log(
-      `intercepting service ${serviceName} on port 8080 on namespace ${namespace}`,
+      `intercepting service ${serviceName} on port 8081 on namespace ${namespace}`,
     );
     window.ddClient
       .execHostCmd(
-        `telepresence intercept ${serviceName} --port 8080 -n ${namespace}`,
+        `telepresence intercept ${serviceName} --port 8081 -n ${namespace}`,
       )
       .then((value: any) => {
         console.log(value.stdout);

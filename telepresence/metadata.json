@@ -9,6 +9,9 @@
     }
   },
   "host": {
-    "binaries": [{ "darwin": "/darwin/telepresence" }]
+    "binaries": [
+      { "darwin": "/darwin/telepresence" },
+      { "darwin": "/darwin/kubectl" }
+    ]
   }
 }

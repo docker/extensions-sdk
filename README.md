@@ -8,11 +8,26 @@ This repository host Desktop Plugin Samples.
 
 Download the latest Desktop build from this [PR](https://github.com/docker/pinata/pull/16496) (at the bottom, expand "Show all checks", click on "Details") and install it on your host.
 
+## Plugin Structure
+
+A plugin is shared as a Docker image, and must have a metadata.json file at the root of the image filesystem.
+This metdata.json file describes the content of the plugin.
+
+A plugin can contain (each part is optional):
+
+- A UI part, adding a tab to the Docker Desktop Dashboard
+- A VM service, executed in the Desktop VM as one (or several) Docker container(s), in its own containerd namespace
+- A list of binaries to be installed on the host
+
+The UI part of the plugin will be able to communicate at runtime with the plugin VM service, or invoke the plugin binaries deployed on the host via the Plugin API defined below.
+
+The VM Service can define a socket that it exposes, so that the UI can communicate using this socket from the host. The UI also has the option to send CLI commands to the VM service (like running a `docker exec` inside the VM service)
+
 ## Build, test and install a plugin
 
 This repository contains multiple plugins, each one of them are defined as individual directories at the root of the repository.
 
-To use one of them, go over the directory of the plugin to build and install it in Docker Desktop. The following operations are carried out by a custom CLI named `docker desktop plugin`. For more information about it, click [here](https://github.com/docker/pinata/tree/desktop-plugins/desktop-plugin).
+To use one of them, go over the directory of the plugin to build and install it in Docker Desktop. The following operations are carried out by a custom CLI named `docker desktop plugin`. This CLI is packaged with Docker Desktop builds with the plugin capability.
 
 Build the plugin:
 
@@ -45,20 +60,11 @@ To remove the plugin, run:
 docker desktop plugin rm my-plugin
 ```
 
-## Plugin Structure
+To update a plugin with a newer version, run:
 
-A plugin is shared as a Docker image, and must have a metadata.json file at the root of the image filesystem.
-This metdata.json file describes the content of the plugin.
-
-A plugin can contain (each part is optional):
-
-- A UI part, adding a tab to the Docker Desktop Dashboard
-- A VM service, executed in the Desktop VM as one (or several) Docker container(s), in its own containerd namespace
-- A list of binaries to be installed on the host
-
-The UI part of the plugin will be able to communicate at runtime with the plugin VM service, or invoke the plugin binaries deployed on the host via the Plugin API defined below.
-
-The VM Service can define a socket that it exposes, so that the UI can communicate using this socket from the host. The UI also has the option to send CLI commands to the VM service (like running a `docker exec` inside the VM service)
+```cli
+docker desktop plugin update docker/desktop-tailscale-plugin:0.2
+```
 
 ## Plugin UI API
 
@@ -92,26 +98,32 @@ Running a command in the container inside the VM:
 
 ```typescript
 window.ddClient.backend
-  .execInContainer("pluginContainerName", `binaryShippedInTheVm`)
+  .execInContainer("pluginContainerName", `cliShippedInTheVm xxx`)
   .then((value: any) => console.log(value));
 ```
 
 Invoking a plugin binary on your host:
 
 ```typescript
-window.ddClient
-  .execHostCmd(`myBinaryShippedInPlugin xxx`)
-  .then((value: any) => {
-    console.log(value);
-  });
+window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((value: any) => {
+  console.log(value);
+});
 ```
 
-## Development workflow of a plugin
+## Developing plugin code
+
+### Opening dev tools
+
+Once a plugin is deployed and running, it is possibe to open chrome dev tools from the UI plugin part, using konami code. CLick on the plugin tab, and then hit the key sequence 'up up down down left right left right p d t'. That should open Dev Tools, and give access to the chrome console, debugger, etc.
+
+### Hot reloading the plugin UI
+
+When running the Desktop Dashboard in dev mode, it is possible to also hot-reload the plugin UI.
 
 In a plugin directory, run `yarn start` (or equivalent depending on the plugin UI code and packaging tools) to start the plugin UI on a specific port, for example 3000. If yoru plugin UI is using `yarn`, you can hot-reload the UI part while developing the plugin.
 
-In the pinata repository, go to `client/desktop-ui` and run `yarn dev`.
+In the desktop repository, go to `client/desktop-ui` and run `yarn dev`.
 
-In the pinata repository, go to `client/desktop` and run `yarn dev --plugin-<my-plugin>-devPort=3000`.
+In the desktop repository, go to `client/desktop` and run `yarn dev --plugin-<my-plugin>-devPort=3000`.
 
 Finally, open the plugin tab in the Docker Desktop UI. Any code changes should reflect live as you modify your plugin code.

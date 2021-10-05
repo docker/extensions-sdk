@@ -34,7 +34,7 @@ export function App() {
     }
   }, [status]); // Only re-run the effect if Tailscale status changes
 
-  function connectTailscale() {
+  function connect() {
     console.log(`connecting with token ${token}`);
     window.ddClient.backend
       .execInContainer(
@@ -44,7 +44,7 @@ export function App() {
       .then(() => updateStatus());
   }
 
-  function disconnectTailscale() {
+  function disconnect() {
     console.log(
       `Disconnects from Tailscale. When disconnected, you cannot reach devices over Tailscale.`,
     );
@@ -53,7 +53,7 @@ export function App() {
       .then(() => setStatus(undefined));
   }
 
-  function logoutTailscale() {
+  function logout() {
     console.log(
       `Log out disconnects from Tailscale and expires the current log in. The next time you run tailscale up, you'll need to reauthenticate your device.`,
     );
@@ -231,24 +231,20 @@ export function App() {
               />
             </label>
 
-            <button type="button" onClick={() => connectTailscale()}>
+            <button type="button" onClick={() => connect()}>
               Connect
             </button>
           </React.Fragment>
         )}
 
         {status?.BackendState === 'Running' && (
-          <button
-            type="button"
-            id="disconnect"
-            onClick={() => disconnectTailscale()}
-          >
+          <button type="button" id="disconnect" onClick={() => disconnect()}>
             Disconnect
           </button>
         )}
 
         {status?.BackendState === 'Running' && (
-          <button type="button" onClick={() => logoutTailscale()}>
+          <button type="button" onClick={() => logout()}>
             Logout
           </button>
         )}

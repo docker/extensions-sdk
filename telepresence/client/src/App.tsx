@@ -108,7 +108,7 @@ export function App() {
     );
     window.ddClient
       .execHostCmd(
-        `telepresence intercept ${serviceName} --port 8081 -n ${namespace}`,
+        `telepresence intercept ${serviceName} --port 8081:grpc -n ${namespace}`,
       )
       .then((value: any) => {
         console.log(value.stdout);

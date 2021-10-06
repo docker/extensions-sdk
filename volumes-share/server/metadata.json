@@ -1,0 +1,9 @@
+{
+  "desktop-plugin-version": "1.0",
+  "desktop-plugin-name": "volumes-share",
+  "vm": {
+    "composefile": "docker-compose.yaml",
+    "isolation": "dockerd",
+    "exposes": { "socket": "volume-contents.sock" }
+  }
+}

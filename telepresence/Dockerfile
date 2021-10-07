@@ -26,5 +26,6 @@ FROM scratch
 WORKDIR /
 COPY --from=client-builder /app/client/dist ui
 COPY --from=telepresence-builder /darwin/telepresence /darwin/
+COPY --from=telepresence-builder /darwin/kubectl /darwin/
 
 COPY metadata.json .

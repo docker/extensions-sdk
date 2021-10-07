@@ -1,8 +1,7 @@
 $ Volumes share server
 
 This server runs inside the Docker Desktop VM. It exposes itself on the
-`volume-contents.sock` socket for now, we need to make dynamic sockets work with
-desktop plugins.
+`volume-share.sock` socket.
 
 The server has two endpoints:
 

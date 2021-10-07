@@ -4,6 +4,6 @@
   "vm": {
     "composefile": "docker-compose.yaml",
     "isolation": "dockerd",
-    "exposes": { "socket": "volume-contents.sock" }
+    "exposes": { "socket": "volume-share.sock", "host-socket": "volume-share.sock", "named-pipe": "\\\\.\\pipe\\dockerPluginVolumeShare"}
   }
 }

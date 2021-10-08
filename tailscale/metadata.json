@@ -1,10 +1,10 @@
 {
     "desktop-plugin-version":"1.0",
-    "desktop-plugin-name":"tailscale",
+    "name":"tailscale",
+    "provider": "Docker Inc.",
     "icon":"tailscale.svg",
     "vm": {
-        "composefile":"docker-compose.yaml",
-        "isolation":"containerd"
+        "composefile":"docker-compose.yaml"
     },
     "ui":{
         "dashboard-tab":

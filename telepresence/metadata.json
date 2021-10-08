@@ -1,6 +1,6 @@
 {
   "desktop-plugin-version": "1.0",
-  "desktop-plugin-name": "telepresence",
+  "name": "telepresence",
   "ui": {
     "dashboard-tab": {
       "title": "Telepresence",

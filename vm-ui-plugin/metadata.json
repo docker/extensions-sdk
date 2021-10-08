@@ -1,6 +1,7 @@
 {
     "desktop-plugin-version":"1.0",
-    "desktop-plugin-name":"volume-sample",
+    "name":"volume-sample",
+    "provider": "Docker Inc.",
     "vm": {
         "composefile":"docker-compose.yaml",
         "isolation":"docekrd",

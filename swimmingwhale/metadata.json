@@ -1,6 +1,7 @@
 {
     "desktop-plugin-version":"1.0",
-    "desktop-plugin-name":"SwimmingWhale",
+    "name":"SwimmingWhale",
+    "provider": "Docker Inc.",
     "icon": "docker.svg",
     "ui":{
         "dashboard-tab":

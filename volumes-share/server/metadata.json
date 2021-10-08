@@ -1,9 +1,10 @@
 {
   "desktop-plugin-version": "1.0",
-  "desktop-plugin-name": "volumes-share",
+  "name": "volumes-share",
+  "provider": "Docker Inc.",
   "vm": {
     "composefile": "docker-compose.yaml",
     "isolation": "dockerd",
-    "exposes": { "socket": "volume-share.sock", "host-socket": "volume-share.sock", "named-pipe": "\\\\.\\pipe\\dockerPluginVolumeShare"}
+    "exposes": { "socket": "volume-share.sock"}
   }
 }

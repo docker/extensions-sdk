@@ -7,15 +7,27 @@ on:
   pull_request:
 
 jobs:
+  directories:
+    name: List child folders to build
+    runs-on: ubuntu-latest
+    outputs:
+      dir: ${{ steps.set-dirs.outputs.dir }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-dirs # Give it an id to handle to get step outputs in the outputs key above
+        run: echo "::set-output name=dir::$(ls -d */ | jq -R -s -c 'split("\n")[:-1]')"
   build:
     name: Build plugins
+    runs-on: ubuntu-latest
+    needs: [directories]
     strategy:
       matrix:
-        sample: ['swimmingwhale', 'tailscale', 'telepresence', 'vm-ui-plugin']
-    runs-on: ubuntu-latest
+        dir: ${{fromJson(needs.directories.outputs.dir)}} # List matrix strategy from directories dynamically
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build sample ${{ matrix.sample }}
-        run: cd ${{ matrix.sample }} ; make plugin
+      - name: Build sample ${{ matrix.dir }}
+        run: cd ${{ matrix.dir }} ; make plugin
+        env:
+          DOCKER_BUILDKIT: 1

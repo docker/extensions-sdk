@@ -1,6 +1,7 @@
 {
   "desktop-plugin-version": "1.0",
-  "desktop-plugin-name": "volumes-share",
+  "name": "volumes-share",
+  "provider": "Docker Inc.",
   "vm": {
     "composefile": "docker-compose.yaml",
     "isolation": "dockerd",

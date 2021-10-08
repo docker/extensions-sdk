@@ -1,7 +1,7 @@
 services:
   volumes-share:
     image: ${DESKTOP_PLUGIN_IMAGE}
-    command: /volumes-share -socket /run/guest-services/volume-contents.sock
+    command: /volumes-share -socket /run/guest-services/volume-share.sock
     cap_add:
       - DAC_OVERRIDE
       - FOWNER

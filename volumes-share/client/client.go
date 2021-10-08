@@ -44,7 +44,7 @@ func New(opts ...ClientOpt) (Client, error) {
 						return nil, err
 					}
 
-					return net.Dial("unix", filepath.Join(hd, "Library/Containers/com.docker.docker/Data/volume-contents.sock"))
+					return net.Dial("unix", filepath.Join(hd, "Library/Containers/com.docker.docker/Data/volume-share.sock"))
 				},
 			},
 		},

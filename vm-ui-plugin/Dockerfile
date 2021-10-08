@@ -11,4 +11,4 @@ COPY vm-main/docker-compose.yaml .
 COPY metadata.json .
 COPY client/src ./plugin-ui
 
-CMD /volume-service -socket /run/guest-services/plugin-experiment.sock
+CMD /volume-service -socket /run/guest-services/plugin-volumes.sock

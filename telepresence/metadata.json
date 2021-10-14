@@ -15,8 +15,9 @@
           "path": "/darwin/telepresence"
         },
         "windows": {
-          "command": "powershell",
-          "args": ["telepresence-win-install.ps1"]
+          "assetsPath": "/windows",
+          "script": "telepresence-win-install.ps1",
+          "command": "powershell -Command Start-Process PowerShell -Verb RunAs -ArgumentList '-NoExit','-Command',"
         }
       },
       {

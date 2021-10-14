@@ -10,8 +10,20 @@
   },
   "host": {
     "binaries": [
-      { "darwin": "/darwin/telepresence" },
-      { "darwin": "/darwin/kubectl" }
+      {
+        "darwin": {
+          "path": "/darwin/telepresence"
+        },
+        "windows": {
+          "command": "powershell",
+          "args": ["telepresence-win-install.ps1"]
+        }
+      },
+      {
+        "darwin": {
+          "path": "/darwin/kubectl"
+        }
+      }
     ]
   }
 }

@@ -11,4 +11,4 @@ Set-ExecutionPolicy Bypass -Scope Process
 
 # Remove the unzipped directory
 cd ..
-Remove-Item telepresence
+Remove-Item -Recurse telepresence

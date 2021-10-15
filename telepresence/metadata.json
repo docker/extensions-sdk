@@ -11,19 +11,30 @@
   "host": {
     "binaries": [
       {
-        "darwin": {
-          "path": "/darwin/telepresence"
-        },
-        "windows": {
-          "assetsPath": "/windows",
-          "script": "telepresence-win-install.ps1",
-          "command": "powershell -Command Start-Process PowerShell -Verb RunAs -ArgumentList '-NoExit','-Command',"
-        }
-      },
-      {
-        "darwin": {
-          "path": "/darwin/kubectl"
-        }
+        "darwin": [
+          {
+            "path": "/darwin/telepresence"
+          },
+          {
+            "path": "/darwin/kubectl"
+          }
+        ],
+        "windows": [
+          {
+            "path": "/windows",
+            "command": "powershell",
+            "args": [
+              "-Command",
+              "Start-Process",
+              "PowerShell",
+              "-Verb",
+              "RunAs",
+              "-ArgumentList",
+              "'-Command','cd C:\\Users\\felipe\\AppData\\Roaming\\Docker\\Desktop\\plugins\\telepresence\\host\\windows; ./telepresence-win-install.ps1'",
+              "-Wait"
+            ]
+          }
+        ]
       }
     ]
   }

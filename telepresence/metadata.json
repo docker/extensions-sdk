@@ -21,6 +21,9 @@
         ],
         "windows": [
           {
+            "path": "/windows/kubectl.exe"
+          },
+          {
             "path": "/windows",
             "command": "powershell",
             "args": [

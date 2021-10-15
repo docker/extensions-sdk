@@ -54,7 +54,7 @@ export function App() {
 
   function getNamespaces() {
     window.ddClient
-      .execHostCmd(`kubectl get ns | cut -d' ' -f1 | tail -n +2`) // return just the names
+      .execHostCmd(`kubectl get namespaces --no-headers -o custom-columns=":metadata.name"`) // return just the names
       .then((value: any) => {
         let namespaces = value.stdout.split('\n');
         namespaces.pop(); // remove empty entry
@@ -75,7 +75,7 @@ export function App() {
     );
 
     window.ddClient
-      .execHostCmd(`telepresence list -n ${namespace} | grep 'intercept'`)
+      .execHostCmd(`telepresence list -n ${namespace}`)
       .then(async (value: any) => {
         let services: Service[] = [];
         let strs = value.stdout.split('\n');

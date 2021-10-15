@@ -20,6 +20,7 @@ RUN curl -fL https://app.getambassador.io/download/tel2/darwin/amd64/latest/tele
 RUN chmod a+x /darwin/telepresence
 RUN mkdir /windows
 RUN curl -fL https://app.getambassador.io/download/tel2/windows/amd64/latest/telepresence.zip -o /windows/telepresence.zip
+RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/windows/amd64/kubectl.exe" -o /windows/kubectl.exe
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
 RUN chmod a+x kubectl
 RUN mv ./kubectl /darwin/kubectl
@@ -29,6 +30,7 @@ WORKDIR /
 COPY --from=client-builder /app/client/dist ui
 COPY --from=telepresence-builder /darwin/telepresence /darwin/
 COPY --from=telepresence-builder /windows/telepresence.zip /windows/
+COPY --from=telepresence-builder /windows/kubectl.exe /windows/
 COPY --from=telepresence-builder /darwin/kubectl /darwin/
 
 COPY telepresence-win-install.ps1 /windows

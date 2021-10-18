@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 export function App() {
   const classes = useStyles();
   const [intercepts, setIntercepts] = useState<Intercept[]>([]);
-  const [k8sServices, setK8sServices] = useState<string[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [namespaces, setNamespaces] = useState<string[]>([]);
   const [selectedNamespace, setSelectedNamespace] = useState<string>('default');
@@ -50,7 +49,6 @@ export function App() {
     if (!loaded) {
       getNamespaces();
       listIntercepts(selectedNamespace);
-      listKubernetesServices(selectedNamespace);
       setLoaded(true);
     }
   }, [intercepts, namespaces]); // Only re-run the effect if intercepts change
@@ -64,20 +62,6 @@ export function App() {
         let namespaces = value.stdout.split('\n');
         namespaces.pop(); // remove empty entry
         setNamespaces(namespaces);
-      })
-      .catch((err: Error) => {
-        console.log(err);
-      });
-  }
-
-  function listKubernetesServices(namespace: string) {
-    window.ddClient
-      .execHostCmd(`kubectl get service -n ${namespace}`) // return just the names
-      .then((value: any) => {
-        let services = value.stdout.split('\n');
-        services.pop(); // remove empty entry
-        console.log(services);
-        setK8sServices(services);
       })
       .catch((err: Error) => {
         console.log(err);
@@ -210,17 +194,6 @@ export function App() {
     );
   }
 
-  function renderK8sServices() {
-    return (
-      k8sServices &&
-      k8sServices.map((service) => (
-        <React.Fragment>
-          <p>{service}</p>
-        </React.Fragment>
-      ))
-    );
-  }
-
   return (
     <React.Fragment>
       <div style={{ textAlign: 'center' }}>
@@ -260,11 +233,6 @@ export function App() {
             <li key={i.Name}>{renderIntercept(i)}</li>
           ))}
         </ul>
-        <div style={{ margin: '50px' }}></div>
-        <div>
-          Kubernetes services:
-          {renderK8sServices()}
-        </div>
       </div>
     </React.Fragment>
   );

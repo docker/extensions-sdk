@@ -25,17 +25,10 @@
           },
           {
             "path": "/windows",
-            "command": "powershell",
-            "args": [
-              "-Command",
-              "Start-Process",
-              "PowerShell",
-              "-Verb",
-              "RunAs",
-              "-ArgumentList",
-              "'-Command','cd C:\\Users\\felipe\\AppData\\Roaming\\Docker\\Desktop\\plugins\\telepresence\\host\\windows; ./telepresence-win-install.ps1'",
-              "-Wait"
-            ]
+            "install":{
+              "command": "./windows/telepresence-win-install.ps1",
+              "requiresAdmin": true
+            } 
           }
         ]
       }

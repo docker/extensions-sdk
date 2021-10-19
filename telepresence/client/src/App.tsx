@@ -3,7 +3,7 @@ import { Route, BrowserRouter, Switch, useLocation } from 'react-router-dom'
 import { Divider, Typography, Card, CardContent } from "@material-ui/core";
 
 import { Connect } from './Connect'
-import { Intercept } from './Intercept'
+import { Intercepts } from './Intercept'
 
 
 export function App() {
@@ -13,7 +13,7 @@ export function App() {
     <BrowserRouter>
     <Switch>
         <Route exact path={path} component={Connect} />
-        <Route path={"/intercepts"} component={Intercept} />
+        <Route path={"/intercepts"} component={Intercepts} />
         <Route component={pageNotFound} />
       </Switch>
     </BrowserRouter>

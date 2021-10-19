@@ -6,10 +6,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 
-// Kubernetes service that can be intercepted by Telepresence
-export interface Service {
+// Telepersence intercept
+export interface Intercept {
   Name: string;
   Intercepted: boolean;
+  Port: string;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -25,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
 
 export function App() {
   const classes = useStyles();
-  const [services, setServices] = useState<Service[]>([]);
+  const [intercepts, setIntercepts] = useState<Intercept[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [namespaces, setNamespaces] = useState<string[]>([]);
   const [selectedNamespace, setSelectedNamespace] = useState<string>('default');
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event: any) => {
-    listServices(event.target.value);
+    listIntercepts(event.target.value);
     setSelectedNamespace(event.target.value);
   };
 
@@ -47,14 +48,16 @@ export function App() {
   useEffect(() => {
     if (!loaded) {
       getNamespaces();
-      listServices(selectedNamespace);
+      listIntercepts(selectedNamespace);
       setLoaded(true);
     }
-  }, [services, namespaces]); // Only re-run the effect if intercepted services changes
+  }, [intercepts, namespaces]); // Only re-run the effect if intercepts change
 
   function getNamespaces() {
     window.ddClient
-      .execHostCmd(`kubectl get ns | cut -d' ' -f1 | tail -n +2`) // return just the names
+      .execHostCmd(
+        `kubectl get namespaces --no-headers -o custom-columns=":metadata.name"`,
+      ) // return just the names
       .then((value: any) => {
         let namespaces = value.stdout.split('\n');
         namespaces.pop(); // remove empty entry
@@ -65,7 +68,7 @@ export function App() {
       });
   }
 
-  function listServices(namespace: string) {
+  function listIntercepts(namespace: string) {
     if (namespace == '') {
       namespace = 'default';
     }
@@ -75,77 +78,120 @@ export function App() {
     );
 
     window.ddClient
-      .execHostCmd(`telepresence list -n ${namespace} | grep 'intercept'`)
+      .execHostCmd(`telepresence list -n ${namespace}`)
       .then(async (value: any) => {
-        let services: Service[] = [];
+        let intercepts: Intercept[] = [];
         let strs = value.stdout.split('\n');
 
         for (var i = 0; i < strs.length; i++) {
           if (strs[i].length > 0) {
             let line = strs[i].split(':');
-            let serviceName = line[0].trimEnd();
+            let interceptName = line[0].trimEnd();
             let intercepted = line[1].trimEnd().includes('intercepted');
 
-            const service: Service = {
-              Name: serviceName,
+            const intercept: Intercept = {
+              Name: interceptName,
               Intercepted: intercepted,
+              Port: '',
             };
 
-            services.push(service);
+            intercepts.push(intercept);
           }
         }
 
-        setServices(services);
+        setIntercepts(intercepts);
       })
       .catch((err: Error) => {
         console.log(err);
       });
   }
 
-  function intercept(namespace: string, serviceName: string) {
+  function intercept(namespace: string, interceptName: string, port: string) {
     console.log(
-      `intercepting service ${serviceName} on port 8081 on namespace ${namespace}`,
+      `intercepting ${interceptName} on port ${port} on namespace ${namespace}`,
     );
     window.ddClient
       .execHostCmd(
-        `telepresence intercept ${serviceName} --port 8081:grpc -n ${namespace}`,
+        `telepresence intercept ${interceptName} --port ${port} -n ${namespace}`,
       )
       .then((value: any) => {
         console.log(value.stdout);
-        let updatedServices = services.map((s) => {
-          if (s.Name == serviceName) {
-            s.Intercepted = true;
+        let updatedIntercepts = intercepts.map((i) => {
+          if (i.Name == interceptName) {
+            i.Intercepted = true;
           }
-          return s;
+          return i;
         });
 
-        setServices(updatedServices);
+        setIntercepts(updatedIntercepts);
       })
       .catch((err: Error) => {
         console.log(err);
       });
   }
 
-  function leave(namespace: string, serviceName: string) {
-    console.log(`stopping to intercept service ${serviceName}}`);
+  function leave(namespace: string, interceptName: string) {
+    console.log(`stopping to intercept ${interceptName}}`);
     window.ddClient
-      .execHostCmd(`telepresence leave ${serviceName}-${namespace}`)
+      .execHostCmd(`telepresence leave ${interceptName}-${namespace}`)
       .then((value: any) => {
         console.log(value.stdout);
-        let updatedServices = services.map((s) => {
-          if (s.Name == serviceName) {
-            s.Intercepted = false;
+        let updatedIntercepts = intercepts.map((i) => {
+          if (i.Name == interceptName) {
+            i.Intercepted = false;
           }
-          return s;
+          return i;
         });
-
-        console.log(updatedServices);
-
-        setServices(updatedServices);
+        setIntercepts(updatedIntercepts);
       })
       .catch((err: Error) => {
         console.log(err);
       });
+  }
+
+  function setPort(interceptName: string, port: string) {
+    let updatedIntercepts = intercepts.map((i) => {
+      if (i.Name == interceptName) {
+        i.Port = port;
+      }
+      return i;
+    });
+
+    setIntercepts(updatedIntercepts);
+  }
+
+  function renderIntercept(i: Intercept) {
+    return (
+      <div>
+        {i.Name}
+        <form>
+          <label>
+            Port:
+            <input
+              type="text"
+              placeholder="<local-port>[:<remote-port>]"
+              size={25}
+              onChange={(e) => setPort(i.Name, e.target.value)}
+              disabled={i.Intercepted}
+            />
+          </label>
+          <button
+            type="button"
+            onClick={() => intercept(selectedNamespace, i.Name, i.Port)}
+            disabled={i.Intercepted || i.Port == ''}
+          >
+            Intercept
+          </button>
+          <button
+            type="button"
+            onClick={() => leave(selectedNamespace, i.Name)}
+            disabled={!i.Intercepted}
+          >
+            Leave
+          </button>
+        </form>
+      </div>
+    );
   }
 
   return (
@@ -181,26 +227,10 @@ export function App() {
       </div>
 
       <div>
-        Kubernetes services:
+        Intercepts:
         <ul>
-          {services.map((s) => (
-            <li key={s.Name}>
-              {s.Name}{' '}
-              <button
-                type="button"
-                onClick={() => intercept(selectedNamespace, s.Name)}
-                disabled={s.Intercepted}
-              >
-                Intercept
-              </button>{' '}
-              <button
-                type="button"
-                onClick={() => leave(selectedNamespace, s.Name)}
-                disabled={!s.Intercepted}
-              >
-                Leave
-              </button>
-            </li>
+          {intercepts.map((i) => (
+            <li key={i.Name}>{renderIntercept(i)}</li>
           ))}
         </ul>
       </div>

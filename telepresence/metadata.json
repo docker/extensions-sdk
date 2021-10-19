@@ -10,8 +10,28 @@
   },
   "host": {
     "binaries": [
-      { "darwin": "/darwin/telepresence" },
-      { "darwin": "/darwin/kubectl" }
+      {
+        "darwin": [
+          {
+            "path": "/darwin/telepresence"
+          },
+          {
+            "path": "/darwin/kubectl"
+          }
+        ],
+        "windows": [
+          {
+            "path": "/windows/kubectl.exe"
+          },
+          {
+            "path": "/windows",
+            "install":{
+              "command": "./windows/telepresence-win-install.ps1",
+              "requiresAdmin": true
+            } 
+          }
+        ]
+      }
     ]
   }
 }

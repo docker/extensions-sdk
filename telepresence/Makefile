@@ -28,4 +28,12 @@ help: ## Show this help
 	@echo Please specify a build target. The choices are:
 	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "$(INFO_COLOR)%-30s$(NO_COLOR) %s\n", $$1, $$2}'
 
-.PHONY: plugin push-plugin help
+install-plugin:
+	make plugin
+	docker desktop plugin install desktop-telepresence-plugin
+
+update-plugin:
+	make plugin
+	docker desktop plugin update desktop-telepresence-plugin
+
+.PHONY: plugin push-plugin update-plugin help

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function Intercept() {
+export function Intercepts() {
   const classes = useStyles();
   const [intercepts, setIntercepts] = useState<Intercept[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);

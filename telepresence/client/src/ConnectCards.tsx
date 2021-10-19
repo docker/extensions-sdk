@@ -11,6 +11,6 @@ export const cards: CardProps[] = [
         "title": "Quickstart",
         "body": "Install a telepresence demo in your docker cluster, you will be guided on how to use blah blah",
         "button" : "Get Started",
-        "buttonLink" : "/"
+        "buttonLink" : "/quickstart"
     }
 ]

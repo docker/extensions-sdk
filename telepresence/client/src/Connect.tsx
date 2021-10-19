@@ -17,22 +17,22 @@ function makeCards(cards: CardProps[]) {
 
 function makeCard(cardProps: CardProps) {
     return <div style={{padding:10}}>
-    <Card>
-        <CardContent>
-            <Typography>
-                {cardProps.title}
-            </Typography>
-            <Divider />
-            <Typography>
-                {cardProps.body}
-            </Typography>
-        </CardContent>
-        <CardActions>
-            <Button component={Link} to={cardProps.buttonLink} variant="outlined">
-                {cardProps.button}
-            </Button>
-        </CardActions>
-    </Card>
+        <Card>
+            <CardContent>
+                <Typography>
+                    {cardProps.title}
+                </Typography>
+                <Divider />
+                <Typography>
+                    {cardProps.body}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button component={Link} to={cardProps.buttonLink} variant="outlined">
+                    {cardProps.button}
+                </Button>
+            </CardActions>
+        </Card>
     </div>
 }
 

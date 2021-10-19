@@ -7,12 +7,12 @@ import { Intercept } from './Intercept'
 
 
 export function App() {
-  var path = window.location.pathname
+  const path = window.location.pathname
   return <>
     {header()}
     <BrowserRouter>
     <Switch>
-        <Route path={path} component={Connect} />
+        <Route exact path={path} component={Connect} />
         <Route path={"/intercepts"} component={Intercept} />
         <Route component={pageNotFound} />
       </Switch>

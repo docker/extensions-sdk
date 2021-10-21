@@ -6,7 +6,13 @@ This repository host Desktop Plugin Samples.
 
 ## Prerequisites
 
-Download the latest Desktop build from this [PR](https://github.com/docker/pinata/pull/16496) (at the bottom, expand "Show all checks", click on "Details") and install it on your host.
+Install a Docker Desktop build with plugin capabilities, from one of these links: 
+
+* mac (intel): https://desktop-stage.docker.com/mac/main/amd64/70167/Docker.dmg
+* mac (arm): https://desktop-stage.docker.com/mac/main/arm64/70167/Docker.dmg
+* win: https://desktop-stage.docker.com/win/main/amd64/70167/Docker%20Desktop%20Installer.exe
+
+Or you can download the latest available builds from this [PR](https://github.com/docker/pinata/pull/16496) (at the bottom, expand "Show all checks", click on "Details") and install it on your host.
 
 ## Plugin Structure
 

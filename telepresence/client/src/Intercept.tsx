@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
+import { Link, useLocation } from "react-router-dom";
+import { Button, Typography, makeStyles, InputLabel, TextField, MenuItem, FormControl, Select, Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 
+import { RunLogCatch } from './utils';
 // Telepersence intercept
 export interface Intercept {
   Name: string;
   Intercepted: boolean;
   Port: string;
+  Busy: boolean
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +29,8 @@ export function Intercepts() {
   const [namespaces, setNamespaces] = useState<string[]>([]);
   const [selectedNamespace, setSelectedNamespace] = useState<string>('default');
   const [open, setOpen] = React.useState(false);
+  const [filter, setFilter] = React.useState<string>("");
+  const defaultPort = "8080:80"
 
   const handleChange = (event: any) => {
     listIntercepts(event.target.value);
@@ -92,7 +92,8 @@ export function Intercepts() {
             const intercept: Intercept = {
               Name: interceptName,
               Intercepted: intercepted,
-              Port: '',
+              Port: defaultPort,
+              Busy: false,
             };
 
             intercepts.push(intercept);
@@ -106,53 +107,54 @@ export function Intercepts() {
       });
   }
 
-  function intercept(namespace: string, interceptName: string, port: string) {
+  function execIntercept(namespace: string, intercept: Intercept) {
     console.log(
-      `intercepting ${interceptName} on port ${port} on namespace ${namespace}`,
+      `intercepting ${intercept.Name} on port ${intercept.Port} on namespace ${namespace}`,
     );
+    intercept.Busy = true
+    setIntercept(intercept)
     window.ddClient
       .execHostCmd(
-        `telepresence intercept ${interceptName} --port ${port} -n ${namespace}`,
+        `telepresence intercept ${intercept.Name} --port ${intercept.Port} -n ${namespace}`,
       )
       .then((value: any) => {
         console.log(value.stdout);
-        let updatedIntercepts = intercepts.map((i) => {
-          if (i.Name == interceptName) {
-            i.Intercepted = true;
-          }
-          return i;
-        });
-
-        setIntercepts(updatedIntercepts);
+        intercept.Intercepted = true
+        intercept.Busy = false
+        setIntercept(intercept)
       })
       .catch((err: Error) => {
         console.log(err);
       });
   }
 
-  function leave(namespace: string, interceptName: string) {
-    console.log(`stopping to intercept ${interceptName}}`);
+  function execLeave(namespace: string, intercept: Intercept) {
+    console.log(`stopping to intercept ${intercept.Name}}`);
+    intercept.Busy = true
+    setIntercept(intercept)
     window.ddClient
-      .execHostCmd(`telepresence leave ${interceptName}-${namespace}`)
+      .execHostCmd(`telepresence leave ${intercept.Name}-${namespace}`)
       .then((value: any) => {
         console.log(value.stdout);
-        let updatedIntercepts = intercepts.map((i) => {
-          if (i.Name == interceptName) {
-            i.Intercepted = false;
-          }
-          return i;
-        });
-        setIntercepts(updatedIntercepts);
+        intercept.Intercepted = false
+        intercept.Busy = false
+        setIntercept(intercept)
       })
       .catch((err: Error) => {
         console.log(err);
       });
   }
 
-  function setPort(interceptName: string, port: string) {
+  function getIntercept(intercept: Intercept) {
+    return intercepts.find((i) => i.Name == intercept.Name)
+  }
+
+  function setIntercept(intercept: Intercept) {
     let updatedIntercepts = intercepts.map((i) => {
-      if (i.Name == interceptName) {
-        i.Port = port;
+      if (i.Name == intercept.Name) {
+        i.Port = intercept.Port;
+        i.Intercepted = intercept.Intercepted
+        i.Busy = intercept.Busy
       }
       return i;
     });
@@ -160,50 +162,47 @@ export function Intercepts() {
     setIntercepts(updatedIntercepts);
   }
 
-  function renderIntercept(i: Intercept) {
-    return (
-      <div>
-        {i.Name}
-        <form>
-          <label>
-            Port:
-            <input
-              type="text"
-              placeholder="<local-port>[:<remote-port>]"
-              size={25}
-              onChange={(e) => setPort(i.Name, e.target.value)}
-              disabled={i.Intercepted}
-            />
-          </label>
-          <button
-            type="button"
-            onClick={() => intercept(selectedNamespace, i.Name, i.Port)}
-            disabled={i.Intercepted || i.Port == ''}
-          >
-            Intercept
-          </button>
-          <button
-            type="button"
-            onClick={() => leave(selectedNamespace, i.Name)}
-            disabled={!i.Intercepted}
-          >
-            Leave
-          </button>
-        </form>
-      </div>
-    );
+  function renderIntercepts(ia: Intercept[]) {
+    return ia.map((i: Intercept) => renderIntercept(i))
+  }
+
+  function renderFilteredIntercepts(ia: Intercept[]) {
+    if (filter != "") {
+      return renderIntercepts(ia.filter((i: Intercept) => i.Name.includes(filter)))
+    }
+    return renderIntercepts(ia)
+  }
+
+  function onClick(intercept: Intercept) {
+    if (intercept.Intercepted) {
+      execLeave(selectedNamespace, intercept)
+    } else {
+      execIntercept(selectedNamespace, intercept)
+    }
+  }
+
+  function renderIntercept(intercept: Intercept) {
+    return <TableRow>
+      <TableCell>
+        {intercept.Name}
+      </TableCell>
+      <TableCell>
+        <TextField
+          disabled={intercept.Intercepted}
+          label="Port"
+          defaultValue={defaultPort}
+          onChange={(e) => {intercept.Port = e.target.value; setIntercept(intercept)}}/>
+      </TableCell>
+      <TableCell>
+        <Button variant="outlined" onClick={() => onClick(intercept)} disabled={getIntercept(intercept)?.Busy}>
+          {intercept.Intercepted ? "Leave" : "Intercept"}
+        </Button>
+      </TableCell>
+    </TableRow>
   }
 
   return (
     <React.Fragment>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Telepresence</h1>
-        <h2>
-          Debug your Kubernetes service locally, using your favorite debugging
-          tool.
-        </h2>
-      </div>
-
       <div>
         {console.log(namespaces)}
         Choose a Kubernetes namespace
@@ -226,14 +225,44 @@ export function Intercepts() {
         </FormControl>
       </div>
 
-      <div>
-        Intercepts:
-        <ul>
-          {intercepts.map((i) => (
-            <li key={i.Name}>{renderIntercept(i)}</li>
-          ))}
-        </ul>
+      <div style={{padding: 10}}>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <Typography variant={"h6"}>
+                  Name
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant={"h6"}>
+                  {"Port <local-port>[:<remote-port>]"}
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <TextField
+                  label="Search"
+                  onChange={(e) => setFilter(e.target.value)}/>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {renderFilteredIntercepts(intercepts)}
+          </TableBody>
+        </Table>
+      </TableContainer>
       </div>
+      
+      <div style={{display: "flex"}}>
+        <Button>
+          Refresh
+        </Button>
+        <Button component={Link} to={"/"} variant="outlined" onClick={()=>{RunLogCatch("telepresence quit")}}>
+          Quit
+        </Button>
+      </div>
+      
     </React.Fragment>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { Button, Typography, makeStyles, InputLabel, TextField, MenuItem, FormControl, Select, Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { Card, CardContent, CardActions, Button, Typography, makeStyles, InputLabel, TextField, MenuItem, FormControl, Select, Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 
 import { RunLogCatch } from './utils';
 // Telepersence intercept
@@ -82,6 +82,7 @@ export function Intercepts() {
       .then(async (value: any) => {
         let intercepts: Intercept[] = [];
         let strs = value.stdout.split('\n');
+        strs = strs?.filter((s: string) => !s.startsWith(" "))
 
         for (var i = 0; i < strs.length; i++) {
           if (strs[i].length > 0) {
@@ -92,6 +93,8 @@ export function Intercepts() {
             const intercept: Intercept = {
               Name: interceptName,
               Intercepted: intercepted,
+              // TODO get intercepted port if already intercepted
+              // TODO make json flag for "tp list"
               Port: defaultPort,
               Busy: false,
             };
@@ -173,14 +176,6 @@ export function Intercepts() {
     return renderIntercepts(ia)
   }
 
-  function onClick(intercept: Intercept) {
-    if (intercept.Intercepted) {
-      execLeave(selectedNamespace, intercept)
-    } else {
-      execIntercept(selectedNamespace, intercept)
-    }
-  }
-
   function renderIntercept(intercept: Intercept) {
     return <TableRow>
       <TableCell>
@@ -194,7 +189,10 @@ export function Intercepts() {
           onChange={(e) => {intercept.Port = e.target.value; setIntercept(intercept)}}/>
       </TableCell>
       <TableCell>
-        <Button variant="outlined" onClick={() => onClick(intercept)} disabled={getIntercept(intercept)?.Busy}>
+        <Button
+          variant="outlined"
+          onClick={() => intercept.Intercepted ? execLeave(selectedNamespace, intercept) : execIntercept(selectedNamespace, intercept)}
+          disabled={getIntercept(intercept)?.Busy}>
           {intercept.Intercepted ? "Leave" : "Intercept"}
         </Button>
       </TableCell>
@@ -203,10 +201,13 @@ export function Intercepts() {
 
   return (
     <React.Fragment>
-      <div>
-        {console.log(namespaces)}
-        Choose a Kubernetes namespace
-        <FormControl className={classes.formControl}>
+      <div style={{display: "flex", padding: 10}}>
+        <Card>
+          <CardContent>
+            Choose a Kubernetes namespace
+          </CardContent>
+          <CardActions>
+          <FormControl className={classes.formControl}>
           <Select
             open={open}
             onClose={handleClose}
@@ -223,6 +224,14 @@ export function Intercepts() {
             })}
           </Select>
         </FormControl>
+          </CardActions>
+        </Card>
+        <Button component={Link} to={"/"} variant="outlined">
+          Refresh
+        </Button>
+        <Button component={Link} to={"/connect"} variant="outlined" onClick={()=>{RunLogCatch("telepresence quit")}}>
+          Quit
+        </Button>
       </div>
 
       <div style={{padding: 10}}>
@@ -252,15 +261,6 @@ export function Intercepts() {
           </TableBody>
         </Table>
       </TableContainer>
-      </div>
-      
-      <div style={{display: "flex"}}>
-        <Button>
-          Refresh
-        </Button>
-        <Button component={Link} to={"/"} variant="outlined" onClick={()=>{RunLogCatch("telepresence quit")}}>
-          Quit
-        </Button>
       </div>
       
     </React.Fragment>

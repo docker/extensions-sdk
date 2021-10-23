@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Route, BrowserRouter, Switch, useLocation, Redirect } from 'react-router-dom'
 import { Divider, Typography, Card, CardContent } from "@material-ui/core";
 
+import { Home } from "./Home";
 import { Connect } from './Connect'
 import { Intercepts } from './Intercept'
 import { connected } from "process";
@@ -14,9 +15,10 @@ export function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path={path}>
-          {path == "/" ? Connect() : <Redirect to="/" />}
+          {path == "/" ? Home() : <Redirect to="/" />}
         </Route>
-        <Route exact path={"/"} component={Connect} />
+        <Route exact path={"/"} component={Home} />
+        <Route path={"/connect"} component={Connect} />
         <Route path={"/intercepts"} component={Intercepts} />
         <Route component={pageNotFound} />
       </Switch>

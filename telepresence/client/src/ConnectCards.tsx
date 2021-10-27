@@ -9,7 +9,7 @@ export const cards: CardProps[] = [
     },
     {
         title: 'Quickstart',
-        body: 'Install a Telepresence demo in your docker cluster and go on a guided tour of Telepresence.',
+        body: 'Install a Telepresence demo in your cluster and go on a guided tour of Telepresence.',
         button: 'Get Started',
         buttonLink: '/quickstart',
     },

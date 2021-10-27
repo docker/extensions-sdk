@@ -22,25 +22,23 @@ import {
     TableCell,
 } from '@material-ui/core';
 
+import { useStyles } from './css';
+
 export function Header(props: any) {
+    const classes = useStyles();
+
     return (
-        <div style={{ padding: 16, maxWidth: 1024 }}>
-            <Card>
-                <div style={{ padding: 16 }}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'flex-end',
-                        }}
-                    >
-                        <Typography variant={'h5'}>Telepresence</Typography>
-                        <Typography>telepresence.io/docs/latest</Typography>
-                    </div>
-                    <Divider />
-                    {props.children}
+        <Card className={classes.pageCard}>
+            <div className={classes.header}>
+                <div className={classes.title}>
+                    <Typography variant={'h5'} color="textPrimary">
+                        Telepresence
+                    </Typography>
+                    <Typography>telepresence.io/docs/latest</Typography>
                 </div>
-            </Card>
-        </div>
+                <Divider />
+            </div>
+            <div className={classes.pageBody}>{props.children}</div>
+        </Card>
     );
 }

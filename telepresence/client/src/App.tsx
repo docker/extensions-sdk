@@ -6,12 +6,10 @@ import {
     useLocation,
     Redirect,
 } from 'react-router-dom';
-import { Divider, Typography, Card, CardContent } from '@material-ui/core';
 
 import { Home } from './Home';
 import { Connect } from './Connect';
 import { Intercepts } from './Intercept';
-import { connected } from 'process';
 import { Header } from './Header';
 
 export function App(props: any) {

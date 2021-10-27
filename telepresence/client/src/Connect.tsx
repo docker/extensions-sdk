@@ -16,7 +16,8 @@ import {
 } from '@material-ui/core';
 
 import { cards } from './ConnectCards';
-import { RunLogCatch, useStyles } from './utils';
+import { RunLogCatch } from './utils';
+import { useStyles } from './css';
 
 export type CardProps = {
     title: string;
@@ -111,8 +112,9 @@ export function Connect() {
                 }}
             >
                 <Typography>
-                    Make changes to your service locally and see the results
-                    instantly, without waiting for containers to build.
+                    Make changes to your service locally and see the results in
+                    your cluster instantly, without waiting for containers to
+                    build.
                 </Typography>
 
                 <FormControl className={classes.formControl}>

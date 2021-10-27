@@ -22,7 +22,8 @@ import {
     TableCell,
 } from '@material-ui/core';
 
-import { RunLogCatch, useStyles } from './utils';
+import { RunLogCatch } from './utils';
+import { useStyles } from './css';
 // Telepersence intercept
 export interface Intercept {
     Name: string;
@@ -247,12 +248,12 @@ export function Intercepts(props: any) {
                 </FormControl>
 
                 <div style={{ display: 'flex' }}>
-                    <div style={{ padding: 5 }}>
+                    <div className={classes.buttonBox}>
                         <Button component={Link} to={'/'} variant="outlined">
                             Refresh
                         </Button>
                     </div>
-                    <div style={{ padding: 5 }}>
+                    <div className={classes.buttonBox}>
                         <Button
                             component={Link}
                             to={'/connect'}
@@ -264,7 +265,7 @@ export function Intercepts(props: any) {
                             Quit
                         </Button>
                     </div>
-                    <div style={{ padding: 5 }}>
+                    <div className={classes.buttonBox}>
                         <Button
                             component={Link}
                             to={'/connect'}

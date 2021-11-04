@@ -4,7 +4,6 @@
   "provider": "Docker Inc.",
   "vm": {
     "composefile": "docker-compose.yaml",
-    "isolation": "dockerd",
     "exposes": { "socket": "volume-share.sock"}
   }
 }

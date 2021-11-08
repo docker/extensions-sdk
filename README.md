@@ -6,11 +6,11 @@ This repository host Desktop Plugin Samples.
 
 ## Prerequisites
 
-Install a Docker Desktop build with plugin capabilities, from one of these links: 
+Install a Docker Desktop build with plugin capabilities, from one of these links:
 
-* mac (intel): https://desktop-stage.docker.com/mac/main/amd64/70167/Docker.dmg
-* mac (arm): https://desktop-stage.docker.com/mac/main/arm64/70167/Docker.dmg
-* win: https://desktop-stage.docker.com/win/main/amd64/70167/Docker%20Desktop%20Installer.exe
+- mac (intel): https://desktop-stage.docker.com/mac/main/amd64/70167/Docker.dmg
+- mac (arm): https://desktop-stage.docker.com/mac/main/arm64/70167/Docker.dmg
+- win: https://desktop-stage.docker.com/win/main/amd64/70167/Docker%20Desktop%20Installer.exe
 
 Or you can download the latest available builds from this [PR](https://github.com/docker/pinata/pull/16496) (at the bottom, expand "Show all checks", click on "Details") and install it on your host.
 
@@ -19,15 +19,9 @@ Or you can download the latest available builds from this [PR](https://github.co
 A plugin is shared as a Docker image, and must have a metadata.json file at the root of the image filesystem.
 This metdata.json file describes the content of the plugin.
 
-A plugin can contain (each part is optional):
+A plugin can contain A UI part and backend parts (running either on the host or in the Desktop virtual machine).
 
-- A UI part, adding a tab to the Docker Desktop Dashboard
-- A VM service, executed in the Desktop VM as one (or several) Docker container(s), in its own containerd namespace
-- A list of binaries to be installed on the host
-
-The UI part of the plugin will be able to communicate at runtime with the plugin VM service, or invoke the plugin binaries deployed on the host via the Plugin API defined below.
-
-The VM Service can define a socket that it exposes, so that the UI can communicate using this socket from the host. The UI also has the option to send CLI commands to the VM service (like running a `docker exec` inside the VM service)
+Details are described in [Plugin structure](docs/METADATA.md)
 
 ## Build, test and install a plugin
 

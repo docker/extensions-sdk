@@ -13,6 +13,10 @@ RUN yarn build
 
 FROM debian:bullseye
 
+LABEL org.opencontainers.image.title="Tailscale" \
+    org.opencontainers.image.authors="Tailscale Inc." \
+    com.docker.desktop.plugin.api.version="1.0.0-beta.1"
+
 WORKDIR /app
 
 RUN apt-get update

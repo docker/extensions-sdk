@@ -8,6 +8,11 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     make
 
 FROM alpine
+
+LABEL org.opencontainers.image.title="volumes-share" \
+    org.opencontainers.image.authors="Docker Inc." \
+    com.docker.desktop.plugin.api.version="1.0.0-beta.1"
+
 COPY --from=builder /plugin/volumes-share /
 COPY docker-compose.yaml .
 COPY metadata.json .

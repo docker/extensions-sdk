@@ -36,4 +36,7 @@ update-plugin:
 	make plugin
 	docker desktop plugin update desktop-telepresence-plugin
 
-.PHONY: plugin push-plugin update-plugin help
+term:
+	GOOS=darwin go build -trimpath -o term/build/darwin/term term/main/main.go
+
+.PHONY: plugin push-plugin update-plugin help term

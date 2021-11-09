@@ -18,6 +18,7 @@ import { Status } from './header/status';
 export function App() {
     const [err, setErr] = React.useState('');
     const path = window.location.pathname;
+    //console.log(path);
 
     return (
         <Header sibling={Status}>

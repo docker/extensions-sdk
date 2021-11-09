@@ -11,6 +11,13 @@ COPY client /app/client
 RUN yarn
 RUN yarn build
 
+FROM golang:1.17-alpine AS term-builder
+ENV CGO_ENABLED=0
+RUN apk add --update make
+COPY term term
+COPY Makefile Makefile
+RUN make term
+
 FROM debian:bullseye as telepresence-builder
 
 RUN apt-get update
@@ -32,6 +39,7 @@ COPY --from=telepresence-builder /darwin/telepresence /darwin/
 COPY --from=telepresence-builder /windows/telepresence.zip /windows/
 COPY --from=telepresence-builder /windows/kubectl.exe /windows/
 COPY --from=telepresence-builder /darwin/kubectl /darwin/
+COPY --from=term-builder go/term/build/darwin/term /darwin/
 
 COPY telepresence-win-install.ps1 /windows
 COPY metadata.json .

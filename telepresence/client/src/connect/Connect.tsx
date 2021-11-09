@@ -16,7 +16,7 @@ import {
 } from '@material-ui/core';
 
 import { cards } from './ConnectCards';
-import { RunLogCatch } from '../common/utils';
+import { RunLogCatch, RunInTerminal } from '../common/utils';
 import { useStyles } from '../common/css';
 
 export type CardProps = {
@@ -99,6 +99,7 @@ export function ConnectPage(props: ConnectProps) {
                         component={Link}
                         to={cardProps.buttonLink}
                         variant="outlined"
+                        onClick={() => RunInTerminal('telepresence connect')}
                     >
                         {cardProps.button}
                     </Button>

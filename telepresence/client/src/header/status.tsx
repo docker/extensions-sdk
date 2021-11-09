@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
-import { CancelOutlined, CheckCircleOutline } from '@material-ui/icons';
+import {
+    CancelOutlined,
+    CheckCircleOutline,
+    Check,
+    Clear,
+} from '@material-ui/icons';
 
 export type StatusProps = {
     label: string;
@@ -31,7 +36,7 @@ export function Status() {
 
     useEffect(() => {
         getStatus(); // runs at t=0
-        const interval = setInterval(() => getStatus(), 5000); // runs at t=5x seconds (where x > 0)
+        const interval = setInterval(() => getStatus(), 5000); // runs at t=5x seconds where x > 0
         return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
     }, []);
 
@@ -40,9 +45,9 @@ export function Status() {
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>{statusProps.label}</Typography>
                 {statusProps.status ? (
-                    <CheckCircleOutline style={{ fill: 'green' }} />
+                    <Check style={{ fill: 'green' }} />
                 ) : (
-                    <CancelOutlined style={{ fill: 'red' }} />
+                    <Clear style={{ fill: 'red' }} />
                 )}
             </div>
         );

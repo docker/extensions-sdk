@@ -22,8 +22,8 @@ import {
     TableCell,
 } from '@material-ui/core';
 
-import { RunLogCatch } from './utils';
-import { useStyles } from './css';
+import { RunLogCatch } from '../common/utils';
+import { useStyles } from '../common/css';
 // Telepersence intercept
 export interface Intercept {
     Name: string;
@@ -32,10 +32,13 @@ export interface Intercept {
     Busy: boolean;
 }
 
-export function Intercepts(props: any) {
+export type InterceptsProps = {
+    setErr: Function;
+};
+
+export function InterceptPage(props: InterceptsProps) {
     const classes = useStyles();
     const [intercepts, setIntercepts] = useState<Intercept[]>([]);
-    const [loaded, setLoaded] = useState<boolean>(false);
     const [namespaces, setNamespaces] = useState<string[]>([]);
     const [selectedNamespace, setSelectedNamespace] =
         useState<string>('default');
@@ -57,12 +60,9 @@ export function Intercepts(props: any) {
     };
 
     useEffect(() => {
-        if (!loaded) {
-            getNamespaces();
-            listIntercepts(selectedNamespace);
-            setLoaded(true);
-        }
-    }, [intercepts, namespaces]); // Only re-run the effect if intercepts change
+        getNamespaces();
+        listIntercepts(selectedNamespace);
+    }, []); // Point Refresh here
 
     function getNamespaces() {
         window.ddClient
@@ -285,7 +285,7 @@ export function Intercepts(props: any) {
                             </TableCell>
                             <TableCell>
                                 <Typography variant={'h6'}>
-                                    {'Port <local-port>[:<remote-port>]'}
+                                    Port {'<local-port>[:<remote-port>]'.sub()}
                                 </Typography>
                             </TableCell>
                             <TableCell>

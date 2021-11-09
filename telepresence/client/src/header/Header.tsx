@@ -22,9 +22,15 @@ import {
     TableCell,
 } from '@material-ui/core';
 
-import { useStyles } from './css';
+import { useStyles } from '../common/css';
+import { type } from 'os';
 
-export function Header(props: any) {
+type HeaderProps = {
+    children?: any;
+    sibling?: Function;
+};
+
+export function Header(props: HeaderProps) {
     const classes = useStyles();
 
     return (
@@ -34,7 +40,11 @@ export function Header(props: any) {
                     <Typography variant={'h5'} color="textPrimary">
                         Telepresence
                     </Typography>
-                    <Typography>telepresence.io/docs/latest</Typography>
+                    {props.sibling ? (
+                        props.sibling()
+                    ) : (
+                        <Typography>telepresence.io/docs/latest</Typography>
+                    )}
                 </div>
                 <Divider />
             </div>

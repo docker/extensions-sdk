@@ -16,8 +16,8 @@ import {
 } from '@material-ui/core';
 
 import { cards } from './ConnectCards';
-import { RunLogCatch } from './utils';
-import { useStyles } from './css';
+import { RunLogCatch } from '../common/utils';
+import { useStyles } from '../common/css';
 
 export type CardProps = {
     title: string;
@@ -26,7 +26,11 @@ export type CardProps = {
     buttonLink: string;
 };
 
-export function Connect() {
+export type ConnectProps = {
+    setErr: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function ConnectPage(props: ConnectProps) {
     const [open, setOpen] = React.useState(false);
     const [contexts, setContexts] = useState<string[]>([]);
     const [selectedContext, setSelectedContext] = useState<string>('');

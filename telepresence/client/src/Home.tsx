@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation, Redirect } from 'react-router-dom';
 
-export function Home(props: any) {
+type HomeProps = {
+    setErr: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function Home(props: HomeProps) {
     const [desination, setDestination] = useState<string>();
 
     window.ddClient

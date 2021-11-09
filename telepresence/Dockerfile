@@ -26,6 +26,11 @@ RUN chmod a+x kubectl
 RUN mv ./kubectl /darwin/kubectl
 
 FROM scratch
+
+LABEL org.opencontainers.image.title="Telepresence" \
+    org.opencontainers.image.authors="Datawire" \
+    com.docker.desktop.plugin.api.version="1.0.0-beta.1"
+
 WORKDIR /
 COPY --from=client-builder /app/client/dist ui
 COPY --from=telepresence-builder /darwin/telepresence /darwin/

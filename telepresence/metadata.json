@@ -1,5 +1,5 @@
 {
-  "desktop-plugin-version": "1.0",
+  "desktop-plugin-version": "1.0.0-beta.1",
   "name": "telepresence",
   "ui": {
     "dashboard-tab": {
@@ -28,7 +28,7 @@
             "install":{
               "command": "./windows/telepresence-win-install.ps1",
               "requiresAdmin": true
-            } 
+            }
           }
         ]
       }

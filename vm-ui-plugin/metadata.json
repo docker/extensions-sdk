@@ -1,5 +1,5 @@
 {
-    "desktop-plugin-version":"1.0",
+    "desktop-plugin-version": "1.0.0-beta.1",
     "name":"volume-sample",
     "provider": "Docker Inc.",
     "vm": {

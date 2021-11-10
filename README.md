@@ -16,12 +16,14 @@ Or you can download the latest available builds from this [PR](https://github.co
 
 ## Plugin Structure
 
-A plugin is shared as a Docker image, and must have a metadata.json file at the root of the image filesystem.
+A plugin is packaged as a Docker image, and must have a metadata.json file at the root of the image filesystem.
 This metdata.json file describes the content of the plugin.
 
 A plugin can contain A UI part and backend parts (running either on the host or in the Desktop virtual machine).
 
 Details are described in [Plugin structure](docs/METADATA.md)
+
+Plugins are packaged as docker images, plugin distribution will be done through Docker hub registry. This is described in [Plugin Distribution](docs/DISTRIBUTION.md)
 
 ## Build, test and install a plugin
 

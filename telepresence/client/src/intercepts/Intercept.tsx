@@ -161,10 +161,6 @@ export function InterceptPage(props: InterceptsProps) {
             });
     }
 
-    function getIntercept(intercept: Intercept) {
-        return intercepts.find((i) => i.Name == intercept.Name);
-    }
-
     function setIntercept(intercept: Intercept) {
         let updatedIntercepts = intercepts.map((i) => {
             if (i.Name == intercept.Name) {
@@ -214,7 +210,7 @@ export function InterceptPage(props: InterceptsProps) {
                                 ? execLeave(selectedNamespace, intercept)
                                 : execIntercept(selectedNamespace, intercept)
                         }
-                        disabled={getIntercept(intercept)?.Busy}
+                        disabled={intercept.Busy}
                     >
                         {intercept.Intercepted ? 'Leave' : 'Intercept'}
                     </Button>

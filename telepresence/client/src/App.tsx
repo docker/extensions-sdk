@@ -18,7 +18,10 @@ import { Status } from './header/status';
 export function App() {
     const [err, setErr] = React.useState('');
     const path = window.location.pathname;
-    //console.log(path);
+    const re = /\S+telepresence/;
+    window.localStorage.setItem('binpath', `${path.match(re)}/host/`);
+    console.log(window.localStorage.getItem('binpath'));
+    //console.log(window);
 
     return (
         <Header sibling={Status}>

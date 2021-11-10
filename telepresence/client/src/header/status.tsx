@@ -40,28 +40,28 @@ export function Status() {
         return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
     }, []);
 
-    function renderStatus(statusProps: StatusProps) {
+    function makeStatus(statusProps: StatusProps) {
         return (
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>{statusProps.label}</Typography>
                 {statusProps.status ? (
-                    <Check style={{ fill: 'green' }} />
+                    <CheckCircleOutline style={{ fill: 'green' }} />
                 ) : (
-                    <Clear style={{ fill: 'red' }} />
+                    <CancelOutlined style={{ fill: 'red' }} />
                 )}
             </div>
         );
     }
 
-    function renderStatusArray(statusPropArray: StatusProps[]) {
+    function makeStatusArray(statusPropArray: StatusProps[]) {
         return statusPropArray.map((statusProps) => {
-            return renderStatus(statusProps);
+            return makeStatus(statusProps);
         });
     }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {renderStatusArray(statusArray)}
+            {makeStatusArray(statusArray)}
         </div>
     );
 }

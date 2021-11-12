@@ -4,6 +4,7 @@ ifeq ($(OS),Windows_NT)
 endif
 
 BUILDER=buildx-multi-arch
+IMG_PREFIX=docker/
 
 STATIC_FLAGS=CGO_ENABLED=0
 #GIT_TAG?=$(shell git describe --tags --match "[0-9]*")
@@ -22,7 +23,7 @@ plugin: ## Build service image to be deployed as a desktop plugin
 	docker build --tag=desktop-telepresence-plugin .
 
 push-plugin: prepare-buildx ## Build & Upload plugin image to hub. Do not push if tag already exists: make push-plugin tag=0.1
-	docker pull docker/desktop-telepresence-plugin:$(tag) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=${tag)} --tag=docker/desktop-telepresence-plugin:$(tag) .
+	docker pull $(IMG_PREFIX)desktop-telepresence-plugin:$(tag) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=$(tag) --tag=$(IMG_PREFIX)desktop-telepresence-plugin:$(tag) .
 
 help: ## Show this help
 	@echo Please specify a build target. The choices are:

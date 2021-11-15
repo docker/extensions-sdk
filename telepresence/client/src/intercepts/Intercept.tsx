@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import {
     Card,
     CardContent,
@@ -21,6 +20,14 @@ import {
     TableRow,
     TableCell,
 } from '@material-ui/core';
+import {
+    Route,
+    BrowserRouter,
+    Switch,
+    useLocation,
+    Redirect,
+    Link,
+} from 'react-router-dom';
 
 import { RunLogCatch } from '../common/utils';
 import { useStyles } from '../common/css';
@@ -33,7 +40,7 @@ export interface Intercept {
 }
 
 export type InterceptsProps = {
-    setErr: Function;
+    activeStep: number;
 };
 
 export function InterceptPage(props: InterceptsProps) {
@@ -59,10 +66,16 @@ export function InterceptPage(props: InterceptsProps) {
         setOpen(true);
     };
 
-    useEffect(() => {
+    function refresh() {
         getNamespaces();
         listIntercepts(selectedNamespace);
-    }, []); // Point Refresh here
+    }
+
+    useEffect(() => {
+        refresh();
+        const interval = setInterval(() => refresh(), 5000); // runs at t=5x seconds where x > 0
+        return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    }, []);
 
     function getNamespaces() {
         window.ddClient
@@ -220,83 +233,94 @@ export function InterceptPage(props: InterceptsProps) {
     }
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <FormControl className={classes.formControl}>
-                    <Select
-                        open={open}
-                        onClose={handleClose}
-                        onOpen={handleOpen}
-                        value={selectedNamespace}
-                        onChange={handleChange}
-                    >
-                        {namespaces.map((namespace) => {
-                            return (
-                                <MenuItem key={namespace} value={namespace}>
-                                    {namespace}
-                                </MenuItem>
-                            );
-                        })}
-                    </Select>
-                    <FormHelperText>
-                        <Typography>Kubernetes Namespace</Typography>
-                    </FormHelperText>
-                </FormControl>
+        <>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                    <FormControl className={classes.formControl}>
+                        <Select
+                            open={open}
+                            onClose={handleClose}
+                            onOpen={handleOpen}
+                            value={selectedNamespace}
+                            onChange={handleChange}
+                        >
+                            {namespaces.map((namespace) => {
+                                return (
+                                    <MenuItem key={namespace} value={namespace}>
+                                        {namespace}
+                                    </MenuItem>
+                                );
+                            })}
+                        </Select>
+                        <FormHelperText>
+                            <Typography>Kubernetes Namespace</Typography>
+                        </FormHelperText>
+                    </FormControl>
 
-                <div style={{ display: 'flex' }}>
-                    <div className={classes.buttonBox}>
-                        <Button component={Link} to={'/'} variant="outlined">
-                            Refresh
-                        </Button>
-                    </div>
-                    <div className={classes.buttonBox}>
-                        <Button
-                            component={Link}
-                            to={'/connect'}
-                            variant="outlined"
-                            onClick={() => {
-                                RunLogCatch('telepresence quit');
-                            }}
-                        >
-                            Quit
-                        </Button>
-                    </div>
-                    <div className={classes.buttonBox}>
-                        <Button
-                            component={Link}
-                            to={'/connect'}
-                            variant="outlined"
-                        >
-                            Uninstall
-                        </Button>
+                    <div style={{ display: 'flex' }}>
+                        <div className={classes.buttonBox}>
+                            <Button
+                                variant="outlined"
+                                onClick={() => {
+                                    RunLogCatch('telepresence logout');
+                                }}
+                            >
+                                Logout
+                            </Button>
+                        </div>
+                        <div className={classes.buttonBox}>
+                            <Button
+                                component={Link}
+                                to={'/connect'}
+                                variant="outlined"
+                                onClick={() => {
+                                    RunLogCatch('telepresence quit');
+                                }}
+                            >
+                                Quit
+                            </Button>
+                        </div>
+                        <div className={classes.buttonBox}>
+                            <Button
+                                component={Link}
+                                to={'/connect'}
+                                variant="outlined"
+                            >
+                                Uninstall
+                            </Button>
+                        </div>
                     </div>
                 </div>
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <Typography variant={'h6'}>Name</Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography variant={'h6'}>
+                                        {'Port <local-port>[:<remote-port>]'}
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <TextField
+                                        label="Search"
+                                        onChange={(e) =>
+                                            setFilter(e.target.value)
+                                        }
+                                    />
+                                </TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {renderFilteredIntercepts(intercepts)}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </div>
-            <TableContainer component={Paper}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                <Typography variant={'h6'}>Name</Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography variant={'h6'}>
-                                    Port {'<local-port>[:<remote-port>]'.sub()}
-                                </Typography>
-                            </TableCell>
-                            <TableCell>
-                                <TextField
-                                    label="Search"
-                                    onChange={(e) => setFilter(e.target.value)}
-                                />
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {renderFilteredIntercepts(intercepts)}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
+        </>
     );
 }

@@ -15,22 +15,28 @@ import {
     Divider,
 } from '@material-ui/core';
 
-import { cards } from './ConnectCards';
 import { RunLogCatch, RunAsRoot } from '../common/utils';
 import { useStyles } from '../common/css';
+import { Cards, CardProps } from './Cards';
 
-export type CardProps = {
-    title: string;
-    body: string;
-    button: string;
-    buttonLink: string;
-};
+const connectCards: CardProps[] = [
+    {
+        title: 'Connect to Your Cluster',
+        body: 'Install Telepresence in your cluster and start intercepting.',
+        buttonLabel: 'Open Terminal',
+        buttonOnClick: () => RunAsRoot('telepresence connect'),
+    },
+    {
+        title: 'Quickstart Demo',
+        body: 'Install a Telepresence demo in your cluster and go on a guided tour of Telepresence.',
+        buttonLabel: 'Open Terminal',
+        buttonOnClick: () => RunAsRoot('telepresence connect'),
+    },
+];
 
-export type ConnectProps = {
-    setErr: React.Dispatch<React.SetStateAction<string>>;
-};
+type ConnectProps = {};
 
-export function ConnectPage(props: ConnectProps) {
+export function Connect(props: any) {
     const [open, setOpen] = React.useState(false);
     const [contexts, setContexts] = useState<string[]>([]);
     const [selectedContext, setSelectedContext] = useState<string>('');
@@ -38,7 +44,7 @@ export function ConnectPage(props: ConnectProps) {
 
     useEffect(() => {
         getContexts();
-    }, []);
+    }, []); // empty dep array -> runs once
 
     function getContexts() {
         window.ddClient
@@ -78,36 +84,6 @@ export function ConnectPage(props: ConnectProps) {
         setOpen(true);
     };
 
-    function makeCards(cards: CardProps[]) {
-        return (
-            <Grid container>
-                {cards.map((cardProps) => makeCard(cardProps))}
-            </Grid>
-        );
-    }
-
-    function makeCard(cardProps: CardProps) {
-        return (
-            <Grid component={Card} className={classes.card} item xs>
-                <CardContent>
-                    <Typography variant={'h6'}>{cardProps.title}</Typography>
-                    <Divider />
-                    <Typography>{cardProps.body}</Typography>
-                </CardContent>
-                <CardActions>
-                    <Button
-                        component={Link}
-                        to={cardProps.buttonLink}
-                        variant="outlined"
-                        onClick={() => RunAsRoot('telepresence connect')}
-                    >
-                        {cardProps.button}
-                    </Button>
-                </CardActions>
-            </Grid>
-        );
-    }
-
     return (
         <>
             <div
@@ -143,7 +119,7 @@ export function ConnectPage(props: ConnectProps) {
                     </FormHelperText>
                 </FormControl>
             </div>
-            <div style={{ display: 'flex' }}>{makeCards(cards)}</div>
+            <div style={{ display: 'flex' }}>{Cards(connectCards)}</div>
         </>
     );
 }

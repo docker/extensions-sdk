@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Route,
     BrowserRouter,
@@ -9,55 +9,40 @@ import {
 } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
-import { Home } from './Home';
-import { ConnectPage } from './connect/Connect';
+import { Splash } from './Splash';
 import { InterceptPage } from './intercepts/Intercept';
 import { Header } from './header/Header';
-import { Status } from './header/status';
+import { Connect } from './setup/Connect';
 
 export function App() {
-    const [err, setErr] = React.useState('');
+    // get Tele binary path
     const path = window.location.pathname;
     const re = /\S+telepresence/;
     window.localStorage.setItem('binpath', `${path.match(re)}/host/`);
-    console.log(window.localStorage.getItem('binpath'));
-    //console.log(window);
+    console.log(`Tele bin path: ${window.localStorage.getItem('binpath')}`);
+
+    function pageNotFound() {
+        return (
+            <>
+                <div>404, {useLocation().pathname} page not found</div>
+                <Button component={Link} to={'/'} variant="outlined">
+                    Home
+                </Button>
+            </>
+        );
+    }
 
     return (
-        <Header sibling={Status}>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Header>
                 <Switch>
-                    {err ? <Redirect to={'/error'} /> : null}
-                    <Route exact path={path}>
-                        {path == '/' ? (
-                            <Home setErr={setErr} />
-                        ) : (
-                            <Redirect to="/" />
-                        )}
-                    </Route>
-                    <Route exact path={'/'}>
-                        <Home setErr={setErr} />
-                    </Route>
-                    <Route path={'/connect'}>
-                        <ConnectPage setErr={setErr} />
-                    </Route>
-                    <Route path={'/intercepts'}>
-                        <InterceptPage setErr={setErr} />
-                    </Route>
+                    {console.log(window.location.pathname)}
+                    <Route exact path={path} component={Splash} />
+                    <Route path="/connect" component={Connect} />
+                    <Route path="/intercepts" component={InterceptPage} />
                     <Route component={pageNotFound} />
                 </Switch>
-            </BrowserRouter>
-        </Header>
-    );
-}
-
-function pageNotFound() {
-    return (
-        <>
-            <div>404, {useLocation().pathname} page not found</div>
-            <Button component={Link} to={'/'} variant="outlined">
-                Home
-            </Button>
-        </>
+            </Header>
+        </BrowserRouter>
     );
 }

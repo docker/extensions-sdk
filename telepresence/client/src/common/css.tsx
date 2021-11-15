@@ -27,13 +27,14 @@ export const useStyles = makeStyles((theme) => ({
         minWidth: 120,
     },
     buttonBox: {
-        padding: theme.spacing(1),
+        margin: theme.spacing(1),
     },
     card: {
         margin: theme.spacing(1),
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        height: '100%',
     },
     pageCard: {
         margin: theme.spacing(2),
@@ -44,10 +45,5 @@ export const useStyles = makeStyles((theme) => ({
     },
     header: {
         margin: theme.spacing(2),
-    },
-    title: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
     },
 }));

@@ -23,28 +23,32 @@ import {
 } from '@material-ui/core';
 
 import { useStyles } from '../common/css';
-import { type } from 'os';
+import { StatusBar } from './StatusBar';
 
 type HeaderProps = {
+    loggedIn: boolean;
+    daemonStatus: boolean;
+    activeStep: number;
     children?: any;
-    sibling?: Function;
 };
 
-export function Header(props: HeaderProps) {
+export function Header(props: any) {
     const classes = useStyles();
 
     return (
         <Card className={classes.pageCard}>
             <div className={classes.header}>
-                <div className={classes.title}>
-                    <Typography variant={'h5'} color="textPrimary">
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Typography variant={'h4'} color="textPrimary">
                         Telepresence
                     </Typography>
-                    {props.sibling ? (
-                        props.sibling()
-                    ) : (
-                        <Typography>telepresence.io/docs/latest</Typography>
-                    )}
+                    <StatusBar />
                 </div>
                 <Divider />
             </div>

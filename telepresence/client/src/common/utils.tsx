@@ -8,24 +8,18 @@ export function RunLogCatch(cmd: string) {
 }
 
 export function RunAsRoot(cmd: string) {
-    const os = getOS();
-    switch (os) {
+    switch (getOS()) {
         case 'darwin':
             RunLogCatch(
-                `term osascript -e 'tell application "Terminal" to activate' -e 'tell application "Terminal" to do script "${window.localStorage.getItem(
-                    'binpath',
-                )}${cmd}"'`,
+                `term osascript -e 'tell application "Terminal"
+                    activate 
+                    do script "${window.localStorage.getItem('binpath')}${cmd}"
+                end tell'`,
             );
-            break;
-        case 'windows':
-            RunLogCatch(cmd);
-            break;
-        case 'linux':
-            RunLogCatch(cmd);
             break;
 
         default:
-            console.log(`${os} not a supported OS`);
+            RunLogCatch(cmd);
             break;
     }
 }

@@ -1,0 +1,34 @@
+import React, { useState, useEffect } from 'react';
+import { Typography } from '@material-ui/core';
+import {
+    CancelOutlined,
+    CheckCircleOutline,
+    Check,
+    Clear,
+} from '@material-ui/icons';
+
+type StatusBarProps = {
+    statusMap: Map<string, boolean>;
+    keys: string[];
+};
+
+export function StatusBar(props: StatusBarProps) {
+    function makeStatus(key: string) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Typography>{key}</Typography>
+                {props.statusMap.get(key) ? (
+                    <CheckCircleOutline style={{ fill: 'green' }} />
+                ) : (
+                    <CancelOutlined style={{ fill: 'red' }} />
+                )}
+            </div>
+        );
+    }
+
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {props.keys.map((key) => makeStatus(key))}
+        </div>
+    );
+}

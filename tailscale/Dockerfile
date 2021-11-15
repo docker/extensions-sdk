@@ -11,12 +11,12 @@ WORKDIR /app/client
 # cache packages in layer
 COPY client/package.json /app/client/package.json
 COPY client/yarn.lock /app/client/yarn.lock
-COPY client/.yarn /app/client/.yarn
-COPY client/.yarnrc.yml /app/client/.yarnrc.yml
-RUN --mount=type=cache,target=/app/client/.yarn/cache yarn
+ARG TARGETARCH
+RUN yarn config set cache-folder /usr/local/share/.cache/yarn-${TARGETARCH}
+RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn
 # install
 COPY client /app/client
-RUN --mount=type=cache,target=/app/client/.yarn/cache yarn build
+RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn build
 
 FROM debian:bullseye-slim
 LABEL org.opencontainers.image.title="Tailscale" \

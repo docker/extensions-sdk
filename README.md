@@ -1,12 +1,12 @@
-# Desktop Plugin Samples
+# Desktop Extension Samples
 
-This repository host Desktop Plugin Samples.
+This repository host Desktop Extension Samples.
 
-:warning: **This work is experimental and still in progress, features and APIS detailed are subject to change **
+:warning: **This work is experimental and still in progress, features and APIS detailed are subject to change**
 
 ## Prerequisites
 
-Install a Docker Desktop build with plugin capabilities, from one of these links:
+Install a Docker Desktop build with extension capabilities, from one of these links:
 
 - mac (intel): https://desktop-stage.docker.com/mac/main/amd64/70167/Docker.dmg
 - mac (arm): https://desktop-stage.docker.com/mac/main/arm64/70167/Docker.dmg
@@ -14,37 +14,37 @@ Install a Docker Desktop build with plugin capabilities, from one of these links
 
 Or you can download the latest available builds from this [PR](https://github.com/docker/pinata/pull/16496) (at the bottom, expand "Show all checks", click on "Details") and install it on your host.
 
-## Plugin Structure
+## Extension Structure
 
-A plugin is packaged as a Docker image, and must have a metadata.json file at the root of the image filesystem.
-This metdata.json file describes the content of the plugin.
+An extension is packaged as a Docker Image, and must have a metadata.json file at the root of the image filesystem.
+This metdata.json file describes the content of the extension.
 
-A plugin can contain A UI part and backend parts (running either on the host or in the Desktop virtual machine).
+An extension can contain A UI part and backend parts (running either on the host or in the Desktop virtual machine).
 
-Details are described in [Plugin structure](docs/METADATA.md)
+Details are described in [Extension Structure](docs/METADATA.md)
 
-Plugins are packaged as docker images, plugin distribution will be done through Docker hub registry. This is described in [Plugin Distribution](docs/DISTRIBUTION.md)
+Extensions are packaged as Docker images, extension distribution will be done through Docker Hub registry. This is described in [Extension Distribution](docs/DISTRIBUTION.md)
 
-## Build, test and install a plugin
+## Build, test and install an extension
 
-This repository contains multiple plugins, each one of them are defined as individual directories at the root of the repository.
+This repository contains multiple extensions, each one of them are defined as individual directories at the root of the repository.
 
-To use one of them, go over the directory of the plugin to build and install it in Docker Desktop. The following operations are carried out by a custom CLI named `docker desktop plugin`. This CLI is packaged with Docker Desktop builds with the plugin capability.
+To use one of them, go over the directory of the extension to build and install it in Docker Desktop. The following operations are carried out by a custom CLI named `docker desktop plugin`. This CLI is packaged with Docker Desktop builds with the extension capability.
 
-Build the plugin:
+Build the extension:
 
 ```cli
 make plugin
 # or docker build -t my-plugin .
 ```
 
-Install the plugin:
+Install the extension:
 
 ```cli
 docker desktop plugin install my-plugin
 ```
 
-You can list the plugins that are installed:
+You can list the extensions that are installed:
 
 ```cli
 docker desktop plugin ls
@@ -54,23 +54,23 @@ tailscale           docker/desktop-tailscale-plugin:0.1          1 tab(Tailscale
 telepresence        docker/desktop-telepresence-plugin:0.1       1 tab(Telepresence)   -                   1 binarie(s)
 ```
 
-(Your plugin should appear there).
+(Your extension should appear there).
 
-To remove the plugin, run:
+To remove the extension, run:
 
 ```cli
 docker desktop plugin rm my-plugin
 ```
 
-To update a plugin with a newer version, run:
+To update an extension with a newer version, run:
 
 ```cli
 docker desktop plugin update docker/desktop-tailscale-plugin:0.2
 ```
 
-## Plugin UI API
+## Extension UI API
 
-The plugin UI has access to a plugin API, allowing:
+The extension UI has access to a extension API, allowing:
 
 ### Common functions
 
@@ -86,9 +86,9 @@ Displaying an error in a red banner in the Dashboard
 window.ddClient.toastError("Something went wrong");
 ```
 
-### Communication with the plugin backend
+### Communication with the extension backend
 
-Accessing a socket exposed by your plugin VM service:
+Accessing a socket exposed by your extension VM service:
 
 ```typescript
 window.ddClient.backend
@@ -104,7 +104,7 @@ window.ddClient.backend
   .then((value: any) => console.log(value));
 ```
 
-Invoking a plugin binary on your host:
+Invoking an extension binary on your host:
 
 ```typescript
 window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((value: any) => {
@@ -112,20 +112,20 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((value: any) => {
 });
 ```
 
-## Developing plugin code
+## Developing extension code
 
 ### Opening dev tools
 
-Once a plugin is deployed and running, it is possibe to open chrome dev tools from the UI plugin part, using konami code. CLick on the plugin tab, and then hit the key sequence 'up up down down left right left right p d t'. That should open Dev Tools, and give access to the chrome console, debugger, etc.
+Once a plugin is deployed and running, it is possible to open chrome dev tools from the UI extension part, using the konami code. CLick on the extension tab, and then hit the key sequence 'up up down down left right left right p d t'. That should open Dev Tools, and give access to the chrome console, debugger, etc.
 
-### Hot reloading the plugin UI
+### Hot reloading the extension UI
 
-When running the Desktop Dashboard in dev mode, it is possible to also hot-reload the plugin UI.
+When running the Desktop Dashboard in dev mode, it is possible to also hot-reload the extension UI.
 
-In a plugin directory, run `yarn start` (or equivalent depending on the plugin UI code and packaging tools) to start the plugin UI on a specific port, for example 3000. If yoru plugin UI is using `yarn`, you can hot-reload the UI part while developing the plugin.
+In an extension directory, run `yarn start` (or equivalent depending on the extension UI code and packaging tools) to start the extension UI on a specific port, for example 3000. If your extension UI is using `yarn`, you can hot-reload the UI part while developing the extension.
 
 In the desktop repository, go to `client/desktop-ui` and run `yarn dev`.
 
 In the desktop repository, go to `client/desktop` and run `yarn dev --plugin-<my-plugin>-devPort=3000`.
 
-Finally, open the plugin tab in the Docker Desktop UI. Any code changes should reflect live as you modify your plugin code.
+Finally, open the extension tab in the Docker Desktop UI. Any code changes should reflect live as you modify your extension code.

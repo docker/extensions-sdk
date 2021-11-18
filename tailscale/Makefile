@@ -23,14 +23,14 @@ bin: ## Build the binary for the current plarform
 prepare-buildx: ## Create buildx builder for multi-arch build, if not exists
 	docker buildx inspect $(BUILDER) || docker buildx create --name=$(BUILDER) --driver=docker-container --driver-opt=network=host
 
-plugin: ## Build service image to be deployed as a desktop plugin
-	docker build --tag=desktop-tailscale-plugin .
+extension: ## Build service image to be deployed as a desktop extension
+	docker build --tag=desktop-tailscale-extension .
 
-push-plugin: ## Build & Upload plugin image to hub. Do not push if tag already exists: make push-plugin tag=0.1
-	docker pull docker/desktop-tailscale-plugin:$(tag) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=${tag)} --tag=docker/desktop-tailscale-plugin:$(tag) .
+push-extension: ## Build & Upload extension image to hub. Do not push if tag already exists: make push-extension tag=0.1
+	docker pull docker/desktop-tailscale-extension:$(tag) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=${tag)} --tag=docker/desktop-tailscale-extension:$(tag) .
 
 help: ## Show this help
 	@echo Please specify a build target. The choices are:
 	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "$(INFO_COLOR)%-30s$(NO_COLOR) %s\n", $$1, $$2}'
 
-.PHONY: bin plugin push-plugin help
+.PHONY: bin extension push-extension help

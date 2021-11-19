@@ -3,7 +3,7 @@
 ## Packaging
 
 Docker Desktop extensions are packaged as Docker images. The entire extension runtime including UI, backend services (host or VM) and any necessary binary must be included in the extension image.
-Every extension image must contain a metedata.json file at the root of its filesystem, that will [define the contents of the extension](METADATA.md).
+Every extension image must contain a metadata.json file at the root of its filesystem, that will [define the contents of the extension](METADATA.md).
 
 The image must have several labels:
 
@@ -11,7 +11,7 @@ The image must have several labels:
 - `org.opencontainers.image.authors`: author / provider for the extension
 - `com.docker.desktop.plugin.api.version`: Docker API version the extension is compatible with.
 
-Packaging and releasing an extension is done with a simple `docker build` to create the image, and `docker push` to make the image available on Docker Hub, with a specific tag allowing to manage version of the extension.
+Packaging and releasing an extension is done by running `docker build` to create the image, and `docker push` to make the image available on Docker Hub, with a specific tag allowing to manage version of the extension.
 
 Extension authors must take advantage of multi-arch images to build images including ARM/AMD binaries, and the right image will be used for Mac users depending on their architecture.
 For extensions for Docker Desktop Windows, Windows binaries to be installed on the host must currently be included in the same extension image. We will likely revisit this with some tag conventions allowing some images specific to Windows, and other images specific to Mac, based on a tag prefix.
@@ -20,7 +20,7 @@ Extension authors can implement extensions without any constraints on code repos
 
 ## Distribution and new releases
 
-Releasing a Docker Desktop extension is done with a simple `docker push` to push the extension image to Hub.
+Releasing a Docker Desktop extension is done by running `docker push` to push the extension image to Hub.
 
 Docker Desktop will initially include an allow-list of extensions available to users. The extension image Hub repository (like `mycompany/my-desktop-extension`) must be part of the Docker Desktop allow-list to be recognised as a extension.
 

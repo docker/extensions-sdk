@@ -26,7 +26,7 @@ mv docker-extension ~/.docker/cli-plugins
 An extension is packaged as a Docker image, and must have a `metadata.json` file at the root of the image filesystem.
 This `metadata.json` file describes the content of the extension.
 
-An extension can contain A UI part and backend parts (running either on the host or in the Desktop virtual machine).
+An extension can contain a UI part and backend parts (running either on the host or in the Desktop virtual machine).
 
 Details are described in [Extension structure](docs/METADATA.md)
 
@@ -171,4 +171,4 @@ The JSON schema used to validate the `metadata.json` file against can be found u
 
 ### Opening dev tools
 
-Once an extension is deployed and running, it is possibe to open chrome dev tools from the UI extension part, using konami code. CLick on the extension tab, and then hit the key sequence 'up up down down left right left right p d t'. That should open Dev Tools, and give access to the chrome console, debugger, etc.
+Once an extension is deployed and running, it is possibe to open chrome dev tools from the UI extension part, using konami code. Click on the extension tab, and then hit the key sequence 'up up down down left right left right p d t'. That should open Dev Tools, and give access to the chrome console, debugger, etc.

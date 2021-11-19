@@ -10,7 +10,9 @@ To get started with Docker Extensions you will need a specific Docker Desktop bu
 
 Go to the [releases page](https://github.com/docker/desktop-extension-samples/releases/latest) and install both the Docker Desktop build and the Extensions CLI to manage extensions later on.
 
-Once you've downloaded Extensions CLI, proceed to install it. For `darwin/amd64` as would be as follows:
+Once you've downloaded Extensions CLI, you need to extract the binary into `~/.docker/cli-plugins`.
+
+For macOS:
 
 ```bash
 tar -xvzf desktop-extension-cli-darwin-amd64.tar.gz
@@ -20,6 +22,14 @@ mv docker-extension ~/.docker/cli-plugins
 ```
 
 > :warning: When running the Extensions CLI in macOS you'll see the message: _"docker-extension" cannot be opened because the developer cannot be verified."_ At the moment, the Extensions CLI is not signed by Docker (yet) and therefore you'll have to trust the binary by going to `System Preferences` > `Security & Privacy` > (General tab) click on `Allow Anyway`.
+
+For Windows :
+
+```bash
+tar -xvzf desktop-extension-cli-windows-amd64.tar.gz
+mkdir -p ~/.docker/cli-plugins
+mv docker-extension.exe ~/.docker/cli-plugins
+```
 
 ## Extension Structure
 
@@ -111,6 +121,12 @@ Listing running containers
 
 ```typescript
 window.ddClient.listContainers();
+```
+
+Listing images
+
+```typescript
+window.ddClient.listImages();
 ```
 
 Displaying an error in a red banner in the Dashboard

@@ -123,6 +123,12 @@ Listing running containers
 window.ddClient.listContainers();
 ```
 
+Listing images
+
+```typescript
+window.ddClient.listImages();
+```
+
 Displaying an error in a red banner in the Dashboard
 
 ```typescript

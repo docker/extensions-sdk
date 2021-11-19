@@ -1,2 +1,2 @@
-plugin: ## Build service image to be deployed as a desktop plugin
-	docker build --tag=desktop-swimmingwhale-plugin .
+extension: ## Build service image to be deployed as a desktop extension
+	docker build --tag=desktop-swimmingwhale-extension .

@@ -10,7 +10,7 @@ image:
 	docker build -t volumes-share .
 
 install: image
-	docker desktop plugin rm volumes-share
-	docker desktop plugin install volumes-share
+	docker desktop extension rm volumes-share
+	docker desktop extension install volumes-share
 
 .PHONY: cli run image install

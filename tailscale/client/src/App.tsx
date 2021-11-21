@@ -41,7 +41,7 @@ export function App() {
     window.ddClient.backend
       .execInContainer(
         'tailscale_service',
-        `/app/tailscale up --authkey ${token} --hostname=${hostname}-docker-desktop`,
+        `/app/tailscale up --authkey ${token} --hostname=${hostname}-docker-desktop --accept-dns=false`,
       )
       .then(() => updateStatus());
   }

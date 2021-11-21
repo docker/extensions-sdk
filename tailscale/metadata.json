@@ -13,5 +13,21 @@
             "root":"/ui",
             "src":"index.html"
         }
+    },
+    "host": {
+        "binaries": [
+            {
+                "darwin": [
+                    {
+                        "path": "/darwin/hostname"
+                    }
+                ],
+                "windows": [
+                    {
+                        "path": "/windows/hostname.cmd"
+                    }
+                ]
+            }
+        ]
     }
 }

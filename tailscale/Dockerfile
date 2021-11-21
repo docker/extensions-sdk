@@ -34,5 +34,7 @@ COPY vm/docker-compose.yaml .
 COPY --from=client-builder /app/client/dist ui
 COPY tailscale.svg .
 COPY metadata.json .
+COPY host/hostname darwin/hostname
+COPY host/hostname.cmd windows/hostname.cmd
 ENV TS_HOST_ENV dde
 CMD /app/tailscaled --state=tailscaled.state --tun=userspace-networking

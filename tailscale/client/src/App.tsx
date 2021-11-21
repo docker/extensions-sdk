@@ -26,11 +26,13 @@ export function App() {
   const [status, setStatus] = useState<TailscaleStatusResponse>();
   const [containers, setContainers] = useState<Container[]>();
   const [token, setToken] = useState<string>();
+  const [hostname, setHostname] = useState<string>();
 
   useEffect(() => {
     if (status == undefined) {
       updateStatus();
       listContainers();
+      updateHostname();
     }
   }, [status]); // Only re-run the effect if Tailscale status changes
 
@@ -39,7 +41,7 @@ export function App() {
     window.ddClient.backend
       .execInContainer(
         'tailscale_service',
-        `/app/tailscale up --authkey ${token} --hostname=docker-desktop`,
+        `/app/tailscale up --authkey ${token} --hostname=${hostname}-docker-desktop`,
       )
       .then(() => updateStatus());
   }
@@ -84,6 +86,14 @@ export function App() {
       .catch((err: Error) => {
         console.log(err);
       });
+  }
+
+  function updateHostname() {
+    window.ddClient
+      .execHostCmd(
+        'hostname',
+      )
+      .then((value: any) => setHostname(value.stdout.trim()));
   }
 
   function PrintTableHeaders() {

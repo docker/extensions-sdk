@@ -37,4 +37,4 @@ COPY metadata.json .
 COPY host/hostname darwin/hostname
 COPY host/hostname.cmd windows/hostname.cmd
 ENV TS_HOST_ENV dde
-CMD /app/tailscaled --state=tailscaled.state --tun=userspace-networking
+CMD /app/tailscaled --state=/var/lib/tailscale/tailscaled.state --tun=userspace-networking

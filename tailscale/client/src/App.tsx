@@ -40,7 +40,7 @@ export function App() {
     console.log(`connecting with token ${token}`);
     window.ddClient.backend
       .execInVMExtension(
-        `/app/tailscale up --authkey ${token} --hostname=${hostname}-docker-desktop`,
+        `/app/tailscale up --authkey ${token} --hostname=${hostname}-docker-desktop --accept-dns=false`,
       )
       .then(() => updateStatus());
   }
@@ -96,11 +96,14 @@ export function App() {
   function PrintTableHeaders() {
     return (
       <tr key="headers">
-        {['Container', 'Published ports', 'Tailscale machine details URL', 'Tailscale IP'].map(
-          (h) => (
-            <td key={h}>{h}</td>
-          ),
-        )}
+        {[
+          'Container',
+          'Published ports',
+          'Tailscale machine details URL',
+          'Tailscale IP',
+        ].map((h) => (
+          <td key={h}>{h}</td>
+        ))}
       </tr>
     );
   }
@@ -211,15 +214,11 @@ export function App() {
   return (
     <div>
       <div style={{ textAlign: 'center' }}>
-        <h1>
-          Containers in your Tailscale network
-        </h1>
-        <h2>
-          Connect your Docker containers to your secure private network.
-        </h2>
+        <h1>Containers in your Tailscale network</h1>
+        <h2>Connect your Docker containers to your secure private network.</h2>
         <p>
-          Tailscale connects your devices together, so you can access them
-          on your own private network.
+          Tailscale connects your devices together, so you can access them on
+          your own private network.
         </p>
         <p>
           Your containers will be visible only to other devices on the same

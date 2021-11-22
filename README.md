@@ -188,3 +188,9 @@ The JSON schema used to validate the `metadata.json` file against can be found u
 ### Opening dev tools
 
 Once an extension is deployed and running, it is possibe to open chrome dev tools from the UI extension part, using konami code. Click on the extension tab, and then hit the key sequence 'up up down down left right left right p d t'. That should open Dev Tools, and give access to the chrome console, debugger, etc.
+
+## Show Extension containers
+
+If your extension is composed of one or many services running as containers in the Docker Desktop VM, you can get easier access to them by showing them in the Docker Desktop Dashboard and when using Docker commands.
+
+In the Docker Desktop Dashboard settings, under `Extension`, you can select `Show Docker Desktop Extensions system containers`, and you'll be able to see your extension containers as any other one, navigate to logs, etc.

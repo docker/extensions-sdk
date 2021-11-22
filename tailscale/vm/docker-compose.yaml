@@ -2,6 +2,10 @@ services:
   desktop-tailscale:
     container_name: tailscale_service
     image: ${DESKTOP_PLUGIN_IMAGE}
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
     volumes:
       - "tailscalestate:/var/lib/tailscale"
 

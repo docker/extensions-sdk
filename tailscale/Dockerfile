@@ -1,10 +1,10 @@
-FROM alpine AS tailscale
-RUN apk add --no-cache curl
-ARG TARGETARCH
-ARG TSVERSION=1.14.3
-RUN curl -fSsLo /tmp/tailscale.tgz https://pkgs.tailscale.com/stable/tailscale_${TSVERSION}_${TARGETARCH}.tgz \
-    && mkdir /out \
-    && tar -C /out -xzf /tmp/tailscale.tgz --strip-components=1
+FROM golang:1.17.3-bullseye as tailscale
+WORKDIR /go/src/tailscale
+COPY . ./
+RUN git clone https://github.com/tailscale/tailscale.git && cd tailscale && \
+    git checkout json && go mod download && \
+    go install -mod=readonly ./cmd/tailscaled ./cmd/tailscale
+COPY . ./
 
 FROM node:14.17-alpine3.13 AS client-builder
 WORKDIR /app/client
@@ -28,8 +28,8 @@ RUN apt-get update \
         iptables \
         iproute2 \
     && rm -rf /var/lib/apt/lists/*
-COPY --from=tailscale /out/tailscale /app/tailscale
-COPY --from=tailscale /out/tailscaled /app/tailscaled
+COPY --from=tailscale /go/bin/tailscaled /app/tailscaled
+COPY --from=tailscale /go/bin/tailscale /app/tailscale
 COPY vm/docker-compose.yaml .
 COPY --from=client-builder /app/client/dist ui
 COPY tailscale.svg .

@@ -189,6 +189,24 @@ The JSON schema used to validate the `metadata.json` file against can be found u
 
 Once an extension is deployed and running, it is possibe to open chrome dev tools from the UI extension part, using konami code. Click on the extension tab, and then hit the key sequence 'up up down down left right left right p d t'. That should open Dev Tools, and give access to the chrome console, debugger, etc.
 
+### Developing the extension UI
+
+If your extension has a UI you can see it directly inside Docker Desktop while developing it. For this you need to first install the extension. If you then run a development server locally (with `yarn start` for example) you can run the following command:
+
+```bash
+docker extension dev ui-source my-extension http://localhost:8080
+```
+
+This will change the source of the extension UI to your local development server, auto and hot-reload should work now.
+
+Note: make sure to reopen the dashboard when you set a new source for the extension ui.
+
+Once finshed, you can reset the extension configuration to the original settings by running `dev rm`
+
+```bash
+docker extension dev reset my-extension
+```
+
 ## Show Extension containers
 
 If your extension is composed of one or many services running as containers in the Docker Desktop VM, you can get easier access to them by showing them in the Docker Desktop Dashboard and when using Docker commands.

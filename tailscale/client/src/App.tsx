@@ -39,8 +39,7 @@ export function App() {
   function connect() {
     console.log(`connecting with token ${token}`);
     window.ddClient.backend
-      .execInContainer(
-        'tailscale_service',
+      .execInVMExtension(
         `/app/tailscale up --authkey ${token} --hostname=${hostname}-docker-desktop`,
       )
       .then(() => updateStatus());
@@ -51,7 +50,7 @@ export function App() {
       `Disconnects from Tailscale. When disconnected, you cannot reach devices over Tailscale.`,
     );
     window.ddClient.backend
-      .execInContainer('tailscale_service', `/app/tailscale down`)
+      .execInVMExtension(`/app/tailscale down`)
       .then(() => setStatus(undefined));
   }
 
@@ -60,13 +59,13 @@ export function App() {
       `Log out disconnects from Tailscale and expires the current log in. The next time you run tailscale up, you'll need to reauthenticate your device.`,
     );
     window.ddClient.backend
-      .execInContainer('tailscale_service', `/app/tailscale logout`)
+      .execInVMExtension(`/app/tailscale logout`)
       .then(() => setStatus(undefined));
   }
 
   function updateStatus() {
     window.ddClient.backend
-      .execInContainer('tailscale_service', `/app/tailscale status -json`)
+      .execInVMExtension(`/app/tailscale status -json`)
       .then((value: any) => {
         let res: TailscaleStatusResponse = JSON.parse(value.stdout);
         setStatus(res);
@@ -90,9 +89,7 @@ export function App() {
 
   function updateHostname() {
     window.ddClient
-      .execHostCmd(
-        'hostname',
-      )
+      .execHostCmd('hostname')
       .then((value: any) => setHostname(value.stdout.trim()));
   }
 

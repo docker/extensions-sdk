@@ -24,13 +24,12 @@ LABEL org.opencontainers.image.title="Tailscale" \
     com.docker.desktop.plugin.api.version="1.0.0-beta.1"
 RUN apt-get update \
     && apt-get install -y \
-        ca-certificates \
-        iptables \
-        iproute2 \
+    ca-certificates \
+    iptables \
+    iproute2 \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=tailscale /out/tailscale /app/tailscale
 COPY --from=tailscale /out/tailscaled /app/tailscaled
-COPY vm/docker-compose.yaml .
 COPY --from=client-builder /app/client/dist ui
 COPY tailscale.svg .
 COPY metadata.json .

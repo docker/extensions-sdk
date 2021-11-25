@@ -5,5 +5,4 @@ services:
       - DAC_OVERRIDE
       - FOWNER
     volumes:
-      - /run/guest-services:/run/guest-services
       - /var/lib/docker:/var/lib/docker

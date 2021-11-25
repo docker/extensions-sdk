@@ -43,13 +43,28 @@ The `ui` section defines a new tab that will be added to Docker Dashboard. (othe
 `root` specifies in which folder the ui code is located in the image filesystem
 `src` specifies what is the entrypoint that should be loaded in the extension tab
 
-The `vm` section defines a backend service running inside the Desktop VM. This service is defined as a compose file, starting typically one container (but that is not restricted to just one). It must specify the name of the compose file in the image filesystem.
+The `vm` section defines a backend service running inside the Desktop VM. It must define either an `image` or a `composefile` value, specifying what service to run in the Desktop VM. By default, developers should specify `image`, and use `composefile` only if they need to use several containers for the backend service, or specific runtime options (like mounting volumes or requesting CAPABILITIES) that can't be expressed just with a Docker image.
+
+In many situations, extension backend services can be defined by using the same image also used to package the extension. (This image must then have a defined `CMD` to start the backend service, in addition to include the extension packaging).
+Using the same image for extension packaging and for backend service will make packaging/releasing easier in terms or version management, pushing extension images to Hub, etc.
+
+```json
+"vm": {
+    "image":"${DESKTOP_PLUGIN_IMAGE}"
+},
+```
+
+Note : `${DESKTOP_PLUGIN_IMAGE}` is a specific keyword allowed as an easy way to refer to the image packaging the extension ; it is also possible to specify any other full image name here, although in many cases using the same image will make things easier for extension development.
+
+For more advanced use cases, the extension can also specify a custom compose file, and start several containers for the VM extension service, or mount volumes in the VM, require specific CAPABILITIES, etc.
 
 ```json
 "vm": {
     "composefile":"docker-compose.yaml"
 },
 ```
+
+The vm metadata section should define either `image` or `composefile`. When using `image`, a default compose file will be generated for the extension.
 
 The `host` section defines some binaries that must be deployed on the host. (The UI will be able to invoke these binaries through JavaScript APIs)
 

@@ -1,4 +1,0 @@
-services:
-  desktop-tailscale:
-    container_name: tailscale_service
-    image: ${DESKTOP_PLUGIN_IMAGE}

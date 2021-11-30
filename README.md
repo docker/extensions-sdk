@@ -149,7 +149,7 @@ Running a command in the container inside the VM:
 
 ```typescript
 window.ddClient.backend
-  .execInContainer("extensionContainerName", `cliShippedInTheVm xxx`)
+  .execInVMExtension(`cliShippedInTheVm xxx`)
   .then((value: any) => console.log(value));
 ```
 

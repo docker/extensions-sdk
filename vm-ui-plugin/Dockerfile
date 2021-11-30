@@ -8,6 +8,7 @@ RUN make bin
 FROM alpine
 
 LABEL org.opencontainers.image.title="volume-sample" \
+    org.opencontainers.image.description="A sample plugin that lists all Docker volumes." \
     org.opencontainers.image.authors="Docker Inc." \
     com.docker.desktop.plugin.api.version="1.0.0-beta.1"
 

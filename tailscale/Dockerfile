@@ -20,6 +20,7 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn bu
 
 FROM debian:bullseye-slim
 LABEL org.opencontainers.image.title="Tailscale" \
+    org.opencontainers.image.description="Expose your Docker containers to a secure VPN in one click." \
     org.opencontainers.image.authors="Tailscale Inc." \
     com.docker.desktop.plugin.api.version="1.0.0-beta.1"
 RUN apt-get update \

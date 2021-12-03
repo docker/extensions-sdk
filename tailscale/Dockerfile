@@ -22,7 +22,9 @@ FROM debian:bullseye-slim
 LABEL org.opencontainers.image.title="Tailscale" \
     org.opencontainers.image.description="Expose your Docker containers to a secure VPN in one click." \
     org.opencontainers.image.authors="Tailscale Inc." \
-    com.docker.desktop.plugin.api.version="1.0.0-beta.1"
+    com.docker.desktop.plugin.api.version="1.0.0-beta.1" \
+    com.docker.desktop.plugin.icon="https://pbs.twimg.com/profile_images/1273307847103635465/lfVWBmiW_400x400.png"
+
 RUN apt-get update \
     && apt-get install -y \
     ca-certificates \

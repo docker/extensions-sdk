@@ -26,9 +26,9 @@ RUN <<EOT ash
 EOT
 RUN <<EOT ash
     if [ "amd64" = "$TARGETARCH" ]; then
-        mkdir -p /out/windows
-        curl -fSsLo /out/windows/telepresence.zip https://app.getambassador.io/download/tel2/windows/amd64/latest/telepresence.zip
-        curl -fSsLo /out/windows/kubectl.exe     "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/windows/amd64/kubectl.exe"
+    mkdir -p /out/windows
+    curl -fSsLo /out/windows/telepresence.zip https://app.getambassador.io/download/tel2/windows/amd64/latest/telepresence.zip
+    curl -fSsLo /out/windows/kubectl.exe     "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/windows/amd64/kubectl.exe"
     fi
 EOT
 
@@ -36,7 +36,8 @@ FROM scratch
 LABEL org.opencontainers.image.title="Telepresence" \
     org.opencontainers.image.description="Develop locally and Intercept traffic from your Kubernetes cluster." \  
     org.opencontainers.image.authors="Datawire" \
-    com.docker.desktop.plugin.api.version="1.0.0-beta.1"
+    com.docker.desktop.plugin.api.version="1.0.0-beta.1" \
+    com.docker.desktop.plugin.icon="https://pbs.twimg.com/profile_images/1273307847103635465/lfVWBmiW_400x400.png"
 
 COPY --from=client-builder /app/client/dist ui
 COPY --from=dl /out /

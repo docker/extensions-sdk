@@ -28,16 +28,28 @@ LABEL org.opencontainers.image.title="tailscale" \
     com.docker.desktop.plugin.api.version="1.0.0-beta.1"
 RUN apt-get update \
     && apt-get install -y \
+<<<<<<< HEAD
     ca-certificates \
     iptables \
     iproute2 \
+=======
+        ca-certificates \
+        iptables \
+        iproute2 \
+        procps \
+        inotify-tools \
+>>>>>>> ae94a2c (tailscale: login using a browser.)
     && rm -rf /var/lib/apt/lists/*
 COPY --from=tailscale /out/tailscale /app/tailscale
 COPY --from=tailscale /out/tailscaled /app/tailscaled
 COPY --from=client-builder /app/client/dist ui
 COPY tailscale.svg .
 COPY metadata.json .
+COPY background-output.sh /app/background-output.sh
+COPY wait-for-exit.sh /app/wait-for-exit.sh
 COPY host/hostname darwin/hostname
 COPY host/hostname.cmd windows/hostname.cmd
+COPY host/tsbrowser darwin/tsbrowser
+COPY host/tsbrowser.cmd windows/tsbrowser.cmd
 ENV TS_HOST_ENV dde
 CMD /app/tailscaled --state=/var/lib/tailscale/tailscaled.state --tun=userspace-networking

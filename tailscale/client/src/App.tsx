@@ -1,5 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
+// Login flow
+// At startup, useEffect for [] runs the hostname command in the Host.
+// We use that later, when calling "tailscale up" to set the hostname.
+//
+// When the User clicks the "Login with Browser" button, we call
+// getLoginInfo() to run "tailscale up" and retrieve the AuthURL.
+// Notably, "tailscale up" is still running in the Extension Container
+// when getLoginInfo() returns.
+//
+// When loginInfo is set, useEffect calls doOpenBrowser() to launch a
+// web browser in the Host. It also calls waitLoginComplete(), to watch
+// for when "tailscale up" exits after the user clicks in the browser to
+// authenticate the node.
+//
+// When waitLoginComplete() finishes (which happens when "tailscale up"
+// finally prints out status and exits) it sets the status to undefined.
+// useEffect calls updateStatus, which will determine that we are now
+// logged in.
+
 // Container
 export interface Container {
   Names: string[];
@@ -11,7 +30,7 @@ export interface Port {
   Type: string;
 }
 
-// TailscaleStatusResponse
+// TailscaleStatusResponse: output of `tailscale status --json`
 export interface TailscaleStatusResponse {
   BackendState: string; // e.g. "Running", "Stopped", "NeedsLogin", etc.
   Self: Self;
@@ -22,28 +41,39 @@ export interface Self {
   TailscaleIPs: string[];
 }
 
+// TailscaleUpResponse: output of `tailscale up --json ...`
+export interface TailscaleUpResponse {
+  AuthURL: string; // e.g. https://login.tailscale.com/a/0123456789abcdef
+  QR: string; // a DataURL-encoded QR code PNG of the AuthURL
+}
+
 export function App() {
   const [status, setStatus] = useState<TailscaleStatusResponse>();
   const [containers, setContainers] = useState<Container[]>();
-  const [token, setToken] = useState<string>();
+  const [loginInfo, setLoginInfo] = useState<TailscaleUpResponse>();
   const [hostname, setHostname] = useState<string>();
+
+  useEffect(() => {
+    updateHostname();
+  }, []); // runs once after initial render.
 
   useEffect(() => {
     if (status == undefined) {
       updateStatus();
       listContainers();
-      updateHostname();
     }
   }, [status]); // Only re-run the effect if Tailscale status changes
 
-  function connect() {
-    console.log(`connecting with token ${token}`);
-    window.ddClient.backend
-      .execInVMExtension(
-        `/app/tailscale up --authkey ${token} --hostname=${hostname}-docker-desktop --accept-dns=false`,
-      )
-      .then(() => updateStatus());
-  }
+  useEffect(() => {
+    setStatus(undefined);
+  }, [hostname]);
+
+  useEffect(() => {
+    if (loginInfo !== undefined) {
+      waitLoginComplete();
+      doOpenBrowser(loginInfo.AuthURL);
+    }
+  }, [loginInfo]);
 
   function disconnect() {
     console.log(
@@ -88,9 +118,50 @@ export function App() {
   }
 
   function updateHostname() {
+    window.ddClient.execHostCmd('hostname').then((value: any) => {
+      let h: string = value.stdout.trim();
+      console.log(`Setting hostname to ${h}`);
+      setHostname(h);
+    });
+  }
+
+  // runs "tailscale up" in the extension container to obtain the login URL
+  function getLoginInfo() {
+    window.ddClient.backend
+      .execInContainer(
+        'tailscale_service',
+        `/app/background-output.sh /app/tailscale up --hostname=${hostname}-docker-desktop --accept-dns=false --json --reset`,
+      )
+      .then((value: any) => {
+        let res: TailscaleUpResponse = JSON.parse(value.stdout);
+        console.log(res);
+        setLoginInfo(res);
+      })
+      .catch((err: Error) => {
+        console.log(err);
+        setStatus(undefined);
+      });
+  }
+
+  // starts a shell to wait for "tailscale up" to exit
+  function waitLoginComplete() {
+    window.ddClient.backend
+      .execInContainer('tailscale_service', `/app/wait-for-exit.sh`)
+      .then((value: any) => {
+        console.log(value.stdout);
+        setStatus(undefined);
+      })
+      .catch((err: Error) => {
+        console.log(err);
+        setStatus(undefined);
+      });
+  }
+
+  // start a browser in the host
+  function doOpenBrowser(url: string) {
     window.ddClient
-      .execHostCmd('hostname')
-      .then((value: any) => setHostname(value.stdout.trim()));
+      .execHostCmd(`tsbrowser ${url}`)
+      .then(() => setStatus(undefined));
   }
 
   function PrintTableHeaders() {
@@ -228,27 +299,18 @@ export function App() {
         </p>
       </div>
       <div>
+        <p>Status: {status?.BackendState}</p>
         {(status === undefined ||
           status.BackendState == 'Stopped' ||
           status.BackendState == 'NoState' ||
-          status.BackendState == 'NeedsLogin') && (
-          <React.Fragment>
-            <label>
-              Tailscale authentication token:
-              <input
-                type="textarea"
-                name="token"
-                value={token}
-                placeholder="tskey-3f6..."
-                onChange={(e) => setToken(e.target.value)}
-              />
-            </label>
-
-            <button type="button" onClick={() => connect()}>
-              Connect
-            </button>
-          </React.Fragment>
-        )}
+          status.BackendState == 'NeedsLogin') &&
+          hostname !== undefined && (
+            <React.Fragment>
+              <button type="button" onClick={() => getLoginInfo()}>
+                Login with Browser
+              </button>
+            </React.Fragment>
+          )}
 
         {status?.BackendState === 'Running' && (
           <button type="button" id="disconnect" onClick={() => disconnect()}>
@@ -261,8 +323,6 @@ export function App() {
             Logout
           </button>
         )}
-
-        <p>Status: {status?.BackendState}</p>
       </div>
       <div>
         <table style={{ width: '100%' }}>

@@ -47,7 +47,7 @@ export function App() {
 
   function disconnect() {
     console.log(
-      `Disconnects from Tailscale. When disconnected, you cannot reach devices over Tailscale.`,
+      `Disconnects from Tailscale, but keeps you logged in. When disconnected, you cannot reach devices over Tailscale.`,
     );
     window.ddClient.backend
       .execInVMExtension(`/app/tailscale down`)
@@ -56,7 +56,7 @@ export function App() {
 
   function logout() {
     console.log(
-      `Log out disconnects from Tailscale and expires the current log in. The next time you run tailscale up, you'll need to reauthenticate your device.`,
+      `Logs out from Tailscale. The next time you connect to Tailscale, you'll need to reauthenticate.`,
     );
     window.ddClient.backend
       .execInVMExtension(`/app/tailscale logout`)
@@ -96,7 +96,7 @@ export function App() {
   function PrintTableHeaders() {
     return (
       <tr key="headers">
-        {['Container', 'Published ports', 'Tailscale URL', 'Tailscale IP'].map(
+        {['Container', 'Published ports', 'Tailscale machine details URL', 'Tailscale IP'].map(
           (h) => (
             <td key={h}>{h}</td>
           ),
@@ -211,15 +211,22 @@ export function App() {
   return (
     <div>
       <div style={{ textAlign: 'center' }}>
-        <h1>Containers and teams, connected in one seamless experience.</h1>
+        <h1>
+          Containers in your Tailscale network
+        </h1>
         <h2>
-          We bring containers and teams closer, connecting them under a secure
-          private network, powered by Tailscale.
+          Connect your Docker containers to your secure private network.
         </h2>
-        <h4>
+        <p>
+          Tailscale connects your devices together, so you can access them
+          on your own private network.
+        </p>
+        <p>
           Your containers will be visible only to other devices on the same
-          Tailscale network.
-        </h4>
+          Tailscale network, as permitted by
+          <a href="https://login.tailscale.com/admin/acls">ACLs</a> in your
+          network.
+        </p>
       </div>
       <div>
         {(status === undefined ||

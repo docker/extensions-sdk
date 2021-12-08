@@ -34,9 +34,9 @@ EOT
 
 FROM scratch
 LABEL org.opencontainers.image.title="Telepresence" \
-    org.opencontainers.image.description="Develop locally and Intercept traffic from your Kubernetes cluster." \  
-    org.opencontainers.image.authors="Datawire" \
-    com.docker.desktop.plugin.api.version="1.0.0-beta.1"
+    org.opencontainers.image.description="Develop locally and Intercept traffic from your Kubernetes cluster." \
+    org.opencontainers.image.vendor="Datawire" \
+    com.docker.desktop.extension.api.version="1.0.0-beta.1"
 
 COPY --from=client-builder /app/client/dist ui
 COPY --from=dl /out /

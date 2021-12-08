@@ -23,6 +23,8 @@ LABEL org.opencontainers.image.title="tailscale" \
     com.docker.desktop.plugin.icon="https://f-droid.org/repo/icons-640/com.tailscale.ipn.78.png" \
     org.opencontainers.image.description="Connect your Docker containers to your secure private network." \
     org.opencontainers.image.authors="Tailscale Inc." \
+    org.opencontainers.image.vendor="Tailscale Inc." \
+    com.docker.desktop.extension.api.version="1.0.0-beta.1" \
     com.docker.desktop.plugin.api.version="1.0.0-beta.1"
 RUN apt-get update \
     && apt-get install -y \

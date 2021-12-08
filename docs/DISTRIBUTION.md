@@ -8,8 +8,8 @@ Every extension image must contain a metadata.json file at the root of its files
 The image must have several labels:
 
 - `org.opencontainers.image.title`: name of the extension
-- `org.opencontainers.image.authors`: author / provider for the extension
-- `com.docker.desktop.plugin.api.version`: Docker API version the extension is compatible with.
+- `org.opencontainers.image.vendor`: provider for the extension
+- `com.docker.desktop.extension.api.version`: Docker API version the extension is compatible with.
 
 Packaging and releasing an extension is done by running `docker build` to create the image, and `docker push` to make the image available on Docker Hub, with a specific tag allowing to manage version of the extension.
 

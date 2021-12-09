@@ -20,7 +20,7 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn bu
 
 FROM debian:bullseye-slim
 LABEL org.opencontainers.image.title="tailscale" \
-    com.docker.desktop.plugin.icon="https://f-droid.org/repo/icons-640/com.tailscale.ipn.78.png" \
+    com.docker.desktop.extension.icon="https://f-droid.org/repo/icons-640/com.tailscale.ipn.78.png" \
     org.opencontainers.image.description="Connect your Docker containers to your secure private network." \
     org.opencontainers.image.authors="Tailscale Inc." \
     org.opencontainers.image.vendor="Tailscale Inc." \
@@ -37,6 +37,7 @@ COPY --from=tailscale /out/tailscaled /app/tailscaled
 COPY --from=client-builder /app/client/dist ui
 COPY tailscale.svg .
 COPY metadata.json .
+COPY vm/docker-compose.yaml .
 COPY host/hostname darwin/hostname
 COPY host/hostname.cmd windows/hostname.cmd
 ENV TS_HOST_ENV dde

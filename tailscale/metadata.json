@@ -4,7 +4,7 @@
     "provider": "Tailscale Inc.",
     "icon":"tailscale.svg",
     "vm": {
-        "image":"${DESKTOP_PLUGIN_IMAGE}"
+        "composefile":"docker-compose.yaml"
     },
     "ui":{
         "dashboard-tab":

@@ -1,4 +1,4 @@
-# Extension structure
+# Extension metadata
 
 A Docker Desktop extension image must include a `metadata.json` file at the root of its filesystem. This file describes the content of the extension that must be installed to make it work in Docker Desktop.
 
@@ -7,6 +7,8 @@ A extension can contain (each part is optional):
 - A UI part, adding a tab to the Docker Desktop Dashboard
 - A VM service, executed in the Desktop VM as one (or several) Docker container(s). These containers can request access to specific resources in the VM, for example by mounting folders in the compose file.
 - A list of binaries to be installed on the host
+
+## UI section
 
 The UI part of the extension will be able to communicate at runtime with the extension VM service, or invoke the extension binaries deployed on the host via the Extension API defined below.
 
@@ -43,6 +45,8 @@ The `ui` section defines a new tab that will be added to Docker Dashboard. (othe
 `root` specifies in which folder the ui code is located in the image filesystem
 `src` specifies what is the entrypoint that should be loaded in the extension tab
 
+## VM section
+
 The `vm` section defines a backend service running inside the Desktop VM. It must define either an `image` or a `composefile` value, specifying what service to run in the Desktop VM. By default, developers should specify `image`, and use `composefile` only if they need to use several containers for the backend service, or specific runtime options (like mounting volumes or requesting CAPABILITIES) that can't be expressed just with a Docker image.
 
 In many situations, extension backend services can be defined by using the same image also used to package the extension. (This image must then have a defined `CMD` to start the backend service, in addition to include the extension packaging).
@@ -54,7 +58,9 @@ Using the same image for extension packaging and for backend service will make p
 },
 ```
 
-Note : `${DESKTOP_PLUGIN_IMAGE}` is a specific keyword allowed as an easy way to refer to the image packaging the extension ; it is also possible to specify any other full image name here, although in many cases using the same image will make things easier for extension development.
+!!! info
+
+    `${DESKTOP_PLUGIN_IMAGE}` is a specific keyword allowed as an easy way to refer to the image packaging the extension ; it is also possible to specify any other full image name here, although in many cases using the same image will make things easier for extension development.
 
 For more advanced use cases, the extension can also specify a custom compose file, and start several containers for the VM extension service, or mount volumes in the VM, require specific CAPABILITIES, etc.
 
@@ -65,6 +71,8 @@ For more advanced use cases, the extension can also specify a custom compose fil
 ```
 
 The vm metadata section should define either `image` or `composefile`. When using `image`, a default compose file will be generated for the extension.
+
+## Host section
 
 The `host` section defines some binaries that must be deployed on the host. (The UI will be able to invoke these binaries through JavaScript APIs)
 

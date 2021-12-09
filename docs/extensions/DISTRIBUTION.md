@@ -1,4 +1,4 @@
-# Desktop Extension Distribution
+# Distribution
 
 ## Packaging
 

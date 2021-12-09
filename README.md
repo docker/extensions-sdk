@@ -230,3 +230,13 @@ docker extension dev reset my-extension
 If your extension is composed of one or more services running as containers in the Docker Desktop VM, you can get easier access to them by showing them in the Docker Desktop Dashboard and when using Docker commands.
 
 In the Docker Desktop Dashboard settings, under `Extension`, you can select `Show Docker Desktop Extensions system containers`, and you'll be able to see your extension containers as any other one, navigate to logs, etc.
+
+## Build the documentation
+
+We use [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) to create a static site from a set of Markdown files under [docs](./docs).
+
+```bash
+docker run --rm -it -p 8000:8000 --rm -v ${PWD}:/docs squidfunk/mkdocs-material
+```
+
+Visit http://0.0.0.0:8000/

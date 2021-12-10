@@ -1,0 +1,4 @@
+services:
+  desktop-tailscale:
+    network_mode: "host"
+    image: ${DESKTOP_PLUGIN_IMAGE}

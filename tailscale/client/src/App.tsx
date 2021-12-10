@@ -128,8 +128,7 @@ export function App() {
   // runs "tailscale up" in the extension container to obtain the login URL
   function getLoginInfo() {
     window.ddClient.backend
-      .execInContainer(
-        'tailscale_service',
+      .execInVMExtension(
         `/app/background-output.sh /app/tailscale up --hostname=${hostname}-docker-desktop --accept-dns=false --json --reset`,
       )
       .then((value: any) => {
@@ -146,7 +145,7 @@ export function App() {
   // starts a shell to wait for "tailscale up" to exit
   function waitLoginComplete() {
     window.ddClient.backend
-      .execInContainer('tailscale_service', `/app/wait-for-exit.sh`)
+      .execInVMExtension(`/app/wait-for-exit.sh`)
       .then((value: any) => {
         console.log(value.stdout);
         setStatus(undefined);

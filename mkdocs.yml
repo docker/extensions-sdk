@@ -39,6 +39,12 @@ markdown_extensions:
 nav:
   - Overview:
       - Introduction: index.md
+  - Tutorials:
+      - Create a minimal extension: tutorials/ui-minimal-extension.md
+      - Create a graphical extension (ReactJS): tutorials/ui-extension.md
+      - Create a VM-service extension: tutorials/vm-service-extension.md
+      - Expose a socket/npipe: tutorials/expose-socket-npipe.md
+      - Deploy binaries on the host: tutorials/deploy-binaries-on-host.md
   - Extensions:
       - Metadata: extensions/METADATA.md
       - Validation: extensions/validation.md
@@ -57,8 +63,3 @@ nav:
           - Build, test and install an extension: dev/cli/Build, test and install an extension.md
       - UI API:
           - Overview: dev/api/overview.md
-  - Tutorials:
-      - Create a graphical extension (UI): tutorials/ui-extension.md
-      - Create a VM-service extension: tutorials/vm-service-extension.md
-      - Expose a socket/npipe: tutorials/expose-socket-npipe.md
-      - Deploy binaries on the host: tutorials/deploy-binaries-on-host.md

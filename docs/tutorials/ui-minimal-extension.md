@@ -1,5 +1,3 @@
-## UI minimal extension
-
 In this tutorial you will learn how to create the most minimal Desktop Extension containing only a UI part based on HTML.
 
 ## Prerequisites
@@ -47,9 +45,33 @@ COPY ui ./ui
 COPY metadata.json .
 ```
 
+<<<<<<< HEAD
+
 ## Configure the Extension metadata file
 
-A `metadata.json` file is required at the root of the image filesystem.
+# A `metadata.json` file is required at the root of the image filesystem.
+
+### Labels
+
+| Label | Required | Description | Example |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------ | |
+| `org.opencontainers.image.title` | Yes | Human-readable title of the image (string). It is what appears in the tab. | my-extension |
+| `org.opencontainers.image.description` | Yes | Human-readable description of the software packaged in the image (string) | This extension is cool|
+| `org.opencontainers.image.vendor` | Yes | Name of the distributing entity, organization or individual. | Acme, Inc. |
+| `com.docker.desktop.extension.api.version` | Yes | Version of the Docker Extension manager that the extension is compatible with. | `1.0.0-beta.1`|
+| `com.docker.desktop.plugin.icon` | No | The extension icon (format? .png? .jpg?) | <a href="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png" target="__blank">https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png<a> |
+
+!!! warning "Missing required labels"
+
+    If any of the previous _required_ labels are missing in the `Dockerfile`, Docker Desktop will consider the extension invalid and will not appear listed in the Extensions list.
+
+## Configure the Extension metadata file
+
+### Provide information
+
+A `metadata.json` file is required at the root of your extension directory.
+
+> > > > > > > 2bd1382 (Add tutorial for UI minimal extension)
 
 ```json title="metadata.json" linenums="1"
 {
@@ -94,9 +116,9 @@ docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-ui-extension:0
 
 Now that the extension is packaged as a Docker image, let's proceed with the installation. To do so, we'll use the Docker Extensions CLI.
 
-> Enable Docker Desktop Extensions
->
-> Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
+!!! info "Enable Docker Desktop Extensions"
+
+    Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
 
 To install the extension in Docker Desktop, run:
 
@@ -148,19 +170,19 @@ docker tag desktop-ui-extension:0.0.1 owner/desktop-ui-extension:0.0.1
 docker push owner/desktop-ui-extension:0.0.1
 ```
 
-> Note that for Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
->
-> See [distribution and new releases](../DISTRIBUTION.md#distribution-and-new-releases) for more information.
->
-> See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
+!!! warning
 
-> Having trouble to push the image?
->
-> Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
+    Note that for Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+
+    See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
+
+    See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
+
+!!! info "Having trouble to push the image?"
+
+    Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
-
-To remove the extension run:
 
 ```bash
 docker extension rm MyExtension
@@ -173,3 +195,7 @@ Removing extension MyExtension...
 Extension UI tab My Extension removed
 Extension "MyExtension" removed
 ```
+
+## What's next?
+
+See the next [tutorial](../ui-extension/) to create a UI extension based on ReactJS or check the rest of tutorials.

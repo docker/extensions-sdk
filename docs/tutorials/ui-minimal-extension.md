@@ -124,16 +124,9 @@ docker extension ls
 It outputs all the extensions installed:
 
 ```bash
-PLUGIN              PROVIDER            IMAGE                           UI                      VM       HOST
-MyExtension #(1)   Docker Inc. (2)     desktop-ui-extension:0.0.1 (3)  1 tab(My Extension)(4)  -(5)    -(6)
+PLUGIN              PROVIDER            IMAGE                           UI                      VM      HOST
+MyExtension         Docker Inc.         desktop-ui-extension:0.0.1      1 tab(My Extension)     -       -
 ```
-
-1. Name of the extension (from property `name` in `metadata.json`).
-2. Provider of the extension (from property `provider` in `metadata.json`)
-3. Docker image name
-4. Tab name (from property `ui.dashboard-tab.title` in `metadata.json`)
-5. No backend services running in the Desktop VM.
-6. No binaries deployed on the host.
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
 

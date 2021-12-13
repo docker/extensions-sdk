@@ -31,6 +31,10 @@ mkdir -p ~/.docker/cli-plugins
 mv docker-extension.exe ~/.docker/cli-plugins
 ```
 
+## Tutorials
+
+- [UI minimal extension](docs/tutorials/ui-minimal-extension.md) - a minimal Desktop Extension containing only a UI part based on HTML.
+
 ## Extension Structure
 
 An extension is packaged as a Docker image, and must have a `metadata.json` file at the root of the image filesystem.
@@ -218,8 +222,3 @@ docker extension dev reset my-extension
 If your extension is composed of one or more services running as containers in the Docker Desktop VM, you can get easier access to them by showing them in the Docker Desktop Dashboard and when using Docker commands.
 
 In the Docker Desktop Dashboard settings, under `Extension`, you can select `Show Docker Desktop Extensions system containers`, and you'll be able to see your extension containers as any other one, navigate to logs, etc.
-
-
-## Tutorials
-
-- [UI minimal extension](docs/tutorials/ui-minimal-extension.md)

@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: set-dirs # Give it an id to handle to get step outputs in the outputs key above
-        run: echo "::set-output name=dir::$(ls -d */ | grep -v -E "docs/|hello-world/" | jq -R -s -c 'split("\n")[:-1]')"
+        run: echo "::set-output name=dir::$(ls -d */ | grep -v docs/ | jq -R -s -c 'split("\n")[:-1]')"
   build:
     name: Build extensions
     runs-on: ubuntu-latest

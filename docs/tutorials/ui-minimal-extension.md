@@ -23,7 +23,7 @@ In the `hello-world` folder, at the root of the repository, you can find a ready
 
 1. Contains everything required to build the extension and run it in Docker Desktop.
 2. A file that provides information about the extension such as the name, description, and version, among others.
-3. The source folder that contains all your HTML, CSS and JS files. These can also be static assets like logos or the `robots.txt` file.
+3. The source folder that contains all your HTML, CSS and JS files. These can also be other static assets like logos, icons, etc.
 
 ## The extension's Dockerfile
 
@@ -48,8 +48,6 @@ COPY metadata.json .
 ```
 
 ## Configure the Extension metadata file
-
-### Provide information
 
 A `metadata.json` file is required at the root of the image filesystem.
 
@@ -79,19 +77,6 @@ docker extension validate metadata.json
 If your extension is valid, you should see the following message:
 
 `2021/12/10 10:49:42 The plugin metadata file is valid`.
-
-> :exclamation: Did the validation fail?
->
-> In case the validation failed, please see the output to amend the fields according to the JSON schema rules.
->
-> In the following example, we purposely forgot to set the `provider` field and added a white space character in the `name` field in the `metadata.json` file.
->
-> ```
->  2021/12/10 12:34:11 The plugin metadata file is not valid. see errors:
->  2021/12/10 12:34:11 - (root): provider is required
->  2021/12/10 12:34:11 - name: Does not match pattern '^[a-zA-Z-_]+$'
->  invalid plugin metadata file
-> ```
 
 ## Build the extension
 

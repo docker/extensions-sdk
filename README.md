@@ -31,6 +31,10 @@ mkdir -p ~/.docker/cli-plugins
 mv docker-extension.exe ~/.docker/cli-plugins
 ```
 
+## Tutorials
+
+- [UI minimal extension](docs/tutorials/ui-minimal-extension.md) - a minimal Desktop Extension containing only a UI part based on HTML.
+
 ## Extension Structure
 
 An extension is packaged as a Docker image, and must have a `metadata.json` file at the root of the image filesystem.

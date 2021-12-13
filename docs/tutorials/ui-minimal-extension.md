@@ -11,7 +11,7 @@ In this tutorial you will learn how to create the most minimal Desktop Extension
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
-In the `hello-world` folder, at the root of the repository, you can find a ready-to-go example that represents a UI Extension built on HTML. Although you can start from an empty directory and create all the files from scratch, it is highly recommended that you start from this official example and change it accordingly to suit your needs.
+In the `hello-world` folder, at the root of the repository, you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
 
 ```bash
 .
@@ -21,7 +21,7 @@ In the `hello-world` folder, at the root of the repository, you can find a ready
     └── index.html
 ```
 
-1. Contains the labels, files, dependencies, metadata, and everything required for the extension to run in Docker Desktop.
+1. Contains everything required to build the extension and run it in Docker Desktop.
 2. A file that provides information about the extension such as the name, description, and version, among others.
 3. The source folder that contains all your HTML, CSS and JS files. These can also be static assets like logos or the `robots.txt` file.
 

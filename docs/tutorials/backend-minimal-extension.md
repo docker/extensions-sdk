@@ -168,7 +168,7 @@ docker push owner/desktop-hello-backend-extension:0.0.1
 
     Note that for Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
 
-    See [distribution and new releases](../DISTRIBUTION.md#distribution-and-new-releases) for more information.
+    See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
 
     See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 

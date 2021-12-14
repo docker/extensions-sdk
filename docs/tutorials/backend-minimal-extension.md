@@ -1,6 +1,6 @@
 ## Backend minimal extension
 
-In this tutorial you will learn how to create the most minimal Desktop Extension which runs a backend service (container) in the Desktop VM.
+This tutorial describes a minimal example running CLI commands in the backend container. You can also build extensions with a backend services running REST services (over sockets/named pipes), see the `vm-ui extension` sample.
 
 ## Prerequisites
 
@@ -8,8 +8,6 @@ In this tutorial you will learn how to create the most minimal Desktop Extension
 - [Docker Extensions CLI](https://github.com/docker/desktop-extension-samples/releases/)
 
 ## Extension folder structure
-
-A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
 In the `hello-backend` folder, at the root of the repository, you can find a ready-to-go example. It represents a UI Extension built on HTML that runs a backend service. We will go through this code example in this tutorial.
 
@@ -39,7 +37,7 @@ The bare minimum configuration that a Dockerfile's extension requires to functio
 - Labels - required to provide extra information about the extension.
 - The src code - in this case, an `index.html` that sits within the `ui` folder.
 - The `metadata.json` file.
-- The command to run to keep the container up and running indefinitely.
+- The command to run the container backend service indefinitely.
 
 ```Dockerfile title="Dockerfile" linenums="1"
 FROM alpine:3.15
@@ -80,18 +78,6 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 > Do **not** replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder. It will be replaced automatically when installing the extension.
 
-### Validation
-
-Next, validate the Extension metadata file against the JSON schema file.
-
-```bash
-docker extension validate metadata.json
-```
-
-If your extension is valid, you should see the following message:
-
-`2021/12/13 18:17:35 The plugin metadata file is valid`.
-
 ## Build the extension
 
 ```bash
@@ -103,6 +89,20 @@ docker build -t desktop-hello-backend-extension:0.0.1 .
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-hello-backend-extension:0.0.1 .
 ```
+
+## Validate the extension
+
+Next, verify the extension image complies with the requisites to be a compliant Desktop Extension.
+
+```bash
+docker extension validate desktop-hello-backend-extension:0.0.1
+```
+
+The validation will check if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
+
+If your extension is valid, you should see the following message:
+
+`The extension image "desktop-hello-backend-extension:0.0.1" is valid`.
 
 ## Install the extension
 

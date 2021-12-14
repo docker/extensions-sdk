@@ -17,3 +17,7 @@ docker extension validate /path/to/metadata.json
 ## JSON schema
 
 The JSON schema used to validate the `metadata.json` file against can be found under the [releases page](https://github.com/docker/desktop-extension-samples/releases/latest).
+
+## Labels
+
+See [labels](labels.md)

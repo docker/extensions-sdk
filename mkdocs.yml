@@ -40,14 +40,14 @@ nav:
   - Overview:
       - Introduction: index.md
   - Tutorials:
-      - Create a minimal extension: tutorials/ui-minimal-extension.md
-      - Create a minimal backend extension: tutorials/backend-minimal-extension.md
-      - Create a graphical extension (ReactJS): tutorials/ui-extension.md
-      - Create a VM-service extension: tutorials/vm-service-extension.md
-      - Expose a socket/npipe: tutorials/expose-socket-npipe.md
-      - Deploy binaries on the host: tutorials/deploy-binaries-on-host.md
+      - Create a minimal frontend extension: tutorials/minimal-frontend-extension.md
+      - Create a minimal backend extension: tutorials/minimal-backend-extension.md
+      - Create a ReactJS-based extension: tutorials/react-extension.md
+      - Expose a socket or npipe: tutorials/expose-socket-npipe.md
+      - Deploy a binary on the host: tutorials/deploy-binaries-on-host.md
   - Extensions:
       - Metadata: extensions/METADATA.md
+      - Labels: extensions/labels.md
       - Validation: extensions/validation.md
       - Distribution: extensions/DISTRIBUTION.md
       - Style customization: extensions/style.md

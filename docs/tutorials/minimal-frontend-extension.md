@@ -1,4 +1,4 @@
-In this tutorial you will learn how to create the most minimal Desktop Extension containing only a UI part based on HTML.
+This tutorial describes a minimal example running frontend extension based on plain HTML.
 
 ## Prerequisites
 
@@ -9,7 +9,7 @@ In this tutorial you will learn how to create the most minimal Desktop Extension
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
-In the `hello-world` folder, at the root of the repository, you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
+In the `minimal-frontend` folder, at the root of the repository, you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
 
 ```bash
 .
@@ -30,7 +30,7 @@ An extension requires a `Dockerfile` to build, publish and run in Docker Desktop
 The bare minimum configuration that a Dockerfile's extension requires to function properly is:
 
 - Labels - required to provide extra information about the extension.
-- The src code - in this case, an `index.html` that sits within the `ui` folder.
+- The source code - in this case, an `index.html` that sits within the `ui` folder.
 - The `metadata.json` file.
 
 ```Dockerfile title="Dockerfile" linenums="1"
@@ -49,24 +49,6 @@ COPY metadata.json .
 
 A `metadata.json` file is required at the root of the image filesystem.
 
-### Labels
-
-| Label | Required | Description | Example |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------ | |
-| `org.opencontainers.image.title` | Yes | Human-readable title of the image (string). It is what appears in the tab. | my-extension |
-| `org.opencontainers.image.description` | Yes | Human-readable description of the software packaged in the image (string) | This extension is cool|
-| `org.opencontainers.image.vendor` | Yes | Name of the distributing entity, organization or individual. | Acme, Inc. |
-| `com.docker.desktop.extension.api.version` | Yes | Version of the Docker Extension manager that the extension is compatible with. | `1.0.0-beta.1`|
-| `com.docker.desktop.plugin.icon` | No | The extension icon (format? .png? .jpg?) | <a href="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png" target="__blank">https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png<a> |
-
-!!! warning "Missing required labels"
-
-    If any of the previous _required_ labels are missing in the `Dockerfile`, Docker Desktop will consider the extension invalid and will not appear listed in the Extensions list.
-
-## Configure the Extension metadata file
-
-A `metadata.json` file is required at the root of your extension directory.
-
 ```json title="metadata.json" linenums="1"
 {
   "desktop-plugin-version": "1.0.0-beta.1",
@@ -82,29 +64,31 @@ A `metadata.json` file is required at the root of your extension directory.
 }
 ```
 
-### Validation
-
-Next, validate the Extension metadata file against the JSON schema file.
-
-```bash
-docker extension validate metadata.json
-```
-
-If your extension is valid, you should see the following message:
-
-`2021/12/10 10:49:42 The plugin metadata file is valid`.
-
 ## Build the extension
 
 ```bash
-docker build -t desktop-ui-extension:0.0.1 .
+docker build -t desktop-frontend-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
 
 ```bash
-docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-ui-extension:0.0.1 .
+docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-frontend-minimal-extension:0.0.1 .
 ```
+
+## Validate the extension
+
+Next, verify the extension image complies with the requisites to be a compliant Desktop Extension.
+
+The validation will check if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
+
+```bash
+docker extension validate desktop-hello-backend-extension:0.0.1
+```
+
+If your extension is valid, you should see the following message:
+
+`The extension image "desktop-hello-backend-extension:0.0.1" is valid`.
 
 ## Install the extension
 
@@ -117,13 +101,13 @@ Now that the extension is packaged as a Docker image, let's proceed with the ins
 To install the extension in Docker Desktop, run:
 
 ```bash
-docker extension install desktop-ui-extension:0.0.1
+docker extension install desktop-frontend-minimal-extension:0.0.1
 ```
 
 If the installation was successful, you should see the following output:
 
 ```bash
-Installing new extension "MyExtension" with desktop-ui-extension:0.0.1 ...
+Installing new extension "MyExtension" with desktop-frontend-minimal-extension:0.0.1 ...
 Installing Desktop extension UI for tab "My Extension"...
 Extension UI tab "My Extension" added.
 Extension "MyExtension" installed successfully
@@ -140,8 +124,8 @@ docker extension ls
 It outputs all the extensions installed:
 
 ```bash
-PLUGIN              PROVIDER            IMAGE                           UI                      VM      HOST
-MyExtension         Docker Inc.         desktop-ui-extension:0.0.1      1 tab(My Extension)     -       -
+PLUGIN              PROVIDER            IMAGE                                     UI                  VM  HOST
+MyExtension         Docker Inc.         desktop-frontend-minimal-extension:0.0.1  1 tab(My Extension) -   -
 ```
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
@@ -157,11 +141,11 @@ In order to publish the extension, we have to upload the Docker image to [Docker
 Let's tag the previous image to preprend the account owner at the beginning of the image name:
 
 ```bash
-docker tag desktop-ui-extension:0.0.1 owner/desktop-ui-extension:0.0.1
+docker tag desktop-frontend-minimal-extension:0.0.1 owner/desktop-frontend-minimal-extension:0.0.1
 ```
 
 ```bash
-docker push owner/desktop-ui-extension:0.0.1
+docker push owner/desktop-frontend-minimal-extension:0.0.1
 ```
 
 !!! warning
@@ -192,4 +176,4 @@ Extension "MyExtension" removed
 
 ## What's next?
 
-See the next [tutorial](../ui-extension/) to create a UI extension based on ReactJS or check the rest of tutorials.
+See the next [tutorial](../minimal-backend-extension) to create a minimal backend extension.

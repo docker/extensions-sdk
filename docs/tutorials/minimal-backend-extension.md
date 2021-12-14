@@ -1,5 +1,3 @@
-## Backend minimal extension
-
 This tutorial describes a minimal example running CLI commands in the backend container. You can also build extensions with a backend services running REST services (over sockets/named pipes), see the `vm-ui extension` sample.
 
 ## Prerequisites
@@ -9,7 +7,7 @@ This tutorial describes a minimal example running CLI commands in the backend co
 
 ## Extension folder structure
 
-In the `hello-backend` folder, at the root of the repository, you can find a ready-to-go example. It represents a UI Extension built on HTML that runs a backend service. We will go through this code example in this tutorial.
+In the `minimal-backend` folder, at the root of the repository, you can find a ready-to-go example. It represents a UI Extension built on HTML that runs a backend service. We will go through this code example in this tutorial.
 
 ```bash
 .
@@ -76,18 +74,20 @@ A `metadata.json` file is required at the root of the image filesystem.
 }
 ```
 
-> Do **not** replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder. It will be replaced automatically when installing the extension.
+!!! info
+
+    Do **not** replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder will be replaced automatically with the correct image name when installing the extension.
 
 ## Build the extension
 
 ```bash
-docker build -t desktop-hello-backend-extension:0.0.1 .
+docker build -t desktop-backend-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
 
 ```bash
-docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-hello-backend-extension:0.0.1 .
+docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-backend-minimal-extension:0.0.1 .
 ```
 
 ## Validate the extension
@@ -95,14 +95,14 @@ docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-hello-backend-
 Next, verify the extension image complies with the requisites to be a compliant Desktop Extension.
 
 ```bash
-docker extension validate desktop-hello-backend-extension:0.0.1
+docker extension validate desktop-backend-minimal-extension:0.0.1
 ```
 
 The validation will check if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
 If your extension is valid, you should see the following message:
 
-`The extension image "desktop-hello-backend-extension:0.0.1" is valid`.
+`The extension image "desktop-backend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
 
@@ -114,13 +114,13 @@ Now that the extension is packaged as a Docker image, let's proceed with the ins
     To install the extension in Docker Desktop, run:
 
 ```bash
-docker extension install desktop-hello-backend-extension:0.0.1
+docker extension install desktop-backend-minimal-extension:0.0.1
 ```
 
 If the installation was successful, you should see the following output:
 
 ```bash
-Installing new extension "hello-backend" with desktop-hello-backend-extension:0.0.1 ...
+Installing new extension "hello-backend" with desktop-backend-minimal-extension:0.0.1 ...
 Installing service in Desktop VM...
 Setting additional compose attributes
 VM service started
@@ -141,7 +141,7 @@ It outputs all the extensions installed:
 
 ```bash
 PLUGIN              PROVIDER            IMAGE                           UI                      VM      HOST
-hello-backend       Docker Inc.         desktop-hello-backend-extension:0.0.1   1 tab(Hello Backend Extension)   Running(1)          -
+hello-backend       Docker Inc.         desktop-backend-minimal-extension:0.0.1   1 tab(Hello Backend Extension)   Running(1)          -
 ```
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
@@ -157,11 +157,11 @@ In order to publish the extension, we have to upload the Docker image to [Docker
 Let's tag the previous image to preprend the account owner at the beginning of the image name:
 
 ```bash
-docker tag desktop-hello-backend-extension:0.0.1 owner/desktop-hello-backend-extension:0.0.1
+docker tag desktop-backend-minimal-extension:0.0.1 owner/desktop-backend-minimal-extension:0.0.1
 ```
 
 ```bash
-docker push owner/desktop-hello-backend-extension:0.0.1
+docker push owner/desktop-backend-minimal-extension:0.0.1
 ```
 
 !!! warning
@@ -193,3 +193,7 @@ Extension removed from Desktop VM
 Extension UI tab Hello Backend Extension removed
 Extension "hello-backend" removed
 ```
+
+## What's next?
+
+See the next [tutorial](../react-extension) to create a ReactJS-based extension.

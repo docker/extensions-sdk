@@ -5,9 +5,9 @@ In this tutorial you will learn how to create a simple Desktop Extension contain
 - [Docker Desktop build with Extensions capabilities](https://github.com/docker/desktop-extension-samples/releases/)
 - [Docker Extensions CLI](https://github.com/docker/desktop-extension-samples/releases/)
 
-## UI extension folder structure
+## Extension folder structure
 
-In the `templates` folder you can find the `ui-extension` template that contains a ready-to-go example that represents a UI Extension built on ReactJS. Although you can start from an empty directory, it is highly recommended that you start from this official template and change it accordingly to suit your needs.
+In the `react-extension` folder at the root of the repository you can find a ready-to-go example that represents a UI Extension built on ReactJS. Although you can start from an empty directory, it is highly recommended that you start from this official template and change it accordingly to suit your needs.
 
 ```bash
 .
@@ -38,35 +38,33 @@ In the `templates` folder you can find the `ui-extension` template that contains
 
 A `Dockerfile` is one of the mandatory files needed to build and publish your Desktop Extension.
 
-### Labels
+```Dockerfile title="Dockerfile" linenums="1"
+FROM node:14.17-alpine3.13 AS client-builder
+WORKDIR /app/client
+# cache packages in layer
+COPY client/package.json /app/client/package.json
+COPY client/yarn.lock /app/client/yarn.lock
+ARG TARGETARCH
+RUN yarn config set cache-folder /usr/local/share/.cache/yarn-${TARGETARCH}
+RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn
+# install
+COPY client /app/client
+RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn build
 
-| Label | Required | Description | Example |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------ | |
-| `org.opencontainers.image.title` | Yes | Human-readable title of the image (string). It is what appears in the tab. | my-extension |
-| `org.opencontainers.image.description` | Yes | Human-readable description of the software packaged in the image (string) | This extension is cool|
-| `org.opencontainers.image.vendor` | Yes | Name of the distributing entity, organization or individual. | Acme, Inc. |
-| `com.docker.desktop.extension.api.version` | Yes | Version of the Docker Extension manager that the extension is compatible with. | `1.0.0-beta.1`|
-| `com.docker.desktop.plugin.icon` | No | The extension icon (format? .png? .jpg?) | <a href="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png" target="__blank">https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png<a> |
-
-```Dockerfile title="Dockerfile (excerpt)" linenums="1"
-... (omitted lines) ...
-
+FROM debian:bullseye-slim
 LABEL org.opencontainers.image.title="ui-extension" \
     org.opencontainers.image.description="Your Desktop Extension Description" \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version="1.0.0-beta.1" \
-    com.docker.desktop.plugin.icon="https://f-droid.org/repo/icons-640/com.tailscale.ipn.78.png"
+    com.docker.desktop.plugin.icon="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png"
 
-... (omitted lines) ...
+COPY --from=client-builder /app/client/dist ui
+COPY docker.svg .
+COPY metadata.json .
+
 ```
 
-!!! warning "Missing required labels"
-
-    If any of the previous _required_ labels are missing in the `Dockerfile`, Docker Desktop will consider the extension invalid and will not appear listed in the Extensions list.
-
 ## Configure the Extension metadata file
-
-### Provide information
 
 A `metadata.json` file is required at the root of your extension directory.
 
@@ -86,42 +84,31 @@ A `metadata.json` file is required at the root of your extension directory.
 }
 ```
 
-### Validation
-
-Next, validate the Extension metadata file against the JSON schema file.
-
-```bash
-docker extension validate metadata.json
-```
-
-If your extension is valid, you should see the following message:
-
-`2021/12/10 10:49:42 The plugin metadata file is valid`.
-
-!!! failure "Did the validation fail?"
-
-    In case the validation failed, please see the output to amend the fields according to the JSON schema rules.
-
-    In the following example, we purposely forgot to set the `provider` field and added a white space character in the `name` field in the `metadata.json` file.
-
-    ```
-    2021/12/10 12:34:11 The plugin metadata file is not valid. see errors:
-    2021/12/10 12:34:11 - (root): provider is required
-    2021/12/10 12:34:11 - name: Does not match pattern '^[a-zA-Z-_]+$'
-    invalid plugin metadata file
-    ```
-
 ## Build the extension
 
 ```bash
-docker build -t desktop-ui-extension:0.0.1 .
+docker build -t desktop-react-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
 
 ```bash
-docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-ui-extension:0.0.1 .
+docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-react-extension:0.0.1 .
 ```
+
+## Validate the extension
+
+Next, verify the extension image complies with the requisites to be a compliant Desktop Extension.
+
+```bash
+docker extension validate desktop-backend-minimal-extension:0.0.1
+```
+
+The validation will check if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
+
+If your extension is valid, you should see the following message:
+
+`The extension image "desktop-backend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
 
@@ -134,46 +121,17 @@ Now that the extension is packaged as a Docker image, let's proceed with the ins
 To install the extension in Docker Desktop, run:
 
 ```bash
-docker extension install desktop-ui-extension:0.0.1
+docker extension install desktop-react-extension:0.0.1
 ```
 
 If the installation was successful, you should see the following output:
 
 ```bash
-Installing new extension "ui-extension" with desktop-ui-extension:0.0.1 ...
+Installing new extension "ui-extension" with desktop-react-extension:0.0.1 ...
 Installing Desktop extension UI for tab "UI Extension"...
 Extension UI tab "UI Extension" added.
 Extension "ui-extension" installed successfully
 ```
-
-The installation will create a directory under `~/Library/Containers/com.docker.docker/Data/plugins` (MacOS)
-
-```bash
-tree ~/Library/Containers/com.docker.docker/Data/plugins/ui-extension/
-
-/Users/felipecruz/Library/Containers/com.docker.docker/Data/plugins/ui-extension/
-├── docker.svg
-├── host
-├── metadata.json
-└── ui
-    ├── manifest.json
-    └── ui
-        ├── asset-manifest.json
-        ├── index.html
-        └── static
-            └── js
-                ├── 2.805e56bb.chunk.js
-                ├── 2.805e56bb.chunk.js.LICENSE.txt
-                ├── 2.805e56bb.chunk.js.map
-                ├── main.d74bbdc1.chunk.js
-                ├── main.d74bbdc1.chunk.js.map
-                ├── runtime-main.dc38298c.js
-                └── runtime-main.dc38298c.js.map
-```
-
-!!! success
-
-    Your extension should have been installed successfully.
 
 ## Preview the extension
 
@@ -187,7 +145,7 @@ It outputs all the extensions installed:
 
 ```bash
 PLUGIN              PROVIDER            IMAGE                           UI                      VM       HOST
-ui-extension #(1)   Docker Inc. (2)     desktop-ui-extension:0.0.1 (3)  1 tab(UI Extension)(4)  -(5)    -(6)
+ui-extension #(1)   Docker Inc. (2)     desktop-react-extension:0.0.1 (3)  1 tab(UI Extension)(4)  -(5)    -(6)
 ```
 
 1. Name of the extension (from property `name` in `metadata.json`).
@@ -201,7 +159,7 @@ To preview the extension in Docker Desktop, close and open the Docker Desktop Da
 
 On the left-menu, you should see a new tab with the name `UI Extension`. Click on it to load the main window that will render a button on the top-left corner. When you click on it, a pop-up will appear with the message `Hello, World!`.
 
-![UI Extension](../images/ui-extension-hello-world.png){ align=center }
+![UI Extension](images/ui-extension-hello-world.png){ align=center }
 
 ### Opening Dev Tools
 
@@ -214,11 +172,11 @@ In order to publish the extension, we have to upload the Docker image to [Docker
 Let's tag the previous image to preprend the account owner at the beginning of the image name:
 
 ```bash
-docker tag desktop-ui-extension:0.0.1 owner/desktop-ui-extension:0.0.1
+docker tag desktop-react-extension:0.0.1 owner/desktop-react-extension:0.0.1
 ```
 
 ```bash
-docker push owner/desktop-ui-extension:0.0.1
+docker push owner/desktop-react-extension:0.0.1
 ```
 
 !!! warning
@@ -235,9 +193,13 @@ docker push owner/desktop-ui-extension:0.0.1
 
 ## Clean up
 
+To remove the extension run:
+
 ```bash
 docker extension rm ui-extension
 ```
+
+The following output should be displayed:
 
 ```bash
 Removing extension ui-extension...
@@ -247,4 +209,4 @@ Extension "ui-extension" removed
 
 ## What's next?
 
-See the next [tutorial](../vm-service-extension/) to add a backend service or check the rest of tutorials.
+See the next [tutorial](../expose-socket-npipe) to expose a socket or npipe in your extension extension.

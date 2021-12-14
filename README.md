@@ -1,5 +1,7 @@
 # Desktop Extension Samples
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/883a0d5e-15c4-471b-a3e3-84cf27d2fced/deploy-status)](https://app.netlify.com/sites/docker-desktop-extensions/deploys)
+
 This repository includes Desktop Extension samples.
 
 :warning: **This work is experimental and still in progress, features and APIs detailed are subject to change**

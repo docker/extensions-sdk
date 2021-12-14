@@ -41,6 +41,7 @@ nav:
       - Introduction: index.md
   - Tutorials:
       - Create a minimal extension: tutorials/ui-minimal-extension.md
+      - Create a minimal backend extension: tutorials/backend-minimal-extension.md
       - Create a graphical extension (ReactJS): tutorials/ui-extension.md
       - Create a VM-service extension: tutorials/vm-service-extension.md
       - Expose a socket/npipe: tutorials/expose-socket-npipe.md

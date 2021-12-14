@@ -108,11 +108,10 @@ If your extension is valid, you should see the following message:
 
 Now that the extension is packaged as a Docker image, let's proceed with the installation. To do so, we'll use the Docker Extensions CLI.
 
-> Enable Docker Desktop Extensions
->
-> Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
+!!! info Enable Docker Desktop Extensions
 
-To install the extension in Docker Desktop, run:
+    Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
+    To install the extension in Docker Desktop, run:
 
 ```bash
 docker extension install desktop-hello-backend-extension:0.0.1
@@ -165,15 +164,17 @@ docker tag desktop-hello-backend-extension:0.0.1 owner/desktop-hello-backend-ext
 docker push owner/desktop-hello-backend-extension:0.0.1
 ```
 
-> Note that for Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
->
-> See [distribution and new releases](../DISTRIBUTION.md#distribution-and-new-releases) for more information.
->
-> See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
+!!! warning
 
-> Having trouble to push the image?
->
-> Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
+    Note that for Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+
+    See [distribution and new releases](../DISTRIBUTION.md#distribution-and-new-releases) for more information.
+
+    See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
+
+!!! info "Having trouble to push the image?"
+
+    Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
 

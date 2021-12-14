@@ -21,16 +21,14 @@ In the `hello-backend` folder, at the root of the repository, you can find a rea
 │   └── src
 │       ├── index.html
 │       └── script.js
-├── docker-compose.yaml # (3)
-├── hello.sh # (4)
-└── metadata.json # (5)
+├── hello.sh # (3)
+└── metadata.json # (4)
 ```
 
 1. Contains everything required to build the extension and run it in Docker Desktop.
 2. The source folder that contains all your HTML, CSS and JS files. These can also be other static assets like logos, icons, etc.
-3. The `docker-compose.yaml` file to describe the container.
-4. The script that will be run inside the container.
-5. A file that provides information about the extension such as the name, description, and version, among others.
+3. The script that will be run inside the container.
+4. A file that provides information about the extension such as the name, description, and version, among others.
 
 ## The extension's Dockerfile
 
@@ -52,7 +50,6 @@ LABEL org.opencontainers.image.title="HelloBackend" \
     com.docker.desktop.extension.api.version="1.0.0-beta.1"
 
 COPY hello.sh .
-COPY docker-compose.yaml .
 COPY metadata.json .
 COPY client/src ./ui
 
@@ -69,7 +66,7 @@ A `metadata.json` file is required at the root of the image filesystem.
   "name": "hello-backend",
   "provider": "Docker Inc.",
   "vm": {
-    "composefile": "docker-compose.yaml"
+    "image": "${DESKTOP_PLUGIN_IMAGE}"
   },
   "ui": {
     "dashboard-tab": {
@@ -80,6 +77,8 @@ A `metadata.json` file is required at the root of the image filesystem.
   }
 }
 ```
+
+> Do **not** replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder. It will be replaced automatically when installing the extension.
 
 ### Validation
 

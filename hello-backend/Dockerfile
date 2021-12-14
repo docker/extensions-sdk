@@ -6,7 +6,6 @@ LABEL org.opencontainers.image.title="HelloBackend" \
     com.docker.desktop.extension.api.version="1.0.0-beta.1"
 
 COPY hello.sh .
-COPY docker-compose.yaml .
 COPY metadata.json .
 COPY client/src ./ui
 

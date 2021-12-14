@@ -5,7 +5,7 @@ In this tutorial you will learn how to create the most minimal Desktop Extension
 - [Docker Desktop build with Extensions capabilities](https://github.com/docker/desktop-extension-samples/releases/)
 - [Docker Extensions CLI](https://github.com/docker/desktop-extension-samples/releases/)
 
-## UI extension folder structure
+## Extension folder structure
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
@@ -45,11 +45,9 @@ COPY ui ./ui
 COPY metadata.json .
 ```
 
-<<<<<<< HEAD
-
 ## Configure the Extension metadata file
 
-# A `metadata.json` file is required at the root of the image filesystem.
+A `metadata.json` file is required at the root of the image filesystem.
 
 ### Labels
 
@@ -67,11 +65,7 @@ COPY metadata.json .
 
 ## Configure the Extension metadata file
 
-### Provide information
-
 A `metadata.json` file is required at the root of your extension directory.
-
-> > > > > > > 2bd1382 (Add tutorial for UI minimal extension)
 
 ```json title="metadata.json" linenums="1"
 {

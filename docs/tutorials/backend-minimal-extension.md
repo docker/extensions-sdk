@@ -7,7 +7,7 @@ In this tutorial you will learn how to create the most minimal Desktop Extension
 - [Docker Desktop build with Extensions capabilities](https://github.com/docker/desktop-extension-samples/releases/)
 - [Docker Extensions CLI](https://github.com/docker/desktop-extension-samples/releases/)
 
-## Backend extension folder structure
+## Extension folder structure
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
@@ -32,7 +32,7 @@ In the `hello-backend` folder, at the root of the repository, you can find a rea
 
 ## The extension's Dockerfile
 
-An extension requires a `Dockerfile` to build, publish and run in Docker Desktop.
+An extension requires a `Dockerfile` to build, publish and run the extension in Docker Desktop.
 
 The bare minimum configuration that a Dockerfile's extension requires to function properly is:
 

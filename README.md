@@ -34,6 +34,7 @@ mv docker-extension.exe ~/.docker/cli-plugins
 ## Tutorials
 
 - [UI minimal extension](docs/tutorials/ui-minimal-extension.md) - a minimal Desktop Extension containing only a UI part based on HTML.
+- [UI & backend extension](docs/tutorials/backend-minimal-extension.md) - a Desktop Extension containing a UI part connecting to a minimal backend.
 
 ## Extension Structure
 

@@ -1,4 +1,4 @@
-# Usage overview
+# Usage Overview
 
 The Extensions CLI is an extension development tool that can be used to manage Docker extensions. Actions include install, list, remove and validate extensions, among others.
 

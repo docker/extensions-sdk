@@ -61,6 +61,6 @@ nav:
       - Overview: dev/overview.md
       - CLI:
           - Usage overview: dev/cli/usage.md
-          - Build, test and install an extension: dev/cli/Build, test and install an extension.md
+          - Build, test and install an extension: dev/cli/build-test-install-extension.md
       - UI API:
           - Overview: dev/api/overview.md

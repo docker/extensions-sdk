@@ -18,41 +18,27 @@ See [prerequisites](docs/index.md#prerequisites).
 - [Create a minimal backend extension](docs/tutorials/minimal-backend-extension.md) - a Desktop Extension containing a UI part connecting to a minimal backend.
 - [Create a ReactJS-based extension](docs/tutorials/react-extension.md) - a minimal Desktop Extension containing only a UI part based on ReactJS.
 
-## Extension Structure
+## Docker Desktop Extension Model
 
-Details are described in [Extension structure](docs/extensions/METADATA.md).
-
-## Distribution
-
-Extension distribution will be done through the Docker Hub.
+Desktop Extensions are packaged and distributed as Docker images.
 Development of extensions can be done locally without the need to push the extension to Docker Hub.
 This is described in [Extension Distribution](docs/extensions/DISTRIBUTION.md).
 
-## Extensions CLI
+The extension image must have some specific content, described [here](docs/extensions/METADATA.md)
 
-The Extensions CLI is an extension development tool that can be used to manage Docker extensions. Actions include install, list, remove and validate extensions, among others.
+## Developing Docker Extensions
 
-Check out the list of commands available [here](docs/dev/cli/usage.md).
-
-## Build, Test and Install an Extension
+The [Extensions CLI](docs/dev/cli/usage.md) is an extension development tool that can be used to manage Docker extensions.
 
 This repository contains multiple extensions, each one is defined in an individual directories at the root of the repository.
 These are Docker developed samples that are not meant to be final products.
 
-To use one of them, navigate to the directory of the extension then build and install it on Docker Desktop.
-
-This is described in [here](docs/dev/cli/build-test-install-extension.md).
-
-## Extension UI API
-
-The extension UI has access to an extension API that is useful to invoke backend operations from the UI, e.g. listing running containers, images, etc.
-Furthermore, you can communicate with your extension backend service or invoking a binary on the host.
-
-For more details see [here](docs/dev/api/overview.md).
-
-## Developing Docker Extensions
+To try one of them, navigate to the directory of the extension then [use the CLI to build and install the extension](docs/dev/cli/build-test-install-extension.md) on Docker Desktop.
 
 The [overview](docs/dev/overview.md) describes how to get started developing your custom Docker Extension. It also covers how to open the Chrome Dev Tools and show the extension containers.
+
+The extension UI has access to an extension API to invoke backend operations from the UI, e.g. listing running containers, images, etc.
+Furthermore, you can communicate with your extension backend service or invoke a binary on the host or in the VM.
 
 ## Build the documentation
 

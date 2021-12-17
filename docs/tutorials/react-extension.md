@@ -159,7 +159,7 @@ To preview the extension in Docker Desktop, close and open the Docker Desktop Da
 
 On the left-menu, you should see a new tab with the name `UI Extension`. Click on it to load the main window that will render a button on the top-left corner. When you click on it, a pop-up will appear with the message `Hello, World!`.
 
-![UI Extension](images/ui-extension-hello-world.png){ align=center }
+![UI Extension](images/ui-extension-hello-world.png)
 
 ### Opening Dev Tools
 
@@ -206,7 +206,3 @@ Removing extension ui-extension...
 Extension UI tab UI Extension removed
 Extension "ui-extension" removed
 ```
-
-## What's next?
-
-See the next [tutorial](../expose-socket-npipe) to expose a socket or npipe in your extension extension.

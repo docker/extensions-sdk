@@ -43,8 +43,6 @@ nav:
       - Create a minimal frontend extension: tutorials/minimal-frontend-extension.md
       - Create a minimal backend extension: tutorials/minimal-backend-extension.md
       - Create a ReactJS-based extension: tutorials/react-extension.md
-      - Expose a socket or npipe: tutorials/expose-socket-npipe.md
-      - Deploy a binary on the host: tutorials/deploy-binaries-on-host.md
   - Extensions:
       - Metadata: extensions/METADATA.md
       - Labels: extensions/labels.md

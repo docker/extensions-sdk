@@ -1,0 +1,63 @@
+site_name: Docker Desktop Extensions
+theme:
+  language: en
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - toc.integrate
+    - content.code.annotate
+extra:
+  generator: false
+copyright: Copyright &copy; 2021 Docker, Inc.
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+nav:
+  - Introduction: index.md
+  - Tutorials:
+      - Create a minimal frontend extension: tutorials/minimal-frontend-extension.md
+      - Create a minimal backend extension: tutorials/minimal-backend-extension.md
+      - Create a ReactJS-based extension: tutorials/react-extension.md
+  - Extensions:
+      - Metadata: extensions/METADATA.md
+      - Labels: extensions/labels.md
+      - Validation: extensions/validation.md
+      - Distribution: extensions/DISTRIBUTION.md
+      - Style customization: extensions/style.md
+      - Samples:
+          - SwimmingWhale: extensions/samples/swimmingwhale/README.md
+          - Tailscale: extensions/samples/tailscale/README.md
+          - Telepresence: extensions/samples/telepresence/README.md
+          - VM UI: extensions/samples/vm-ui/README.md
+          - Volumes share: extensions/samples/volumes-share/README.md
+  - Developer guide:
+      - Overview: dev/overview.md
+      - CLI:
+          - Usage overview: dev/cli/usage.md
+          - Build, test and install an extension: dev/cli/build-test-install-extension.md
+      - UI API:
+          - Overview: dev/api/overview.md

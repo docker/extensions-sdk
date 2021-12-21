@@ -1,0 +1,13 @@
+{
+  "desktop-plugin-version": "1.0.0-beta.1",
+  "name": "ui-extension",
+  "provider": "Docker Inc.",
+  "icon": "docker.svg",
+  "ui": {
+    "dashboard-tab": {
+      "title": "UI Extension",
+      "root": "/ui",
+      "src": "index.html"
+    }
+  }
+}

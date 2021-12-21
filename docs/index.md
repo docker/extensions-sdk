@@ -6,6 +6,19 @@ This repository includes Desktop Extension samples.
 
     This work is experimental and still in progress, features and APIs detailed are subject to change.
 
+## Overview
+
+An extension is packaged as a Docker image, and must have a `metadata.json` file at the root of the image filesystem.
+This `metadata.json` file describes the content of the extension.
+
+An extension can contain a UI part and backend parts (running either on the host or in the Desktop virtual machine).
+
+Details are described in [Extension structure](extensions/METADATA.md).
+
+Extension distribution will be done through the Docker Hub.
+Development of extensions can be done locally without the need to push the extension to Docker Hub.
+This is described in [Extension Distribution](extensions/DISTRIBUTION.md).
+
 ## Prerequisites
 
 To get started with Docker Extensions you will need a specific Docker Desktop build that comes with extension capabilities.
@@ -34,16 +47,3 @@ tar -xvzf desktop-extension-cli-windows-amd64.tar.gz
 mkdir -p ~/.docker/cli-plugins
 mv docker-extension.exe ~/.docker/cli-plugins
 ```
-
-## Overview
-
-An extension is packaged as a Docker image, and must have a `metadata.json` file at the root of the image filesystem.
-This `metadata.json` file describes the content of the extension.
-
-An extension can contain a UI part and backend parts (running either on the host or in the Desktop virtual machine).
-
-Details are described in [Extension structure](extensions/METADATA.md).
-
-Extension distribution will be done through the Docker Hub.
-Development of extensions can be done locally without the need to push the extension to Docker Hub.
-This is described in [Extension Distribution](extensions/DISTRIBUTION.md).

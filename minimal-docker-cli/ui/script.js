@@ -1,5 +1,5 @@
 window.ddClient
-  .execDockerCmd("system", "df", "--format", "'{{ json . }}'")
+  .execDockerCmd("system", "df", "--format", '"{{ json . }}"')
   .then((res) => {
     document.getElementById("size-info").innerHTML = `
   <table>

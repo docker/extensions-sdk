@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body class="dockerDesktopTheme">
+    <h1>Dashboard Navigate Extension</h1>
+    <p>This Desktop Extension will navigate to a specified dashboard route.</p>
+
+    <label for="route">Dashboard Route</label>
+    <div>
+      <input id="route" type="text" placeholder="e.g. /dashboard/images"></input>
+      <button onclick="navigateToRoute()">Navigate</button>
+    </div>
+  
+    </br>
+    
+    <label for="image">Images</label>
+    <div>
+      <input id="image" type="text" placeholder="e.g. sha256:f6987c8d6...-tag"></input>
+      <button onclick="navigateToImage()">Navigate to image</button>
+    </div>
+    </br>
+    <button onclick="navigateToImages()">Navigate to images</button>
+
+    </br>
+
+    <label for="container">Containers</label>
+    <div>
+      <input id="container" type="text" placeholder="e.g. bcfe9785663f"></input>
+      <button onclick="navigateToContainer()">Navigate to container</button>
+    </div>
+    </br>
+    <div>
+      <button onclick="navigateToContainers()">Navigate to containers</button>
+    </div>
+
+    </br>
+
+    <label for="volumes">Volumes</label>
+    <div>
+      <input id="volume" type="text" placeholder="e.g. my-volume-name"></input>
+      <button onclick="navigateToVolume()">Navigate to volume</button>
+    </div>
+    </br>
+    <div>
+      <button onclick="navigateToVolumes()">Navigate to volumes</button>
+    </div>
+
+    </br>
+
+    <label for="dev-envs">Dev Environments</label>
+    <div>
+      <button onclick="navigateToDevEnvironments()">Navigate to Dev Environments</button>
+    </div>
+
+    <script type="application/javascript" src="./script.js"></script>
+  </body>
+</html>

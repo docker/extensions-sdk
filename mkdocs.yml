@@ -41,6 +41,7 @@ nav:
   - Tutorials:
       - Create your first extension: tutorials/initialize.md
       - Create a minimal frontend extension: tutorials/minimal-frontend-extension.md
+      - Create a minimal extension invoking docker commands: tutorials/minimal-frontend-using-docker-cli.md
       - Create a minimal backend extension: tutorials/minimal-backend-extension.md
       - Create a ReactJS-based extension: tutorials/react-extension.md
   - Extensions:

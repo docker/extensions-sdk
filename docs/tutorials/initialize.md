@@ -85,7 +85,11 @@ you should see the response from the backend
 
 To open the Chrome Developer Tools, see [this](../../dev/overview).
 
-### Developping the frontend
+### Iterate faster while developing
+
+To iterate faster and try out new changes when developing the extension, use the `docker extension update` command to uninstall the previous version and install the new one with your latest changes.
+
+### Developing the frontend
 
 If you are working on the frontend code of your extension and don't want to
 rebuild the extension image each time you can setup Docker Desktop in a way
@@ -113,6 +117,7 @@ Once you are done you can remove the ui-source override by running
 ```bash
 docker extension dev reset my-extension
 ```
+
 
 ## Clean up
 

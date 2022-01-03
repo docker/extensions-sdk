@@ -61,3 +61,4 @@ nav:
           - Build, test and install an extension: dev/cli/build-test-install-extension.md
       - UI API:
           - Overview: dev/api/overview.md
+          - Navigation: dev/api/dashboard-routes-navigation.md

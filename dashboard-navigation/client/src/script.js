@@ -30,6 +30,24 @@ function navigateToContainers() {
   window.ddClient.navigateToContainers();
 }
 
+function navigateToContainerLogs() {
+  const container = document.getElementById("container").value;
+  console.log(`Navigating to container logs ${container}`);
+  window.ddClient.navigateToContainerLogs(`${container}`);
+}
+
+function navigateToContainerInspect() {
+  const container = document.getElementById("container").value;
+  console.log(`Navigating to container inspect ${container}`);
+  window.ddClient.navigateToContainerInspect(`${container}`);
+}
+
+function navigateToContainerStats() {
+  const container = document.getElementById("container").value;
+  console.log(`Navigating to container stats ${container}`);
+  window.ddClient.navigateToContainerStats(`${container}`);
+}
+
 function navigateToVolume() {
   const volume = document.getElementById("volume").value;
   console.log(`Navigating to volume ${volume}`);

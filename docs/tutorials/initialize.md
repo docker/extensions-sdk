@@ -109,7 +109,7 @@ Docker Desktop to use this as the frontend source, in another terminal run:
 docker extension dev ui-source my-extension http://localhost:3000
 ```
 
-Close and reoped the Docker Desktop dashboard and go to your extension, all the
+Close and reopen the Docker Desktop dashboard and go to your extension, all the
 changes to the frontend code will now be immediately visible.
 
 Once you are done you can remove the ui-source override by running

@@ -47,3 +47,5 @@ tar -xvzf desktop-extension-cli-windows-amd64.tar.gz
 mkdir -p ~/.docker/cli-plugins
 mv docker-extension.exe ~/.docker/cli-plugins
 ```
+
+You can now enable the extension feature by running `docker extension enable`

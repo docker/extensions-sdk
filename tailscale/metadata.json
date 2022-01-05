@@ -20,11 +20,17 @@
                 "darwin": [
                     {
                         "path": "/darwin/hostname"
+                    },
+                    {
+                        "path": "/darwin/tsbrowser"
                     }
                 ],
                 "windows": [
                     {
                         "path": "/windows/hostname.cmd"
+                    },
+                    {
+                        "path": "/windows/tsbrowser.cmd"
                     }
                 ]
             }

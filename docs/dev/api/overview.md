@@ -25,7 +25,7 @@ window.ddClient.toastError("Something went wrong");
 ## Running any docker command and getting results
 
 ```typescript
-window.ddClient.backend
+window.ddClient
   .execDockerCmd("info", "--format", '"{{ json . }}"')
   .then((cmdResult) => console.log(cmdResult));
 ```

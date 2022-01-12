@@ -72,3 +72,7 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
   console.log(cmdResult);
 });
 ```
+
+### Navigation to Dashboard routes
+
+See [here](dashboard-route-navigation.md)

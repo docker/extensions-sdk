@@ -17,6 +17,19 @@ For further inspiration, have a look at the rest of examples in the root of this
 Once an extension is deployed and running, it is possible to open the Chrome Dev Tools from the UI extension part, using a variation of the [Konami Code](https://en.wikipedia.org/wiki/Konami_Code).
 Click on the extension tab, and then hit the key sequence `up, up, down, down, left, right, left, right, p, d, t`. That should open Dev Tools, and give access to the Chrome console, debugger, etc.
 
+Or, if you want to systematically open the Chrome Dev Tools for your extension whitout typing a knoami code, you can run 
+
+```console 
+docker extension dev debug my-extension
+```
+
+Each click on the extension tab will then also open Chrome Dev Tools.
+You can stop this behaviour with 
+
+```console
+docker extension dev reset my-extension
+```
+
 ### Developing the Extension UI
 
 If your extension has a UI you can see it directly inside Docker Desktop while developing it.
@@ -33,7 +46,7 @@ This will change the source of the extension UI to your local development server
 
     Make sure to reopen the Dashboard when you set a new source for the extension's UI.
 
-Once finished, you can reset the extension configuration to the original settings:
+Once finished, you can reset the extension configuration to the original settings (note htis will also reset opening chrome dev tools if you used `docker extension dev debug my-extension`):
 
 ```console
 docker extension dev reset my-extension

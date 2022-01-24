@@ -75,4 +75,4 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 
 ### Navigation to Dashboard routes
 
-See [here](dashboard-route-navigation.md)
+See [here](dashboard-routes-navigation.md)

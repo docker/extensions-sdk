@@ -15,7 +15,7 @@ For further inspiration, have a look at the rest of examples in the root of this
 ### Opening Dev Tools
 
 Once an extension is deployed and running, it is possible to open the Chrome Dev Tools from the UI extension part, using a variation of the [Konami Code](https://en.wikipedia.org/wiki/Konami_Code).
-Click on the extension tab, and then hit the key sequence 'up, up, down, down, left, right, left, right, P, D, T'. That should open Dev Tools, and give access to the Chrome console, debugger, etc.
+Click on the extension tab, and then hit the key sequence `up, up, down, down, left, right, left, right, p, d, t`. That should open Dev Tools, and give access to the Chrome console, debugger, etc.
 
 ### Developing the Extension UI
 

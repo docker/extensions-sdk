@@ -1,6 +1,7 @@
 #  UI Guidelines
 
 We are currently in the process of developing our design system. But in the mean time, here are some UI guidelines that we highly recommend you use for your extension in order to create a seamless experience for Docker Desktop users.
+
 - [UI Guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771)
 
 # Design Principles

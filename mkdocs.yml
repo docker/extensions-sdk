@@ -56,6 +56,8 @@ nav:
           - Telepresence: extensions/samples/telepresence/README.md
           - VM UI: extensions/samples/vm-ui/README.md
           - Volumes share: extensions/samples/volumes-share/README.md
+  - Design Guidelines:
+          - Overview: dev/overview.md
   - Developer guide:
       - Overview: dev/overview.md
       - CLI:

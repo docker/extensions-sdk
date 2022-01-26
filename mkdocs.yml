@@ -57,7 +57,7 @@ nav:
           - VM UI: extensions/samples/vm-ui/README.md
           - Volumes share: extensions/samples/volumes-share/README.md
   - Design Guidelines:
-          - Overview: dev/overview.md
+          - Overview: design/design-overview.md
   - Developer guide:
       - Overview: dev/overview.md
       - CLI:

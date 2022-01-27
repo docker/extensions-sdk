@@ -43,9 +43,18 @@ result will be of the form:
 
 For convenience, the command result object also has methods to easily parse it:
 
-* `cmdResult.lines() : string[]` split output lines
-* `cmdResult.parseJsonObject() : any` parse a well formed json output
-* `cmdResult.parseJsonLines() : any[]` parse each output line as a json object
+- `cmdResult.lines() : string[]` split output lines
+- `cmdResult.parseJsonObject() : any` parse a well formed json output
+- `cmdResult.parseJsonLines() : any[]` parse each output line as a json object
+
+If the output of the command is too long or you need to get the output as a
+stream you can use the `spawnDockerCmd` function:
+
+```typescript
+window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
+  console.log(data.stdout);
+});
+```
 
 ## Communication with the Extension Backend
 
@@ -71,6 +80,22 @@ Invoking an extension binary on your host:
 window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
   console.log(cmdResult);
 });
+```
+
+Invoking an extension binary on your host and getting the output stream:
+
+```typescript
+window.ddClient.spawnHostCmd(
+  `cliShippedOnHost`,
+  [`arg1`, `arg2`],
+  (data: any, err: any) => {
+    console.log(data.stdout, data.stderr);
+    // Once the command exits we get the status code
+    if (data.code) {
+      console.log(data.code);
+    }
+  }
+);
 ```
 
 ### Navigation to Dashboard routes

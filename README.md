@@ -8,7 +8,7 @@ This repository includes Desktop Extension samples.
 
 ## Documentation
 
-The documentation is published at https://docker-desktop-extensions.netlify.app/.
+The documentation is published and best viewed at https://docker-desktop-extensions.netlify.app/.
 
 ## Prerequisites
 

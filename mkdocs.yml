@@ -18,6 +18,7 @@ theme:
     - navigation.sections
     - toc.integrate
     - content.code.annotate
+    - content.tabs.link
 extra:
   generator: false
 copyright: Copyright &copy; 2021 Docker, Inc.
@@ -35,7 +36,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-
+  - pymdownx.tabbed:
+      alternate_style: true
 nav:
   - Introduction: index.md
   - Tutorials:

@@ -6,6 +6,10 @@ This repository includes Desktop Extension samples.
 
 :warning: **This work is experimental and still in progress, features and APIs detailed are subject to change**
 
+## Documentation
+
+The documentation is published at https://docker-desktop-extensions.netlify.app/.
+
 ## Prerequisites
 
 To get started with Docker Extensions you will need a specific Docker Desktop build that comes with extension capabilities and the Extensions CLI.

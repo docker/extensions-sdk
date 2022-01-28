@@ -56,7 +56,7 @@ LABEL org.opencontainers.image.title="ui-extension" \
     org.opencontainers.image.description="Your Desktop Extension Description" \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version="1.0.0-beta.1" \
-    com.docker.desktop.plugin.icon="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png"
+    com.docker.desktop.extension.icon="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png"
 
 COPY --from=client-builder /app/client/dist ui
 COPY docker.svg .

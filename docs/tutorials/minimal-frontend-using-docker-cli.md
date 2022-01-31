@@ -52,7 +52,6 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json title="metadata.json" linenums="1"
 {
-  "desktop-plugin-version": "1.0.0-beta.1",
   "name": "MyExtension",
   "provider": "Docker Inc.",
   "ui": {

@@ -1,5 +1,4 @@
 {
-    "desktop-plugin-version": "1.0.0-beta.1",
     "name":"tailscale",
     "provider": "Tailscale Inc.",
     "icon":"tailscale.svg",

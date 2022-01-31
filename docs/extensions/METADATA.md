@@ -19,14 +19,12 @@ The metadata.json file must follow the format :
     "name": "volumes-share",
     "provider": "Docker Inc.",
     "icon": "extension-icon.svg",
-    "desktop-plugin-version": "v1.0.0-beta.1",
     "ui": ...
     "vm": ...
     "host": ...
 }
 ```
 
-`desktop-plugin-version` is the version of the Extension API (using semver format) that the extension is compatible with.
 `ui`, `vm` and `host` sections are optional, depending what a given extension provides, and describe the extension content to be installed.
 
 The `ui` section defines a new tab that will be added to Docker Dashboard. (other UI extension points will likely be available in the future). It follows the form:

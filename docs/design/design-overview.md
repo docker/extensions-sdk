@@ -1,8 +1,9 @@
 #  UI Guidelines
 
-We are currently in the process of developing our design system. But in the mean time, here are some UI guidelines that we highly recommend you use for your extension in order to create a seamless experience for Docker Desktop users.
+We are currently in the process of developing our design system. But in the mean time, here are some UI guidelines and a Material UI Theme that we highly recommend you use for your extension in order to create a seamless experience for Docker Desktop users.
 
 - [Docker's UI Guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771)
+- [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme)
 
 # Design Principles
 At Docker we are developer obsessed, which means that we intend to build tools that can be seamlessly integrated into their workflow rather than them having to change their workflow in order to use the tool. Here are a few design principles that have facilitated us to do this and would strongly recommend that you take them into consideration when building extensions.

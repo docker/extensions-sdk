@@ -23,7 +23,7 @@ This is described in [Extension Distribution](extensions/DISTRIBUTION.md).
 
 To get started with Docker Extensions you will need a specific Docker Desktop build that comes with extension capabilities.
 
-Go to the [releases page](https://github.com/docker/desktop-extension-samples/releases/latest) and install both the Docker Desktop build and the Extensions CLI to manage extensions later on.
+Go to the [releases page](https://github.com/docker/extensions-sdk/releases/latest) and install both the Docker Desktop build and the Extensions CLI to manage extensions later on.
 
 Once you've downloaded Extensions CLI, you need to extract the binary into `~/.docker/cli-plugins`.
 

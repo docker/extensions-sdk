@@ -2,8 +2,8 @@ This tutorial describes a minimal example running CLI commands in the backend co
 
 ## Prerequisites
 
-- [Docker Desktop build with Extensions capabilities](https://github.com/docker/desktop-extension-samples/releases/)
-- [Docker Extensions CLI](https://github.com/docker/desktop-extension-samples/releases/)
+- [Docker Desktop build with Extensions capabilities](https://github.com/docker/extensions-sdk/releases/)
+- [Docker Extensions CLI](https://github.com/docker/extensions-sdk/releases/)
 
 ## Extension folder structure
 

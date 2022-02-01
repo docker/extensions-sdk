@@ -98,6 +98,16 @@ window.ddClient.spawnHostCmd(
 );
 ```
 
+### Opening a URL in an external browser
+
+Open the given external URL in the system default browser.
+
+Note: the URL must have the protocol `http` or `https`.
+
+```typescript
+window.ddClient.openExternal("https://docker.com");
+```
+
 ### Navigation to Dashboard routes
 
 See [here](dashboard-routes-navigation.md)

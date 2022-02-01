@@ -2,8 +2,8 @@ In this tutorial you will learn how to create a new Docker Desktop extension
 
 ## Prerequisites
 
-- [Docker Desktop build with Extensions capabilities](https://github.com/docker/desktop-extension-samples/releases/)
-- [Docker Extensions CLI](https://github.com/docker/desktop-extension-samples/releases/)
+- [Docker Desktop build with Extensions capabilities](https://github.com/docker/extensions-sdk/releases/)
+- [Docker Extensions CLI](https://github.com/docker/extensions-sdk/releases/)
 - [node](https://nodejs.org)
 
 ## Creating a new extension

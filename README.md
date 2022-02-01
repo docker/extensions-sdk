@@ -1,14 +1,15 @@
-# Desktop Extension Samples
+# Docker Extensions
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/883a0d5e-15c4-471b-a3e3-84cf27d2fced/deploy-status)](https://app.netlify.com/sites/docker-desktop-extensions/deploys)
 
-This repository includes Desktop Extension samples.
+This repository includes all resources to create Docker Extensions.
 
-:warning: **This work is experimental and still in progress, features and APIs detailed are subject to change**
+:warning: **This work is experimental and still in progress, features and APIs are subject to change**
 
 ## Documentation
 
 The documentation is published and best viewed at https://docker-desktop-extensions.netlify.app/.
+(Temporary as this repo is still private, password to use to enter this docs site: BGxdgkadXBDBfm5J)
 
 ## Prerequisites
 
@@ -22,7 +23,7 @@ See [prerequisites](docs/index.md#prerequisites).
 - [Create a minimal backend extension](docs/tutorials/minimal-backend-extension.md) - a Desktop Extension containing a UI part connecting to a minimal backend.
 - [Create a ReactJS-based extension](docs/tutorials/react-extension.md) - a minimal Desktop Extension containing only a UI part based on ReactJS.
 
-## Docker Desktop Extension Model
+## Docker Extension Model
 
 Desktop Extensions are packaged and distributed as Docker images.
 Development of extensions can be done locally without the need to push the extension to Docker Hub.

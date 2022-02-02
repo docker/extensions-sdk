@@ -42,10 +42,9 @@ Furthermore, you can communicate with your extension backend service or invoke a
 
 ### UI Guidelines
 
-We are currently in the process of developing our design system. But in the mean time, here are some UI guidelines and a Material UI Theme that we highly recommend you use for your extension in order to create a seamless experience for Docker Desktop users. You can read more about our design principles [here](/docs/design/design-overview.md).
+We are currently in the process of developing our design system but in the mean time, here are some [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). Docker Desktop's UI is written in React and [Material-UI](https://mui.com/), and we strongly recommend adopting this combination in your extensions as well. This brings the benefit of using our [Material-UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination. 
 
-- [Docker's UI Guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771)
-- [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme)
+You can read more about our design principles [here](/docs/design/design-overview.md).
 
 ## Build the documentation
 

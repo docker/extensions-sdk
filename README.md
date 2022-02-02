@@ -40,6 +40,13 @@ The [overview](docs/dev/overview.md) describes how to get started developing you
 The extension UI has access to an extension API to invoke backend operations from the UI, e.g. listing running containers, images, etc.
 Furthermore, you can communicate with your extension backend service or invoke a binary on the host or in the VM.
 
+###  UI Guidelines
+
+We are currently in the process of developing our design system. But in the mean time, here are some UI guidelines and a Material UI Theme that we highly recommend you use for your extension in order to create a seamless experience for Docker Desktop users. You can read more about our design principles [here](/docs/design/design-overview.md).
+
+- [Docker's UI Guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771)
+- [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme)
+
 ## Build the documentation
 
 We use [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) to create a static site from a set of Markdown files under [docs](./docs).

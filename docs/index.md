@@ -77,4 +77,19 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
     mv docker-extension ~/.docker/cli-plugins
     ```
 
-You can now enable the extension feature by running `docker extension enable`.
+You can now enable Docker Extensions by running 
+
+```console
+docker extension enable
+```
+
+Now that extensions are enabled, you can list installed extensions (the list should be empty initially):
+
+```console
+docker extension ls 
+ID                  PROVIDER            VERSION             UI                  VM                  HOST
+```
+
+And you should see a new "Add extensions" menu when opening the Docker Desktop Dashboard:
+
+![Extensions enabled](images/extensions-enabled.png)

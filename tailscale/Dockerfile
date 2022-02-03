@@ -44,7 +44,5 @@ COPY wait-for-exit.sh /app/wait-for-exit.sh
 COPY vm/docker-compose.yaml .
 COPY host/hostname darwin/hostname
 COPY host/hostname.cmd windows/hostname.cmd
-COPY host/tsbrowser darwin/tsbrowser
-COPY host/tsbrowser.cmd windows/tsbrowser.cmd
 ENV TS_HOST_ENV dde
 CMD /app/tailscaled --state=/var/lib/tailscale/tailscaled.state --tun=userspace-networking

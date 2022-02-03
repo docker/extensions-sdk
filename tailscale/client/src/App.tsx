@@ -158,9 +158,7 @@ export function App() {
 
   // start a browser in the host
   function doOpenBrowser(url: string) {
-    window.ddClient
-      .execHostCmd(`tsbrowser ${url}`)
-      .then(() => setStatus(undefined));
+    window.ddClient.openExternal(`${url}`).then(() => setStatus(undefined));
   }
 
   function PrintTableHeaders() {

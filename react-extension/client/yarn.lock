@@ -1608,9 +1608,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docker/desktop-plugin-tailscale@workspace:.":
+"@docker/docker/react-extension@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@docker/desktop-plugin-tailscale@workspace:."
+  resolution: "@docker/docker/react-extension@workspace:."
   dependencies:
     "@types/react": ^17.0.0
     "@types/react-dom": ^17.0.0

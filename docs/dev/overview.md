@@ -6,7 +6,7 @@ Extensions can be composed of a visual part displayed in the Docker Desktop Dash
 
 If you intend to develop an extension which consists exclusively of a visual part (no services running in the VM), please refer to [swimmingwhale](swimmingwhale).
 
-If your extension requires additional services running in the Docker Desktop VM, have a look at the [tailscale](tailscale) example.
+If your extension requires additional services running in the Docker Desktop VM, have a look at the [VM UI](vm-ui-plugin) example.
 
 Finally, if you need to deploy binaries to the host as part of your extension's installation, check out the [telepresence](telepresence) example.
 

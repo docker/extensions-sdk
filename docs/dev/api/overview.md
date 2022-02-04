@@ -54,11 +54,71 @@ window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
 
 ## Communication with the Extension Backend
 
-Accessing a socket exposed by your extension VM service:
+The `window.ddClient.backend` object implements the following interface:
+
+```typescript
+interface Backend {
+  get(url: string): Promise<unknown>;
+  post(url: string, data: any): Promise<unknown>;
+  put(url: string, data: any): Promise<unknown>;
+  patch(url: string, data: any): Promise<unknown>;
+  delete(url: string): Promise<unknown>;
+  head(url: string): Promise<unknown>;
+  request(config: RequestConfig): Promise<unknown>;
+  execInContainer(container: string, cmd: string): Promise<execResult>;
+  execInVMExtension(cmd: string): Promise<execResult>;
+}
+
+interface RequestConfig {
+  url: string;
+  method: string;
+  headers: Record<string, string>;
+  data: any;
+}
+
+interface nodeExecResult {
+  readonly cmd?: string;
+  readonly killed?: boolean;
+  readonly signal?: string;
+  readonly code?: number;
+  readonly stdout: string;
+  readonly stderr: string;
+}
+
+interface execResult extends nodeExecResult {
+  lines(): string[];
+  parseJsonLines(): any[];
+  parseJsonObject(): any;
+}
+```
 
 ```typescript
 window.ddClient.backend
   .get("/some/service")
+  .then((value: any) => console.log(value));
+
+window.ddClient.backend
+  .post("/some/service", { ... })
+  .then((value: any) => console.log(value));
+
+window.ddClient.backend
+  .put("/some/service", { ... })
+  .then((value: any) => console.log(value));
+
+window.ddClient.backend
+  .patch("/some/service", { ... })
+  .then((value: any) => console.log(value));
+
+window.ddClient.backend
+  .delete("/some/service")
+  .then((value: any) => console.log(value));
+
+window.ddClient.backend
+  .head("/some/service")
+  .then((value: any) => console.log(value));
+
+window.ddClient.backend
+  .request({ url: "/url", method: "GET", headers: { 'header-key': 'header-value' }, data: { ... }})
   .then((value: any) => console.log(value));
 ```
 

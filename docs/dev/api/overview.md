@@ -1,14 +1,16 @@
-# UI API
+# Extension UI API
 
 The extension UI has access to an extension API, allowing:
 
-## Common Functions
+## Docker APIs
 
-Listing running containers:
+Listing containers:
 
 ```typescript
 window.ddClient.listContainers();
 ```
+
+(Or `listContainers({all:true})` to also list stopped containers)
 
 Listing images:
 
@@ -16,13 +18,7 @@ Listing images:
 window.ddClient.listImages();
 ```
 
-Displaying an error in a red banner on the Dashboard:
-
-```typescript
-window.ddClient.toastError("Something went wrong");
-```
-
-## Running any docker command and getting results
+### Running docker command and getting results
 
 ```typescript
 window.ddClient
@@ -98,6 +94,16 @@ window.ddClient.spawnHostCmd(
 );
 ```
 
+## Docker Desktop Dashboard APIs
+
+### User messages
+
+Displaying an error message in a red banner on the Dashboard:
+
+```typescript
+window.ddClient.toastError("Something went wrong");
+```
+
 ### Opening a URL in an external browser
 
 Open the given external URL in the system default browser.
@@ -110,4 +116,6 @@ window.ddClient.openExternal("https://docker.com");
 
 ### Navigation to Dashboard routes
 
-See [here](dashboard-routes-navigation.md)
+From your extension, you can navigate to various tabs in Docker Desktop Dashboard.
+
+See details [here](dashboard-routes-navigation.md)

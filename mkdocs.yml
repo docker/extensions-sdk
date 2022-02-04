@@ -54,7 +54,6 @@ nav:
       - Style customization: extensions/style.md
       - Samples:
           - SwimmingWhale: extensions/samples/swimmingwhale/README.md
-          - Tailscale: extensions/samples/tailscale/README.md
           - Telepresence: extensions/samples/telepresence/README.md
           - VM UI: extensions/samples/vm-ui/README.md
           - Volumes share: extensions/samples/volumes-share/README.md

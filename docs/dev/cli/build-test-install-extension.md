@@ -39,9 +39,9 @@ You can list the extensions that are installed:
 ```console
 docker extension ls
 
-PLUGIN              IMAGE                                        UI                    VM                  HOST
-tailscale           docker/desktop-tailscale-extension:0.1       1 tab(Tailscale)      Created(1)          -
-telepresence        docker/desktop-telepresence-extension:0.1    1 tab(Telepresence)   -                   1 binarie(s)
+ID                              PROVIDER            VERSION             UI                   VM                  HOST
+docker/hub-explorer-extension   Docker Inc.         0.0.2               1 tab(Explore Hub)   Running(1)          1 binarie(s)
+tailscale/docker-extension      Tailscale Inc.      0.0.2               1 tab(Tailscale)     Running(1)          1 binarie(s)
 ```
 
 To remove the extension, run:
@@ -50,8 +50,8 @@ To remove the extension, run:
 docker extension rm my-extension
 ```
 
-To update an extension with a newer version, run:
+To update an extension with a newer version (local or remote image), run:
 
 ```console
-docker extension update docker/desktop-tailscale-extension:0.2
+docker extension update docker/hub-explorer-extension:0.0.3
 ```

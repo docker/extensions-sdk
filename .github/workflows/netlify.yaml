@@ -22,7 +22,7 @@ jobs:
         with:
           image: squidfunk/mkdocs-material:latest
           options: -v ${{ github.workspace }}:/docs
-          run: build
+          run: mkdocs build
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2

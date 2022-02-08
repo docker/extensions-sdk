@@ -58,7 +58,7 @@ nav:
           - VM UI: extensions/samples/vm-ui/README.md
           - Volumes share: extensions/samples/volumes-share/README.md
   - Design Guidelines:
-          - Overview: design/design-overview.md
+      - Overview: design/design-overview.md
   - Developer guide:
       - Overview: dev/overview.md
       - CLI:
@@ -66,4 +66,7 @@ nav:
           - Build, test and install an extension: dev/cli/build-test-install-extension.md
       - UI API:
           - Overview: dev/api/overview.md
+          - Backend: dev/api/backend.md
+          - Docker: dev/api/docker.md
+          - Dashboard: dev/api/dashboard.md
           - Navigation: dev/api/dashboard-routes-navigation.md

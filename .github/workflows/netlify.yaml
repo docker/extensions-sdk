@@ -1,7 +1,8 @@
 name: Build and Deploy to Netlify
 on:
-  release:
-    types: [published] # a release, pre-release, or draft of a release is published
+  pull_request:
+  #release:
+  #  types: [published] # a release, pre-release, or draft of a release is published
 
   workflow_dispatch:
     inputs:
@@ -22,7 +23,7 @@ jobs:
         with:
           image: squidfunk/mkdocs-material:latest
           options: -v ${{ github.workspace }}:/docs
-          run: build
+          run: mkdocs build
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2

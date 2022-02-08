@@ -3,6 +3,16 @@
 Toasts provide a brief notification to the user. They appear temporarily and
 shouldn't interrupt the user experience, they don't require user input to disappear.
 
+![Toast messages](./images/toast.png)
+
+```typescript
+window.ddClient.toastSuccess("Success!");
+```
+
+```typescript
+window.ddClient.toastWarning("A warning message");
+```
+
 ```typescript
 window.ddClient.toastError("Something went wrong");
 ```

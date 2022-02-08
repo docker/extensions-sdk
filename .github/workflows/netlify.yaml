@@ -1,8 +1,7 @@
 name: Build and Deploy to Netlify
 on:
-  pull_request:
-  #release:
-  #  types: [published] # a release, pre-release, or draft of a release is published
+  release:
+    types: [published] # a release, pre-release, or draft of a release is published
 
   workflow_dispatch:
     inputs:

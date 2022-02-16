@@ -24,7 +24,7 @@
           },
           {
             "path": "/windows",
-            "install":{
+            "install": {
               "command": "./windows/telepresence-win-install.ps1",
               "requiresAdmin": true
             }

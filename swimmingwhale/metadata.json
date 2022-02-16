@@ -1,13 +1,12 @@
 {
-    "name":"SwimmingWhale",
-    "provider": "Docker Inc.",
-    "icon": "docker.svg",
-    "ui":{
-        "dashboard-tab":
-        {
-            "title":"SwimmingWhale",
-            "root":"/swim",
-            "src":"index.html"
-        }
+  "name": "SwimmingWhale",
+  "provider": "Docker Inc.",
+  "icon": "docker.svg",
+  "ui": {
+    "dashboard-tab": {
+      "title": "SwimmingWhale",
+      "root": "/swim",
+      "src": "index.html"
     }
+  }
 }

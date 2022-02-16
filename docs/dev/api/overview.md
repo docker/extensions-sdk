@@ -6,7 +6,10 @@ electron or nodejs APIs.
 The extension UI API provides a way for the frontend to perform different actions
 and communicate with the Docker Desktop dashboard or the underlying system.
 
-- [Backend](./backend.md)
-- [Docker](./docker.md)
-- [Dashboard](./dashboard.md)
-- [Navigation](./dashboard-routes-navigation.md)
+- [Docker Desktop Client](../../interfaces/index.DockerDesktopClient.md)
+- [Extension](../../interfaces/extension.Extension.md)
+- [Docker](../../interfaces/docker.Docker.md)
+- [Docker Command](../../interfaces/docker.DockerCommand.md)
+- [User notifications](../../interfaces/toast.Toast.md)
+- [Opening a URL](../../interfaces/host.Host.md)
+- [Navigation](../../interfaces/types.NavigationIntents.md)

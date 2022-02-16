@@ -66,7 +66,11 @@ nav:
           - Build, test and install an extension: dev/cli/build-test-install-extension.md
       - UI API:
           - Overview: dev/api/overview.md
-          - Backend: dev/api/backend.md
-          - Docker: dev/api/docker.md
-          - Dashboard: dev/api/dashboard.md
-          - Navigation: dev/api/dashboard-routes-navigation.md
+          - Docker Desktop Client: interfaces/index.DockerDesktopClient.md
+          - Docker:
+              - Overview: interfaces/docker.Docker.md
+              - Commands: interfaces/docker.DockerCommand.md
+          - Dashboard:
+              - User notifications: interfaces/toast.Toast.md
+              - Opening a URL: interfaces/host.Host.md
+              - Navigation: interfaces/types.NavigationIntents.md

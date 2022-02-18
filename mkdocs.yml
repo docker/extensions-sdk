@@ -16,7 +16,6 @@ theme:
   features:
     - navigation.tracking
     - navigation.sections
-    - toc.integrate
     - content.code.annotate
     - content.tabs.link
 extra:

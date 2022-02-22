@@ -10,3 +10,5 @@ and communicate with the Docker Desktop dashboard or the underlying system.
 - [Docker](./docker.md)
 - [Dashboard](./dashboard.md)
 - [Navigation](./dashboard-routes-navigation.md)
+
+Find the Extensions API reference [here](./reference/README.md).

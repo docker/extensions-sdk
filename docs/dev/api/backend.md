@@ -204,9 +204,9 @@ Performs an HTTP request to a backend service.
 
 #### Parameters
 
-| Name     | Type                                             | Description                     |
-| :------- | :----------------------------------------------- | :------------------------------ |
-| `config` | [`RequestConfig`](http_service.RequestConfig.md) | The URL of the backend service. |
+| Name     | Type                                                                    | Description                     |
+| :------- | :---------------------------------------------------------------------- | :------------------------------ |
+| `config` | [`RequestConfig`](./reference/interfaces/http_service.RequestConfig.md) | The URL of the backend service. |
 
 #### Returns
 

@@ -27,12 +27,7 @@ const output = await window.ddClient.docker.cli.exec(
   ["--format", '"{{ json . }}"']
 );
 ```
-
-**`param`** The command to execute.
-
-**`param`** The arguments of the command to execute.
-
-**`returns`** The result will contain both the standard output and the standard error of the executed command:
+Output:
 ```
 {
   "stderr": "...",
@@ -40,22 +35,44 @@ const output = await window.ddClient.docker.cli.exec(
 }
 ```
 In this example the docker command output is a json output.
-For convenience, the command result object also has methods to easily parse it. See [execResult](exec.execResult.md) instead.
+For convenience, the command result object also has methods to easily parse it. See [ExecResult](exec.ExecResult.md) instead.
+
+---
 
 Streams the output as a result of the execution of a docker command.
 Useful when the output of the command is too long or you need to get the output as a stream.
 
-```typescript
-window.ddClient.docker.cli.exec("logs", ["-f", "..."], (data, error) => {
-  console.log(data.stdout);
-});
+```typescript linenums="1"
+await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
+           stream: {
+             onOutput(
+               data: { stdout: string } | { stderr: string }
+             ): void {
+                 // As we can receive both `stdout` and `stderr`, we wrap them in a JSON object
+                 JSON.stringify(
+                   {
+                     stdout: data.stdout,
+                     stderr: data.stderr,
+                   },
+                   null,
+                   "  "
+                 );
+             },
+             onError(error: any): void {
+               console.error(error);
+             },
+             onClose(exitCode: number): void {
+               console.log("onClose with exit code " + exitCode);
+             },
+           },
+         });
 ```
 
 ## Methods
 
 ### listContainers
 
-▸ **listContainers**(`options`): `Promise`<`unknown`\>
+▸ **listContainers**(`options?`): `Promise`<`unknown`\>
 
 Get the list of containers
 
@@ -67,7 +84,7 @@ const containers = await window.ddClient.docker.listContainers();
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | `never` | (Optional). A JSON like `{   "all": true,   "limit": 10,   "size": true,   "filters": JSON.stringify({ status: ["exited"] }), }`  For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#operation/ContainerList). |
+| `options?` | `any` | (Optional). A JSON like `{   "all": true,   "limit": 10,   "size": true,   "filters": JSON.stringify({ status: ["exited"] }), }`  For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#operation/ContainerList). |
 
 #### Returns
 
@@ -77,7 +94,7 @@ ___
 
 ### listImages
 
-▸ **listImages**(`options`): `Promise`<`unknown`\>
+▸ **listImages**(`options?`): `Promise`<`unknown`\>
 
 Get the list of local container images
 
@@ -89,7 +106,7 @@ const images = await window.ddClient.docker.listImages();
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | `never` | (Optional). A JSON like `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true }`  For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#tag/Image). |
+| `options?` | `any` | (Optional). A JSON like `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true }`  For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#tag/Image). |
 
 #### Returns
 

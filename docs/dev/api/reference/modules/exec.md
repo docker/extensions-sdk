@@ -5,5 +5,5 @@
 ### Interfaces
 
 - [Exec](../interfaces/exec.Exec.md)
-- [execResult](../interfaces/exec.execResult.md)
-- [nodeExecResult](../interfaces/exec.nodeExecResult.md)
+- [ExecResult](../interfaces/exec.ExecResult.md)
+- [RawExecResult](../interfaces/exec.RawExecResult.md)

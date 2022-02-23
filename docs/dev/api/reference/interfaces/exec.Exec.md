@@ -6,7 +6,7 @@
 
 ### Exec
 
-▸ **Exec**(`cmd`, `args`): `Promise`<[`execResult`](exec.execResult.md)\>
+▸ **Exec**(`cmd`, `args`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 Executes a command.
 
@@ -19,17 +19,17 @@ Executes a command.
 
 #### Returns
 
-`Promise`<[`execResult`](exec.execResult.md)\>
+`Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 A promise that will resolve once the command finishes.
 
 ### Exec
 
-▸ **Exec**(`cmd`, `args`, `callback`): `void`
+▸ **Exec**(`cmd`, `args`, `options`): `void`
 
-Executes a command and calls the `callback` each time there is new output.
+Streams the result of a command if `stream` is specified in the `options` parameter.
 
-Use the `callback` if the output of your command is too long or if you need to stream things indefinitely (for example container logs).
+Specify the `stream` if the output of your command is too long or if you need to stream things indefinitely (for example container logs).
 
 #### Parameters
 
@@ -37,7 +37,11 @@ Use the `callback` if the output of your command is too long or if you need to s
 | :------ | :------ | :------ |
 | `cmd` | `string` | The command to execute. |
 | `args` | `string`[] | The arguments of the command to execute. |
-| `callback` | (`data`: `any`, `error`: `any`) => `void` | The callback function where to listen from the command output data and errors. |
+| `options` | `Object` | The list of options. |
+| `options.stream` | `Object` | Provides three functions: `onOutput` (invoked every time `stdout` or `stderr` is received), `onError` and `onClose` (invoked when the stream has ended). |
+| `options.stream.onOutput?` | (`data`: { `stdout`: `string`  } \| { `stderr`: `string`  }) => `void` | - |
+| `options.stream.onError?` | (`error`: `any`) => `void` | - |
+| `options.stream.onClose?` | (`exitCode`: `number`) => `void` | - |
 
 #### Returns
 

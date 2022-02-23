@@ -103,15 +103,6 @@ Streams the output as a result of the execution of a docker command.
 Useful when the output of the command is too long or you need to get the output as a stream.
 
 ```typescript
-window.ddClient.docker.cli.exec("logs", ["-f", "..."], (data, error) => {
-  console.log(data.stdout);
-});
-```
-
-Streams the output as a result of the execution of a docker command.
-Useful when the output of the command is too long or you need to get the output as a stream.
-
-```typescript
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
   console.log(data.stdout);
 });
@@ -121,8 +112,26 @@ window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
 
     This method is deprecated and will be removed in a future version. Please use the one specified just below.
 
-```typescript
-window.ddClient.docker.cli.exec("logs", ["-f", "..."], (data, error) => {
-  console.log(data.stdout);
+```typescript linenums="1"
+await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
+  stream: {
+    onOutput(data: { stdout: string } | { stderr: string }): void {
+      // As we can receive both `stdout` and `stderr`, we wrap them in a JSON object
+      JSON.stringify(
+        {
+          stdout: data.stdout,
+          stderr: data.stderr,
+        },
+        null,
+        "  "
+      );
+    },
+    onError(error: any): void {
+      console.error(error);
+    },
+    onClose(exitCode: number): void {
+      console.log("onClose with exit code " + exitCode);
+    },
+  },
 });
 ```

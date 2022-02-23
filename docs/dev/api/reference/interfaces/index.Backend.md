@@ -27,7 +27,7 @@
 
 ### execInContainer
 
-▸ **execInContainer**(`container`, `cmd`): `Promise`<[`execResult`](exec.execResult.md)\>
+▸ **execInContainer**(`container`, `cmd`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 Executes a command inside a container.
 
@@ -48,7 +48,7 @@ Executes a command inside a container.
 
 #### Returns
 
-`Promise`<[`execResult`](exec.execResult.md)\>
+`Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 ___
 
@@ -243,7 +243,7 @@ ___
 
 ### execInVMExtension
 
-▸ **execInVMExtension**(`cmd`): `Promise`<[`execResult`](exec.execResult.md)\>
+▸ **execInVMExtension**(`cmd`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 Executes a command inside the backend container.
 If your extensions ships with additional binaries that should be run inside the backend container you can use the `execInVMExtension` function.
@@ -266,7 +266,7 @@ If your extensions ships with additional binaries that should be run inside the 
 
 #### Returns
 
-`Promise`<[`execResult`](exec.execResult.md)\>
+`Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 ___
 

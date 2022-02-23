@@ -1,23 +1,23 @@
-# Interface: nodeExecResult
+# Interface: RawExecResult
 
-[exec](../modules/exec.md).nodeExecResult
+[exec](../modules/exec.md).RawExecResult
 
 ## Hierarchy
 
-- **`nodeExecResult`**
+- **`RawExecResult`**
 
-  ↳ [`execResult`](exec.execResult.md)
+  ↳ [`ExecResult`](exec.ExecResult.md)
 
 ## Table of contents
 
 ### Properties
 
-- [cmd](exec.nodeExecResult.md#cmd)
-- [killed](exec.nodeExecResult.md#killed)
-- [signal](exec.nodeExecResult.md#signal)
-- [code](exec.nodeExecResult.md#code)
-- [stdout](exec.nodeExecResult.md#stdout)
-- [stderr](exec.nodeExecResult.md#stderr)
+- [cmd](exec.RawExecResult.md#cmd)
+- [killed](exec.RawExecResult.md#killed)
+- [signal](exec.RawExecResult.md#signal)
+- [code](exec.RawExecResult.md#code)
+- [stdout](exec.RawExecResult.md#stdout)
+- [stderr](exec.RawExecResult.md#stderr)
 
 ## Properties
 

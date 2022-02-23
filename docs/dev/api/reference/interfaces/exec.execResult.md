@@ -1,29 +1,29 @@
-# Interface: execResult
+# Interface: ExecResult
 
-[exec](../modules/exec.md).execResult
+[exec](../modules/exec.md).ExecResult
 
 ## Hierarchy
 
-- [`nodeExecResult`](exec.nodeExecResult.md)
+- [`RawExecResult`](exec.RawExecResult.md)
 
-  ↳ **`execResult`**
+  ↳ **`ExecResult`**
 
 ## Table of contents
 
 ### Methods
 
-- [lines](exec.execResult.md#lines)
-- [parseJsonLines](exec.execResult.md#parsejsonlines)
-- [parseJsonObject](exec.execResult.md#parsejsonobject)
+- [lines](exec.ExecResult.md#lines)
+- [parseJsonLines](exec.ExecResult.md#parsejsonlines)
+- [parseJsonObject](exec.ExecResult.md#parsejsonobject)
 
 ### Properties
 
-- [cmd](exec.execResult.md#cmd)
-- [killed](exec.execResult.md#killed)
-- [signal](exec.execResult.md#signal)
-- [code](exec.execResult.md#code)
-- [stdout](exec.execResult.md#stdout)
-- [stderr](exec.execResult.md#stderr)
+- [cmd](exec.ExecResult.md#cmd)
+- [killed](exec.ExecResult.md#killed)
+- [signal](exec.ExecResult.md#signal)
+- [code](exec.ExecResult.md#code)
+- [stdout](exec.ExecResult.md#stdout)
+- [stderr](exec.ExecResult.md#stderr)
 
 ## Methods
 
@@ -75,7 +75,7 @@ The JSON object.
 
 #### Inherited from
 
-[nodeExecResult](exec.nodeExecResult.md).[cmd](exec.nodeExecResult.md#cmd)
+[RawExecResult](exec.RawExecResult.md).[cmd](exec.RawExecResult.md#cmd)
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Inherited from
 
-[nodeExecResult](exec.nodeExecResult.md).[killed](exec.nodeExecResult.md#killed)
+[RawExecResult](exec.RawExecResult.md).[killed](exec.RawExecResult.md#killed)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Inherited from
 
-[nodeExecResult](exec.nodeExecResult.md).[signal](exec.nodeExecResult.md#signal)
+[RawExecResult](exec.RawExecResult.md).[signal](exec.RawExecResult.md#signal)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Inherited from
 
-[nodeExecResult](exec.nodeExecResult.md).[code](exec.nodeExecResult.md#code)
+[RawExecResult](exec.RawExecResult.md).[code](exec.RawExecResult.md#code)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Inherited from
 
-[nodeExecResult](exec.nodeExecResult.md).[stdout](exec.nodeExecResult.md#stdout)
+[RawExecResult](exec.RawExecResult.md).[stdout](exec.RawExecResult.md#stdout)
 
 ___
 
@@ -125,4 +125,4 @@ ___
 
 #### Inherited from
 
-[nodeExecResult](exec.nodeExecResult.md).[stderr](exec.nodeExecResult.md#stderr)
+[RawExecResult](exec.RawExecResult.md).[stderr](exec.RawExecResult.md#stderr)

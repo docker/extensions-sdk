@@ -187,7 +187,7 @@ ___
 
 Navigate to the container logs window in the Dashboard.
 ```typescript
-await window.ddClient.navigateToContainer(id)
+await window.ddClient.navigateToContainerLogs(id)
 ```
 
 **`deprecated`** :warning: It will be removed in a future version. Use {@link DockerDesktopClient.viewContainerLogs} instead.
@@ -238,7 +238,7 @@ ___
 Navigate to the container stats to see the CPU, memory, disk read/write and network I/O usage.
 
 ```typescript
-await window.ddClient.navigateToContainerInspect(id)
+await window.ddClient.navigateToContainerStats(id)
 ```
 
 **`deprecated`** :warning: It will be removed in a future version. Use {@link DockerDesktopClient.viewContainerStats} instead.
@@ -366,7 +366,7 @@ ___
 
 ### execHostCmd
 
-▸ **execHostCmd**(`cmd`): `Promise`<[`execResult`](exec.execResult.md)\>
+▸ **execHostCmd**(`cmd`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 You can run binaries defined in the host section in the extension metadata.
 
@@ -386,7 +386,7 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 
 #### Returns
 
-`Promise`<[`execResult`](exec.execResult.md)\>
+`Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 ___
 
@@ -410,7 +410,7 @@ window.ddClient.spawnHostCmd(
 );
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use {@link ExtensionCli.spawn} instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [ExtensionCli.exec](extension.ExtensionCli.md#exec) instead.
 
 #### Parameters
 
@@ -428,7 +428,7 @@ ___
 
 ### execDockerCmd
 
-▸ **execDockerCmd**(`cmd`, ...`args`): `Promise`<[`execResult`](exec.execResult.md)\>
+▸ **execDockerCmd**(`cmd`, ...`args`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 You can also directly execute the docker binary.
 
@@ -451,7 +451,7 @@ const output = await window.ddClient.execDockerCmd(
 
 #### Returns
 
-`Promise`<[`execResult`](exec.execResult.md)\>
+`Promise`<[`ExecResult`](exec.ExecResult.md)\>
 
 The result will contain both the standard output and the standard error of the executed command:
 ```
@@ -482,7 +482,7 @@ ___
 
 ▸ **spawnDockerCmd**(`cmd`, `args`, `callback`): `void`
 
-**`deprecated`** :warning: It will be removed in a future version. Use {@link Exec.exec} instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [DockerCommand.exec](docker.DockerCommand.md#exec) instead.
 
 #### Parameters
 

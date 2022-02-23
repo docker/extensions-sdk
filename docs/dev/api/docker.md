@@ -1,15 +1,5 @@
 ## Docker objects
 
-### Listing containers
-
-```typescript
-const containers = await window.ddClient.listContainers();
-```
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
-
 ▸ **listContainers**(`options`): `Promise`<`unknown`\>
 
 Get the list of containers
@@ -17,28 +7,6 @@ Get the list of containers
 ```typescript
 const containers = await window.ddClient.docker.listContainers();
 ```
-
-#### Parameters
-
-| Name      | Type    | Description                                                                                                                                                                                                                                                                                  |
-| :-------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `options` | `never` | (Optional). A JSON like `{ "all": true, "limit": 10, "size": true, "filters": JSON.stringify({ status: ["exited"] }), }` For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#operation/ContainerList). |
-
-#### Returns
-
-`Promise`<`unknown`\>
-
----
-
-### Listing images
-
-```typescript
-const images = await window.ddClient.listImages();
-```
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
 
 ▸ **listImages**(`options`): `Promise`<`unknown`\>
 
@@ -48,36 +16,27 @@ Get the list of local container images
 const images = await window.ddClient.docker.listImages();
 ```
 
-#### Parameters
-
-| Name      | Type    | Description                                                                                                                                                                                                                                                         |
-| :-------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `options` | `never` | (Optional). A JSON like `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true }` For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#tag/Image). |
-
-#### Returns
-
-`Promise`<`unknown`\>
-
----
-
-## Docker commands
-
-You can also directly execute the `docker` binary.
-
-```typescript
-const output = await window.ddClient.execDockerCmd(
-  "info",
-  "--format",
-  '"{{ json . }}"'
-);
-```
+Use the [Docker API reference](reference/interfaces/docker.Docker.md) for details about these methods
+### Deprecated access to Docker objects
 
 !!! warning "Method deprecated"
 
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
+    These methods are deprecated and will be removed in a future version. Please use the ones specified above.
 
 ```typescript
-const output = await window.ddClient.docker.cli.exec("info", [
+const containers = await window.ddClient.listContainers();
+
+const images = await window.ddClient.listImages();
+```
+
+
+## Docker commands
+
+Extensions can also directly execute the `docker` command line.
+
+▸ **exec**(`cmd`, `args`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
+```typescript
+const result = await window.ddClient.docker.cli.exec("info", [
   "--format",
   '"{{ json . }}"',
 ]);
@@ -95,36 +54,20 @@ The result will contain both the standard output and the standard error of the e
 In this example the docker command output is a json output.
 For convenience, the command result object also has methods to easily parse it.
 
-- `output.lines(): string[]` split output lines
-- `output.parseJsonObject(): any` parse a well formed json output
-- `output.parseJsonLines(): any[]` parse each output line as a json object
+- `result.lines(): string[]` split output lines
+- `result.parseJsonObject(): any` parse a well formed json output
+- `result.parseJsonLines(): any[]` parse each output line as a json object
 
+▸ **exec**(`cmd`, `args`, `options`): `void`
+ 
 Streams the output as a result of the execution of a docker command.
 Useful when the output of the command is too long or you need to get the output as a stream.
-
-```typescript
-window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
-  console.log(data.stdout);
-});
-```
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
 
 ```typescript linenums="1"
 await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     onOutput(data: { stdout: string } | { stderr: string }): void {
-      // As we can receive both `stdout` and `stderr`, we wrap them in a JSON object
-      JSON.stringify(
-        {
-          stdout: data.stdout,
-          stderr: data.stderr,
-        },
-        null,
-        "  "
-      );
+      console.log(data.stdout);
     },
     onError(error: any): void {
       console.error(error);
@@ -133,5 +76,25 @@ await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
       console.log("onClose with exit code " + exitCode);
     },
   },
+});
+```
+
+Use the [Exec API reference](reference/interfaces/exec.Exec.md) for details about these methods
+
+### Deprecated execution of Docker commands
+
+!!! warning "Method deprecated"
+
+    This method is deprecated and will be removed in a future version. Please use the one specified just below.
+
+```typescript
+const output = await window.ddClient.execDockerCmd(
+  "info",
+  "--format",
+  '"{{ json . }}"'
+);
+
+window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
+  console.log(data.stdout);
 });
 ```

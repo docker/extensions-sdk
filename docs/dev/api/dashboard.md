@@ -5,14 +5,6 @@ shouldn't interrupt the user experience, they don't require user input to disapp
 
 ### success
 
-```typescript
-window.ddClient.toastSuccess("message");
-```
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
-
 ▸ **success**(`msg`): `void`
 
 Display a toast message of type success.
@@ -21,27 +13,7 @@ Display a toast message of type success.
 window.ddClient.desktopUI.toast.success("message");
 ```
 
-#### Parameters
-
-| Name  | Type     | Description                          |
-| :---- | :------- | :----------------------------------- |
-| `msg` | `string` | The message to display in the toast. |
-
-#### Returns
-
-`void`
-
----
-
 ### warning
-
-```typescript
-window.ddClient.toastWarning("message");
-```
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
 
 ▸ **warning**(`msg`): `void`
 
@@ -50,28 +22,7 @@ Display a toast message of type warning.
 ```typescript
 window.ddClient.desktopUI.toast.warning("message");
 ```
-
-#### Parameters
-
-| Name  | Type     | Description                            |
-| :---- | :------- | :------------------------------------- |
-| `msg` | `string` | The message to display in the warning. |
-
-#### Returns
-
-`void`
-
----
-
 ### error
-
-```typescript
-window.ddClient.toastError("Something went wrong");
-```
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
 
 ▸ **error**(`msg`): `void`
 
@@ -81,31 +32,23 @@ Display a toast message of type error.
 window.ddClient.desktopUI.toast.error("message");
 ```
 
-#### Parameters
+More details about method parameters and return types are available in the [Toast API reference](reference/interfaces/toast.Toast.md)
 
-| Name  | Type     | Description                          |
-| :---- | :------- | :----------------------------------- |
-| `msg` | `string` | The message to display in the toast. |
+!!! warning "Method deprecated"
 
-#### Returns
+    These methods are deprecated and will be removed in a future version. Please use the ones specified above.
 
-`void`
-
----
+```typescript
+window.ddClient.toastSuccess("message");
+window.ddClient.toastWarning("message");
+window.ddClient.toastError("Something went wrong");
+```
 
 ## Opening a URL
 
 This function opens an external URL with the system default browser.
 
-```typescript
-window.ddClient.openExternal("https://docker.com");
-```
-
 _Note:_ the URL must have the protocol `http` or `https`.
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
 
 ▸ **openExternal**(`url`): `void`
 
@@ -115,17 +58,17 @@ Opens an external URL with the system default browser.
 window.ddClient.host.openExternal("https://docker.com");
 ```
 
-#### Parameters
+More details about method parameters and return types are available in the [Desktop host API reference](reference/interfaces/host.Host.md)
 
-| Name  | Type     | Description                                                               |
-| :---- | :------- | :------------------------------------------------------------------------ |
-| `url` | `string` | The URL the browser will open (must have the protocol `http` or `https`). |
+### Deprecated user notifications
 
-#### Returns
+!!! warning "Method deprecated"
 
-`void`
+    This method is deprecated and will be removed in a future version. Please use the one specified above.
 
----
+```typescript
+window.ddClient.openExternal("https://docker.com");
+```
 
 ## Navigation to Dashboard routes
 

@@ -16,7 +16,6 @@ theme:
   features:
     - navigation.tracking
     - navigation.sections
-    - toc.integrate
     - content.code.annotate
     - content.tabs.link
 extra:
@@ -70,3 +69,4 @@ nav:
           - Docker: dev/api/docker.md
           - Dashboard: dev/api/dashboard.md
           - Navigation: dev/api/dashboard-routes-navigation.md
+          - Reference: dev/api/reference/README.md

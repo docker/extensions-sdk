@@ -1,54 +1,51 @@
 ## Docker objects
 
-### Listing containers
+▸ **listContainers**(`options?`): `Promise`<`unknown`\>
+
+Get the list of containers
+
+```typescript
+const containers = await window.ddClient.docker.listContainers();
+```
+
+▸ **listImages**(`options?`): `Promise`<`unknown`\>
+
+Get the list of local container images
+
+```typescript
+const images = await window.ddClient.docker.listImages();
+```
+
+Use the [Docker API reference](reference/interfaces/docker.Docker.md) for details about these methods
+
+### Deprecated access to Docker objects
+
+!!! warning "Method deprecated"
+
+    These methods are deprecated and will be removed in a future version. Please use the ones specified above.
 
 ```typescript
 const containers = await window.ddClient.listContainers();
-```
 
-This method takes an optional argument in the form of an object:
-
-```json
-{
-  "all": true,
-  "limit": 10,
-  "size": true,
-  "filters": "..."
-}
-```
-
-For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#operation/ContainerList)
-
-### Listing images
-
-```typescript
 const images = await window.ddClient.listImages();
 ```
 
-This method takes an optional argument in the form of an object:
-
-```json
-{
-  "all": true,
-  "filters": "...",
-  "digests": true
-}
-```
-
-For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#tag/Image)
-
 ## Docker commands
 
-You can also directly execute the `docker` binary.
+Extensions can also directly execute the `docker` command line.
+
+▸ **exec**(`cmd`, `args`): `Promise`<[`ExecResult`](reference/interfaces/exec.ExecResult.md)\>
 
 ```typescript
-const output = await window.ddClient.execDockerCmd("info", "--format", '"{{ json . }}"');
+const result = await window.ddClient.docker.cli.exec("info", [
+  "--format",
+  '"{{ json . }}"',
+]);
 ```
 
-The result will contain both the standard output and the standard error of the
-executed command
+The result will contain both the standard output and the standard error of the executed command:
 
-```json
+```
 {
   "stderr": "...",
   "stdout": "..."
@@ -56,17 +53,48 @@ executed command
 ```
 
 In this example the docker command output is a json output.
+For convenience, the command result object also has methods to easily parse it.
 
-For convenience, the command result object also has methods to easily parse it:
+- `result.lines(): string[]` split output lines
+- `result.parseJsonObject(): any` parse a well formed json output
+- `result.parseJsonLines(): any[]` parse each output line as a json object
 
-- `output.lines(): string[]` split output lines
-- `output.parseJsonObject(): any` parse a well formed json output
-- `output.parseJsonLines(): any[]` parse each output line as a json object
+▸ **exec**(`cmd`, `args`, `options`): `void`
 
-If the output of the command is too long or you need to get the output as a
-stream you can use the `spawnDockerCmd` function:
+Streams the output as a result of the execution of a docker command.
+Useful when the output of the command is too long or you need to get the output as a stream.
+
+```typescript linenums="1"
+await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
+  stream: {
+    onOutput(data: { stdout: string } | { stderr: string }): void {
+      console.log(data.stdout);
+    },
+    onError(error: any): void {
+      console.error(error);
+    },
+    onClose(exitCode: number): void {
+      console.log("onClose with exit code " + exitCode);
+    },
+  },
+});
+```
+
+Use the [Exec API reference](reference/interfaces/exec.Exec.md) for details about these methods
+
+### Deprecated execution of Docker commands
+
+!!! warning "Method deprecated"
+
+    This method is deprecated and will be removed in a future version. Please use the one specified just below.
 
 ```typescript
+const output = await window.ddClient.execDockerCmd(
+  "info",
+  "--format",
+  '"{{ json . }}"'
+);
+
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
   console.log(data.stdout);
 });

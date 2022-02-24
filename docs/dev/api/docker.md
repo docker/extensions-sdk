@@ -17,6 +17,7 @@ const images = await window.ddClient.docker.listImages();
 ```
 
 Use the [Docker API reference](reference/interfaces/docker.Docker.md) for details about these methods
+
 ### Deprecated access to Docker objects
 
 !!! warning "Method deprecated"
@@ -29,12 +30,12 @@ const containers = await window.ddClient.listContainers();
 const images = await window.ddClient.listImages();
 ```
 
-
 ## Docker commands
 
 Extensions can also directly execute the `docker` command line.
 
-▸ **exec**(`cmd`, `args`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
+▸ **exec**(`cmd`, `args`): `Promise`<[`ExecResult`](reference/interfaces/exec.ExecResult.md)\>
+
 ```typescript
 const result = await window.ddClient.docker.cli.exec("info", [
   "--format",
@@ -59,7 +60,7 @@ For convenience, the command result object also has methods to easily parse it.
 - `result.parseJsonLines(): any[]` parse each output line as a json object
 
 ▸ **exec**(`cmd`, `args`, `options`): `void`
- 
+
 Streams the output as a result of the execution of a docker command.
 Useful when the output of the command is too long or you need to get the output as a stream.
 

@@ -1,6 +1,6 @@
 ## Docker objects
 
-▸ **listContainers**(`options`): `Promise`<`unknown`\>
+▸ **listContainers**(`options?`): `Promise`<`unknown`\>
 
 Get the list of containers
 
@@ -8,7 +8,7 @@ Get the list of containers
 const containers = await window.ddClient.docker.listContainers();
 ```
 
-▸ **listImages**(`options`): `Promise`<`unknown`\>
+▸ **listImages**(`options?`): `Promise`<`unknown`\>
 
 Get the list of local container images
 

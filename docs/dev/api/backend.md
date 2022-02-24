@@ -1,6 +1,6 @@
 ## Communication with the backend
 
-The `window.ddClient.extension.vm` object can be used to communicate with the backend defined in the  [vm section](../../extensions/METADATA.md#vm-section) in the extensions metadata.
+The `window.ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../../extensions/METADATA.md#vm-section) in the extensions metadata.
 
 ### get
 
@@ -60,9 +60,6 @@ window.ddClient.backend
 
 ## Running a command in the backend container
 
-If your extensions ships with additional binaries that should be run inside the
-backend container you can use the `execInVMExtension` function
-
 Executes a command in the backend container.
 
 Example: Execute the command `ls -l` inside the **backend container**:
@@ -96,6 +93,9 @@ await window.ddClient.extension.vm.cli.exec("ls", ["-l"], {
 !!! warning "Method deprecated"
 
     This method is deprecated and will be removed in a future version. Please use the one specified above.
+
+If your extensions ships with additional binaries that should be run inside the
+backend container you can use the `execInVMExtension` function.
 
 ```typescript
 const output = await window.ddClient.backend.execInVMExtension(
@@ -132,6 +132,7 @@ await window.ddClient.extension.host.cli.exec("kubectl", ["-h"], {
   },
 });
 ```
+
 Streams the output of the command executed in the backend container or in the host.
 
 ### Deprecated invocation of extension binary
@@ -149,6 +150,7 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 ```
 
 Streams the output of the command executed in the backend container or in the host:
+
 ```typescript
 window.ddClient.spawnHostCmd(
   `cliShippedOnHost`,

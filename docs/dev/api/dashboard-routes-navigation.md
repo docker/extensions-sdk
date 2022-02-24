@@ -1,6 +1,6 @@
 # Dashboard Routes Navigation
 
-`window.ddClient.desktopUI.navigation` allow to navigate to specific screens of Docker Desktop Dashboard like containers view, images view, a specific container logs, a specific image details, volumes, dev environments.
+`window.ddClient.desktopUI.navigation` allow to navigate to specific screens of the Docker Desktop Dashboard like containers view, images view, a specific container logs, a specific image details, volumes, dev environments.
 
 Example: navigate to a given container logs
 
@@ -23,6 +23,7 @@ A promise that fails if the container doesn't exist.
 ---
 
 Use the [Navigation API reference](reference/interfaces/navigation_intents.NavigationIntents.md) for details about all navigation methods to containers, images, volumes and dev environments.
+
 ### Deprecated navigation methods
 
 !!! warning "Method deprecated"

@@ -22,6 +22,7 @@ Display a toast message of type warning.
 ```typescript
 window.ddClient.desktopUI.toast.warning("message");
 ```
+
 ### error
 
 ▸ **error**(`msg`): `void`
@@ -32,7 +33,9 @@ Display a toast message of type error.
 window.ddClient.desktopUI.toast.error("message");
 ```
 
-More details about method parameters and return types are available in the [Toast API reference](reference/interfaces/toast.Toast.md)
+More details about method parameters and return types are available in the [Toast API reference](reference/interfaces/toast.Toast.md).
+
+### Deprecated user notifications
 
 !!! warning "Method deprecated"
 
@@ -41,14 +44,12 @@ More details about method parameters and return types are available in the [Toas
 ```typescript
 window.ddClient.toastSuccess("message");
 window.ddClient.toastWarning("message");
-window.ddClient.toastError("Something went wrong");
+window.ddClient.toastError("message");
 ```
 
 ## Opening a URL
 
 This function opens an external URL with the system default browser.
-
-_Note:_ the URL must have the protocol `http` or `https`.
 
 ▸ **openExternal**(`url`): `void`
 
@@ -58,7 +59,11 @@ Opens an external URL with the system default browser.
 window.ddClient.host.openExternal("https://docker.com");
 ```
 
-More details about method parameters and return types are available in the [Desktop host API reference](reference/interfaces/host.Host.md)
+!!! note
+
+    The URL must have the protocol `http` or `https`.
+
+More details about method parameters and return types are available in the [Desktop host API reference](reference/interfaces/host.Host.md).
 
 ### Deprecated user notifications
 
@@ -72,6 +77,6 @@ window.ddClient.openExternal("https://docker.com");
 
 ## Navigation to Dashboard routes
 
-From your extension, you can navigate to various tabs in Docker Desktop Dashboard.
+From your extension, you can navigate to other parts of the Docker Desktop Dashboard.
 
-See details [here](dashboard-routes-navigation.md)
+See details [here](dashboard-routes-navigation.md).

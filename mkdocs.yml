@@ -45,19 +45,18 @@ nav:
       - Create a minimal extension invoking docker commands: tutorials/minimal-frontend-using-docker-cli.md
       - Create a minimal backend extension: tutorials/minimal-backend-extension.md
       - Create a ReactJS-based extension: tutorials/react-extension.md
+  - Design Guidelines:
+      - Overview: design/design-overview.md
   - Extensions:
       - Metadata: extensions/METADATA.md
       - Labels: extensions/labels.md
       - Validation: extensions/validation.md
       - Distribution: extensions/DISTRIBUTION.md
-      - Style customization: extensions/style.md
       - Samples:
           - SwimmingWhale: extensions/samples/swimmingwhale/README.md
           - Telepresence: extensions/samples/telepresence/README.md
           - VM UI: extensions/samples/vm-ui/README.md
           - Volumes share: extensions/samples/volumes-share/README.md
-  - Design Guidelines:
-      - Overview: design/design-overview.md
   - Developer guide:
       - Overview: dev/overview.md
       - CLI:

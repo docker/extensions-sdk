@@ -1,6 +1,28 @@
 #  UI Guidelines
 
-We are currently in the process of developing our design system but in the meantime, here are some [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). Docker Desktop's UI is written in React and [Material-UI](https://mui.com/), and we strongly recommend adopting this combination in your extensions as well. This brings the benefit of using our [Material-UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination.
+We are currently in the process of developing our design system but in the meantime, here are some [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). 
+
+# Using Docker Material UI Theme
+
+Docker Desktop's UI is written in React and [Material-UI](https://mui.com/), and we strongly recommend adopting this combination in your extensions as well. 
+
+This brings the benefit of using our [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination.
+
+To use [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) with your extension, you can wrap your react app like this: 
+
+```typescript
+import { DockerMuiThemeProvider } from '@docker/docker-mui-theme';
+import CssBaseline from '@mui/material/CssBaseline';
+
+function App() {
+  return (
+    <DockerMuiThemeProvider>
+      <CssBaseline />
+      // Your extension app here
+    </DockerMuiThemeProvider>
+  );
+}
+```
 
 # Design Principles
 At Docker we are developer obsessed, which means that we intend to build tools that can be seamlessly integrated into their workflow rather than them having to change their workflow in order to use the tool. Here are a few design principles that have facilitated us to do this and would strongly recommend that you take them into consideration when building extensions.

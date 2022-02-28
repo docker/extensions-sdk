@@ -7,7 +7,7 @@ In this tutorial you will learn how to create a simple Desktop Extension contain
 
 ## Extension folder structure
 
-In the `react-extension` folder at the root of the repository you can find a ready-to-go example that represents a UI Extension built on ReactJS. Although you can start from an empty directory, it is highly recommended that you start from this official template and change it accordingly to suit your needs.
+In the `react-extension` sample folder, you can find a ready-to-go example that represents a UI Extension built on ReactJS. Although you can start from an empty directory, it is highly recommended that you start from this official template and change it accordingly to suit your needs.
 
 ```bash
 .

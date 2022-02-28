@@ -9,7 +9,7 @@ This tutorial describes a minimal example running frontend extension based on pl
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
-In the `minimal-frontend` folder, at the root of the repository, you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
+In the `minimal-frontend` sample folder, you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
 
 ```bash
 .

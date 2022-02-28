@@ -9,7 +9,7 @@ This tutorial describes a minimal example running frontend extension and invokin
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
-In the `minimal-docker-cli` folder, at the root of the repository, you can find a ready-to-go example that represents a UI Extension invoking docker commands. We will go through this code example in this tutorial.
+In the `minimal-docker-cli` sample folder, you can find a ready-to-go example that represents a UI Extension invoking docker commands. We will go through this code example in this tutorial.
 
 ```bash
 .
@@ -56,7 +56,7 @@ A `metadata.json` file is required at the root of the image filesystem.
   "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
-      "title": "My Extension",
+      "title": "Docker VM info",
       "root": "/ui",
       "src": "index.html"
     }
@@ -76,19 +76,11 @@ The rest is purely formatting code using the output of the Docker command:
 
 ```javascript
 window.ddClient
-  .execDockerCmd("system", "df", "--format", "'{{ json . }}'")
+  .execDockerCmd("info", "--format", '"{{json .}}"')
   .then((res) => {
     document.getElementById("size-info").innerHTML = `
-  <table>
-    <tr> <th>Type</th> <th>Active</th> <th>Total</th> <th>Size</th> <th>Reclaimable</th> </tr>
-    ${res
-      .parseJsonLines()
-      .map(
-        (cat) =>
-          `<tr> <td>${cat.Type}</td> <td>${cat.Active}</td> <td>${cat.TotalCount}</td> <td>${cat.Size}</td> <td>${cat.Reclaimable}</td> </tr>`
-      )
-      .join("")}
-  </table>
+    Allocated CPUs: ${res.parseJsonObject().NCPU}
+    Allocated Memory: ${res.parseJsonObject().MemTotal}
 `;
   });
 ```
@@ -138,7 +130,7 @@ If the installation was successful, you should see the following output:
 ```bash
 Installing new extension "MyExtension" with desktop-docker-cli-minimal-extension:0.0.1 ...
 Installing Desktop extension UI for tab "My Extension"...
-Extension UI tab "Disk usage" added.
+Extension UI tab "Docker VM info" added.
 Extension "MyExtension" installed successfully
 ```
 

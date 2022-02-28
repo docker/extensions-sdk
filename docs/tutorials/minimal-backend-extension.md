@@ -7,7 +7,7 @@ This tutorial describes a minimal example running CLI commands in the backend co
 
 ## Extension folder structure
 
-In the `minimal-backend` folder, at the root of the repository, you can find a ready-to-go example. It represents a UI Extension built on HTML that runs a backend service. We will go through this code example in this tutorial.
+In the `minimal-backend` sample folder, you can find a ready-to-go example. It represents a UI Extension built on HTML that runs a backend service. We will go through this code example in this tutorial.
 
 ```bash
 .

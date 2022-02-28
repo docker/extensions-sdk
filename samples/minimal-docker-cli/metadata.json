@@ -3,7 +3,7 @@
   "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
-      "title": "Disk usage",
+      "title": "Docker VM info",
       "root": "/ui",
       "src": "index.html"
     }

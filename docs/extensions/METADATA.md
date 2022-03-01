@@ -80,12 +80,12 @@ The `host` section defines some binaries that must be deployed on the host. (The
       {
         "darwin": [
           {
-            "path": "/darwin/telepresence"
+            "path": "/darwin/myBinary"
           },
         ],
         "windows": [
           {
-            "path": "/windows/kubectl.exe"
+            "path": "/windows/myBinary.exe"
           },
         ]
       }

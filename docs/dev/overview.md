@@ -8,8 +8,6 @@ If you intend to develop an extension which consists exclusively of a visual par
 
 If your extension requires additional services running in the Docker Desktop VM, have a look at the [VM UI](vm-ui-plugin) example.
 
-Finally, if you need to deploy binaries to the host as part of your extension's installation, check out the [telepresence](telepresence) example.
-
 For further inspiration, have a look at the rest of examples in the root of this repository.
 
 ### Opening Dev Tools

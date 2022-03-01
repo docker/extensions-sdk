@@ -78,6 +78,16 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
     mv docker-extension ~/.docker/cli-plugins
     ```
 
+=== ":fontawesome-brands-linux: Linux"
+
+    In a terminal, run:
+
+    ```console
+    tar -xvzf desktop-extension-cli-linux-amd64.tar.gz
+    mkdir -p ~/.docker/cli-plugins
+    mv docker-extension ~/.docker/cli-plugins
+    ```
+
 You can now enable Docker Extensions by running 
 
 ```console

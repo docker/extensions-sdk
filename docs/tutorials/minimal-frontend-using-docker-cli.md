@@ -70,13 +70,13 @@ A `script.js` includes code that is executed when the extension tab is shown.
 
 In Javascript, extensions can use `windows.ddClient` to get access to the Docker Desktop extension API.
 
-On this ddClient object we can invoke `ddClient.ExecDockerCmd("sytem", "df", "--format", "'{{ json . }}'")`, and then use `res.parseJsonLines()` to read results as json objects.
+On this ddClient object we can invoke `ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`, and then use `res.parseJsonObject()` to read results as json object and use it.
 
 The rest is purely formatting code using the output of the Docker command:
 
 ```javascript
-window.ddClient
-  .execDockerCmd("info", "--format", '"{{json .}}"')
+window.ddClient.docker.cli
+  .exec("info", ["--format", '"{{json .}}"'])
   .then((res) => {
     document.getElementById("size-info").innerHTML = `
     Allocated CPUs: ${res.parseJsonObject().NCPU}

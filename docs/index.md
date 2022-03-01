@@ -34,14 +34,9 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
 
     ```console
     tar -xvzf desktop-extension-cli-darwin-amd64.tar.gz
-    chmod +x docker-extension
     mkdir -p ~/.docker/cli-plugins
     mv docker-extension ~/.docker/cli-plugins
     ```
-
-    !!! info
-
-        When running the Extensions CLI on macOS you'll see the message: _"docker-extension" cannot be opened because the developer cannot be verified."_ At the moment, the Extensions CLI is not signed by Docker (yet) and you'll need to trust the binary by going to `System Preferences` > `Security & Privacy` > (General tab) click on `Allow Anyway`.
 
 === ":fontawesome-brands-apple: MacOS (arm)"
 
@@ -49,14 +44,9 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
 
     ```console
     tar -xvzf desktop-extension-cli-darwin-arm64.tar.gz
-    chmod +x docker-extension
     mkdir -p ~/.docker/cli-plugins
     mv docker-extension ~/.docker/cli-plugins
     ```
-
-    !!! info
-
-        When running the Extensions CLI on macOS you'll see the message: _"docker-extension" cannot be opened because the developer cannot be verified."_ At the moment, the Extensions CLI is not signed by Docker (yet) and you'll need to trust the binary by going to `System Preferences` > `Security & Privacy` > (General tab) click on `Allow Anyway`.
 
 === ":fontawesome-brands-windows: Windows"
 

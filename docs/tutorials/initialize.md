@@ -1,35 +1,50 @@
-In this tutorial you will learn how to create a new Docker Desktop extension
+In this tutorial you will learn how to create a new Docker Desktop extension.
 
 ## Prerequisites
 
 - [Docker Desktop build with Extensions capabilities](https://github.com/docker/extensions-sdk/releases/)
 - [Docker Extensions CLI](https://github.com/docker/extensions-sdk/releases/)
-- [node](https://nodejs.org)
+- [NodeJS](https://nodejs.org)
+- [Go](https://go.dev/dl/)
 
 ## Creating a new extension
 
-To create a new extension run
+To create a new extension, use the `init` subcommand and provide a name, for instance:
 
 ```bash
 docker extension init my-extension
 ```
 
-and answer the questions.
+You'll be prompted with a series of questions that will help the CLI to generate a set of boilerplate files for you to get started. The questions are related to the extension information, such as the name, description, vendor, etc.
 
 This will create a directory `my-extension` with a bare-bones extension code.
 
-This extension contains:
+The automatically generated extension contains:
 
-- A backend that listens on a socket, it has one endpoint `/hello` that returns
-  a JSON payload
-- A React frontend that can call the backend and output the backend response
+- A backend service that listens on a socket, it has one endpoint `/hello` that returns
+  a JSON payload.
+- A React frontend that can call the backend and output the backend response.
 
 ## Build the extension
+
+As part of the extension boilerplate files, we provide a `Makefile` at the root of the extension directory with targets to build and push the extension.
+
+To build the extension, run:
 
 ```bash
 cd my-extension
 make extension
 ```
+
+The `make extension` will build your extension and as a result it will generate an image named after the hub repository input that was introduced in the first question.
+
+For instance, if you typed `john/my-extension` as the answer to the following question:
+
+```
+? Hub repository (eg. namespace/image on hub): john/my-extension
+```
+
+The `make extension` will generate an image with name `john/my-extension`.
 
 ## Install the extension
 
@@ -44,13 +59,13 @@ installation. To do so, we'll use the Docker Extensions CLI.
 To install the extension in Docker Desktop, run:
 
 ```bash
-docker extension install my-extension
+docker extension install john/my-extension
 ```
 
 If the installation was successful, you should see the following output:
 
 ```bash
-Installing new extension "my-extension"
+Installing new extension "john/my-extension"
 Installing service in Desktop VM...
 Setting additional compose attributes
 VM service started
@@ -71,8 +86,8 @@ docker extension ls
 It outputs all the extensions installed:
 
 ```bash
-ID                  PROVIDER            VERSION             UI                    VM                  HOST
-my-extension        Docker Inc.                             1 tab(My-Extension)   Running(1)          -
+ID                    PROVIDER      VERSION   UI                  VM          HOST
+john/my-extension     Docker Inc.             1 tab(My-Extension) Running(1)  -
 ```
 
 On the left-menu, you should see a new tab with the name `My-Extension`. Click
@@ -117,7 +132,6 @@ Once you are done you can remove the ui-source override by running
 ```bash
 docker extension dev reset my-extension
 ```
-
 
 ## Clean up
 

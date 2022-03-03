@@ -88,6 +88,8 @@ await window.ddClient.extension.vm.cli.exec("ls", ["-l"], {
 });
 ```
 
+For more details, please refer to the [Extension VM API Reference](reference/interfaces/extension.ExtensionVM.md)
+
 ### Deprecated extension backend command execution
 
 !!! warning "Method deprecated"
@@ -134,6 +136,8 @@ await window.ddClient.extension.host.cli.exec("kubectl", ["-h"], {
 ```
 
 Streams the output of the command executed in the backend container or in the host.
+
+For more details, please refer to the [Extension Host API Reference](reference/interfaces/extension.ExtensionHost.md)
 
 ### Deprecated invocation of extension binary
 

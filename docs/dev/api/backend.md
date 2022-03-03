@@ -1,4 +1,4 @@
-## Communication with the backend
+## Communication with the extension backend
 
 The `window.ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../../extensions/METADATA.md#vm-section) in the extensions metadata.
 
@@ -16,7 +16,7 @@ window.ddClient.extension.vm.service
 
 Other methods for POST, UPDATE, DELETE, etc. are available, see [Service API Reference](reference/interfaces/http_service.HttpService.md#Methods)
 
-### Deprecated backend communication
+### Deprecated extension backend communication
 
 !!! warning "Methods deprecated"
 
@@ -58,7 +58,7 @@ window.ddClient.backend
   .then((value: any) => console.log(value));
 ```
 
-## Running a command in the backend container
+## Running a command in the extension backend container
 
 Executes a command in the backend container.
 
@@ -88,7 +88,9 @@ await window.ddClient.extension.vm.cli.exec("ls", ["-l"], {
 });
 ```
 
-### Deprecated backend command execution
+For more details, please refer to the [Extension VM API Reference](reference/interfaces/extension.ExtensionVM.md)
+
+### Deprecated extension backend command execution
 
 !!! warning "Method deprecated"
 
@@ -134,6 +136,8 @@ await window.ddClient.extension.host.cli.exec("kubectl", ["-h"], {
 ```
 
 Streams the output of the command executed in the backend container or in the host.
+
+For more details, please refer to the [Extension Host API Reference](reference/interfaces/extension.ExtensionHost.md)
 
 ### Deprecated invocation of extension binary
 

@@ -123,12 +123,12 @@ It outputs all the extensions installed:
 
 ```bash
 PLUGIN              PROVIDER            IMAGE                                     UI                  VM  HOST
-MyExtension         Docker Inc.         desktop-frontend-minimal-extension:0.0.1  1 tab(My Extension) -   -
+MyExtension         Docker Inc.         desktop-frontend-minimal-extension:0.0.1  1 tab(Min FrontEnd Extension) -   -
 ```
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
 
-On the left-menu, you should see a new tab with the name `My Extension`. Click on it to load the main window that will render the `Hello, World!` message on the top-left corner.
+On the left-menu, you should see a new tab with the name `Min FrontEnd Extension`. Click on it to load the main window that will render the `Hello, World!` message on the top-left corner.
 
 ![UI Extension](images/ui-minimal-extension.png)
 
@@ -177,6 +177,11 @@ Installing Desktop extension UI for tab "Min FrontEnd Extension"...
 Extension UI tab "Min FrontEnd Extension" added.
 Extension "MinimalFrontEnd" installed successfully
 ```
+
+Now when running Docker Desktop in dark mode and clicking the `Min FrontEnd Extension` it'll render with dark mode colors.
+
+
+![UI Extension](images/ui-minimal-extension-dark.png)
 ## Publish the extension
 
 In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
@@ -206,15 +211,15 @@ docker push owner/desktop-frontend-minimal-extension:0.0.1
 ## Clean up
 
 ```bash
-docker extension rm MyExtension
+docker extension rm desktop-frontend-minimal-extension
 ```
 
 The following output should be displayed:
 
 ```bash
-Removing extension MyExtension...
-Extension UI tab My Extension removed
-Extension "MyExtension" removed
+Removing extension desktop-frontend-minimal-extension...
+Extension UI tab Min FrontEnd Extension removed
+Extension "MinimalFrontEnd" removed
 ```
 
 ## What's next?

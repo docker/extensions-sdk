@@ -36,7 +36,7 @@ The bare minimum configuration that a Dockerfile's extension requires to functio
 ```Dockerfile title="Dockerfile" linenums="1"
 FROM scratch
 
-LABEL org.opencontainers.image.title="MyExtension" \
+LABEL org.opencontainers.image.title="MinimalFrontEnd" \
     org.opencontainers.image.description="A sample extension to show how easy it's to get started with Desktop Extensions." \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version="1.0.0-beta.1"
@@ -51,11 +51,11 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json title="metadata.json" linenums="1"
 {
-  "name": "MyExtension",
+  "name": "MinimalFrontEnd",
   "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
-      "title": "My Extension",
+      "title": "Min FrontEnd Extension",
       "root": "/ui",
       "src": "index.html"
     }
@@ -82,12 +82,12 @@ Next, verify the extension image complies with the requisites to be a compliant 
 The validation will check if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
 ```bash
-docker extension validate desktop-hello-backend-extension:0.0.1
+docker extension validate desktop-frontend-minimal-extension:0.0.1
 ```
 
 If your extension is valid, you should see the following message:
 
-`The extension image "desktop-hello-backend-extension:0.0.1" is valid`.
+`The extension image "desktop-frontend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
 
@@ -106,12 +106,11 @@ docker extension install desktop-frontend-minimal-extension:0.0.1
 If the installation was successful, you should see the following output:
 
 ```bash
-Installing new extension "MyExtension" with desktop-frontend-minimal-extension:0.0.1 ...
-Installing Desktop extension UI for tab "My Extension"...
-Extension UI tab "My Extension" added.
-Extension "MyExtension" installed successfully
+Installing new extension "MinimalFrontEnd" with desktop-frontend-minimal-extension:0.0.1 ...
+Installing Desktop extension UI for tab "Min FrontEnd Extension"...
+Extension UI tab "Min FrontEnd Extension" added.
+Extension "MinimalFrontEnd" installed successfully
 ```
-
 ## Preview the extension
 
 You can verify that the extension has been installed successfully using the following CLI command:
@@ -133,6 +132,51 @@ On the left-menu, you should see a new tab with the name `My Extension`. Click o
 
 ![UI Extension](images/ui-minimal-extension.png)
 
+## Update the extension
+
+You can update the extension by rebuilding, validating and then using the update command.
+
+Let's update the html file to include some inline CSS to support a dark mode.
+
+```html
+      <head>
+        <style>
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #333;
+                }
+
+                h1 {
+                    color: white;
+                }
+            }
+        </style>
+        ...
+```
+Alternatively remove the `index.html` file and rename `updatedindex.html` to index.html in the ui directory. Rebuild and revalidate the extension.
+
+
+```bash
+docker build -t desktop-frontend-minimal-extension:0.0.1 .
+docker extension validate desktop-frontend-minimal-extension:0.0.1
+```
+
+Lastly update the extension.
+
+```bash
+docker extension update desktop-frontend-minimal-extension:0.0.1
+```
+If the installation was successful, you should see the following output:
+
+```bash
+Removing extension desktop-frontend-minimal-extension:0.0.1...
+Extension UI tab Min FrontEnd Extension removed
+Extension "MinimalFrontEnd" removed
+Installing new extension "desktop-frontend-minimal-extension:0.0.1"
+Installing Desktop extension UI for tab "Min FrontEnd Extension"...
+Extension UI tab "Min FrontEnd Extension" added.
+Extension "MinimalFrontEnd" installed successfully
+```
 ## Publish the extension
 
 In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).

@@ -1,9 +1,9 @@
 {
-  "name": "MyExtension",
+  "name": "MinimalFrontEnd",
   "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
-      "title": "My Extension",
+      "title": "Min FrontEnd Extension",
       "root": "/ui",
       "src": "index.html"
     }

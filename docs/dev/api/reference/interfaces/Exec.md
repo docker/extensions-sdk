@@ -1,12 +1,10 @@
 # Interface: Exec
 
-[exec](../modules/exec.md).Exec
-
 ## Callable
 
 ### Exec
 
-▸ **Exec**(`cmd`, `args`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
+▸ **Exec**(`cmd`, `args`): `Promise`<[`ExecResult`](ExecResult.md)\>
 
 Executes a command.
 
@@ -19,7 +17,7 @@ Executes a command.
 
 #### Returns
 
-`Promise`<[`ExecResult`](exec.ExecResult.md)\>
+`Promise`<[`ExecResult`](ExecResult.md)\>
 
 A promise that will resolve once the command finishes.
 

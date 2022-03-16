@@ -1,30 +1,28 @@
 # Interface: NavigationIntents
 
-[navigation-intents](../modules/navigation_intents.md).NavigationIntents
-
 ## Table of contents
 
 ### Container Methods
 
-- [viewContainers](navigation_intents.NavigationIntents.md#viewcontainers)
-- [viewContainer](navigation_intents.NavigationIntents.md#viewcontainer)
-- [viewContainerLogs](navigation_intents.NavigationIntents.md#viewcontainerlogs)
-- [viewContainerInspect](navigation_intents.NavigationIntents.md#viewcontainerinspect)
-- [viewContainerStats](navigation_intents.NavigationIntents.md#viewcontainerstats)
+- [viewContainers](NavigationIntents.md#viewcontainers)
+- [viewContainer](NavigationIntents.md#viewcontainer)
+- [viewContainerLogs](NavigationIntents.md#viewcontainerlogs)
+- [viewContainerInspect](NavigationIntents.md#viewcontainerinspect)
+- [viewContainerStats](NavigationIntents.md#viewcontainerstats)
 
 ### Images Methods
 
-- [viewImages](navigation_intents.NavigationIntents.md#viewimages)
-- [viewImage](navigation_intents.NavigationIntents.md#viewimage)
+- [viewImages](NavigationIntents.md#viewimages)
+- [viewImage](NavigationIntents.md#viewimage)
 
 ### Other Methods
 
-- [viewDevEnvironments](navigation_intents.NavigationIntents.md#viewdevenvironments)
+- [viewDevEnvironments](NavigationIntents.md#viewdevenvironments)
 
 ### Volume Methods
 
-- [viewVolumes](navigation_intents.NavigationIntents.md#viewvolumes)
-- [viewVolume](navigation_intents.NavigationIntents.md#viewvolume)
+- [viewVolumes](NavigationIntents.md#viewvolumes)
+- [viewVolume](NavigationIntents.md#viewvolume)
 
 ## Container Methods
 

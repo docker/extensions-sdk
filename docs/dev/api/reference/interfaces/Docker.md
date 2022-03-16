@@ -1,23 +1,21 @@
 # Interface: Docker
 
-[docker](../modules/docker.md).Docker
-
 ## Table of contents
 
 ### Properties
 
-- [cli](docker.Docker.md#cli)
+- [cli](Docker.md#cli)
 
 ### Methods
 
-- [listContainers](docker.Docker.md#listcontainers)
-- [listImages](docker.Docker.md#listimages)
+- [listContainers](Docker.md#listcontainers)
+- [listImages](Docker.md#listimages)
 
 ## Properties
 
 ### cli
 
-• `Readonly` **cli**: [`DockerCommand`](docker.DockerCommand.md)
+• `Readonly` **cli**: [`DockerCommand`](DockerCommand.md)
 
 You can also directly execute the docker binary.
 
@@ -35,7 +33,7 @@ Output:
 }
 ```
 In this example the docker command output is a json output.
-For convenience, the command result object also has methods to easily parse it. See [ExecResult](exec.ExecResult.md) instead.
+For convenience, the command result object also has methods to easily parse it. See [ExecResult](ExecResult.md) instead.
 
 ---
 
@@ -74,7 +72,10 @@ await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
 
 ▸ **listContainers**(`options?`): `Promise`<`unknown`\>
 
-Get the list of containers
+Get the list of running containers (same as `docker ps`).
+
+By default this will not list stopped containers.
+You can use the option `{"all": true}` to list all the running and stopped containers.
 
 ```typescript
 const containers = await window.ddClient.docker.listContainers();

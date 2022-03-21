@@ -1,4 +1,5 @@
 IMAGE?=desktop-react-extension
+TAG?=latest
 
 BUILDER=buildx-multi-arch
 
@@ -14,19 +15,19 @@ bin: ## Build the binary for the current platform
 	$(GO_BUILD) -o bin/service ./vm
 
 build-extension: ## Build service image to be deployed as a desktop extension
-	docker build --tag=$(IMAGE) .
+	docker build --tag=$(IMAGE):$(TAG) .
 
 install-extension: build-extension ## Install the extension
-	docker extension install $(IMAGE)
+	docker extension install $(IMAGE):$(TAG)
 
 update-extension: build-extension ## Update the extension
-	docker extension update $(IMAGE)
+	docker extension update $(IMAGE):$(TAG)
 
 prepare-buildx: ## Create buildx builder for multi-arch build, if not exists
 	docker buildx inspect $(BUILDER) || docker buildx create --name=$(BUILDER) --driver=docker-container --driver-opt=network=host
 
 push-extension: prepare-buildx ## Build & Upload extension image to hub. Do not push if tag already exists: make push-extension tag=0.1
-	docker pull $(IMAGE):$(tag) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=${tag)} --tag=$(IMAGE):$(tag) .
+	docker pull $(IMAGE):$(TAG) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=$(TAG) --tag=$(IMAGE):$(TAG) .
 
 help: ## Show this help
 	@echo Please specify a build target. The choices are:

@@ -1,4 +1,4 @@
-IMAGE?=desktop-react-extension:latest
+IMAGE?=desktop-react-extension
 
 BUILDER=buildx-multi-arch
 

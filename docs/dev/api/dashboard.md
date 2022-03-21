@@ -33,7 +33,7 @@ Display a toast message of type error.
 window.ddClient.desktopUI.toast.error("message");
 ```
 
-More details about method parameters and return types are available in the [Toast API reference](reference/interfaces/toast.Toast.md).
+More details about method parameters and return types are available in the [Toast API reference](reference/interfaces/Toast.md).
 
 ### Deprecated user notifications
 
@@ -63,7 +63,7 @@ window.ddClient.host.openExternal("https://docker.com");
 
     The URL must have the protocol `http` or `https`.
 
-More details about method parameters and return types are available in the [Desktop host API reference](reference/interfaces/host.Host.md).
+More details about method parameters and return types are available in the [Desktop host API reference](reference/interfaces/Host.md).
 
 ### Deprecated user notifications
 

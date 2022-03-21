@@ -1,7 +1,5 @@
 # Interface: Toast
 
-[toast](../modules/toast.md).Toast
-
 Toasts provide a brief notification to the user.
 They appear temporarily and shouldn't interrupt the user experience, they don't require user input to disappear.
 
@@ -9,9 +7,9 @@ They appear temporarily and shouldn't interrupt the user experience, they don't 
 
 ### Methods
 
-- [success](toast.Toast.md#success)
-- [warning](toast.Toast.md#warning)
-- [error](toast.Toast.md#error)
+- [success](Toast.md#success)
+- [warning](Toast.md#warning)
+- [error](Toast.md#error)
 
 ## Methods
 

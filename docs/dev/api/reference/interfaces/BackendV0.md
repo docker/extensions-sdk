@@ -1,33 +1,31 @@
-# Interface: Backend
-
-[index](../modules/index.md).Backend
+# Interface: BackendV0
 
 ## Table of contents
 
 ### Container Methods
 
-- [execInContainer](index.Backend.md#execincontainer)
+- [execInContainer](BackendV0.md#execincontainer)
 
 ### HTTP Methods
 
-- [get](index.Backend.md#get)
-- [post](index.Backend.md#post)
-- [put](index.Backend.md#put)
-- [patch](index.Backend.md#patch)
-- [delete](index.Backend.md#delete)
-- [head](index.Backend.md#head)
-- [request](index.Backend.md#request)
+- [get](BackendV0.md#get)
+- [post](BackendV0.md#post)
+- [put](BackendV0.md#put)
+- [patch](BackendV0.md#patch)
+- [delete](BackendV0.md#delete)
+- [head](BackendV0.md#head)
+- [request](BackendV0.md#request)
 
 ### VM Methods
 
-- [execInVMExtension](index.Backend.md#execinvmextension)
-- [spawnInVMExtension](index.Backend.md#spawninvmextension)
+- [execInVMExtension](BackendV0.md#execinvmextension)
+- [spawnInVMExtension](BackendV0.md#spawninvmextension)
 
 ## Container Methods
 
 ### execInContainer
 
-▸ **execInContainer**(`container`, `cmd`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
+▸ **execInContainer**(`container`, `cmd`): `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 Executes a command inside a container.
 
@@ -48,7 +46,7 @@ Executes a command inside a container.
 
 #### Returns
 
-`Promise`<[`ExecResult`](exec.ExecResult.md)\>
+`Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 ___
 
@@ -66,7 +64,7 @@ window.ddClient.backend
  .then((value: any) => console.log(value)
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.get](http_service.HttpService.md#get) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.get](HttpService.md#get) instead.
 
 #### Parameters
 
@@ -92,7 +90,7 @@ Performs an HTTP POST request to a backend service.
  .then((value: any) => console.log(value));
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.post](http_service.HttpService.md#post) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.post](HttpService.md#post) instead.
 
 #### Parameters
 
@@ -119,7 +117,7 @@ Performs an HTTP PUT request to a backend service.
  .then((value: any) => console.log(value));
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.put](http_service.HttpService.md#put) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.put](HttpService.md#put) instead.
 
 #### Parameters
 
@@ -146,7 +144,7 @@ Performs an HTTP PATCH request to a backend service.
  .then((value: any) => console.log(value));
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.patch](http_service.HttpService.md#patch) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.patch](HttpService.md#patch) instead.
 
 #### Parameters
 
@@ -173,7 +171,7 @@ Performs an HTTP DELETE request to a backend service.
  .then((value: any) => console.log(value));
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.delete](http_service.HttpService.md#delete) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.delete](HttpService.md#delete) instead.
 
 #### Parameters
 
@@ -199,7 +197,7 @@ Performs an HTTP HEAD request to a backend service.
  .then((value: any) => console.log(value));
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.head](http_service.HttpService.md#head) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.head](HttpService.md#head) instead.
 
 #### Parameters
 
@@ -225,13 +223,13 @@ Performs an HTTP request to a backend service.
  .then((value: any) => console.log(value));
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.request](http_service.HttpService.md#request) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [HttpService.request](HttpService.md#request) instead.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `config` | [`RequestConfig`](http_service.RequestConfig.md) | The URL of the backend service. |
+| `config` | [`RequestConfigV0`](RequestConfigV0.md) | The URL of the backend service. |
 
 #### Returns
 
@@ -243,7 +241,7 @@ ___
 
 ### execInVMExtension
 
-▸ **execInVMExtension**(`cmd`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
+▸ **execInVMExtension**(`cmd`): `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 Executes a command inside the backend container.
 If your extensions ships with additional binaries that should be run inside the backend container you can use the `execInVMExtension` function.
@@ -256,7 +254,7 @@ If your extensions ships with additional binaries that should be run inside the 
  console.log(output);
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [ExtensionCli.exec](extension.ExtensionCli.md#exec) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [ExtensionCli.exec](ExtensionCli.md#exec) instead.
 
 #### Parameters
 
@@ -266,7 +264,7 @@ If your extensions ships with additional binaries that should be run inside the 
 
 #### Returns
 
-`Promise`<[`ExecResult`](exec.ExecResult.md)\>
+`Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 ___
 

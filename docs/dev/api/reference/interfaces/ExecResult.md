@@ -1,10 +1,8 @@
 # Interface: ExecResult
 
-[exec](../modules/exec.md).ExecResult
-
 ## Hierarchy
 
-- [`RawExecResult`](exec.RawExecResult.md)
+- [`RawExecResult`](RawExecResult.md)
 
   ↳ **`ExecResult`**
 
@@ -12,18 +10,18 @@
 
 ### Methods
 
-- [lines](exec.ExecResult.md#lines)
-- [parseJsonLines](exec.ExecResult.md#parsejsonlines)
-- [parseJsonObject](exec.ExecResult.md#parsejsonobject)
+- [lines](ExecResult.md#lines)
+- [parseJsonLines](ExecResult.md#parsejsonlines)
+- [parseJsonObject](ExecResult.md#parsejsonobject)
 
 ### Properties
 
-- [cmd](exec.ExecResult.md#cmd)
-- [killed](exec.ExecResult.md#killed)
-- [signal](exec.ExecResult.md#signal)
-- [code](exec.ExecResult.md#code)
-- [stdout](exec.ExecResult.md#stdout)
-- [stderr](exec.ExecResult.md#stderr)
+- [cmd](ExecResult.md#cmd)
+- [killed](ExecResult.md#killed)
+- [signal](ExecResult.md#signal)
+- [code](ExecResult.md#code)
+- [stdout](ExecResult.md#stdout)
+- [stderr](ExecResult.md#stderr)
 
 ## Methods
 
@@ -75,7 +73,7 @@ The JSON object.
 
 #### Inherited from
 
-[RawExecResult](exec.RawExecResult.md).[cmd](exec.RawExecResult.md#cmd)
+[RawExecResult](RawExecResult.md).[cmd](RawExecResult.md#cmd)
 
 ___
 
@@ -85,7 +83,7 @@ ___
 
 #### Inherited from
 
-[RawExecResult](exec.RawExecResult.md).[killed](exec.RawExecResult.md#killed)
+[RawExecResult](RawExecResult.md).[killed](RawExecResult.md#killed)
 
 ___
 
@@ -95,7 +93,7 @@ ___
 
 #### Inherited from
 
-[RawExecResult](exec.RawExecResult.md).[signal](exec.RawExecResult.md#signal)
+[RawExecResult](RawExecResult.md).[signal](RawExecResult.md#signal)
 
 ___
 
@@ -105,7 +103,7 @@ ___
 
 #### Inherited from
 
-[RawExecResult](exec.RawExecResult.md).[code](exec.RawExecResult.md#code)
+[RawExecResult](RawExecResult.md).[code](RawExecResult.md#code)
 
 ___
 
@@ -115,7 +113,7 @@ ___
 
 #### Inherited from
 
-[RawExecResult](exec.RawExecResult.md).[stdout](exec.RawExecResult.md#stdout)
+[RawExecResult](RawExecResult.md).[stdout](RawExecResult.md#stdout)
 
 ___
 
@@ -125,4 +123,4 @@ ___
 
 #### Inherited from
 
-[RawExecResult](exec.RawExecResult.md).[stderr](exec.RawExecResult.md#stderr)
+[RawExecResult](RawExecResult.md).[stderr](RawExecResult.md#stderr)

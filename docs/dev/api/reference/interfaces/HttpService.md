@@ -1,18 +1,16 @@
 # Interface: HttpService
 
-[http-service](../modules/http_service.md).HttpService
-
 ## Table of contents
 
 ### Methods
 
-- [get](http_service.HttpService.md#get)
-- [post](http_service.HttpService.md#post)
-- [put](http_service.HttpService.md#put)
-- [patch](http_service.HttpService.md#patch)
-- [delete](http_service.HttpService.md#delete)
-- [head](http_service.HttpService.md#head)
-- [request](http_service.HttpService.md#request)
+- [get](HttpService.md#get)
+- [post](HttpService.md#post)
+- [put](HttpService.md#put)
+- [patch](HttpService.md#patch)
+- [delete](HttpService.md#delete)
+- [head](HttpService.md#head)
+- [request](HttpService.md#request)
 
 ## Methods
 
@@ -179,7 +177,7 @@ Performs an HTTP request to a backend service.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `config` | [`RequestConfig`](http_service.RequestConfig.md) | The URL of the backend service. |
+| `config` | [`RequestConfig`](RequestConfig.md) | The URL of the backend service. |
 
 #### Returns
 

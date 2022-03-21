@@ -1,18 +1,16 @@
 # Interface: ExtensionHost
 
-[extension](../modules/extension.md).ExtensionHost
-
 ## Table of contents
 
 ### Properties
 
-- [cli](extension.ExtensionHost.md#cli)
+- [cli](ExtensionHost.md#cli)
 
 ## Properties
 
 ### cli
 
-• `Readonly` **cli**: [`ExtensionCli`](extension.ExtensionCli.md)
+• `Readonly` **cli**: [`ExtensionCli`](ExtensionCli.md)
 
 Executes a command in the the host.
 

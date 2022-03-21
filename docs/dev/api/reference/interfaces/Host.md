@@ -1,12 +1,10 @@
 # Interface: Host
 
-[host](../modules/host.md).Host
-
 ## Table of contents
 
 ### Methods
 
-- [openExternal](host.Host.md#openexternal)
+- [openExternal](Host.md#openexternal)
 
 ## Methods
 

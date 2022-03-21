@@ -1,19 +1,17 @@
 # Interface: ExtensionVM
 
-[extension](../modules/extension.md).ExtensionVM
-
 ## Table of contents
 
 ### Properties
 
-- [cli](extension.ExtensionVM.md#cli)
-- [service](extension.ExtensionVM.md#service)
+- [cli](ExtensionVM.md#cli)
+- [service](ExtensionVM.md#service)
 
 ## Properties
 
 ### cli
 
-• `Readonly` **cli**: [`ExtensionCli`](extension.ExtensionCli.md)
+• `Readonly` **cli**: [`ExtensionCli`](ExtensionCli.md)
 
 Executes a command in the backend container.
 
@@ -66,4 +64,4 @@ ___
 
 ### service
 
-• `Readonly` **service**: `undefined` \| [`HttpService`](http_service.HttpService.md)
+• `Optional` `Readonly` **service**: [`HttpService`](HttpService.md)

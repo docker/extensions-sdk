@@ -22,7 +22,7 @@ A promise that fails if the container doesn't exist.
 
 ---
 
-Use the [Navigation API reference](reference/interfaces/navigation_intents.NavigationIntents.md) for details about all navigation methods to containers, images, volumes and dev environments.
+Use the [Navigation API reference](reference/interfaces/NavigationIntents.md) for details about all navigation methods to containers, images, volumes and dev environments.
 
 ### Deprecated navigation methods
 

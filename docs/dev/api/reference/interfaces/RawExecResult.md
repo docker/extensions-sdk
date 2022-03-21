@@ -1,23 +1,21 @@
 # Interface: RawExecResult
 
-[exec](../modules/exec.md).RawExecResult
-
 ## Hierarchy
 
 - **`RawExecResult`**
 
-  ↳ [`ExecResult`](exec.ExecResult.md)
+  ↳ [`ExecResult`](ExecResult.md)
 
 ## Table of contents
 
 ### Properties
 
-- [cmd](exec.RawExecResult.md#cmd)
-- [killed](exec.RawExecResult.md#killed)
-- [signal](exec.RawExecResult.md#signal)
-- [code](exec.RawExecResult.md#code)
-- [stdout](exec.RawExecResult.md#stdout)
-- [stderr](exec.RawExecResult.md#stderr)
+- [cmd](RawExecResult.md#cmd)
+- [killed](RawExecResult.md#killed)
+- [signal](RawExecResult.md#signal)
+- [code](RawExecResult.md#code)
+- [stdout](RawExecResult.md#stdout)
+- [stderr](RawExecResult.md#stderr)
 
 ## Properties
 

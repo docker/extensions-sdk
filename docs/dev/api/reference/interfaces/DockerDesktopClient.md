@@ -1,89 +1,112 @@
 # Interface: DockerDesktopClient
 
-[index](../modules/index.md).DockerDesktopClient
+When we moved from the v0 to v1 schema, we made sure
+window.ddClient satisfied *both* interfaces. This combined type
+describes the resulting API. We should delete it when we stop providing
+the v0 API.
 
 ## Table of contents
 
 ### Properties
 
-- [backend](index.DockerDesktopClient.md#backend)
-- [extension](index.DockerDesktopClient.md#extension)
-- [desktopUI](index.DockerDesktopClient.md#desktopui)
-- [host](index.DockerDesktopClient.md#host)
-- [docker](index.DockerDesktopClient.md#docker)
+- [backend](DockerDesktopClient.md#backend)
+- [extension](DockerDesktopClient.md#extension)
+- [desktopUI](DockerDesktopClient.md#desktopui)
+- [host](DockerDesktopClient.md#host)
+- [docker](DockerDesktopClient.md#docker)
 
 ### Container Methods
 
-- [listContainers](index.DockerDesktopClient.md#listcontainers)
+- [listContainers](DockerDesktopClient.md#listcontainers)
 
 ### Image Methods
 
-- [listImages](index.DockerDesktopClient.md#listimages)
+- [listImages](DockerDesktopClient.md#listimages)
 
 ### Navigation Methods
 
-- [navigateToContainers](index.DockerDesktopClient.md#navigatetocontainers)
-- [navigateToContainer](index.DockerDesktopClient.md#navigatetocontainer)
-- [navigateToContainerLogs](index.DockerDesktopClient.md#navigatetocontainerlogs)
-- [navigateToContainerInspect](index.DockerDesktopClient.md#navigatetocontainerinspect)
-- [navigateToContainerStats](index.DockerDesktopClient.md#navigatetocontainerstats)
-- [navigateToImages](index.DockerDesktopClient.md#navigatetoimages)
-- [navigateToImage](index.DockerDesktopClient.md#navigatetoimage)
-- [navigateToVolumes](index.DockerDesktopClient.md#navigatetovolumes)
-- [navigateToVolume](index.DockerDesktopClient.md#navigatetovolume)
-- [navigateToDevEnvironments](index.DockerDesktopClient.md#navigatetodevenvironments)
+- [navigateToContainers](DockerDesktopClient.md#navigatetocontainers)
+- [navigateToContainer](DockerDesktopClient.md#navigatetocontainer)
+- [navigateToContainerLogs](DockerDesktopClient.md#navigatetocontainerlogs)
+- [navigateToContainerInspect](DockerDesktopClient.md#navigatetocontainerinspect)
+- [navigateToContainerStats](DockerDesktopClient.md#navigatetocontainerstats)
+- [navigateToImages](DockerDesktopClient.md#navigatetoimages)
+- [navigateToImage](DockerDesktopClient.md#navigatetoimage)
+- [navigateToVolumes](DockerDesktopClient.md#navigatetovolumes)
+- [navigateToVolume](DockerDesktopClient.md#navigatetovolume)
+- [navigateToDevEnvironments](DockerDesktopClient.md#navigatetodevenvironments)
 
 ### Other Methods
 
-- [execHostCmd](index.DockerDesktopClient.md#exechostcmd)
-- [spawnHostCmd](index.DockerDesktopClient.md#spawnhostcmd)
-- [execDockerCmd](index.DockerDesktopClient.md#execdockercmd)
-- [spawnDockerCmd](index.DockerDesktopClient.md#spawndockercmd)
-- [openExternal](index.DockerDesktopClient.md#openexternal)
+- [execHostCmd](DockerDesktopClient.md#exechostcmd)
+- [spawnHostCmd](DockerDesktopClient.md#spawnhostcmd)
+- [execDockerCmd](DockerDesktopClient.md#execdockercmd)
+- [spawnDockerCmd](DockerDesktopClient.md#spawndockercmd)
+- [openExternal](DockerDesktopClient.md#openexternal)
 
 ### Toast Methods
 
-- [toastSuccess](index.DockerDesktopClient.md#toastsuccess)
-- [toastWarning](index.DockerDesktopClient.md#toastwarning)
-- [toastError](index.DockerDesktopClient.md#toasterror)
+- [toastSuccess](DockerDesktopClient.md#toastsuccess)
+- [toastWarning](DockerDesktopClient.md#toastwarning)
+- [toastError](DockerDesktopClient.md#toasterror)
 
 ## Properties
 
 ### backend
 
-• `Readonly` **backend**: `undefined` \| [`Backend`](index.Backend.md)
+• `Readonly` **backend**: `undefined` \| [`BackendV0`](BackendV0.md)
 
 The `window.ddClient.backend` object can be used to communicate with the backend defined in the vm section in the extensions metadata.
 The client is already connected to the backend.
 
-**`deprecated`** :warning: It will be removed in a future version. Use [DockerDesktopClient.extension](index.DockerDesktopClient.md#extension) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [DockerDesktopClient.extension](DockerDesktopClient.md#extension) instead.
+
+#### Inherited from
+
+DockerDesktopClientV0.backend
 
 ___
 
 ### extension
 
-• `Readonly` **extension**: [`Extension`](extension.Extension.md)
+• `Readonly` **extension**: [`Extension`](Extension.md)
 
 The `window.ddClient.extension` object can be used to communicate with the backend defined in the vm section in the extensions metadata.
 The client is already connected to the backend.
+
+#### Inherited from
+
+DockerDesktopClientV1.extension
 
 ___
 
 ### desktopUI
 
-• `Readonly` **desktopUI**: [`DesktopUI`](extension.DesktopUI.md)
+• `Readonly` **desktopUI**: [`DesktopUI`](DesktopUI.md)
+
+#### Inherited from
+
+DockerDesktopClientV1.desktopUI
 
 ___
 
 ### host
 
-• `Readonly` **host**: [`Host`](host.Host.md)
+• `Readonly` **host**: [`Host`](Host.md)
+
+#### Inherited from
+
+DockerDesktopClientV1.host
 
 ___
 
 ### docker
 
-• `Readonly` **docker**: [`Docker`](docker.Docker.md)
+• `Readonly` **docker**: [`Docker`](Docker.md)
+
+#### Inherited from
+
+DockerDesktopClientV1.docker
 
 ## Container Methods
 
@@ -91,13 +114,16 @@ ___
 
 ▸ **listContainers**(`options`): `Promise`<`unknown`\>
 
-Get the list of containers
+Get the list of running containers (same as `docker ps`).
+
+By default this will not list stopped containers.
+You can use the option `{"all": true}` to list all the running and stopped containers.
 
 ```typescript
 const containers = await window.ddClient.listContainers();
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [Docker.listContainers](docker.Docker.md#listcontainers) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [Docker.listContainers](Docker.md#listcontainers) instead.
 
 #### Parameters
 
@@ -108,6 +134,10 @@ const containers = await window.ddClient.listContainers();
 #### Returns
 
 `Promise`<`unknown`\>
+
+#### Inherited from
+
+DockerDesktopClientV0.listContainers
 
 ___
 
@@ -123,7 +153,7 @@ Get the list of images
 const images = await window.ddClient.listImages();
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [Docker.listImages](docker.Docker.md#listimages) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [Docker.listImages](Docker.md#listimages) instead.
 
 #### Parameters
 
@@ -134,6 +164,10 @@ const images = await window.ddClient.listImages();
 #### Returns
 
 `Promise`<`unknown`\>
+
+#### Inherited from
+
+DockerDesktopClientV0.listImages
 
 ___
 
@@ -148,11 +182,15 @@ Navigate to the containers window in the Dashboard.
 window.ddClient.navigateToContainers()
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewContainers](navigation_intents.NavigationIntents.md#viewcontainers) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewContainers](NavigationIntents.md#viewcontainers) instead.
 
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.navigateToContainers
 
 ___
 
@@ -165,7 +203,7 @@ Navigate to the container window in the Dashboard.
 await window.ddClient.navigateToContainer(id)
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewContainer](navigation_intents.NavigationIntents.md#viewcontainer) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewContainer](NavigationIntents.md#viewcontainer) instead.
 
 #### Parameters
 
@@ -178,6 +216,10 @@ await window.ddClient.navigateToContainer(id)
 `Promise`<`any`\>
 
 A promise that fails if the container doesn't exist.
+
+#### Inherited from
+
+DockerDesktopClientV0.navigateToContainer
 
 ___
 
@@ -204,6 +246,10 @@ await window.ddClient.navigateToContainerLogs(id)
 
 A promise that fails if the container doesn't exist.
 
+#### Inherited from
+
+DockerDesktopClientV0.navigateToContainerLogs
+
 ___
 
 ### navigateToContainerInspect
@@ -228,6 +274,10 @@ await window.ddClient.navigateToContainerInspect(id)
 `Promise`<`any`\>
 
 A promise that fails if the container doesn't exist.
+
+#### Inherited from
+
+DockerDesktopClientV0.navigateToContainerInspect
 
 ___
 
@@ -255,6 +305,10 @@ await window.ddClient.navigateToContainerStats(id)
 
 A promise that fails if the container doesn't exist.
 
+#### Inherited from
+
+DockerDesktopClientV0.navigateToContainerStats
+
 ___
 
 ### navigateToImages
@@ -266,11 +320,15 @@ Navigate to the images window in the Dashboard.
 await window.ddClient.navigateToImages(id)
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewImages](navigation_intents.NavigationIntents.md#viewimages) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewImages](NavigationIntents.md#viewimages) instead.
 
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.navigateToImages
 
 ___
 
@@ -285,7 +343,7 @@ In this navigation route you can find the image layers, commands, created time a
 await window.ddClient.navigateToImage(id, tag)
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewImage](navigation_intents.NavigationIntents.md#viewimage) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewImage](NavigationIntents.md#viewimage) instead.
 
 #### Parameters
 
@@ -300,6 +358,10 @@ await window.ddClient.navigateToImage(id, tag)
 
 A promise that fails if the container doesn't exist.
 
+#### Inherited from
+
+DockerDesktopClientV0.navigateToImage
+
 ___
 
 ### navigateToVolumes
@@ -312,11 +374,15 @@ Navigate to the volumes window in the Dashboard.
 await window.ddClient.navigateToVolumes()
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewVolumes](navigation_intents.NavigationIntents.md#viewvolumes) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewVolumes](NavigationIntents.md#viewvolumes) instead.
 
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.navigateToVolumes
 
 ___
 
@@ -330,7 +396,7 @@ Navigate to a specific volume in the Dashboard.
 window.ddClient.navigateToVolume(volume)
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewVolume](navigation_intents.NavigationIntents.md#viewvolume) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewVolume](NavigationIntents.md#viewvolume) instead.
 
 #### Parameters
 
@@ -341,6 +407,10 @@ window.ddClient.navigateToVolume(volume)
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.navigateToVolume
 
 ___
 
@@ -354,11 +424,15 @@ Navigate to the Dev Environments window in the Dashboard.
 window.ddClient.navigateToDevEnvironments()
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewDevEnvironments](navigation_intents.NavigationIntents.md#viewdevenvironments) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [NavigationIntents.viewDevEnvironments](NavigationIntents.md#viewdevenvironments) instead.
 
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.navigateToDevEnvironments
 
 ___
 
@@ -366,7 +440,7 @@ ___
 
 ### execHostCmd
 
-▸ **execHostCmd**(`cmd`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
+▸ **execHostCmd**(`cmd`): `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 You can run binaries defined in the host section in the extension metadata.
 
@@ -376,7 +450,7 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 });
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [ExtensionCli.exec](extension.ExtensionCli.md#exec) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [ExtensionCli.exec](ExtensionCli.md#exec) instead.
 
 #### Parameters
 
@@ -386,7 +460,11 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 
 #### Returns
 
-`Promise`<[`ExecResult`](exec.ExecResult.md)\>
+`Promise`<[`ExecResultV0`](ExecResultV0.md)\>
+
+#### Inherited from
+
+DockerDesktopClientV0.execHostCmd
 
 ___
 
@@ -410,7 +488,7 @@ window.ddClient.spawnHostCmd(
 );
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [ExtensionCli.exec](extension.ExtensionCli.md#exec) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [ExtensionCli.exec](ExtensionCli.md#exec) instead.
 
 #### Parameters
 
@@ -424,11 +502,15 @@ window.ddClient.spawnHostCmd(
 
 `void`
 
+#### Inherited from
+
+DockerDesktopClientV0.spawnHostCmd
+
 ___
 
 ### execDockerCmd
 
-▸ **execDockerCmd**(`cmd`, ...`args`): `Promise`<[`ExecResult`](exec.ExecResult.md)\>
+▸ **execDockerCmd**(`cmd`, ...`args`): `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 You can also directly execute the docker binary.
 
@@ -440,7 +522,7 @@ const output = await window.ddClient.execDockerCmd(
 );
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [DockerCommand.exec](docker.DockerCommand.md#exec) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [DockerCommand.exec](DockerCommand.md#exec) instead.
 
 #### Parameters
 
@@ -451,7 +533,7 @@ const output = await window.ddClient.execDockerCmd(
 
 #### Returns
 
-`Promise`<[`ExecResult`](exec.ExecResult.md)\>
+`Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
 The result will contain both the standard output and the standard error of the executed command:
 ```
@@ -476,13 +558,17 @@ window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
 });
 ```
 
+#### Inherited from
+
+DockerDesktopClientV0.execDockerCmd
+
 ___
 
 ### spawnDockerCmd
 
 ▸ **spawnDockerCmd**(`cmd`, `args`, `callback`): `void`
 
-**`deprecated`** :warning: It will be removed in a future version. Use [DockerCommand.exec](docker.DockerCommand.md#exec) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [DockerCommand.exec](DockerCommand.md#exec) instead.
 
 #### Parameters
 
@@ -496,6 +582,10 @@ ___
 
 `void`
 
+#### Inherited from
+
+DockerDesktopClientV0.spawnDockerCmd
+
 ___
 
 ### openExternal
@@ -508,7 +598,7 @@ Opens an external URL with the system default browser.
 window.ddClient.openExternal("https://docker.com");
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [Host.openExternal](host.Host.md#openexternal) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [Host.openExternal](Host.md#openexternal) instead.
 
 #### Parameters
 
@@ -519,6 +609,10 @@ window.ddClient.openExternal("https://docker.com");
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.openExternal
 
 ___
 
@@ -534,7 +628,7 @@ Display a toast message of type success.
 window.ddClient.toastSuccess("message");
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [Toast.success](toast.Toast.md#success) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [Toast.success](Toast.md#success) instead.
 
 #### Parameters
 
@@ -545,6 +639,10 @@ window.ddClient.toastSuccess("message");
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.toastSuccess
 
 ___
 
@@ -558,7 +656,7 @@ Display a toast message of type warning.
 window.ddClient.toastWarning("message");
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [Toast.warning](toast.Toast.md#warning) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [Toast.warning](Toast.md#warning) instead.
 
 #### Parameters
 
@@ -569,6 +667,10 @@ window.ddClient.toastWarning("message");
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.toastWarning
 
 ___
 
@@ -582,7 +684,7 @@ Display a toast message of type error.
 window.ddClient.toastError("message");
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use [Toast.error](toast.Toast.md#error) instead.
+**`deprecated`** :warning: It will be removed in a future version. Use [Toast.error](Toast.md#error) instead.
 
 #### Parameters
 
@@ -593,3 +695,7 @@ window.ddClient.toastError("message");
 #### Returns
 
 `void`
+
+#### Inherited from
+
+DockerDesktopClientV0.toastError

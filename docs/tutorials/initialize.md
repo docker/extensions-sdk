@@ -41,7 +41,7 @@ The `make extension` will build your extension and as a result it will generate 
 For instance, if you typed `john/my-extension` as the answer to the following question:
 
 ```
-? Hub repository (eg. namespace/image on hub): john/my-extension
+? Hub repository (eg. namespace/repository on hub): john/my-extension
 ```
 
 The `make extension` will generate an image with name `john/my-extension`.

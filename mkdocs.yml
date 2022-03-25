@@ -52,10 +52,7 @@ nav:
       - Labels: extensions/labels.md
       - Validation: extensions/validation.md
       - Distribution: extensions/DISTRIBUTION.md
-      - Samples:
-          - SwimmingWhale: extensions/samples/swimmingwhale/README.md
-          - VM UI: extensions/samples/vm-ui/README.md
-          - Volumes share: extensions/samples/volumes-share/README.md
+      - Building multi-arch extensions: extensions/multi-arch.md
   - Developer guide:
       - Overview: dev/overview.md
       - CLI:

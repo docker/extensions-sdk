@@ -83,6 +83,26 @@ A `metadata.json` file is required at the root of your extension directory.
 }
 ```
 
+## Use extension APIs in the application code
+
+The React application can import `@docker/extension-api-client` and use extension APIs to perform actions with Docker Desktop.
+
+```ts title="App.tsx" linenums="1"
+import { Box, Button } from '@mui/material';
+import { createDockerDesktopClient } from '@docker/extension-api-client';
+
+export function App() {
+  //obtain docker destkop extension client
+  const ddClient = createDockerDesktopClient();
+
+  function sayHello() {
+    ddClient.desktopUI.toast.success('Hello, World!');
+  }
+
+  ...
+}
+```
+
 ## Build the extension
 
 ```bash
@@ -156,9 +176,9 @@ ui-extension #(1)   Docker Inc. (2)     desktop-react-extension:0.0.1 (3)  1 tab
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
 
-On the left-menu, you should see a new tab with the name `UI Extension`. Click on it to load the main window that will render a button on the top-left corner. When you click on it, a pop-up will appear with the message `Hello, World!`.
+On the left-menu, you should see a new tab with the name `UI Extension`. Click on it to load the main window that will render a button on the top-left corner. When you click on it, a toast message will appear with the message `Hello, World!`.
 
-![UI Extension](images/ui-extension-hello-world.png)
+![UI Extension](images/ui-extension-react.png)
 
 ### Opening Dev Tools
 

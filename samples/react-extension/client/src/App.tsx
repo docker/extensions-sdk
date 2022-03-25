@@ -1,9 +1,11 @@
-import React from 'react';
 import { Box, Button } from '@mui/material';
+import { createDockerDesktopClient } from '@docker/extension-api-client';
 
 export function App() {
+  const ddClient = createDockerDesktopClient();
+
   function sayHello() {
-    alert('Hello, World!');
+    ddClient.desktopUI.toast.success('Hello, World!');
   }
 
   return (
@@ -12,8 +14,11 @@ export function App() {
       flexGrow={1}
       justifyContent="center"
       alignItems="center"
-      height="100vh">
-      <Button variant="contained" onClick={sayHello}>Click me!</Button>
+      height="100vh"
+    >
+      <Button variant="contained" onClick={sayHello}>
+        Click me!
+      </Button>
     </Box>
   );
 }

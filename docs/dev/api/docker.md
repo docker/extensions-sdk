@@ -62,7 +62,7 @@ For convenience, the command result object also has methods to easily parse it.
 ▸ **exec**(`cmd`, `args`, `options`): `void`
 
 Streams the output as a result of the execution of a docker command.
-Useful when the output of the command is too long or you need to get the output as a stream.
+Useful when you need to get the output as a stream or the output of the command is too long.
 
 ```typescript linenums="1"
 await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {

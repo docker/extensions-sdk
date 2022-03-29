@@ -9,20 +9,51 @@ This tutorial describes a minimal example running frontend extension and invokin
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
-In the [minimal-docker-cli](../../samples/minimal-docker-cli/) sample folder, you can find a ready-to-go example that represents a UI Extension invoking docker commands. We will go through this code example in this tutorial.
+In the `minimal-docker-cli` sample folder, you can find a ready-to-go example that represents a UI Extension invoking docker commands. We will go through this code example in this tutorial.
 
 ```bash
 .
 ├── Dockerfile # (1)
 ├── metadata.json # (2)
-└── ui # (3)
-    ├──  index.html
-    └──  script.js
+└── client # (3)
+│   └── src
+│       ├── App.tsx
+│       └── ... React aplication
 ```
 
 1. Contains everything required to build the extension and run it in Docker Desktop.
 2. A file that provides information about the extension such as the name, description, and version, among others.
-3. The source folder that contains all your HTML, CSS and JS files. These can also be other static assets like logos, icons, etc.
+3. The source folder that contains all your HTML, CSS and JS files. In this example we use a React frontend, the main part of th extension is an App.tsx.
+
+## Invoke docker CLI in your javascript code
+
+Let's reuse the React extension from the [React extension tutorial](./react-extension.md), and see how we can invoke docker commands from the App.tsx file.
+
+We can use the Docker Desktop Client object to discover extension APIs about `docker`. Our application uses `@docker/extension-api-client` in order to obtain a ddClient Object. Because we have set `@docker/extension-api-client-types` as a dev dependency, we also have auto-completion in our IDE:
+
+![types auto complete](images/types-autocomplete.png)
+
+We can invoke a Docker command with `ddClient.docker.cli.exec()`.
+For example, to run `docker info` and obtain json formatted results:
+
+`ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`.
+
+We can use `result.parseJsonObject()` to read results as json object and use it in our application.
+
+```typescript title="App.tsx"
+const ddClient = createDockerDesktopClient();
+const [dockerInfo, setDockerInfo] = useState<any>(null);
+
+async function runDockerInfo() {
+  const result = await ddClient.docker.cli.exec("info", [
+    "--format",
+    '"{{json .}}"',
+  ]);
+  setDockerInfo(result.parseJsonObject());
+}
+```
+
+We can then use our `dockerInfo` object in the display part of the application
 
 ## The extension's Dockerfile
 
@@ -34,7 +65,10 @@ The bare minimum configuration that a Dockerfile's extension requires to functio
 - The source code - in this case, an `index.html` that sits within the `ui` folder. `index.html` refers to javascript code in `script.js`.
 - The `metadata.json` file.
 
-```Dockerfile title="Dockerfile" linenums="1"
+```Dockerfile title="Dockerfile"
+FROM node:17.7-alpine3.14 AS client-builder
+# ... build React application
+
 FROM scratch
 
 LABEL org.opencontainers.image.title="MyExtension" \
@@ -63,36 +97,6 @@ A `metadata.json` file is required at the root of the image filesystem.
   }
 }
 ```
-
-## Invoke docker CLI in your javascript code
-
-Let's reuse the React extension from the [React extension tutorial](./react-extension.md), and see how we can invoke docker commands from the App.tsx file.
-
-We can use the Docker Desktop Client object to discover extension APIs about `docker`. Our application uses `@docker/extension-api-client` in order to obtain a ddClient Object. Because we have set `@docker/extension-api-client-types` as a dev dependency, we also have auto-completion in our IDE:
-
-![types auto complete](images/types-autocomplete.png)
-
-We can invoke a Docker command with `ddClient.docker.cli.exec()`.
-For example, to run `docker info` and obtain json formatted results:
-
-`ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`.
-
-We can use `result.parseJsonObject()` to read results as json object and use it in our application.
-
-```typescript
-const ddClient = createDockerDesktopClient();
-const [dockerInfo, setDockerInfo] = useState<any>(null);
-
-async function runDockerInfo() {
-  const result = await ddClient.docker.cli.exec("info", [
-    "--format",
-    '"{{json .}}"',
-  ]);
-  setDockerInfo(result.parseJsonObject());
-}
-```
-
-We can then use our `dockerInfo` object in the display part of the application
 
 ## Build the extension
 

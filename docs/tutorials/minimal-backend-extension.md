@@ -15,16 +15,35 @@ In the `minimal-backend` sample folder, you can find a ready-to-go example. It r
 ├── Makefile
 ├── client # (2)
 │   └── src
-│       ├── index.html
-│       └── script.js
+│       ├── App.tsx
+│       └── ... React aplication
 ├── hello.sh # (3)
 └── metadata.json # (4)
 ```
 
 1. Contains everything required to build the extension and run it in Docker Desktop.
-2. The source folder that contains all your HTML, CSS and JS files. These can also be other static assets like logos, icons, etc.
+2. The source folder that contains the UI application. In this example we use a React frontend, the main part of th extension is an App.tsx.
 3. The script that will be run inside the container.
 4. A file that provides information about the extension such as the name, description, and version, among others.
+
+## Invoke the extension backend from your javascript code
+
+Let's reuse the React extension from the [React extension tutorial](./react-extension.md), and see how we can invoke our extension backend from the App.tsx file.
+
+We can use the Docker Desktop Client object and then invoke a binary provided in our backend container (living inside the Docker Desktop VM) with `ddClient.docker.extension.vm.cli.exec()`.
+In our example, our hello.sh script returns a string as result, we obtain it with `result?.stdout`.
+
+```typescript title="App.tsx"
+const ddClient = createDockerDesktopClient();
+const [backendInfo, setBackendInfo] = useState<string | undefined>();
+
+async function runExtensionBackend(inputText: string) {
+  const result = await ddClient.extension.vm?.cli.exec("./hello.sh", [
+    inputText,
+  ]);
+  setBackendInfo(result?.stdout);
+}
+```
 
 ## The extension's Dockerfile
 
@@ -37,7 +56,10 @@ The bare minimum configuration that a Dockerfile's extension requires to functio
 - The `metadata.json` file.
 - The command to run the container backend service indefinitely.
 
-```Dockerfile title="Dockerfile" linenums="1"
+```Dockerfile title="Dockerfile"
+FROM node:17.7-alpine3.14 AS client-builder
+# ... build React application
+
 FROM alpine:3.15
 
 LABEL org.opencontainers.image.title="HelloBackend" \
@@ -47,7 +69,7 @@ LABEL org.opencontainers.image.title="HelloBackend" \
 
 COPY hello.sh .
 COPY metadata.json .
-COPY client/src ./ui
+COPY --from=client-builder /app/client/dist ui
 
 CMD [ "sleep", "infinity" ]
 ```

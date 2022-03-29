@@ -1140,17 +1140,17 @@
   dependencies:
     "@fontsource/open-sans" "^4.5.1"
 
-"@docker/extension-api-client-types@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@docker/extension-api-client-types/-/extension-api-client-types-0.2.0.tgz#3d1a4a0577a73b753220438f85b35755f7547d20"
-  integrity sha512-mmfhFaOt+vnippzWbNY0eDk24m7Kc8dTANK952kzBxWM4I3lsIQnQBa3KJOrFp4rVvRveouWGRFvCRkbZKFxsQ==
+"@docker/extension-api-client-types@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@docker/extension-api-client-types/-/extension-api-client-types-0.2.2.tgz#b8504df0d4dfaa5bc4e5201482f001378bcfc4aa"
+  integrity sha512-+RiekqZ7sacKZpIm3SguRLX+YurCwNhgBGrUoLdY8PIYKzJ6NZd2+ExX3wyT+lxCYOFEW9Yh/gdcXWvjVOktzw==
 
-"@docker/extension-api-client@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@docker/extension-api-client/-/extension-api-client-0.2.0.tgz#a914bd6dc10aa475ab36e71a99c07801122c722c"
-  integrity sha512-0UWXxbaDuHI+IQKqIHusArxtz7tzqOAYz3p/9Wv7gAaqjcXvH9RL0ED2mb+uCDPNy8VwUhwW3t2l1WpMfssA4w==
+"@docker/extension-api-client@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@docker/extension-api-client/-/extension-api-client-0.2.2.tgz#d3dba6f3bbaebe66f80181581312bbfc302560b9"
+  integrity sha512-/mUxXrzxadU9EMd4NiR1c3upshSzo0C9DgkdDu1O+CsSp8Ia+9C2XlIlh5lb200DdtYqSNlqs4KWhIoHMPkx/A==
   dependencies:
-    "@docker/extension-api-client-types" "^0.2.0"
+    "@docker/extension-api-client-types" "^0.2.2"
 
 "@emotion/babel-plugin@^11.7.1":
   version "11.7.2"

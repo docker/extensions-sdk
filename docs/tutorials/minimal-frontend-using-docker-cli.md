@@ -9,7 +9,7 @@ This tutorial describes a minimal example running frontend extension and invokin
 
 A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
 
-In the `minimal-docker-cli` sample folder, you can find a ready-to-go example that represents a UI Extension invoking docker commands. We will go through this code example in this tutorial.
+In the [minimal-docker-cli](../../samples/minimal-docker-cli/) sample folder, you can find a ready-to-go example that represents a UI Extension invoking docker commands. We will go through this code example in this tutorial.
 
 ```bash
 .
@@ -66,24 +66,33 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ## Invoke docker CLI in your javascript code
 
-A `script.js` includes code that is executed when the extension tab is shown.
+Let's reuse the React extension from the [React extension tutorial](./react-extension.md), and see how we can invoke docker commands from the App.tsx file.
 
-In Javascript, extensions can use `windows.ddClient` to get access to the Docker Desktop extension API.
+We can use the Docker Desktop Client object to discover extension APIs about `docker`. Our application uses `@docker/extension-api-client` in order to obtain a ddClient Object. Because we have set `@docker/extension-api-client-types` as a dev dependency, we also have auto-completion in our IDE:
 
-On this ddClient object we can invoke `ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`, and then use `res.parseJsonObject()` to read results as json object and use it.
+![types auto complete](images/types-autocomplete.png)
 
-The rest is purely formatting code using the output of the Docker command:
+We can invoke a Docker command with `ddClient.docker.cli.exec()`.
+For example, to run `docker info` and obtain json formatted results:
 
-```javascript
-window.ddClient.docker.cli
-  .exec("info", ["--format", '"{{json .}}"'])
-  .then((res) => {
-    document.getElementById("size-info").innerHTML = `
-    Allocated CPUs: ${res.parseJsonObject().NCPU}
-    Allocated Memory: ${res.parseJsonObject().MemTotal}
-`;
-  });
+`ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`.
+
+We can use `result.parseJsonObject()` to read results as json object and use it in our application.
+
+```typescript
+const ddClient = createDockerDesktopClient();
+const [dockerInfo, setDockerInfo] = useState<any>(null);
+
+async function runDockerInfo() {
+  const result = await ddClient.docker.cli.exec("info", [
+    "--format",
+    '"{{json .}}"',
+  ]);
+  setDockerInfo(result.parseJsonObject());
+}
 ```
+
+We can then use our `dockerInfo` object in the display part of the application
 
 ## Build the extension
 
@@ -151,7 +160,7 @@ MyExtension         Docker Inc.         desktop-docker-cli-minimal-extension:0.0
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
 
-On the left menu, you should see a new tab with the name `Disk usage`. Click on it to load the main window that will run the javascript code, invoke the `docker system df` command, and render the results.
+On the left menu, you should see a new tab with the name `Docker VM info`. Click on it to load the main window and click the button to run the `docker info` command, and render the results.
 
 ![UI Extension](images/docker-cli-minimal-extension.png)
 

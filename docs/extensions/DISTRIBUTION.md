@@ -5,7 +5,7 @@
 Docker Desktop extensions are packaged as Docker images. The entire extension runtime including UI, backend services (host or VM) and any necessary binary must be included in the extension image.
 Every extension image must contain a metadata.json file at the root of its filesystem, that will [define the contents of the extension](METADATA.md).
 
-The image must have several labels:
+The image must have [several labels](extensions/labels):
 
 - `org.opencontainers.image.title`: name of the extension
 - `org.opencontainers.image.vendor`: provider for the extension

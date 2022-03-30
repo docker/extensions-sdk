@@ -1,6 +1,9 @@
 ## Introduction
 
-As an extension author, you must ensure the extension you create is supported in multiple architectures. Docker Extensions are images that can be built against multiple architectures, e.g. `amd64` or `arm64`.
+As an extension author, you must ensure the extension is supported for the following architectures:
+
+- `linux/amd64`
+- `linux/arm64`
 
 Docker Desktop will retrieve the extension image according to the user's system architecture. If the extension does not provide an image that matches the user's system architecture, Docker Desktop won't be able to install the extension. As a result, users won't be able to run the extension in Docker Desktop.
 

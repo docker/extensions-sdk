@@ -210,4 +210,4 @@ Extension "MyExtension" removed
 
 ## What's next?
 
-See the next [tutorial](../minimal-backend-extension) to create a minimal backend extension.
+See the next [tutorial](./minimal-backend-extension.md) to create a minimal backend extension.

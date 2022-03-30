@@ -214,7 +214,3 @@ Extension removed from Desktop VM
 Extension UI tab Hello Backend Extension removed
 Extension "hello-backend" removed
 ```
-
-## What's next?
-
-See the next [tutorial](../react-extension) to create a ReactJS-based extension.

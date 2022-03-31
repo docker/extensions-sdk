@@ -225,3 +225,7 @@ Removing extension ui-extension...
 Extension UI tab UI Extension removed
 Extension "ui-extension" removed
 ```
+
+## What's next?
+
+See the next [tutorial](./minimal-frontend-using-docker-cli.md) to create a ReactJS-based extension.

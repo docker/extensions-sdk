@@ -111,6 +111,7 @@ Installing Desktop extension UI for tab "Min FrontEnd Extension"...
 Extension UI tab "Min FrontEnd Extension" added.
 Extension "MinimalFrontEnd" installed successfully
 ```
+
 ## Preview the extension
 
 You can verify that the extension has been installed successfully using the following CLI command:
@@ -139,22 +140,23 @@ You can update the extension by rebuilding, validating and then using the update
 Let's update the html file to include some inline CSS to support a dark mode.
 
 ```html
-      <head>
-        <style>
-            @media (prefers-color-scheme: dark) {
-                body {
-                    background-color: #333;
-                }
+<head>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #333;
+      }
 
-                h1 {
-                    color: white;
-                }
-            }
-        </style>
-        ...
+      h1 {
+        color: white;
+      }
+    }
+  </style>
+  ...
+</head>
 ```
-Alternatively remove the `index.html` file and rename `updatedindex.html` to index.html in the ui directory. Rebuild and revalidate the extension.
 
+Alternatively remove the `index.html` file and rename `updatedindex.html` to index.html in the ui directory. Rebuild and revalidate the extension.
 
 ```bash
 docker build -t desktop-frontend-minimal-extension:0.0.1 .
@@ -166,6 +168,7 @@ Lastly update the extension.
 ```bash
 docker extension update desktop-frontend-minimal-extension:0.0.1
 ```
+
 If the installation was successful, you should see the following output:
 
 ```bash
@@ -180,8 +183,8 @@ Extension "MinimalFrontEnd" installed successfully
 
 Now when running Docker Desktop in dark mode and clicking the `Min FrontEnd Extension` it'll render with dark mode colors.
 
-
 ![UI Extension](images/ui-minimal-extension-dark.png)
+
 ## Publish the extension
 
 In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
@@ -224,4 +227,4 @@ Extension "MinimalFrontEnd" removed
 
 ## What's next?
 
-See the next [tutorial](../minimal-backend-extension) to create a minimal backend extension.
+See the next [tutorial](./react-extension.md) to create an extension using React.

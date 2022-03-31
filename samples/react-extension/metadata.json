@@ -1,6 +1,4 @@
 {
-  "name": "ui-extension",
-  "provider": "Docker Inc.",
   "icon": "docker.svg",
   "ui": {
     "dashboard-tab": {

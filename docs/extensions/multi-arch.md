@@ -68,6 +68,7 @@ In the `metadata.json` file, we especify the path for every binary on every plat
 
 ```json title="metadata.json" linenums="1" hl_lines="12-25"
 {
+  "icon": "docker.svg",
   "ui": {
     "dashboard-tab": {
       "title": "Example Extension",

@@ -1,9 +1,0 @@
-{
-  "ui": {
-    "dashboard-tab": {
-      "title": "SwimmingWhale",
-      "root": "/swim",
-      "src": "index.html"
-    }
-  }
-}

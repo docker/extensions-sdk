@@ -15,7 +15,8 @@ FROM scratch
 LABEL org.opencontainers.image.title="Docker disk usage" \
     org.opencontainers.image.description="A sample extension to show how to run docker commands from Desktop Extensions." \
     org.opencontainers.image.vendor="Docker Inc." \
-    com.docker.desktop.extension.api.version=">= 0.2.0"
+    com.docker.desktop.extension.api.version=">= 0.2.0" \
+    com.docker.desktop.extension.icon="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png"
 
 COPY --from=client-builder /app/client/dist ui
 COPY metadata.json .

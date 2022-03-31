@@ -11,7 +11,7 @@ COPY client /app/client
 RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn build
 
 FROM debian:bullseye-slim
-LABEL org.opencontainers.image.title="ui-extension" \
+LABEL org.opencontainers.image.title="UI minimal sample" \
     org.opencontainers.image.description="Your Desktop Extension Description" \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version=">= 0.2.0" \

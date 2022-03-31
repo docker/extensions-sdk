@@ -51,8 +51,6 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json title="metadata.json" linenums="1"
 {
-  "name": "MinimalFrontEnd",
-  "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
       "title": "Min FrontEnd Extension",

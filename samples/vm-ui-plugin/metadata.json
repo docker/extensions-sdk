@@ -1,6 +1,4 @@
 {
-  "name": "volume-sample",
-  "provider": "Docker Inc.",
   "vm": {
     "composefile": "docker-compose.yaml",
     "exposes": { "socket": "plugin-volumes.sock" }

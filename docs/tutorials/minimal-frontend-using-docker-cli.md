@@ -86,8 +86,6 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json title="metadata.json" linenums="1"
 {
-  "name": "MyExtension",
-  "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
       "title": "Docker VM info",

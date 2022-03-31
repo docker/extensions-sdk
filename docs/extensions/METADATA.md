@@ -16,9 +16,6 @@ The metadata.json file must follow the format :
 
 ```json
 {
-    "name": "volumes-share",
-    "provider": "Docker Inc.",
-    "icon": "extension-icon.svg",
     "ui": ...
     "vm": ...
     "host": ...

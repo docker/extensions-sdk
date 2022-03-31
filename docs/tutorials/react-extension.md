@@ -70,9 +70,6 @@ A `metadata.json` file is required at the root of your extension directory.
 
 ```json title="metadata.json" linenums="1"
 {
-  "name": "ui-extension",
-  "provider": "Docker Inc.",
-  "icon": "docker.svg",
   "ui": {
     "dashboard-tab": {
       "title": "UI Extension",

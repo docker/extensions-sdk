@@ -80,8 +80,6 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json title="metadata.json" linenums="1"
 {
-  "name": "hello-backend",
-  "provider": "Docker Inc.",
   "vm": {
     "image": "${DESKTOP_PLUGIN_IMAGE}"
   },

@@ -1,6 +1,4 @@
 {
-  "name": "MinimalFrontEnd",
-  "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
       "title": "Min FrontEnd Extension",

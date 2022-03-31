@@ -1,6 +1,6 @@
 ## Introduction
 
-As an extension author, you must ensure the extension is supported for the following architectures:
+As an extension author, you must ensure the extension is supported for at least the following architectures:
 
 - `linux/amd64`
 - `linux/arm64`

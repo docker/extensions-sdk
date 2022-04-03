@@ -1,3 +1,9 @@
+---
+title: Extensions SDK tutorials
+description: ndex for Docker Extensions SDK tutorials
+keywords: Docker, Extensions, sdk, tutorial
+---
+
 Learn how to create a new Docker extension.
 
 ## Prerequisites
@@ -9,12 +15,13 @@ Learn how to create a new Docker extension.
 
 ## Create a new extension
 
-To create a new extension, use the `init` subcommand and provide a name for your extension. 
+To create a new extension, use the `init` subcommand and provide a name for your extension.
 
 ```bash
 docker extension init my-extension
 ```
-You'll be asked a series of questions about your extension, such as its name, a description, and the name of your Hub repository. This helps the CLI to generate a set of boilerplate files for you to get started. The boilerplate files are stored in the directory `my-extension`. 
+
+You'll be asked a series of questions about your extension, such as its name, a description, and the name of your Hub repository. This helps the CLI to generate a set of boilerplate files for you to get started. The boilerplate files are stored in the directory `my-extension`.
 
 The automatically generated extension contains:
 
@@ -33,7 +40,7 @@ cd my-extension
 make build-extension
 ```
 
- `make build-extension` builds your extension and also generates an image which is named after your chosen hub repository. For instance, if you typed `john/my-extension` as the answer to the following question:
+`make build-extension` builds your extension and also generates an image which is named after your chosen hub repository. For instance, if you typed `john/my-extension` as the answer to the following question:
 
 ```
 ? Hub repository (eg. namespace/repository on hub): john/my-extension
@@ -81,7 +88,7 @@ ID                    PROVIDER      VERSION   UI                  VM          HO
 john/my-extension     Docker Inc.             1 tab(My-Extension) Running(1)  -
 ```
 
-In Docker Desktop, the left-hand menu now displays a new tab with the name `My-Extension`. When you select the new tab, a **Call Backend** button appears. When you select it, it displays a response from the backend. 
+In Docker Desktop, the left-hand menu now displays a new tab with the name `My-Extension`. When you select the new tab, a **Call Backend** button appears. When you select it, it displays a response from the backend.
 
 ![UI Extension](images/initialized-extension.png)
 
@@ -97,7 +104,7 @@ To iterate faster and try out new changes whilst you develop your extension, use
 
 During UI development, it's helpful to use hot reloading to test your changes without rebuilding your entire extension.
 To do this, you can configure Docker Desktop to load your UI from a development server, such as the one Create React
-App starts when invoked with yarn start. 
+App starts when invoked with yarn start.
 
 Assuming your app runs on the default port, start your UI app and then run:
 
@@ -106,7 +113,7 @@ cd ui
 npm start
 ```
 
-This starts a development server that listens on port 3000. 
+This starts a development server that listens on port 3000.
 
 You can now tell
 Docker Desktop to use this as the frontend source. In another terminal run:

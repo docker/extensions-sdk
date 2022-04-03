@@ -1,3 +1,9 @@
+---
+title: Extensions SDK documentation
+description: Overall index for Docker Extensions SDK documentation
+keywords: Docker, Extensions, sdk
+---
+
 # Docker Extension SDK
 
 Use the resources in this section to create your own Docker Extension.
@@ -87,7 +93,7 @@ docker extension enable
 You can then list all your installed extensions:
 
 ```console
-docker extension ls 
+docker extension ls
 ID                  PROVIDER            VERSION             UI                  VM                  HOST
 ```
 

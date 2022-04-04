@@ -1,6 +1,4 @@
 {
-  "name": "MyExtension",
-  "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
       "title": "Docker VM info",

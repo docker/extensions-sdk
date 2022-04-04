@@ -1,6 +1,4 @@
 {
-  "name": "volumes-share",
-  "provider": "Docker Inc.",
   "vm": {
     "composefile": "docker-compose.yaml",
     "exposes": { "socket": "volume-share.sock" }

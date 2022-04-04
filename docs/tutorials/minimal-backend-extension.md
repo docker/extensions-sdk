@@ -65,7 +65,8 @@ FROM alpine:3.15
 LABEL org.opencontainers.image.title="HelloBackend" \
     org.opencontainers.image.description="A sample extension that runs a shell script inside a container's Desktop VM." \
     org.opencontainers.image.vendor="Docker Inc." \
-    com.docker.desktop.extension.api.version="1.0.0-beta.1"
+    com.docker.desktop.extension.api.version="1.0.0-beta.1" \
+    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
 
 COPY hello.sh .
 COPY metadata.json .
@@ -80,8 +81,6 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json title="metadata.json" linenums="1"
 {
-  "name": "hello-backend",
-  "provider": "Docker Inc.",
   "vm": {
     "image": "${DESKTOP_PLUGIN_IMAGE}"
   },

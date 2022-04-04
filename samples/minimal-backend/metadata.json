@@ -1,6 +1,4 @@
 {
-  "name": "hello-backend",
-  "provider": "Docker Inc.",
   "vm": {
     "image": "${DESKTOP_PLUGIN_IMAGE}"
   },

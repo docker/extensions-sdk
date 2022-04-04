@@ -39,7 +39,8 @@ FROM scratch
 LABEL org.opencontainers.image.title="MinimalFrontEnd" \
     org.opencontainers.image.description="A sample extension to show how easy it's to get started with Desktop Extensions." \
     org.opencontainers.image.vendor="Docker Inc." \
-    com.docker.desktop.extension.api.version="1.0.0-beta.1"
+    com.docker.desktop.extension.api.version="1.0.0-beta.1" \
+    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
 
 COPY ui ./ui
 COPY metadata.json .
@@ -51,8 +52,6 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json title="metadata.json" linenums="1"
 {
-  "name": "MinimalFrontEnd",
-  "provider": "Docker Inc.",
   "ui": {
     "dashboard-tab": {
       "title": "Min FrontEnd Extension",

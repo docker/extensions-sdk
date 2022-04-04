@@ -6,6 +6,12 @@
 
 - [openExternal](Host.md#openexternal)
 
+### Properties
+
+- [platform](Host.md#platform)
+- [arch](Host.md#arch)
+- [hostname](Host.md#hostname)
+
 ## Methods
 
 ### openExternal
@@ -15,7 +21,7 @@
 Opens an external URL with the system default browser.
 
 ```typescript
-window.ddClient.host.openExternal("https://docker.com");
+ddClient.host.openExternal("https://docker.com");
 ```
 
 #### Parameters
@@ -27,3 +33,27 @@ window.ddClient.host.openExternal("https://docker.com");
 #### Returns
 
 `void`
+
+## Properties
+
+### platform
+
+• **platform**: `string`
+
+Returns a string identifying the operating system platform. See https://nodejs.org/api/os.html#osplatform
+
+___
+
+### arch
+
+• **arch**: `string`
+
+Returns the operating system CPU architecture. See https://nodejs.org/api/os.html#osarch
+
+___
+
+### hostname
+
+• **hostname**: `string`
+
+Returns the host name of the operating system. See https://nodejs.org/api/os.html#oshostname

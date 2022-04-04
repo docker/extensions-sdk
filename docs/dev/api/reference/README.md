@@ -16,6 +16,7 @@
 - [Docker](interfaces/Docker.md)
 - [DockerCommand](interfaces/DockerCommand.md)
 - [Exec](interfaces/Exec.md)
+- [ExecStreamOptions](interfaces/ExecStreamOptions.md)
 - [ExecResult](interfaces/ExecResult.md)
 - [RawExecResult](interfaces/RawExecResult.md)
 - [Extension](interfaces/Extension.md)

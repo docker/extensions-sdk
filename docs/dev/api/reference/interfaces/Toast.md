@@ -20,7 +20,7 @@ They appear temporarily and shouldn't interrupt the user experience, they don't 
 Display a toast message of type success.
 
 ```typescript
-window.ddClient.desktopUI.toast.success("message");
+ddClient.desktopUI.toast.success("message");
 ```
 
 #### Parameters
@@ -42,7 +42,7 @@ ___
 Display a toast message of type warning.
 
 ```typescript
-window.ddClient.desktopUI.toast.warning("message");
+ddClient.desktopUI.toast.warning("message");
 ```
 
 #### Parameters
@@ -64,7 +64,7 @@ ___
 Display a toast message of type error.
 
 ```typescript
-window.ddClient.desktopUI.toast.error("message");
+ddClient.desktopUI.toast.error("message");
 ```
 
 #### Parameters

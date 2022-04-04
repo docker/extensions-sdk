@@ -1,0 +1,76 @@
+# Interface: ExecStreamOptions
+
+## Table of contents
+
+### Methods
+
+- [onOutput](ExecStreamOptions.md#onoutput)
+- [onError](ExecStreamOptions.md#onerror)
+- [onClose](ExecStreamOptions.md#onclose)
+
+### Properties
+
+- [splitOutputLines](ExecStreamOptions.md#splitoutputlines)
+
+## Methods
+
+### onOutput
+
+▸ `Optional` **onOutput**(`data`): `void`
+
+Invoked when receiving output from command execution.
+By default this is raw output, can be split at any position. If `splitOutputLines` is set to true, this method will be invoked once for each output line.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | { `stdout`: `string` ; `stderr?`: `undefined`  } \| { `stdout?`: `undefined` ; `stderr`: `string`  } | output content. Can include either stdout string, or stderr string, one at a time. |
+
+#### Returns
+
+`void`
+
+___
+
+### onError
+
+▸ `Optional` **onError**(`error`): `void`
+
+Invoked to report error if the executed command errors.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `any` | the error happening in the executed command |
+
+#### Returns
+
+`void`
+
+___
+
+### onClose
+
+▸ `Optional` **onClose**(`exitCode`): `void`
+
+Invoked when process exits.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `exitCode` | `number` | the process exit code |
+
+#### Returns
+
+`void`
+
+## Properties
+
+### splitOutputLines
+
+• `Optional` `Readonly` **splitOutputLines**: `boolean`
+
+Specifies the behaviour invoking `onOutput(data)`. Raw output by default, splitting output at any position. If set to true, `onOutput` will be invoked once for each line.

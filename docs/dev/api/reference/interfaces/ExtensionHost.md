@@ -17,7 +17,7 @@ Executes a command in the the host.
 Example: Execute the shipped binary `kubectl -h` command in the **host**:
 
 ```typescript
- await window.ddClient.extension.host.cli.exec(
+ await ddClient.extension.host.cli.exec(
    "kubectl",
    ["-h"]
  );
@@ -30,11 +30,9 @@ Streams the output of the command executed in the backend container or in the ho
 Example: Provided the `kubectl` binary is shipped as part of your extension, you can spawn the `kubectl -h` command in the **host**:
 
 ```typescript linenums="1"
-await window.ddClient.extension.host.cli.exec("kubectl", ["-h"], {
+await ddClient.extension.host.cli.exec("kubectl", ["-h"], {
            stream: {
-             onOutput(
-               data: { stdout: string } | { stderr: string }
-             ): void {
+             onOutput(data): void {
                  // As we can receive both `stdout` and `stderr`, we wrap them in a JSON object
                  JSON.stringify(
                    {

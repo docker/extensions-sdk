@@ -66,7 +66,7 @@ LABEL org.opencontainers.image.title="HelloBackend" \
     org.opencontainers.image.description="A sample extension that runs a shell script inside a container's Desktop VM." \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version="1.0.0-beta.1" \
-    com.docker.desktop.extension.icon="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png"
+    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
 
 COPY hello.sh .
 COPY metadata.json .

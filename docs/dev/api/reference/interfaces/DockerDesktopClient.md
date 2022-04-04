@@ -71,7 +71,7 @@ ___
 
 • `Readonly` **extension**: [`Extension`](Extension.md)
 
-The `window.ddClient.extension` object can be used to communicate with the backend defined in the vm section in the extensions metadata.
+The `ddClient.extension` object can be used to communicate with the backend defined in the vm section in the extensions metadata.
 The client is already connected to the backend.
 
 #### Inherited from

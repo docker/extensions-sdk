@@ -33,7 +33,7 @@
 Navigate to the containers window in the Dashboard.
 
 ```typescript
-window.ddClient.desktopUI.navigation.viewContainers()
+ddClient.desktopUI.navigation.viewContainers()
 ```
 
 #### Returns
@@ -49,7 +49,7 @@ ___
 Navigate to the container window in the Dashboard.
 
 ```typescript
-await window.ddClient.desktopUI.navigation.viewContainer(id)
+await ddClient.desktopUI.navigation.viewContainer(id)
 ```
 
 #### Parameters
@@ -73,7 +73,7 @@ ___
 Navigate to the container logs window in the Dashboard.
 
 ```typescript
-await window.ddClient.desktopUI.navigation.viewContainerLogs(id)
+await ddClient.desktopUI.navigation.viewContainerLogs(id)
 ```
 
 #### Parameters
@@ -97,7 +97,7 @@ ___
 Navigate to the container inspect window in the Dashboard.
 
 ```typescript
-await window.ddClient.desktopUI.navigation.viewContainerInspect(id)
+await ddClient.desktopUI.navigation.viewContainerInspect(id)
 ```
 
 #### Parameters
@@ -121,7 +121,7 @@ ___
 Navigate to the container stats to see the CPU, memory, disk read/write and network I/O usage.
 
 ```typescript
-await window.ddClient.desktopUI.navigation.viewContainerStats(id)
+await ddClient.desktopUI.navigation.viewContainerStats(id)
 ```
 
 #### Parameters
@@ -147,7 +147,7 @@ ___
 Navigate to the images window in the Dashboard.
 
 ```typescript
-await window.ddClient.desktopUI.navigation.viewImages()
+await ddClient.desktopUI.navigation.viewImages()
 ```
 
 #### Returns
@@ -164,7 +164,7 @@ Navigate to a specific image referenced by `id` and `tag` in the Dashboard.
 In this navigation route you can find the image layers, commands, created time and size.
 
 ```typescript
-await window.ddClient.desktopUI.navigation.viewImage(id, tag)
+await ddClient.desktopUI.navigation.viewImage(id, tag)
 ```
 
 #### Parameters
@@ -191,7 +191,7 @@ ___
 Navigate to the Dev Environments window in the Dashboard.
 
 ```typescript
-window.ddClient.desktopUI.navigation.viewDevEnvironments()
+ddClient.desktopUI.navigation.viewDevEnvironments()
 ```
 
 #### Returns
@@ -209,7 +209,7 @@ ___
 Navigate to the volumes window in the Dashboard.
 
 ```typescript
-window.ddClient.desktopUI.navigation.viewVolumes()
+ddClient.desktopUI.navigation.viewVolumes()
 ```
 
 #### Returns
@@ -225,7 +225,7 @@ ___
 Navigate to a specific volume in the Dashboard.
 
 ```typescript
-await window.ddClient.desktopUI.navigation.viewVolume(volume)
+await ddClient.desktopUI.navigation.viewVolume(volume)
 ```
 
 #### Parameters

@@ -20,7 +20,7 @@
 You can also directly execute the docker binary.
 
 ```typescript
-const output = await window.ddClient.docker.cli.exec(
+const output = await ddClient.docker.cli.exec(
   "info",
   ["--format", '"{{ json . }}"']
 );
@@ -41,11 +41,9 @@ Streams the output as a result of the execution of a docker command.
 Useful when the output of the command is too long or you need to get the output as a stream.
 
 ```typescript linenums="1"
-await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
+await ddClient.docker.cli.exec("logs", ["-f", "..."], {
            stream: {
-             onOutput(
-               data: { stdout: string } | { stderr: string }
-             ): void {
+             onOutput(data): void {
                  // As we can receive both `stdout` and `stderr`, we wrap them in a JSON object
                  JSON.stringify(
                    {
@@ -78,7 +76,7 @@ By default this will not list stopped containers.
 You can use the option `{"all": true}` to list all the running and stopped containers.
 
 ```typescript
-const containers = await window.ddClient.docker.listContainers();
+const containers = await ddClient.docker.listContainers();
 ```
 
 #### Parameters
@@ -100,7 +98,7 @@ ___
 Get the list of local container images
 
 ```typescript
-const images = await window.ddClient.docker.listImages();
+const images = await ddClient.docker.listImages();
 ```
 
 #### Parameters

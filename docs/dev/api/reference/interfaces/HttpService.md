@@ -21,7 +21,7 @@
 Performs an HTTP GET request to a backend service.
 
 ```typescript
-window.ddClient.extension.vm.service
+ ddClient.extension.vm.service
  .get("/some/service")
  .then((value: any) => console.log(value)
 ```
@@ -45,7 +45,7 @@ ___
 Performs an HTTP POST request to a backend service.
 
 ```typescript
- window.ddClient.extension.vm.service
+ ddClient.extension.vm.service
  .post("/some/service", { ... })
  .then((value: any) => console.log(value));
 ```
@@ -70,7 +70,7 @@ ___
 Performs an HTTP PUT request to a backend service.
 
 ```typescript
- window.ddClient.extension.vm.service
+ ddClient.extension.vm.service
  .put("/some/service", { ... })
  .then((value: any) => console.log(value));
 ```
@@ -95,7 +95,7 @@ ___
 Performs an HTTP PATCH request to a backend service.
 
 ```typescript
- window.ddClient.extension.vm.service
+ ddClient.extension.vm.service
  .patch("/some/service", { ... })
  .then((value: any) => console.log(value));
 ```
@@ -120,7 +120,7 @@ ___
 Performs an HTTP DELETE request to a backend service.
 
 ```typescript
- window.ddClient.extension.vm.service
+ ddClient.extension.vm.service
  .delete("/some/service")
  .then((value: any) => console.log(value));
 ```
@@ -144,7 +144,7 @@ ___
 Performs an HTTP HEAD request to a backend service.
 
 ```typescript
- window.ddClient.extension.vm.service
+ ddClient.extension.vm.service
  .head("/some/service")
  .then((value: any) => console.log(value));
 ```
@@ -168,7 +168,7 @@ ___
 Performs an HTTP request to a backend service.
 
 ```typescript
- window.ddClient.extension.vm.service
+ ddClient.extension.vm.service
  .request({ url: "/url", method: "GET", headers: { 'header-key': 'header-value' }, data: { ... }})
  .then((value: any) => console.log(value));
 ```

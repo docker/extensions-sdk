@@ -10,7 +10,7 @@ shouldn't interrupt the user experience, they don't require user input to disapp
 Display a toast message of type success.
 
 ```typescript
-window.ddClient.desktopUI.toast.success("message");
+ddClient.desktopUI.toast.success("message");
 ```
 
 ### warning
@@ -20,7 +20,7 @@ window.ddClient.desktopUI.toast.success("message");
 Display a toast message of type warning.
 
 ```typescript
-window.ddClient.desktopUI.toast.warning("message");
+ddClient.desktopUI.toast.warning("message");
 ```
 
 ### error
@@ -30,7 +30,7 @@ window.ddClient.desktopUI.toast.warning("message");
 Display a toast message of type error.
 
 ```typescript
-window.ddClient.desktopUI.toast.error("message");
+ddClient.desktopUI.toast.error("message");
 ```
 
 More details about method parameters and return types are available in the [Toast API reference](reference/interfaces/Toast.md).
@@ -56,7 +56,7 @@ This function opens an external URL with the system default browser.
 Opens an external URL with the system default browser.
 
 ```typescript
-window.ddClient.host.openExternal("https://docker.com");
+ddClient.host.openExternal("https://docker.com");
 ```
 
 !!! note

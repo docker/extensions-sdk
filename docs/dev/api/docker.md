@@ -5,7 +5,7 @@
 Get the list of containers
 
 ```typescript
-const containers = await window.ddClient.docker.listContainers();
+const containers = await ddClient.docker.listContainers();
 ```
 
 ▸ **listImages**(`options?`): `Promise`<`unknown`\>
@@ -13,7 +13,7 @@ const containers = await window.ddClient.docker.listContainers();
 Get the list of local container images
 
 ```typescript
-const images = await window.ddClient.docker.listImages();
+const images = await ddClient.docker.listImages();
 ```
 
 Use the [Docker API reference](reference/interfaces/Docker.md) for details about these methods
@@ -37,7 +37,7 @@ Extensions can also directly execute the `docker` command line.
 ▸ **exec**(`cmd`, `args`): `Promise`<[`ExecResult`](reference/interfaces/ExecResult.md)\>
 
 ```typescript
-const result = await window.ddClient.docker.cli.exec("info", [
+const result = await ddClient.docker.cli.exec("info", [
   "--format",
   '"{{ json . }}"',
 ]);
@@ -68,7 +68,11 @@ Useful when you need to get the output as a stream or the output of the command 
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     onOutput(data) {
-      console.log(data.stdout);
+      if (data.stdout) {
+        console.error(data.stdout);
+      } else {
+        console.log(data.stderr);
+      }
     },
     onError(error) {
       console.error(error);

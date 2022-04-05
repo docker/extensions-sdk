@@ -15,8 +15,10 @@ JavaScript API libraries are available (with Typescript support) in order to get
 import { createDockerDesktopClient } from '@docker/extension-api-client';
 
 export function App() {
-  //obtain Docker Desktop client
+  // obtain Docker Desktop client
   const ddClient = createDockerDesktopClient();
+  // use ddClient to perform extension actions
+}
 ```
 
 The `ddClient` object gives access to various APIs, organized in different categories:

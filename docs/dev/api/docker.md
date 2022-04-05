@@ -5,7 +5,7 @@
 Get the list of containers
 
 ```typescript
-const containers = await window.ddClient.docker.listContainers();
+const containers = await ddClient.docker.listContainers();
 ```
 
 ▸ **listImages**(`options?`): `Promise`<`unknown`\>
@@ -13,7 +13,7 @@ const containers = await window.ddClient.docker.listContainers();
 Get the list of local container images
 
 ```typescript
-const images = await window.ddClient.docker.listImages();
+const images = await ddClient.docker.listImages();
 ```
 
 Use the [Docker API reference](reference/interfaces/Docker.md) for details about these methods
@@ -37,7 +37,7 @@ Extensions can also directly execute the `docker` command line.
 ▸ **exec**(`cmd`, `args`): `Promise`<[`ExecResult`](reference/interfaces/ExecResult.md)\>
 
 ```typescript
-const result = await window.ddClient.docker.cli.exec("info", [
+const result = await ddClient.docker.cli.exec("info", [
   "--format",
   '"{{ json . }}"',
 ]);
@@ -65,19 +65,49 @@ Streams the output as a result of the execution of a docker command.
 Useful when you need to get the output as a stream or the output of the command is too long.
 
 ```typescript linenums="1"
-await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
+await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
-    onOutput(data: { stdout: string } | { stderr: string }): void {
-      console.log(data.stdout);
+    onOutput(data) {
+      if (data.stdout) {
+        console.error(data.stdout);
+      } else {
+        console.log(data.stderr);
+      }
     },
-    onError(error: any): void {
+    onError(error) {
       console.error(error);
     },
-    onClose(exitCode: number): void {
+    onClose(exitCode) {
       console.log("onClose with exit code " + exitCode);
     },
+    splitOutputLines: true,
   },
 });
+```
+
+This can also be useful to listen to docker events:
+
+```typescript linenums="1"
+await ddClient.docker.cli.exec(
+  "events",
+  ["--format", "{{ json . }}", "--filter", "container=my-container"],
+  {
+    stream: {
+      onOutput(data) {
+        if (data.stdout) {
+          const event = JSON.parse(data.stdout);
+          console.log(event);
+        } else {
+          console.log(data.stderr);
+        }
+      },
+      onClose(exitCode) {
+        console.log("onClose with exit code " + exitCode);
+      },
+      splitOutputLines: true,
+    },
+  }
+);
 ```
 
 Use the [Exec API reference](reference/interfaces/Exec.md) for details about these methods

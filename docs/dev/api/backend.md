@@ -1,6 +1,6 @@
 ## Communication with the extension backend
 
-The `window.ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../../extensions/METADATA.md#vm-section) in the extensions metadata.
+The `ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../../extensions/METADATA.md#vm-section) in the extensions metadata.
 
 ### get
 
@@ -9,7 +9,7 @@ The `window.ddClient.extension.vm` object can be used to communicate with the ba
 Performs an HTTP GET request to a backend service.
 
 ```typescript
-window.ddClient.extension.vm.service
+ddClient.extension.vm.service
  .get("/some/service")
  .then((value: any) => console.log(value)
 ```
@@ -65,7 +65,7 @@ Executes a command in the backend container.
 Example: Execute the command `ls -l` inside the **backend container**:
 
 ```typescript
-await window.ddClient.extension.vm.cli.exec("ls", ["-l"]);
+await ddClient.extension.vm.cli.exec("ls", ["-l"]);
 ```
 
 Streams the output of the command executed in the backend container.
@@ -73,15 +73,19 @@ Streams the output of the command executed in the backend container.
 Example: Spawn the command `ls -l` inside the **backend container**:
 
 ```typescript linenums="1"
-await window.ddClient.extension.vm.cli.exec("ls", ["-l"], {
+await ddClient.extension.vm.cli.exec("ls", ["-l"], {
   stream: {
-    onOutput(data: { stdout: string } | { stderr: string }): void {
-      console.error(data.stdout);
+    onOutput(data) {
+      if (data.stdout) {
+        console.error(data.stdout);
+      } else {
+        console.log(data.stderr);
+      }
     },
-    onError(error: any): void {
+    onError(error) {
       console.error(error);
     },
-    onClose(exitCode: number): void {
+    onClose(exitCode) {
       console.log("onClose with exit code " + exitCode);
     },
   },
@@ -114,16 +118,20 @@ in the exension metadata.
 Example: Execute the shipped binary `kubectl -h` command in the **host**:
 
 ```typescript
-await window.ddClient.extension.host.cli.exec("kubectl", ["-h"]);
+await ddClient.extension.host.cli.exec("kubectl", ["-h"]);
 ```
 
 Example: Provided the `kubectl` binary is shipped as part of your extension, you can spawn the `kubectl -h` command in the **host** and get the output stream:
 
 ```typescript linenums="1"
-await window.ddClient.extension.host.cli.exec("kubectl", ["-h"], {
+await ddClient.extension.host.cli.exec("kubectl", ["-h"], {
   stream: {
     onOutput(data: { stdout: string } | { stderr: string }): void {
-      console.error(data.stdout);
+      if (data.stdout) {
+        console.error(data.stdout);
+      } else {
+        console.log(data.stderr);
+      }
     },
     onError(error: any): void {
       console.error(error);

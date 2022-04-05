@@ -65,19 +65,45 @@ Streams the output as a result of the execution of a docker command.
 Useful when you need to get the output as a stream or the output of the command is too long.
 
 ```typescript linenums="1"
-await window.ddClient.docker.cli.exec("logs", ["-f", "..."], {
+await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
-    onOutput(data: { stdout: string } | { stderr: string }): void {
+    onOutput(data) {
       console.log(data.stdout);
     },
-    onError(error: any): void {
+    onError(error) {
       console.error(error);
     },
-    onClose(exitCode: number): void {
+    onClose(exitCode) {
       console.log("onClose with exit code " + exitCode);
     },
+    splitOutputLines: true,
   },
 });
+```
+
+This can also be useful to listen to docker events:
+
+```typescript linenums="1"
+await ddClient.docker.cli.exec(
+  "events",
+  ["--format", "{{ json . }}", "--filter", "container=my-container"],
+  {
+    stream: {
+      onOutput(data) {
+        if (data.stdout) {
+          const event = JSON.parse(data.stdout);
+          console.log(event);
+        } else {
+          console.log(data.stderr);
+        }
+      },
+      onClose(exitCode) {
+        console.log("onClose with exit code " + exitCode);
+      },
+      splitOutputLines: true,
+    },
+  }
+);
 ```
 
 Use the [Exec API reference](reference/interfaces/Exec.md) for details about these methods

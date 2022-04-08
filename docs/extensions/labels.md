@@ -10,7 +10,7 @@ Labels are specified in the extension's `Dockerfile` and are use to provide info
 | `com.docker.extension.screenshots` | No | A list of images in the shape of comma-separated URLs to be displayed in the details dialog, in the order on which they’ve been defined. | `https://foo.bar/image1.png,https://foo.bar/image2.jpg` |
 | `com.docker.extension.detailed-description` | No | Additional information in plain text or HTML about the extension to be displayed in the details dialog. | `My detailed description` or `<h1>My detailed description</h1>` |
 | `com.docker.extension.publisher-url` | No | The publisher website URL to be displayed in the details dialog. | `https://foo.bar` |
-| `com.docker.extension.additional-urls` | No | A list of additional URLs to be displayed displayed in the details dialog, in the order on which they’ve been defined. We recommend to display the following links if they apply: documentation, support, terms of service and privacy policy links. | `[{"title":"Documentation","url":"https://foo.bar/docs"},{"title":"Support","url":"https://foo.bar/support"},{"title":"Terms of Service","url":"https://foo.bar/tos"},{"title":"Privacy policy","url":"https://foo.bar/privacy-policy"}]` |
+| `com.docker.extension.additional-urls` | No | A list of additional URLs to be displayed in the details dialog, in the order on which they’ve been defined. We recommend to display the following links if they apply: documentation, support, terms of service and privacy policy links. | `[{"title":"Documentation","url":"https://foo.bar/docs"},{"title":"Support","url":"https://foo.bar/support"},{"title":"Terms of Service","url":"https://foo.bar/tos"},{"title":"Privacy policy","url":"https://foo.bar/privacy-policy"}]` |
 
 !!! warning "Missing required labels"
 

@@ -9,7 +9,6 @@ This repository includes all resources to create Docker Extensions.
 ## Documentation
 
 The documentation is published and best viewed at https://docker-desktop-extensions.netlify.app/.
-(Temporary as this repo is still private, password to use to enter this docs site: BGxdgkadXBDBfm5J)
 
 ## Prerequisites
 

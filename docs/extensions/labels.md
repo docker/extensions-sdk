@@ -1,4 +1,4 @@
-Labels are specified in the extension's `Dockerfile` and are use to provide information about the extension.
+[Labels](https://docs.docker.com/engine/reference/builder/#label) are specified in the extension's `Dockerfile` and are use to provide information about the extension.
 
 | Label <div style="width:300px"></div>| Required | Description | Example |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------ | |

@@ -1,7 +1,12 @@
-Learn how to create a simple Docker Extension that runs CLI commands in the backend. 
+---
+title: Minimal backend extension tutorial
+description: Minimal backend extension tutorial
+keywords: Docker, extensions, sdk, tutorial
+---
+
+Learn how to create a simple Docker Extension that runs CLI commands in the backend.
 
 For extensions with a backend service running REST services over sockets or named pipes, see the `vm-ui extension` [sample](https://github.com/docker/extensions-sdk/tree/main/samples).
-
 
 ## Prerequisites
 
@@ -102,23 +107,27 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 !!! warning
 
-    Do not replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder is replaced automatically with the correct image name when the extension is installed. 
+    Do not replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder is replaced automatically with the correct image name when the extension is installed.
 
 ## Build the extension
+
 To build the extension, run:
+
 ```bash
 docker build -t desktop-backend-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
+
 To build the extension for multiple platforms, run:
+
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-backend-minimal-extension:0.0.1 .
 ```
 
 ## Validate the extension
 
-Verify the extension image is compliant. 
+Verify the extension image is compliant.
 
 The validation checks if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
@@ -184,7 +193,9 @@ Tag the previous image to prepend the account owner at the beginning of the imag
 ```bash
 docker tag desktop-backend-minimal-extension:0.0.1 owner/desktop-backend-minimal-extension:0.0.1
 ```
+
 Push the image to DockerHub:
+
 ```bash
 docker push owner/desktop-backend-minimal-extension:0.0.1
 ```

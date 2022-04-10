@@ -1,3 +1,9 @@
+---
+title: Docker extension development API
+description: Docker extension API
+keywords: Docker, extensions, sdk, API
+---
+
 ## User notifications
 
 Toasts provide a brief notification to the user. They appear temporarily and

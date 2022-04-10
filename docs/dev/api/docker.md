@@ -1,3 +1,9 @@
+---
+title: Docker extension development API
+description: Docker extension API
+keywords: Docker, extensions, sdk, API
+---
+
 ## Docker objects
 
 ▸ **listContainers**(`options?`): `Promise`<`unknown`\>

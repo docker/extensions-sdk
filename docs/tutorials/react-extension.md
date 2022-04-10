@@ -1,3 +1,9 @@
+---
+title: Minimal react extension tutorial
+description: Minimal react extension tutorial
+keywords: Docker, extensions, sdk, tutorial
+---
+
 Learn how to create a simple Docker extension that contains only a UI part and is based on ReactJS.
 
 ## Prerequisites
@@ -106,13 +112,17 @@ export function App() {
 ```
 
 ## Build the extension
+
 To build the extension, run:
+
 ```bash
 docker build -t desktop-react-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
+
 To build the extension for multiple platforms, run:
+
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-react-extension:0.0.1 .
 ```
@@ -193,7 +203,9 @@ Tag the previous image to prepend the account owner at the beginning of the imag
 ```bash
 docker tag desktop-react-extension:0.0.1 owner/desktop-react-extension:0.0.1
 ```
+
 Push the image to DockerHub:
+
 ```bash
 docker push owner/desktop-react-extension:0.0.1
 ```
@@ -228,4 +240,4 @@ Extension "ui-extension" removed
 
 ## What's next?
 
-Learn how to [create an extension using Docker CLI commands.](./minimal-frontend-using-docker-cli.md) 
+Learn how to [create an extension using Docker CLI commands.](./minimal-frontend-using-docker-cli.md)

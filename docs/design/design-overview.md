@@ -1,4 +1,8 @@
-#  UI Guidelines
+---
+title: Docker extension design
+description: Docker extension design
+keywords: Docker, extensions, design
+---
 
 Our Design System is currently being developed. In the meantime, here are some basic [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771) you can follow. 
 
@@ -11,8 +15,8 @@ Use our [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 To use [Docker's Material UI theme](https://www.npmjs.com/package/@docker/docker-mui-theme) with your extension, wrap your React app with our theme provider:
 
 ```typescript
-import { DockerMuiThemeProvider } from '@docker/docker-mui-theme';
-import CssBaseline from '@mui/material/CssBaseline';
+import { DockerMuiThemeProvider } from "@docker/docker-mui-theme";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   return (

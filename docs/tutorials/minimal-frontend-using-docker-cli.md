@@ -1,4 +1,11 @@
-Learn how to create a simple Docker extension that invokes Docker CLI commands. 
+---
+title: Minimal docker CLI extension tutorial
+description: Minimal docker CLI extension tutorial
+keywords: Docker, extensions, sdk, tutorial
+---
+
+Learn how to create a simple Docker extension that invokes Docker CLI commands.
+
 ## Prerequisites
 
 - [Docker Desktop build with Extensions capabilities](https://github.com/docker/extensions-sdk/releases/)
@@ -99,20 +106,24 @@ A `metadata.json` file is required at the root of the image filesystem.
 ```
 
 ## Build the extension
+
 To build the extension, run:
+
 ```bash
 docker build -t desktop-docker-cli-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
+
 To build the extension for multiple platforms, run:
+
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-docker-cli-minimal-extension:0.0.1 .
 ```
 
 ## Validate the extension
 
-Verify the extension image is compliant.  
+Verify the extension image is compliant.
 
 The validation checks if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
@@ -162,7 +173,7 @@ MyExtension         Docker Inc.         desktop-docker-cli-minimal-extension:0.0
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop dashboard once the installation is complete.
 
-The left-hand menu displays a new tab with name `Docker VM info`. When you select the new tab, the result below is rendered. 
+The left-hand menu displays a new tab with name `Docker VM info`. When you select the new tab, the result below is rendered.
 
 ![UI Extension](images/docker-cli-minimal-extension.png)
 
@@ -175,7 +186,9 @@ Tag the previous image to prepend the account owner at the beginning of the imag
 ```bash
 docker tag desktop-docker-cli-minimal-extension:0.0.1 owner/desktop-docker-cli-minimal-extension:0.0.1
 ```
+
 Push the image to DockerHub:
+
 ```bash
 docker push owner/desktop-docker-cli-minimal-extension:0.0.1
 ```
@@ -193,7 +206,9 @@ docker push owner/desktop-docker-cli-minimal-extension:0.0.1
     Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
+
 To remove the extension, run:
+
 ```bash
 docker extension rm desktop-docker-cli-minimal-extension
 ```

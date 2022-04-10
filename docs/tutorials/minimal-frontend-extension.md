@@ -1,3 +1,9 @@
+---
+title: Minimal frontend extension tutorial
+description: Minimal frontend extension tutorial
+keywords: Docker, extensions, sdk, tutorial
+---
+
 Learn how to create a minimal frontend extension based on plain HTML.
 
 ## Prerequisites
@@ -65,13 +71,17 @@ A `metadata.json` file is required at the root of the image filesystem.
 ```
 
 ## Build the extension
+
 To build the extension, run:
+
 ```bash
 docker build -t desktop-frontend-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
+
 To build the extension for multiple platforms, run:
+
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-frontend-minimal-extension:0.0.1 .
 ```
@@ -155,7 +165,7 @@ As an example, let's update the html file to include some inline CSS to support 
 </head>
 ```
 
-Alternatively remove the `index.html` file and rename `updatedindex.html` to index.html in the ui directory. 
+Alternatively remove the `index.html` file and rename `updatedindex.html` to index.html in the ui directory.
 
 Rebuild and revalidate the extension:
 
@@ -195,7 +205,9 @@ Tag the previous image to prepend the account owner at the beginning of the imag
 ```bash
 docker tag desktop-frontend-minimal-extension:0.0.1 owner/desktop-frontend-minimal-extension:0.0.1
 ```
+
 Push the image to DockerHub:
+
 ```bash
 docker push owner/desktop-frontend-minimal-extension:0.0.1
 ```
@@ -213,7 +225,9 @@ docker push owner/desktop-frontend-minimal-extension:0.0.1
     Ensure you are logged in to DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
+
 To remove the extension, run:
+
 ```bash
 docker extension rm desktop-frontend-minimal-extension
 ```

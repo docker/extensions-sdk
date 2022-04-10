@@ -1,3 +1,9 @@
+---
+title: Docker extension development validation
+description: Docker extension validaiton
+keywords: Docker, extensions, sdk, validation
+---
+
 ## Validate your extension
 
 The Extensions CLI lets you validate your extension before installing and running it locally:

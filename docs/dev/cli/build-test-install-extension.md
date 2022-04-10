@@ -1,14 +1,8 @@
-## Prerequisites
-Before you can manage Docker extensions, you must have Docker Desktop up and running and the Docker Extensions feature enabled.
-
-to enable Docker extensions, enter `docker extension enable` into the command line. The change takes effect immediately. You do not need to restart Docker Desktop.
-
-To verify the feature is activated, use `docker extension ls` to list the installed Docker extensions. 
-At this point no extensions are installed, the output displays no extensions:
-
-```console
-PLUGIN              PROVIDER            IMAGE               UI                  VM                  HOST
-```
+---
+title: Docker extension development CLI
+description: Docker extension CLI
+keywords: Docker, extensions, sdk, cli
+---
 
 ## Build, test, and install an extension
 

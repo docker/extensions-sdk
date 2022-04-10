@@ -1,3 +1,9 @@
+---
+title: Docker extension development multi-arch
+description: Docker extension multi-arch
+keywords: Docker, extensions, sdk, multi-arch
+---
+
 ## Introduction
 
 At a minimum, you must ensure your extension is supported for the following architectures:

@@ -1,3 +1,9 @@
+---
+title: Docker extension development distribution
+description: Docker extension disctribution
+keywords: Docker, extensions, sdk, distribution
+---
+
 # Distribution
 
 ## Packaging

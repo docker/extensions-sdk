@@ -47,6 +47,23 @@ window.ddClient.toastWarning("message");
 window.ddClient.toastError("message");
 ```
 
+## Opening a file selection dialog
+
+This function opens a file selector dialog asking the user to select a file or folder.
+
+▸ **showOpenDialog**(`dialogProperties`): `Promise`<[`OpenDialogResult`](OpenDialogResult.md)\>:
+
+[Dialog Properties](https://www.electronjs.org/docs/latest/api/dialog) allow to configure possible selection, multi-select, file filters, etc.
+
+```typescript
+const result = await ddClient.desktopUI.dialog.showOpenDialog({
+  properties: ["openDirectory"],
+});
+if (!result.canceled) {
+  console.log(result.paths);
+}
+```
+
 ## Opening a URL
 
 This function opens an external URL with the system default browser.

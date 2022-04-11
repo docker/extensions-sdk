@@ -85,7 +85,21 @@ await ddClient.docker.cli.exec("logs", ["-f", "..."], {
 });
 ```
 
-This can also be useful to listen to docker events:
+The child process created by the extension will be killed (`SIGTERM`) automatically when closing the Docker Dashboard or when exiting the extension UI.
+If needed, you can also use the result of the `exec(streamOptions)` call in order to kill (`SIGTERM`) the process.
+
+```typescript linenums="1"
+const logListener = await ddClient.docker.cli.exec("logs", ["-f", "..."], {
+  stream: {
+    // ...
+  },
+});
+
+// when done listening to logs or before starting a new one, kill the process
+logListener.close();
+```
+
+This `exec(streamOptions)` API can also be useful to listen to docker events:
 
 ```typescript linenums="1"
 await ddClient.docker.cli.exec(

@@ -23,7 +23,7 @@ A promise that will resolve once the command finishes.
 
 ### Exec
 
-▸ **Exec**(`cmd`, `args`, `options`): `void`
+▸ **Exec**(`cmd`, `args`, `options`): [`ExecProcess`](ExecProcess.md)
 
 Streams the result of a command if `stream` is specified in the `options` parameter.
 
@@ -40,4 +40,4 @@ Specify the `stream` if the output of your command is too long or if you need to
 
 #### Returns
 
-`void`
+[`ExecProcess`](ExecProcess.md)

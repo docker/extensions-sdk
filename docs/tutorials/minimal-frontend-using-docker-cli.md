@@ -193,17 +193,15 @@ Push the image to DockerHub:
 docker push owner/desktop-docker-cli-minimal-extension:0.0.1
 ```
 
-!!! warning
+> For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+>
+> See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
+>
+> See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 
-    For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+Having trouble to push the image?
 
-    See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
-
-    See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
-
-!!! info "Unable to push the image?"
-
-    Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
+> Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
 

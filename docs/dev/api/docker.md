@@ -26,9 +26,7 @@ See the [Docker API reference](reference/interfaces/Docker.md) for details about
 
 ### Deprecated access to Docker objects
 
-!!! warning "Method deprecated"
-
-    The methods below are deprecated and will be removed in a future version. Use the methods specified above.
+> The methods below are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 const containers = await window.ddClient.listContainers();
@@ -134,9 +132,7 @@ See the [Exec API reference](reference/interfaces/Exec.md) for details about the
 
 ### Deprecated execution of Docker commands
 
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the one specified just below.
+> This method is deprecated and will be removed in a future version. Use the one specified just below.
 
 ```typescript
 const output = await window.ddClient.execDockerCmd(

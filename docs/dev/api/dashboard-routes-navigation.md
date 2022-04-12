@@ -30,9 +30,7 @@ For more details about all navigation methods, see the [Navigation API reference
 
 ### Deprecated navigation methods
 
-!!! warning "Method deprecated"
-
-    These methdos are deprecated and will be removed in a future version. Use the methods specified above.
+> These methdos are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.navigateToContainers();

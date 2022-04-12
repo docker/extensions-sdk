@@ -24,9 +24,7 @@ See [Service API Reference](reference/interfaces/HttpService.md#Methods) for oth
 
 ### Deprecated extension backend communication
 
-!!! warning "Methods deprecated"
-
-    The methods below that use `window.ddClient.backend` are deprecated and will be removed in a future version. Use the methods specified above.
+> The methods below that use `window.ddClient.backend` are deprecated and will be removed in a future version. Use the methods specified above.
 
 The `window.ddClient.backend` object can be used to communicate with the backend
 defined in the [vm section](../../extensions/METADATA.md#vm-section) of the
@@ -98,9 +96,7 @@ For more details, refer to the [Extension VM API Reference](reference/interfaces
 
 ### Deprecated extension backend command execution
 
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the specified method above.
+> This method is deprecated and will be removed in a future version. Use the specified method above.
 
 If your extension ships with additional binaries that should be run inside the
 backend container, you can use the `execInVMExtension` function:
@@ -151,9 +147,7 @@ For more details, refer to the [Extension Host API Reference](reference/interfac
 
 ### Deprecated invocation of extension binary
 
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the method specified above.
+> This method is deprecated and will be removed in a future version. Use the method specified above.
 
 To execute a command in the host:
 

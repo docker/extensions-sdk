@@ -43,9 +43,7 @@ For more details about method parameters and the return types available, see [To
 
 ### Deprecated user notifications
 
-!!! warning "Method deprecated"
-
-    These methods are deprecated and will be removed in a future version. Use the methods specified above.
+> These methods are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.toastSuccess("message");
@@ -88,9 +86,7 @@ For more details about method parameters and the return types available, see [De
 
 ### Deprecated user notifications
 
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the methods specified above.
+> This method is deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.openExternal("https://docker.com");

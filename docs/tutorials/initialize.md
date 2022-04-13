@@ -106,11 +106,9 @@ To iterate faster and try out new changes when developing the extension, use the
 
 ### Developing the frontend
 
-If you are working on the frontend code of your extension and don't want to
-rebuild the extension image each time you can set up Docker Desktop in a way
-that will use your development server instead of the bundled frontend code from
-the extension image. To do that, in one terminal start your UI development
-server:
+During UI development, it's helpful to use hot reloading to test your changes without rebuilding your entire extension.
+To achieve that, you can configure Docker Desktop to load your UI from a development server (such as the one Create React
+App starts when invoked with yarn start). Start your UI app, and then run (assuming your app is running on the default port):
 
 ```bash
 cd ui

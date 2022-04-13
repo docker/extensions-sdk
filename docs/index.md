@@ -35,10 +35,10 @@ In your terminal, run:
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" data-target="#prereq-macos-intel">MacOS (intel)</a></li>
-  <li class="active"><a data-toggle="tab" data-target="#prereq-macos-m1">MacOS (M1)</a></li>
-  <li class="active"><a data-toggle="tab" data-target="#prereq-windows">Windows</a></li>
-  <li class="active"><a data-toggle="tab" data-target="#prereq-wsl2">WSL2</a></li>
-  <li class="active"><a data-toggle="tab" data-target="#prereq-linux">Linux</a></li>
+  <li><a data-toggle="tab" data-target="#prereq-macos-m1">MacOS (M1)</a></li>
+  <li><a data-toggle="tab" data-target="#prereq-windows">Windows</a></li>
+  <li><a data-toggle="tab" data-target="#prereq-wsl2">WSL2</a></li>
+  <li><a data-toggle="tab" data-target="#prereq-linux">Linux</a></li>
 </ul>
 <div class="tab-content">
   <div id="prereq-macos-intel" class="tab-pane fade in active" markdown="1">

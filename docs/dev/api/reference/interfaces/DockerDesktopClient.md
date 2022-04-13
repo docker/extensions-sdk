@@ -71,7 +71,7 @@ ___
 
 • `Readonly` **extension**: [`Extension`](Extension.md)
 
-The `ddClient.extension` object can be used to communicate with the backend defined in the vm section of the extensions metadata.
+The `ddClient.extension` object can be used to communicate with the backend defined in the vm section of the extension metadata.
 The client is already connected to the backend.
 
 #### Inherited from
@@ -550,7 +550,7 @@ For convenience, the command result object also has methods to easily parse it:
 - `output.parseJsonObject(): any` parse a well-formed json output
 - `output.parseJsonLines(): any[]` parse each output line as a json object
 
-If the output of the command is too long, or you need to get the output as a stream you can use the spawnDockerCmd function:
+If the output of the command is too long, or you need to get the output as a stream, you can use the spawnDockerCmd function:
 
 ```typescript
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {

@@ -19,7 +19,7 @@
 ▸ `Optional` **onOutput**(`data`): `void`
 
 Invoked when receiving output from command execution.
-By default, this is raw output, can be split at any position. If `splitOutputLines` is set to true, this method will be invoked once for each output line.
+By default, the output is split into chunks at arbitrary boundaries. If you prefer output to be split into complete lines, set `splitOutputLines` to true; the callback will then be invoked once for each line.
 
 #### Parameters
 

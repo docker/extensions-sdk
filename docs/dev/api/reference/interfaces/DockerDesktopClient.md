@@ -56,7 +56,7 @@ the v0 API.
 
 • `Readonly` **backend**: `undefined` \| [`BackendV0`](BackendV0.md)
 
-The `window.ddClient.backend` object can be used to communicate with the backend defined in the vm section in the extensions metadata.
+The `window.ddClient.backend` object can be used to communicate with the backend defined in the vm section of the extension metadata.
 The client is already connected to the backend.
 
 **`deprecated`** :warning: It will be removed in a future version. Use [DockerDesktopClient.extension](DockerDesktopClient.md#extension) instead.
@@ -71,7 +71,7 @@ ___
 
 • `Readonly` **extension**: [`Extension`](Extension.md)
 
-The `ddClient.extension` object can be used to communicate with the backend defined in the vm section in the extensions metadata.
+The `ddClient.extension` object can be used to communicate with the backend defined in the vm section of the extensions metadata.
 The client is already connected to the backend.
 
 #### Inherited from
@@ -116,7 +116,7 @@ DockerDesktopClientV1.docker
 
 Get the list of running containers (same as `docker ps`).
 
-By default this will not list stopped containers.
+By default, this will not list stopped containers.
 You can use the option `{"all": true}` to list all the running and stopped containers.
 
 ```typescript
@@ -547,10 +547,10 @@ In this example the docker command output is a json output.
 For convenience, the command result object also has methods to easily parse it:
 
 - `output.lines(): string[]` split output lines
-- `output.parseJsonObject(): any` parse a well formed json output
+- `output.parseJsonObject(): any` parse a well-formed json output
 - `output.parseJsonLines(): any[]` parse each output line as a json object
 
-If the output of the command is too long or you need to get the output as a stream you can use the spawnDockerCmd function:
+If the output of the command is too long, or you need to get the output as a stream you can use the spawnDockerCmd function:
 
 ```typescript
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {

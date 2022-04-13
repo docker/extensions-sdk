@@ -22,15 +22,15 @@ Extension authors can implement extensions without any constraints on code repos
 
 Releasing a Docker Desktop extension is done by running `docker push` to push the extension image to Hub.
 
-Docker Desktop will initially include an allow-list of extensions available to users. The extension image Hub repository (like `mycompany/my-desktop-extension`) must be part of the Docker Desktop allow-list to be recognised as a extension.
+Docker Desktop will initially include an allow-list of extensions available to users. The extension image Hub repository (like `mycompany/my-desktop-extension`) must be part of the Docker Desktop allow-list to be recognised as an extension.
 
 This allow-list will specify which Hub repositories will be used by Docker Desktop to download/install extensions (with a specific version at a given point in time).
 
 Any new image pushed to a repository that is part of the allow-list will correspond to a new version of the extension, with image tags used to identify version numbers. Extension versions must follow semver to make it easy to understand and compare versions.
 
-With a given release of Docker Desktop (including some extensions), users should not need to upgrade Docker Desktop in order to obtain new versions of a specific extension. Extension authors should be able to release newer versions at their own cadence, independently from Docker Desktop releases (provided there is no Extension API mismatch).
+With a given release of Docker Desktop (including some extensions), users should not need to upgrade Docker Desktop in order to obtain new versions of a specific extension. Extension authors should be able to release newer versions at their own cadence, independently of Docker Desktop releases (provided there is no Extension API mismatch).
 
-Docker Desktop will scan the allow-list for Hub repositoriy new versions regularly, and provide some notifications to users when they can upgrade a specific extension.
+Docker Desktop will scan the allow-list for Hub repository new versions regularly, and provide some notifications to users when they can upgrade a specific extension.
 
 It will allow downloading and installing the newer version of an extension, without updating Docker Desktop itself.
 

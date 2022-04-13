@@ -1,6 +1,6 @@
 ## Communication with the extension backend
 
-The `ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../../extensions/METADATA.md#vm-section) in the extensions metadata.
+The `ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../.. /extensions/METADATA.md#vm-section) of the extension metadata.
 
 ### get
 
@@ -23,8 +23,8 @@ Other methods for POST, UPDATE, DELETE, etc. are available, see [Service API Ref
     Methods below using `window.ddClient.backend` are deprecated and will be removed in a future version. Please use the ones specified above.
 
 The `window.ddClient.backend` object can be used to communicate with the backend
-defined in the [vm section](../../extensions/METADATA.md#vm-section) in the
-extensions metadata. The client is already connected to the backend.
+defined in the [vm section](../../extensions/METADATA.md#vm-section) of the
+extension metadata. The client is already connected to the backend.
 
 Example usages:
 
@@ -113,7 +113,7 @@ console.log(output);
 ## Invoking an extension binary on the host
 
 You can run binaries defined in the [host section](../../extensions/METADATA.md#host-section)
-in the exension metadata.
+of the extension metadata.
 
 Example: Execute the shipped binary `kubectl -h` command in the **host**:
 
@@ -153,7 +153,7 @@ For more details, please refer to the [Extension Host API Reference](reference/i
 
     This method is deprecated and will be removed in a future version. Please use the one specified above.
 
-Execute a command in the the host:
+Execute a command in the host:
 
 ```typescript
 window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {

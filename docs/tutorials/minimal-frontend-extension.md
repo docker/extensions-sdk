@@ -7,7 +7,7 @@ This tutorial describes a minimal example running frontend extension based on pl
 
 ## Extension folder structure
 
-A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
+A Desktop Extension comprises several files, ranging from the extension's source code to required Extension-specific files.
 
 In the `minimal-frontend` sample folder, you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
 
@@ -27,7 +27,7 @@ In the `minimal-frontend` sample folder, you can find a ready-to-go example that
 
 An extension requires a `Dockerfile` to build, publish and run in Docker Desktop.
 
-The bare minimum configuration that a Dockerfile's extension requires to function properly is:
+At minimum, your Dockerfile needs:
 
 - Labels - required to provide extra information about the extension.
 - The source code - in this case, an `index.html` that sits within the `ui` folder.
@@ -128,7 +128,7 @@ MyExtension         Docker Inc.         desktop-frontend-minimal-extension:0.0.1
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
 
-On the left-menu, you should see a new tab with the name `Min FrontEnd Extension`. Click on it to load the main window that will render the `Hello, World!` message on the top-left corner.
+In the navigation sidebar, you should see a new item titled `Min FrontEnd Extension`. Click on it to load your extension content, with the `Hello, World!` message in the top-left corner.
 
 ![UI Extension](images/ui-minimal-extension.png)
 
@@ -188,7 +188,7 @@ Now when running Docker Desktop in dark mode and clicking the `Min FrontEnd Exte
 
 In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
 
-Let's tag the previous image to preprend the account owner at the beginning of the image name:
+Let's tag the previous image to prepend the account owner at the beginning of the image name:
 
 ```bash
 docker tag desktop-frontend-minimal-extension:0.0.1 owner/desktop-frontend-minimal-extension:0.0.1

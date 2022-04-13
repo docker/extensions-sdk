@@ -37,4 +37,4 @@ Body:
 }
 ```
 
-To test it run `make install` in this directory and then you can use the client.
+To test it, run `make install` in this directory. You can then use the client.

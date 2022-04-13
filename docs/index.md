@@ -8,9 +8,7 @@ This repository includes all resources to create your own Docker Extensions.
 
 ## Overview
 
-An extension is packaged as a Docker image, that contains all resources required to install the extention.
-
-It must have a `metadata.json` file at the root of the image filesystem. This `metadata.json` file describes the content of the extension.
+Extensions are packaged as specially formatted Docker images (our CLI tool helps to build these). The most fundamental requirement is a `metadata.json` file at the root of the image filesystem, describing the content of the extension.
 
 An extension can contain a UI part and backend parts (running either on the host or in the Desktop virtual machine).
 

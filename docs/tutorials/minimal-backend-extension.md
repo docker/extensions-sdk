@@ -49,7 +49,7 @@ async function runExtensionBackend(inputText: string) {
 
 An extension requires a `Dockerfile` to build, publish and run the extension in Docker Desktop.
 
-The bare minimum configuration that a Dockerfile's extension requires to function properly is:
+At minimum, your Dockerfile needs:
 
 - Labels - required to provide extra information about the extension.
 - The src code - in this case, an `index.html` that sits within the `ui` folder.
@@ -174,7 +174,7 @@ On the left-menu, you should see a new tab with the name `Hello Backend Extensio
 
 In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
 
-Let's tag the previous image to preprend the account owner at the beginning of the image name:
+Let's tag the previous image to prepend the account owner at the beginning of the image name:
 
 ```bash
 docker tag desktop-backend-minimal-extension:0.0.1 owner/desktop-backend-minimal-extension:0.0.1

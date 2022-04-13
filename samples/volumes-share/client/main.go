@@ -8,13 +8,12 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/registry"
 	"github.com/sirupsen/logrus"
-	"github.com/urfave/cli/v2"
 )
 
 func main() {
 	app := &cli.App{
 		Name:  "vpush",
-		Usage: "Push/Pulll volumes",
+		Usage: "Push/Pull volumes",
 		Before: func(c *cli.Context) error {
 			return nil
 		},

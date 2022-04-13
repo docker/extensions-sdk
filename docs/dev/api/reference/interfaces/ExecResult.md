@@ -57,7 +57,7 @@ ___
 
 ▸ **parseJsonObject**(): `any`
 
-Parse a well formed JSON output.
+Parse a well-formed JSON output.
 
 #### Returns
 

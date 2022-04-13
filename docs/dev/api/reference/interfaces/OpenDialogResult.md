@@ -14,7 +14,7 @@
 
 • `Readonly` **canceled**: `boolean`
 
-whether or not the dialog was canceled.
+Whether the dialog was canceled.
 
 ___
 

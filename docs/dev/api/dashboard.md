@@ -53,7 +53,7 @@ This function opens a file selector dialog asking the user to select a file or f
 
 ▸ **showOpenDialog**(`dialogProperties`): `Promise`<[`OpenDialogResult`](OpenDialogResult.md)\>:
 
-[Dialog Properties](https://www.electronjs.org/docs/latest/api/dialog) allow to configure possible selection, multi-select, file filters, etc.
+The `dialogProperties` parameter is a list of flags passed to Electron to customize the dialog's behaviour - for instance, you can pass `multiSelections` to allow a user to select multiple files. See [Electron's documentation](https://www.electronjs.org/docs/latest/api/dialog) for a full list.
 
 ```typescript
 const result = await ddClient.desktopUI.dialog.showOpenDialog({

@@ -1,4 +1,4 @@
-[Labels](https://docs.docker.com/engine/reference/builder/#label) are specified in the extension's `Dockerfile` and are use to provide information about the extension.
+[Labels](https://docs.docker.com/engine/reference/builder/#label) are specified in the extension's `Dockerfile` and are used to provide information about the extension.
 
 | Label <div style="width:170px"></div>| Required | Description | Example |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------ | |
@@ -10,7 +10,7 @@
 | `com.docker.extension.screenshots` | No | A JSON array of image URLs and an alternative text, to be displayed in the details dialog, in the order on which they’ve been defined. | `"[{"alt": "alternative text for image 1", "url": "https://foo.bar/image1.png"},{"alt": "alternative text for image2", "url": "https://foo.bar/image2.jpg"}]"` |
 | `com.docker.extension.detailed-description` | No | Additional information in plain text or HTML about the extension to be displayed in the details dialog. | `My detailed description` or `<h1>My detailed description</h1>` |
 | `com.docker.extension.publisher-url` | No | The publisher website URL to be displayed in the details dialog. | `https://foo.bar` |
-| `com.docker.extension.additional-urls` | No | A JSON array of titles and additional URLs to be displayed in the details dialog. We recommend to display the following links if they apply: documentation, support, terms of service and privacy policy links. | `[{"title":"Documentation","url":"https://foo.bar/docs"},{"title":"Support","url":"https://foo.bar/support"},{"title":"Terms of Service","url":"https://foo.bar/tos"},{"title":"Privacy policy","url":"https://foo.bar/privacy-policy"}]` |
+| `com.docker.extension.additional-urls` | No | A JSON array of titles and additional URLs to be displayed in the details dialog. We recommend displaying the following links if they apply: documentation, support, terms of service and privacy policy links. | `[{"title":"Documentation","url":"https://foo.bar/docs"},{"title":"Support","url":"https://foo.bar/support"},{"title":"Terms of Service","url":"https://foo.bar/tos"},{"title":"Privacy policy","url":"https://foo.bar/privacy-policy"}]` |
 
 !!! warning "Missing required labels"
 

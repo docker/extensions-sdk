@@ -91,7 +91,7 @@ john/my-extension     Docker Inc.             1 tab(My-Extension) Running(1)  -
 ```
 
 On the left-menu, you should see a new tab with the name `My-Extension`. Click
-on it to load the main window that will render a button. When you click on it
+on it to load the main window that will render a button. When you click on it,
 you should see the response from the backend
 
 ![UI Extension](images/initialized-extension.png)
@@ -107,7 +107,7 @@ To iterate faster and try out new changes when developing the extension, use the
 ### Developing the frontend
 
 If you are working on the frontend code of your extension and don't want to
-rebuild the extension image each time you can setup Docker Desktop in a way
+rebuild the extension image each time you can set up Docker Desktop in a way
 that will use your development server instead of the bundled frontend code from
 the extension image. To do that, in one terminal start your UI development
 server:

@@ -7,7 +7,7 @@ This tutorial describes a minimal example running frontend extension and invokin
 
 ## Extension folder structure
 
-A Desktop Extension is comprised of several files, ranging from the extension's source code to required Extension-specific files.
+A Desktop Extension comprises several files, ranging from the extension's source code to required Extension-specific files.
 
 In the `minimal-docker-cli` sample folder, you can find a ready-to-go example that represents a UI Extension invoking docker commands. We will go through this code example in this tutorial.
 
@@ -59,7 +59,7 @@ We can then use our `dockerInfo` object in the display part of the application
 
 An extension requires a `Dockerfile` to build, publish and run in Docker Desktop.
 
-The bare minimum configuration that a Dockerfile's extension requires to function properly is:
+At minimum, your Dockerfile needs:
 
 - Labels - required to provide extra information about the extension.
 - The source code - in this case, an `index.html` that sits within the `ui` folder. `index.html` refers to javascript code in `script.js`.
@@ -171,7 +171,7 @@ On the left menu, you should see a new tab with the name `Docker VM info`. Click
 
 In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
 
-Let's tag the previous image to preprend the account owner at the beginning of the image name:
+Let's tag the previous image to prepend the account owner at the beginning of the image name:
 
 ```bash
 docker tag desktop-docker-cli-minimal-extension:0.0.1 owner/desktop-docker-cli-minimal-extension:0.0.1

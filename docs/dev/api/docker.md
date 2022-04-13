@@ -56,7 +56,7 @@ In this example the docker command output is a json output.
 For convenience, the command result object also has methods to easily parse it.
 
 - `result.lines(): string[]` split output lines
-- `result.parseJsonObject(): any` parse a well formed json output
+- `result.parseJsonObject(): any` parse a well-formed json output
 - `result.parseJsonLines(): any[]` parse each output line as a json object
 
 ▸ **exec**(`cmd`, `args`, `options`): `void`

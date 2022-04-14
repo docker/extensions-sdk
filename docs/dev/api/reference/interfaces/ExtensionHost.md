@@ -12,7 +12,7 @@
 
 • `Readonly` **cli**: [`ExtensionCli`](ExtensionCli.md)
 
-Executes a command in the the host.
+Executes a command in the host.
 
 Example: Execute the shipped binary `kubectl -h` command in the **host**:
 

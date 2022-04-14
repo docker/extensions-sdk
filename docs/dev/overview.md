@@ -46,7 +46,7 @@ This will change the source of the extension UI to your local development server
 
     Make sure to reopen the Dashboard when you set a new source for the extension's UI.
 
-Once finished, you can reset the extension configuration to the original settings (note htis will also reset opening chrome dev tools if you used `docker extension dev debug my-extension`):
+Once finished, you can reset the extension configuration to the original settings (note this will also reset opening Chrome dev tools if you used `docker extension dev debug my-extension`):
 
 ```console
 docker extension dev reset my-extension
@@ -56,4 +56,4 @@ docker extension dev reset my-extension
 
 If your extension is composed of one or more services running as containers in the Docker Desktop VM, you can get easier access to them by showing them in the Docker Desktop Dashboard and when using Docker commands.
 
-In the Docker Desktop Dashboard settings, under `Extension`, you can select `Show Docker Desktop Extensions system containers`, and you'll be able to see your extension containers as any other one, navigate to logs, etc.
+In the Docker Desktop Dashboard settings, under `Extension`, there's a `Show Docker Desktop Extensions system containers` option. When this is enabled, you'll be able to view your extension containers - including logs and other technical details - in the Containers view of the Dashboard.

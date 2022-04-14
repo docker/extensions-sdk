@@ -1,6 +1,6 @@
 # Interface: Dialog
 
-Allows to open native dialog boxes.
+Allows opening native dialog boxes.
 
 ## Table of contents
 

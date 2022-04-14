@@ -64,7 +64,7 @@ LABEL org.opencontainers.image.title="example-extension" \
 COPY --from=dl /out /
 ```
 
-In the `metadata.json` file, we especify the path for every binary on every platform:
+In the `metadata.json` file, we specify the path for every binary on every platform:
 
 ```json title="metadata.json" linenums="1" hl_lines="12-25"
 {
@@ -105,7 +105,7 @@ Therefore:
 
     Note that the binary destination path for `darwin` is the same in both cases, i.e. `darwin/kubectl`. The only thing that changes is the architecutre-specific binary downloaded.
 
-Finally, when the extension is installed, the extension framework will copy the binaries from the extension image at `/darwin/kubectl` (in the case of Darwin) or `/windows/kubectl.exe` (in the case of Windows) to a especific location in the user's host filesystem.
+Finally, when the extension is installed, the extension framework will copy the binaries from the extension image at `/darwin/kubectl` (in the case of Darwin) or `/windows/kubectl.exe` (in the case of Windows) to a specific location in the user's host filesystem.
 
 ## FAQs
 

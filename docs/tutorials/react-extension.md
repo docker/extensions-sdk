@@ -174,7 +174,7 @@ ui-extension #(1)   Docker Inc. (2)     desktop-react-extension:0.0.1 (3)  1 tab
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
 
-On the left-menu, you should see a new tab with the name `UI Extension`. Click on it to load the main window that will render a button on the top-left corner. When you click on it, a toast message will appear with the message `Hello, World!`.
+In the navigation sidebar, you should see a new item titled `UI Extension`. Click on it to view your extension's content; you should see a button in the top-left corner. When you click the button, a toast message will appear with the message `Hello, World!`.
 
 ![UI Extension](images/ui-extension-react.png)
 
@@ -186,7 +186,7 @@ To open the Chrome Developer Tools, see [this](../../dev/overview).
 
 In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
 
-Let's tag the previous image to preprend the account owner at the beginning of the image name:
+Let's tag the previous image to prepend the account owner at the beginning of the image name:
 
 ```bash
 docker tag desktop-react-extension:0.0.1 owner/desktop-react-extension:0.0.1

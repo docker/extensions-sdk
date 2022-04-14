@@ -2,7 +2,7 @@
 
 A Docker Desktop extension image must include a `metadata.json` file at the root of its filesystem. This file describes the content of the extension that must be installed to make it work in Docker Desktop.
 
-A extension can contain (each part is optional):
+An extension can contain (each part is optional):
 
 - A UI part, adding a tab to the Docker Desktop Dashboard
 - A VM service, executed in the Desktop VM as one (or several) Docker container(s). These containers can request access to specific resources in the VM, for example by mounting folders in the compose file.
@@ -23,7 +23,7 @@ The metadata.json file must follow the format :
 }
 ```
 
-`ui`, `vm` and `host` sections are optional, depending what a given extension provides, and describe the extension content to be installed.
+`ui`, `vm` and `host` sections are optional, depending on what a given extension provides, and describe the extension content to be installed.
 
 The `ui` section defines a new tab that will be added to Docker Dashboard. (other UI extension points will likely be available in the future). It follows the form:
 

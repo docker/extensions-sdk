@@ -8,7 +8,7 @@ Docker Desktop's UI is written in React and [Material-UI](https://mui.com/), and
 
 This brings the benefit of using our [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination.
 
-To use [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) with your extension, you can wrap your react app like this: 
+To use [Docker's Material UI theme](https://www.npmjs.com/package/@docker/docker-mui-theme) with your extension, wrap your React app with our theme provider:
 
 ```typescript
 import { DockerMuiThemeProvider } from '@docker/docker-mui-theme';
@@ -25,12 +25,12 @@ function App() {
 ```
 
 # Design Principles
-At Docker we are developer obsessed, which means that we intend to build tools that can be seamlessly integrated into their workflow rather than them having to change their workflow in order to use the tool. Here are a few design principles that have facilitated us to do this and would strongly recommend that you take them into consideration when building extensions.
+At Docker, we aim to build tools that integrate into users' existing workflows rather than requiring them to adopt new ones. To that end, we recommend the following design principles:
 
 ### Clear Call-to-Actions
 When using call-to-actions, use familiar terms that do not have an ambiguous meaning.  Avoid using too many call-to-actions on one page, wherever possible. If there is a need to use multiple call-to-actions, ensure the hierarchy is conveyed through the use of primary and secondary actions.
 
-Here is an an example of the use of a primary (Save) and a secondary (Cancel) button
+Here is an example of the use of a primary (Save) and a secondary (Cancel) button
 
 ![UI Extension](images/cta-example.png)
 

@@ -1,3 +1,5 @@
+# Extension image labels
+
 [Labels](https://docs.docker.com/engine/reference/builder/#label) are specified in the extension's `Dockerfile` and are used to provide information about the extension.
 
 | Label <div style="width:170px"></div>| Required | Description | Example |
@@ -15,6 +17,8 @@
 !!! warning "Missing required labels"
 
     If any of the previous _required_ labels are missing in the `Dockerfile`, Docker Desktop will consider the extension invalid and will not appear listed in the Marketplace.
+
+## Preview extension in marketplace
 
 You can validate that these image labels are rendered as you expect.
 

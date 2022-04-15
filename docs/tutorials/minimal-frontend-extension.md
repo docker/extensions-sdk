@@ -41,7 +41,7 @@ At a minimum, your Dockerfile needs:
 - The source code which in this case is an `index.html` that sits within the `ui` folder.
 - The `metadata.json` file.
 
-```Dockerfile title="Dockerfile" linenums="1"
+```Dockerfile
 FROM scratch
 
 LABEL org.opencontainers.image.title="MinimalFrontEnd" \
@@ -58,7 +58,7 @@ COPY metadata.json .
 
 A `metadata.json` file is required at the root of the image filesystem.
 
-```json title="metadata.json" linenums="1"
+```json
 {
   "ui": {
     "dashboard-tab": {

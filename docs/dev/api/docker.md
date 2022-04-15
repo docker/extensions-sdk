@@ -43,9 +43,7 @@ Extensions can also directly execute the `docker` command line.
 ```typescript
 const result = await ddClient.docker.cli.exec("info", [
   "--format",
-  {% raw %}
-  '"{{ json . }}"',
-  {% endraw %}
+  {% raw %}'"{{ json . }}"',{% endraw %}
 ]);
 ```
 
@@ -70,7 +68,7 @@ For convenience, the command result object also has methods to easily parse it:
 The command above streams the output as a result of the execution of a docker command.
 This is useful if you need to get the output as a stream or the output of the command is too long.
 
-```typescript linenums="1"
+```typescript
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     onOutput(data) {
@@ -94,7 +92,7 @@ await ddClient.docker.cli.exec("logs", ["-f", "..."], {
 The child process created by the extension is killed (`SIGTERM`) automatically when you close the dashboard in Docker Desktop or when you exit the extension UI.
 If needed, you can also use the result of the `exec(streamOptions)` call in order to kill (`SIGTERM`) the process.
 
-```typescript linenums="1"
+```typescript
 const logListener = await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     // ...
@@ -107,12 +105,10 @@ logListener.close();
 
 This `exec(streamOptions)` API can also be used to listen to docker events:
 
-```typescript linenums="1"
+```typescript
 await ddClient.docker.cli.exec(
   "events",
-  {% raw %}
-  ["--format", "{{ json . }}", "--filter", "container=my-container"],
-  {% endraw %}
+  {% raw %}["--format", "{{ json . }}", "--filter", "container=my-container"],{% endraw %}
   {
     stream: {
       onOutput(data) {
@@ -142,9 +138,7 @@ See the [Exec API reference](reference/interfaces/Exec.md) for details about the
 const output = await window.ddClient.execDockerCmd(
   "info",
   "--format",
-  {% raw %}
-  '"{{ json . }}"'
-  {% endraw %}
+  {% raw %}'"{{ json . }}"'{% endraw %}
 );
 
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {

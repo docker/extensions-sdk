@@ -42,7 +42,7 @@ The example below shows an extension that uses a binary as part of its operation
 
 In the `Dockerfile`, we download the binary depending on the target architecture:
 
-```Dockerfile title="Dockerfile" linenums="1" hl_lines="8-9 14-15"
+```Dockerfile
 #syntax=docker/dockerfile:1.3-labs
 
 FROM alpine AS dl
@@ -72,7 +72,7 @@ COPY --from=dl /out /
 
 In the `metadata.json` file, we specify the path for every binary on every platform:
 
-```json title="metadata.json" linenums="1" hl_lines="12-25"
+```json
 {
   "icon": "docker.svg",
   "ui": {

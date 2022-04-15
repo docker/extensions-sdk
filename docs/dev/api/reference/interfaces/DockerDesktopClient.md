@@ -531,9 +531,7 @@ You can also directly execute the docker binary.
 const output = await window.ddClient.execDockerCmd(
   "info",
   "--format",
-  {% raw %}
-  '"{{ json . }}"'
-  {% endraw %}
+  {% raw %}'"{{ json . }}"'{% endraw %}
 );
 ```
 

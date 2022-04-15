@@ -45,7 +45,7 @@ Let's reuse the React extension from the [React extension tutorial](./react-exte
 Use the Docker Desktop Client object and then invoke a binary provided in our backend container (that lives inside the Docker Desktop VM) with `ddClient.docker.extension.vm.cli.exec()`.
 In our example, our hello.sh script returns a string as result, we obtain it with `result?.stdout`.
 
-```typescript title="App.tsx"
+```typescript
 const ddClient = createDockerDesktopClient();
 const [backendInfo, setBackendInfo] = useState<string | undefined>();
 
@@ -67,7 +67,7 @@ At minimum, your Dockerfile needs:
 - The source code which in this case is an `index.html` that sits within the `ui` folder. `index.html` refers to javascript code in `script.js`.
 - The `metadata.json` file.
 
-```Dockerfile title="Dockerfile"
+```Dockerfile
 FROM node:17.7-alpine3.14 AS client-builder
 # ... build React application
 
@@ -90,7 +90,7 @@ CMD [ "sleep", "infinity" ]
 
 A `metadata.json` file is required at the root of the image filesystem.
 
-```json title="metadata.json" linenums="1"
+```json
 {
   "vm": {
     "image": "${DESKTOP_PLUGIN_IMAGE}"

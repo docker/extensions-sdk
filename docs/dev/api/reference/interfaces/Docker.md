@@ -28,9 +28,7 @@ You can also directly execute the docker binary.
 ```typescript
 const output = await ddClient.docker.cli.exec("info", [
   "--format",
-  {% raw %}
-  '"{{ json . }}"',
-  {% endraw %}
+  {% raw %}'"{{ json . }}"',{% endraw %}
 ]);
 ```
 
@@ -51,7 +49,7 @@ For convenience, the command result object also has methods to easily parse it. 
 Streams the output as a result of the execution of a docker command.
 It is useful when the output of the command is too long, or you need to get the output as a stream.
 
-```typescript linenums="1"
+```typescript
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     onOutput(data): void {

@@ -48,7 +48,7 @@ Although you can start from an empty directory, it is highly recommended that yo
 
 An extension requires a `Dockerfile` to build, publish, and run in Docker Desktop.
 
-```Dockerfile title="Dockerfile" linenums="1"
+```Dockerfile
 FROM node:14.17-alpine3.13 AS client-builder
 WORKDIR /app/client
 # cache packages in layer
@@ -78,7 +78,7 @@ COPY metadata.json .
 
 A `metadata.json` file is required at the root of your extension directory.
 
-```json title="metadata.json" linenums="1"
+```json
 {
   "icon": "docker.svg",
   "ui": {
@@ -95,7 +95,7 @@ A `metadata.json` file is required at the root of your extension directory.
 
 The React application can import `@docker/extension-api-client` and use extension APIs to perform actions with Docker Desktop.
 
-```ts title="App.tsx" linenums="1"
+```ts
 import { Box, Button } from '@mui/material';
 import { createDockerDesktopClient } from '@docker/extension-api-client';
 

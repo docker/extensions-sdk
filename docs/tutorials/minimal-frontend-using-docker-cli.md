@@ -44,22 +44,18 @@ Use the Docker Desktop Client object to discover extension APIs about `docker`. 
 We can invoke a Docker command with `ddClient.docker.cli.exec()`.
 For example, to run `docker info` and obtain json formatted results:
 
-{% raw %}
-`ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`.
-{% endraw %}
+{% raw %}`ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`{% endraw %}.
 
 We can use `result.parseJsonObject()` to read results as a json object and use it in our application.
 
-```typescript title="App.tsx"
+```typescript
 const ddClient = createDockerDesktopClient();
 const [dockerInfo, setDockerInfo] = useState<any>(null);
 
 async function runDockerInfo() {
   const result = await ddClient.docker.cli.exec("info", [
     "--format",
-    {% raw %}
-    '"{{json .}}"',
-    {% endraw %}
+    {% raw %}'"{{json .}}"',{% endraw %}
   ]);
   setDockerInfo(result.parseJsonObject());
 }
@@ -77,7 +73,7 @@ At minimum, your Dockerfile needs:
 - The source code which in this case is an `index.html` that sits within the `ui` folder. `index.html` refers to javascript code in `script.js`.
 - The `metadata.json` file.
 
-```Dockerfile title="Dockerfile"
+```Dockerfile
 FROM node:17.7-alpine3.14 AS client-builder
 # ... build React application
 
@@ -97,7 +93,7 @@ COPY metadata.json .
 
 A `metadata.json` file is required at the root of the image filesystem.
 
-```json title="metadata.json" linenums="1"
+```json
 {
   "ui": {
     "dashboard-tab": {

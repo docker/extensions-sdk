@@ -72,7 +72,7 @@ await ddClient.extension.vm.cli.exec("ls", ["-l"]);
 
 Stream the output of the command executed in the backend container. For example, spawn the command `ls -l` inside the backend container:
 
-```typescript linenums="1"
+```typescript
 await ddClient.extension.vm.cli.exec("ls", ["-l"], {
   stream: {
     onOutput(data) {
@@ -121,7 +121,7 @@ await ddClient.extension.host.cli.exec("kubectl", ["-h"]);
 
 As long as the `kubectl` binary is shipped as part of your extension, you can spawn the `kubectl -h` command in the host and get the output stream:
 
-```typescript linenums="1"
+```typescript
 await ddClient.extension.host.cli.exec("kubectl", ["-h"], {
   stream: {
     onOutput(data: { stdout: string } | { stderr: string }): void {

@@ -44,7 +44,9 @@ Use the Docker Desktop Client object to discover extension APIs about `docker`. 
 We can invoke a Docker command with `ddClient.docker.cli.exec()`.
 For example, to run `docker info` and obtain json formatted results:
 
+{% raw %}
 `ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`.
+{% endraw %}
 
 We can use `result.parseJsonObject()` to read results as a json object and use it in our application.
 
@@ -55,7 +57,9 @@ const [dockerInfo, setDockerInfo] = useState<any>(null);
 async function runDockerInfo() {
   const result = await ddClient.docker.cli.exec("info", [
     "--format",
+    {% raw %}
     '"{{json .}}"',
+    {% endraw %}
   ]);
   setDockerInfo(result.parseJsonObject());
 }

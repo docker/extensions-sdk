@@ -105,9 +105,7 @@ A `metadata.json` file is required at the root of the image filesystem.
 }
 ```
 
-!!! warning
-
-    Do not replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder is replaced automatically with the correct image name when the extension is installed.
+> Do not replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder is replaced automatically with the correct image name when the extension is installed.
 
 ## Build the extension
 
@@ -140,10 +138,6 @@ If your extension is valid, the message below displays:
 `The extension image "desktop-backend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
-
-!!! info Enable Docker Desktop Extensions
-
-    Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
 
 To install the extension in Docker Desktop, run:
 

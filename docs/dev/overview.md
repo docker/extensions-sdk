@@ -48,9 +48,7 @@ docker extension dev ui-source my-extension http://localhost:8080
 
 This changes the source of the extension UI to your local development server. Auto and hot-reload now work.
 
-!!! info
-
-    Make sure to reopen the Dashboard when you set a new source for the extension's UI.
+> Make sure to reopen the Dashboard when you set a new source for the extension's UI.
 
 Once finished, you can reset the extension configuration to the original settings. This will also reset opening Chrome dev tools if you used `docker extension dev debug my-extension`:
 

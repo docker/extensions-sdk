@@ -102,10 +102,6 @@ If your extension is valid, the message below displays:
 
 ## Install the extension
 
-!!! info "Enable Docker Desktop Extensions"
-
-    Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
-
 To install the extension in Docker Desktop, run:
 
 ```bash

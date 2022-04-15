@@ -78,9 +78,7 @@ This function opens an external URL with the system default browser.
 ddClient.host.openExternal("https://docker.com");
 ```
 
-!!! note
-
-    The URL must have the protocol `http` or `https`.
+> The URL must have the protocol `http` or `https`.
 
 For more details about method parameters and the return types available, see [Desktop host API reference](reference/interfaces/Host.md).
 

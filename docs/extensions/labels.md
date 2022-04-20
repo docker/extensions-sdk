@@ -13,10 +13,16 @@
 | `com.docker.extension.detailed-description` | No | Additional information in plain text or HTML about the extension to be displayed in the details dialog. | `My detailed description` or `<h1>My detailed description</h1>` |
 | `com.docker.extension.publisher-url` | No | The publisher website URL to be displayed in the details dialog. | `https://foo.bar` |
 | `com.docker.extension.additional-urls` | No | A JSON array of titles and additional URLs displayed to users (in the order they appear in your metadata) in your extension's details page. We recommend displaying the following links if they apply: documentation, support, terms of service and privacy policy links. | `[{"title":"Documentation","url":"https://foo.bar/docs"},{"title":"Support","url":"https://foo.bar/support"},{"title":"Terms of Service","url":"https://foo.bar/tos"},{"title":"Privacy policy","url":"https://foo.bar/privacy-policy"}]` |
+| `com.docker.extension.changelog`            | No | Changelog in plain text or HTML containing the change for the current version only. | `Extension changelog` or `<p>Extension changelog<ul><li>New feature A</li><li>Bug fix on feature B</li></ul></p>`                                                                                                                        |
 
 !!! warning "Missing required labels"
 
     If any of the previous _required_ labels are missing in the `Dockerfile`, Docker Desktop will consider the extension invalid and will not appear listed in the Marketplace.
+
+!!! info "Note about HTML content"
+
+    Docker Desktop CSS styles will be applied to the provided HTML content. You can make sure that it renders nicely
+    within the marketplace. We recommend that you follow our [CSS guidlines](../../design/design-overview/#design-principles).
 
 ## Preview extension in marketplace
 

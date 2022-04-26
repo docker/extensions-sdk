@@ -19,7 +19,7 @@
 
     If any of the previous _required_ labels are missing in the `Dockerfile`, Docker Desktop will consider the extension invalid and will not appear listed in the Marketplace.
 
-!!! info "Note about HTML content"
+!!! info "HTML content styling"
 
     Docker Desktop CSS styles will be applied to the provided HTML content. You can make sure that it renders nicely
     within the marketplace. We recommend that you follow our [CSS guidlines](../../design/design-overview/#design-principles).

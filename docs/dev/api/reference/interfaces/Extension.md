@@ -1,11 +1,5 @@
 # Interface: Extension
 
-## Table of contents
-
-### Properties
-
-- [vm](Extension.md#vm)
-- [host](Extension.md#host)
 
 ## Properties
 
@@ -13,7 +7,7 @@
 
 • `Optional` `Readonly` **vm**: [`ExtensionVM`](ExtensionVM.md)
 
-___
+
 
 ### host
 

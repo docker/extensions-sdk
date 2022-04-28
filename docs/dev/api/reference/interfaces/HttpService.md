@@ -1,16 +1,5 @@
 # Interface: HttpService
 
-## Table of contents
-
-### Methods
-
-- [get](HttpService.md#get)
-- [post](HttpService.md#post)
-- [put](HttpService.md#put)
-- [patch](HttpService.md#patch)
-- [delete](HttpService.md#delete)
-- [head](HttpService.md#head)
-- [request](HttpService.md#request)
 
 ## Methods
 
@@ -36,7 +25,6 @@ Performs an HTTP GET request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
 
 ### post
 
@@ -61,7 +49,6 @@ Performs an HTTP POST request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
 
 ### put
 
@@ -86,7 +73,6 @@ Performs an HTTP PUT request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
 
 ### patch
 
@@ -111,7 +97,6 @@ Performs an HTTP PATCH request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
 
 ### delete
 
@@ -135,7 +120,6 @@ Performs an HTTP DELETE request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
 
 ### head
 
@@ -159,7 +143,6 @@ Performs an HTTP HEAD request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
 
 ### request
 

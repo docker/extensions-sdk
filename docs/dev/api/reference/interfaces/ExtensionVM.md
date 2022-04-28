@@ -1,11 +1,5 @@
 # Interface: ExtensionVM
 
-## Table of contents
-
-### Properties
-
-- [cli](ExtensionVM.md#cli)
-- [service](ExtensionVM.md#service)
 
 ## Properties
 
@@ -58,7 +52,7 @@ await ddClient.extension.vm.cli.exec("ls", ["-l"], {
 
 **`param`** The callback function where to listen from the command output data and errors.
 
-___
+
 
 ### service
 

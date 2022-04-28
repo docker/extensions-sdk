@@ -1,10 +1,5 @@
 # Interface: ExecProcess
 
-## Table of contents
-
-### Methods
-
-- [close](ExecProcess.md#close)
 
 ## Methods
 

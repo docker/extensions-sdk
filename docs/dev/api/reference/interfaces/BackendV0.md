@@ -1,26 +1,5 @@
 # Interface: BackendV0
 
-## Table of contents
-
-### Container Methods
-
-- [execInContainer](BackendV0.md#execincontainer)
-
-### HTTP Methods
-
-- [get](BackendV0.md#get)
-- [post](BackendV0.md#post)
-- [put](BackendV0.md#put)
-- [patch](BackendV0.md#patch)
-- [delete](BackendV0.md#delete)
-- [head](BackendV0.md#head)
-- [request](BackendV0.md#request)
-
-### VM Methods
-
-- [execInVMExtension](BackendV0.md#execinvmextension)
-- [spawnInVMExtension](BackendV0.md#spawninvmextension)
-
 ## Container Methods
 
 ### execInContainer
@@ -35,7 +14,7 @@ Executes a command inside a container.
  console.log(output);
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use {@link ???????????} instead.
+**`deprecated`** :warning: It will be removed in a future version. 
 
 #### Parameters
 
@@ -48,7 +27,7 @@ Executes a command inside a container.
 
 `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
-___
+
 
 ## HTTP Methods
 
@@ -76,7 +55,7 @@ window.ddClient.backend
 
 `Promise`<`unknown`\>
 
-___
+
 
 ### post
 
@@ -103,7 +82,7 @@ Performs an HTTP POST request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
+
 
 ### put
 
@@ -130,7 +109,7 @@ Performs an HTTP PUT request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
+
 
 ### patch
 
@@ -157,7 +136,7 @@ Performs an HTTP PATCH request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
+
 
 ### delete
 
@@ -183,7 +162,7 @@ Performs an HTTP DELETE request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
+
 
 ### head
 
@@ -209,7 +188,7 @@ Performs an HTTP HEAD request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
+
 
 ### request
 
@@ -235,7 +214,7 @@ Performs an HTTP request to a backend service.
 
 `Promise`<`unknown`\>
 
-___
+
 
 ## VM Methods
 
@@ -266,7 +245,7 @@ If your extensions ships with additional binaries that should be run inside the 
 
 `Promise`<[`ExecResultV0`](ExecResultV0.md)\>
 
-___
+
 
 ### spawnInVMExtension
 

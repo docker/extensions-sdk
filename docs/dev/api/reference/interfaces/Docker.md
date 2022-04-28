@@ -1,16 +1,5 @@
 # Interface: Docker
 
-## Table of contents
-
-### Properties
-
-- [cli](Docker.md#cli)
-
-### Methods
-
-- [listContainers](Docker.md#listcontainers)
-- [listImages](Docker.md#listimages)
-
 ## Properties
 
 ### cli
@@ -35,10 +24,9 @@ Output:
 In this example the docker command output is a json output.
 For convenience, the command result object also has methods to easily parse it. See [ExecResult](ExecResult.md) instead.
 
----
 
 Streams the output as a result of the execution of a docker command.
-Useful when the output of the command is too long, or you need to get the output as a stream.
+It is useful when the output of the command is too long, or you need to get the output as a stream.
 
 ```typescript linenums="1"
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
@@ -82,7 +70,7 @@ const containers = await ddClient.docker.listContainers();
 #### Parameters
 
 | Name | Type | Description |
-| :------ | :------ | :------ |
+|  |  |  |
 | `options?` | `any` | (Optional). A JSON like `{   "all": true,   "limit": 10,   "size": true,   "filters": JSON.stringify({ status: ["exited"] }), }`  For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#operation/ContainerList). |
 
 #### Returns
@@ -104,7 +92,7 @@ const images = await ddClient.docker.listImages();
 #### Parameters
 
 | Name | Type | Description |
-| :------ | :------ | :------ |
+|  |  |  |
 | `options?` | `any` | (Optional). A JSON like `{ "all": true, "filters": JSON.stringify({ dangling: ["true"] }), "digests": true }`  For more information about the different properties see [the Docker API endpoint documentation](https://docs.docker.com/engine/api/v1.37/#tag/Image). |
 
 #### Returns

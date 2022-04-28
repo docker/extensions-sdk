@@ -6,22 +6,6 @@
 
   ↳ **`ExecResult`**
 
-## Table of contents
-
-### Methods
-
-- [lines](ExecResult.md#lines)
-- [parseJsonLines](ExecResult.md#parsejsonlines)
-- [parseJsonObject](ExecResult.md#parsejsonobject)
-
-### Properties
-
-- [cmd](ExecResult.md#cmd)
-- [killed](ExecResult.md#killed)
-- [signal](ExecResult.md#signal)
-- [code](ExecResult.md#code)
-- [stdout](ExecResult.md#stdout)
-- [stderr](ExecResult.md#stderr)
 
 ## Methods
 
@@ -37,7 +21,6 @@ Split output lines.
 
 The list of lines.
 
-___
 
 ### parseJsonLines
 
@@ -51,7 +34,6 @@ Parse each output line as a JSON object.
 
 The list of lines where each line is a JSON object.
 
-___
 
 ### parseJsonObject
 
@@ -75,7 +57,6 @@ The JSON object.
 
 [RawExecResult](RawExecResult.md).[cmd](RawExecResult.md#cmd)
 
-___
 
 ### killed
 
@@ -85,7 +66,6 @@ ___
 
 [RawExecResult](RawExecResult.md).[killed](RawExecResult.md#killed)
 
-___
 
 ### signal
 
@@ -95,7 +75,6 @@ ___
 
 [RawExecResult](RawExecResult.md).[signal](RawExecResult.md#signal)
 
-___
 
 ### code
 
@@ -105,7 +84,6 @@ ___
 
 [RawExecResult](RawExecResult.md).[code](RawExecResult.md#code)
 
-___
 
 ### stdout
 
@@ -115,7 +93,6 @@ ___
 
 [RawExecResult](RawExecResult.md).[stdout](RawExecResult.md#stdout)
 
-___
 
 ### stderr
 

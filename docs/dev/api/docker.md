@@ -2,7 +2,7 @@
 
 ▸ **listContainers**(`options?`): `Promise`<`unknown`\>
 
-Get the list of containers
+To get the list of containers:
 
 ```typescript
 const containers = await ddClient.docker.listContainers();
@@ -10,19 +10,19 @@ const containers = await ddClient.docker.listContainers();
 
 ▸ **listImages**(`options?`): `Promise`<`unknown`\>
 
-Get the list of local container images
+To get the list of local container images:
 
 ```typescript
 const images = await ddClient.docker.listImages();
 ```
 
-Use the [Docker API reference](reference/interfaces/Docker.md) for details about these methods
+See the [Docker API reference](reference/interfaces/Docker.md) for details about these methods.
 
 ### Deprecated access to Docker objects
 
 !!! warning "Method deprecated"
 
-    These methods are deprecated and will be removed in a future version. Please use the ones specified above.
+    The methods below are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 const containers = await window.ddClient.listContainers();
@@ -43,7 +43,7 @@ const result = await ddClient.docker.cli.exec("info", [
 ]);
 ```
 
-The result will contain both the standard output and the standard error of the executed command:
+The result contains both the standard output and the standard error of the executed command:
 
 ```
 {
@@ -52,17 +52,17 @@ The result will contain both the standard output and the standard error of the e
 }
 ```
 
-In this example the docker command output is a json output.
-For convenience, the command result object also has methods to easily parse it.
+In this example, the docker command output is a json output.
+For convenience, the command result object also has methods to easily parse it:
 
-- `result.lines(): string[]` split output lines
-- `result.parseJsonObject(): any` parse a well-formed json output
-- `result.parseJsonLines(): any[]` parse each output line as a json object
+- `result.lines(): string[]` splits output lines.
+- `result.parseJsonObject(): any` parses a well-formed json output.
+- `result.parseJsonLines(): any[]` parses each output line as a json object.
 
 ▸ **exec**(`cmd`, `args`, `options`): `void`
 
-Streams the output as a result of the execution of a docker command.
-Useful when you need to get the output as a stream or the output of the command is too long.
+The command above streams the output as a result of the execution of a docker command.
+This is useful if you need to get the output as a stream or the output of the command is too long.
 
 ```typescript linenums="1"
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
@@ -85,7 +85,7 @@ await ddClient.docker.cli.exec("logs", ["-f", "..."], {
 });
 ```
 
-The child process created by the extension will be killed (`SIGTERM`) automatically when closing the Docker Dashboard or when exiting the extension UI.
+The child process created by the extension is killed (`SIGTERM`) automatically when you close the dashboard in Docker Desktop or when you exit the extension UI.
 If needed, you can also use the result of the `exec(streamOptions)` call in order to kill (`SIGTERM`) the process.
 
 ```typescript linenums="1"
@@ -99,7 +99,7 @@ const logListener = await ddClient.docker.cli.exec("logs", ["-f", "..."], {
 logListener.close();
 ```
 
-This `exec(streamOptions)` API can also be useful to listen to docker events:
+This `exec(streamOptions)` API can also be used to listen to docker events:
 
 ```typescript linenums="1"
 await ddClient.docker.cli.exec(
@@ -124,13 +124,13 @@ await ddClient.docker.cli.exec(
 );
 ```
 
-Use the [Exec API reference](reference/interfaces/Exec.md) for details about these methods
+See the [Exec API reference](reference/interfaces/Exec.md) for details about these methods.
 
 ### Deprecated execution of Docker commands
 
 !!! warning "Method deprecated"
 
-    This method is deprecated and will be removed in a future version. Please use the one specified just below.
+    This method is deprecated and will be removed in a future version. Use the one specified just below.
 
 ```typescript
 const output = await window.ddClient.execDockerCmd(

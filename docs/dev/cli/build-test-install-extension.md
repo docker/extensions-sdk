@@ -1,40 +1,37 @@
-### Enabling Docker Extensions
+## Prerequisites
+Before you can manage Docker extensions, you must have Docker Desktop up and running and the Docker Extensions feature enabled.
 
-Prior to managing Docker extensions, you must have Docker Desktop up and running and the Docker Extensions feature enabled.
+to enable Docker extensions, enter `docker extension enable` into the command line. The change takes effect immediately. You do not need to restart Docker Desktop.
 
-Initially, you'll need to enable Docker extensions by running `docker extension enable`.
-
-The change takes effect immediately. You do **not** need to restart Docker Desktop.
-
-To verify the feature has been activated successfully, you can try listing the installed Docker extensions with `docker extension ls`.
-At this point no extensions have been installed, the output should display no extensions:
+To verify the feature is activated, use `docker extension ls` to list the installed Docker extensions. 
+At this point no extensions are installed, the output displays no extensions:
 
 ```console
 PLUGIN              PROVIDER            IMAGE               UI                  VM                  HOST
 ```
 
-## Build, Test and Install an Extension
+## Build, test, and install an extension
 
-This repository contains multiple extensions, each one is defined in an individual directories at the root of the repository.
+The [sample folder](https://github.com/docker/extensions-sdk/tree/main/samples) contains multiple extensions.
 These are Docker developed samples that are not meant to be final products.
 
 To use one of them, navigate to the directory of the extension then build and install it on Docker Desktop.
-The `docker extension` commands are carried out by the Extension CLI which is a developer tool, not included in standard Docker Desktop package.
+The `docker extension` commands are carried out by the Extension CLI which is a developer tool. It is not included in the standard Docker Desktop package.
 
-Build the extension:
+To build the extension, run:
 
 ```console
 make extension
 # or docker build -t my-extension .
 ```
 
-Install the extension:
+To install the extension, run:
 
 ```console
 docker extension install my-extension
 ```
 
-You can list the extensions that are installed:
+To list all your installed extensions, run:
 
 ```console
 docker extension ls

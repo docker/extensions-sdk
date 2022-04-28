@@ -6,9 +6,9 @@ electron or nodejs APIs.
 The extension UI API provides a way for the frontend to perform different actions
 and communicate with the Docker Desktop dashboard or the underlying system.
 
-JavaScript API libraries are available (with Typescript support) in order to get all the API definition in your extension code.
+JavaScript API libraries, with Typescript support, are available in order to get all the API definitions in to your extension code.
 
-- [@docker/extension-api-client](https://www.npmjs.com/package/@docker/extension-api-client) gives access to the extension API entrypoint `DockerDesktopCLient`
+- [@docker/extension-api-client](https://www.npmjs.com/package/@docker/extension-api-client) gives access to the extension API entrypoint `DockerDesktopCLient`.
 - [@docker/extension-api-client-types](https://www.npmjs.com/package/@docker/extension-api-client-types) can be added as a dev dependency in order to get types auto-completion in your IDE.
 
 ```Typescript
@@ -21,7 +21,7 @@ export function App() {
 }
 ```
 
-The `ddClient` object gives access to various APIs, organized in different categories:
+The `ddClient` object gives access to various APIs:
 
 - [Extension Backend](./backend.md)
 - [Docker](./docker.md)

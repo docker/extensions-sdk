@@ -2,11 +2,6 @@
 
 Allows opening native dialog boxes.
 
-## Table of contents
-
-### Methods
-
-- [showOpenDialog](Dialog.md#showopendialog)
 
 ## Methods
 
@@ -24,7 +19,7 @@ ddClient.desktopUI.dialog.showOpenDialog({properties: ['openFile']});
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `dialogProperties` | `any` | properties to specify the open dialog behaviour, see https://www.electronjs.org/docs/latest/api/dialog#dialogshowopendialogbrowserwindow-options. |
+| `dialogProperties` | `any` | Properties to specify the open dialog behaviour, see https://www.electronjs.org/docs/latest/api/dialog#dialogshowopendialogbrowserwindow-options. |
 
 #### Returns
 

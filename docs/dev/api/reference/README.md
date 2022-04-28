@@ -1,7 +1,5 @@
 # Extensions API Reference
 
-## Table of contents
-
 ### Dashboard Interfaces
 
 - [Host](interfaces/Host.md)

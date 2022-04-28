@@ -1,12 +1,12 @@
 #  UI Guidelines
 
-We are currently in the process of developing our design system but in the meantime, here are some [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). 
+Our Design System is currently being developed. In the meantime, here are some basic [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771) you can follow. 
 
 # Using Docker Material UI Theme
 
-Docker Desktop's UI is written in React and [Material-UI](https://mui.com/), and we strongly recommend adopting this combination in your extensions as well. 
+Docker Desktop's UI is written in React and [Material-UI](https://mui.com/). We strongly recommend you  adopt this combination in your extension as well. 
 
-This brings the benefit of using our [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination.
+Use our [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel. We'll continue to release libraries and utilities targeting this combination.
 
 To use [Docker's Material UI theme](https://www.npmjs.com/package/@docker/docker-mui-theme) with your extension, wrap your React app with our theme provider:
 
@@ -25,34 +25,34 @@ function App() {
 ```
 
 # Design Principles
-At Docker, we aim to build tools that integrate into users' existing workflows rather than requiring them to adopt new ones. To that end, we recommend the following design principles:
+At Docker, we aim to build tools that integrate into a user's existing workflows rather than requiring them to adopt new ones. To that end, we recommend the design principles listed below.
 
-### Clear Call-to-Actions
-When using call-to-actions, use familiar terms that do not have an ambiguous meaning.  Avoid using too many call-to-actions on one page, wherever possible. If there is a need to use multiple call-to-actions, ensure the hierarchy is conveyed through the use of primary and secondary actions.
+## Clear Call-to-Actions
+When you use call-to-actions (CTAs), use familiar terms that do not have an ambiguous meaning.  Avoid using too many CTAs on one page, wherever possible. If you need to use multiple CTAs, ensure the hierarchy is conveyed through the use of primary and secondary actions.
 
-Here is an example of the use of a primary (Save) and a secondary (Cancel) button
+Below is an example of the use of a primary (Save) and a secondary (Cancel) button.
 
 ![UI Extension](images/cta-example.png)
 
 
-### Use the UI
-The advantage we have with Docker Desktop over the CLI is that we have the opportunity to provide rich information to users. Make use of this interface as much as possible. Avoid embedding terminal windows wherever not necessary.
+## Use the UI
+The advantage of Docker Desktop compared to the CLI is the opportunity to provide rich information to users. Make use of this interface as much as possible. Avoid embedding terminal windows if they are not necessary.
 
-### Build Native Features
+## Build native features
 
-In order not to disrupt the flow of users, try to avoid scenarios where the user is redirected to a web page to configure settings, view information etc.  Build features natively wherever possible, to ensure a seamless experience for users.
+Try to avoid scenarios where the user is redirected to a web page to configure settings or view information, for example.  Build features natively wherever possible to ensure a seamless experience for users.
 
-### Break down complicated flows into steps
+## Break down complicated flows into steps
 
-If a flow is too complicated or the concept is abstract, consider breaking down the flow into multiple steps with one simple call-to-action in each step, this is likely to help when onboarding novice users to that tool/extension.  In addition to this, provide contextual help instead of redirecting them to elaborate documentation wherever applicable. 
+If a flow is too complicated or the concept is abstract, break down the flow into multiple steps with one simple call-to-action in each step. This helps when onboarding novice users to your extension.  Furthermore, try to provide contextual help instead of redirecting the user to elaborate documentation.
 
-### Visibility of Status
+## Visibility of Status
 
-Ensure that the current status of the extension is always made visible and clear to users. This helps users feel in control and know what steps they have to take in order to reach their intended outcome.  An example of a status could be “ <extension name> is currently connecting to the remote cluster.”
+Ensure the current status of the extension is always made visible and clear to users. This helps users feel in control and know what steps they have to take in order to reach their intended outcome.  An example of a status could be “[Extension- name] is connecting to the remote cluster.”
 
-### User-Friendly  Messages
+## User-friendly  messages
 
-When showing messages to the user such as those when an error occurs, avoid using detailed technical messages that rely on understanding low-level details. Use simple and concise messages with possible next steps so that user knows how to remedy the situation (if needed).
+When you show messages to the user, for example when an error occurs, avoid the use of detailed technical messages that rely on understanding low-level details. Use simple and concise messages with possible next steps so that a user knows how to remedy the situation.
 
 
 

@@ -1,54 +1,9 @@
 # Interface: DockerDesktopClient
 
 When we moved from the v0 to v1 schema, we made sure
-window.ddClient satisfied *both* interfaces. This combined type
-describes the resulting API. We should delete it when we stop providing
-the v0 API.
+window.ddClient satisfied both interfaces. This combined type
+describes the resulting API. When v0 is removed, the combined version will also be removed and window.ddClient will only satisfy v1.  
 
-## Table of contents
-
-### Properties
-
-- [backend](DockerDesktopClient.md#backend)
-- [extension](DockerDesktopClient.md#extension)
-- [desktopUI](DockerDesktopClient.md#desktopui)
-- [host](DockerDesktopClient.md#host)
-- [docker](DockerDesktopClient.md#docker)
-
-### Container Methods
-
-- [listContainers](DockerDesktopClient.md#listcontainers)
-
-### Image Methods
-
-- [listImages](DockerDesktopClient.md#listimages)
-
-### Navigation Methods
-
-- [navigateToContainers](DockerDesktopClient.md#navigatetocontainers)
-- [navigateToContainer](DockerDesktopClient.md#navigatetocontainer)
-- [navigateToContainerLogs](DockerDesktopClient.md#navigatetocontainerlogs)
-- [navigateToContainerInspect](DockerDesktopClient.md#navigatetocontainerinspect)
-- [navigateToContainerStats](DockerDesktopClient.md#navigatetocontainerstats)
-- [navigateToImages](DockerDesktopClient.md#navigatetoimages)
-- [navigateToImage](DockerDesktopClient.md#navigatetoimage)
-- [navigateToVolumes](DockerDesktopClient.md#navigatetovolumes)
-- [navigateToVolume](DockerDesktopClient.md#navigatetovolume)
-- [navigateToDevEnvironments](DockerDesktopClient.md#navigatetodevenvironments)
-
-### Other Methods
-
-- [execHostCmd](DockerDesktopClient.md#exechostcmd)
-- [spawnHostCmd](DockerDesktopClient.md#spawnhostcmd)
-- [execDockerCmd](DockerDesktopClient.md#execdockercmd)
-- [spawnDockerCmd](DockerDesktopClient.md#spawndockercmd)
-- [openExternal](DockerDesktopClient.md#openexternal)
-
-### Toast Methods
-
-- [toastSuccess](DockerDesktopClient.md#toastsuccess)
-- [toastWarning](DockerDesktopClient.md#toastwarning)
-- [toastError](DockerDesktopClient.md#toasterror)
 
 ## Properties
 
@@ -65,7 +20,6 @@ The client is already connected to the backend.
 
 DockerDesktopClientV0.backend
 
-___
 
 ### extension
 
@@ -78,7 +32,6 @@ The client is already connected to the backend.
 
 DockerDesktopClientV1.extension
 
-___
 
 ### desktopUI
 
@@ -88,7 +41,6 @@ ___
 
 DockerDesktopClientV1.desktopUI
 
-___
 
 ### host
 
@@ -98,7 +50,6 @@ ___
 
 DockerDesktopClientV1.host
 
-___
 
 ### docker
 
@@ -139,7 +90,6 @@ const containers = await window.ddClient.listContainers();
 
 DockerDesktopClientV0.listContainers
 
-___
 
 ## Image Methods
 
@@ -169,7 +119,6 @@ const images = await window.ddClient.listImages();
 
 DockerDesktopClientV0.listImages
 
-___
 
 ## Navigation Methods
 
@@ -192,7 +141,6 @@ window.ddClient.navigateToContainers()
 
 DockerDesktopClientV0.navigateToContainers
 
-___
 
 ### navigateToContainer
 
@@ -221,7 +169,6 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainer
 
-___
 
 ### navigateToContainerLogs
 
@@ -250,7 +197,6 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainerLogs
 
-___
 
 ### navigateToContainerInspect
 
@@ -279,7 +225,6 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainerInspect
 
-___
 
 ### navigateToContainerStats
 
@@ -309,7 +254,6 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainerStats
 
-___
 
 ### navigateToImages
 
@@ -330,7 +274,6 @@ await window.ddClient.navigateToImages(id)
 
 DockerDesktopClientV0.navigateToImages
 
-___
 
 ### navigateToImage
 
@@ -362,7 +305,6 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToImage
 
-___
 
 ### navigateToVolumes
 
@@ -384,7 +326,6 @@ await window.ddClient.navigateToVolumes()
 
 DockerDesktopClientV0.navigateToVolumes
 
-___
 
 ### navigateToVolume
 
@@ -412,7 +353,6 @@ window.ddClient.navigateToVolume(volume)
 
 DockerDesktopClientV0.navigateToVolume
 
-___
 
 ### navigateToDevEnvironments
 
@@ -434,7 +374,6 @@ window.ddClient.navigateToDevEnvironments()
 
 DockerDesktopClientV0.navigateToDevEnvironments
 
-___
 
 ## Other Methods
 
@@ -466,7 +405,6 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 
 DockerDesktopClientV0.execHostCmd
 
-___
 
 ### spawnHostCmd
 
@@ -506,7 +444,6 @@ window.ddClient.spawnHostCmd(
 
 DockerDesktopClientV0.spawnHostCmd
 
-___
 
 ### execDockerCmd
 
@@ -546,9 +483,9 @@ In this example the docker command output is a json output.
 
 For convenience, the command result object also has methods to easily parse it:
 
-- `output.lines(): string[]` split output lines
-- `output.parseJsonObject(): any` parse a well-formed json output
-- `output.parseJsonLines(): any[]` parse each output line as a json object
+- `output.lines(): string[]` splits output lines.
+- `output.parseJsonObject(): any` parses a well-formed json output.
+- `output.parseJsonLines(): any[]` parses each output line as a json object.
 
 If the output of the command is too long, or you need to get the output as a stream, you can use the spawnDockerCmd function:
 
@@ -562,7 +499,6 @@ window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
 
 DockerDesktopClientV0.execDockerCmd
 
-___
 
 ### spawnDockerCmd
 
@@ -586,7 +522,6 @@ ___
 
 DockerDesktopClientV0.spawnDockerCmd
 
-___
 
 ### openExternal
 
@@ -614,7 +549,6 @@ window.ddClient.openExternal("https://docker.com");
 
 DockerDesktopClientV0.openExternal
 
-___
 
 ## Toast Methods
 
@@ -644,7 +578,6 @@ window.ddClient.toastSuccess("message");
 
 DockerDesktopClientV0.toastSuccess
 
-___
 
 ### toastWarning
 
@@ -672,7 +605,6 @@ window.ddClient.toastWarning("message");
 
 DockerDesktopClientV0.toastWarning
 
-___
 
 ### toastError
 

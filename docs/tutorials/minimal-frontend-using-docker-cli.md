@@ -1,4 +1,4 @@
-Learn how to create a simple Docker Extension that invokes Docker CLI commands. 
+Learn how to create a simple Docker extension that invokes Docker CLI commands. 
 ## Prerequisites
 
 - [Docker Desktop build with Extensions capabilities](https://github.com/docker/extensions-sdk/releases/)

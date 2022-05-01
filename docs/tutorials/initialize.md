@@ -1,4 +1,4 @@
-Learn how to create a new Docker Desktop extension.
+Learn how to create a new Docker extension.
 
 ## Prerequisites
 
@@ -30,16 +30,16 @@ To build the extension, run:
 
 ```bash
 cd my-extension
-make extension
+make build-extension
 ```
 
- `make extension` builds your extension and also generates an image which is named after your chosen hub repository. For instance, if you typed `john/my-extension` as the answer to the following question:
+ `make build-extension` builds your extension and also generates an image which is named after your chosen hub repository. For instance, if you typed `john/my-extension` as the answer to the following question:
 
 ```
 ? Hub repository (eg. namespace/repository on hub): john/my-extension
 ```
 
-The `make extension` generates an image with name `john/my-extension`.
+The `make build-extension` generates an image with name `john/my-extension`.
 
 ## Install the extension
 

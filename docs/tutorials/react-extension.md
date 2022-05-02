@@ -206,6 +206,8 @@ Push the image to DockerHub:
 docker push owner/desktop-react-extension:0.0.1
 ```
 
+> Publishing extensions in the marketplace
+>
 > For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
 >
 > See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.

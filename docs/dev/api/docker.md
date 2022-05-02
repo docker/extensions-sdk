@@ -24,8 +24,8 @@ const images = await ddClient.docker.listImages();
 
 See the [Docker API reference](reference/interfaces/Docker.md) for details about these methods.
 
-### Deprecated access to Docker objects
-
+> Deprecated access to Docker objects
+>
 > The methods below are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
@@ -130,8 +130,8 @@ await ddClient.docker.cli.exec(
 
 See the [Exec API reference](reference/interfaces/Exec.md) for details about these methods.
 
-### Deprecated execution of Docker commands
-
+> Deprecated execution of Docker commands
+>
 > This method is deprecated and will be removed in a future version. Use the one specified just below.
 
 ```typescript

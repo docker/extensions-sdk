@@ -21,12 +21,12 @@ keywords: Docker, extensions, sdk, labels
 | `com.docker.extension.additional-urls` | No | A JSON array of titles and additional URLs displayed to users (in the order they appear in your metadata) in your extension's details page. We recommend you display the following links if they apply: documentation, support, terms of service, and privacy policy links. | `[{"title":"Documentation","url":"https://foo.bar/docs"},{"title":"Support","url":"https://foo.bar/support"},{"title":"Terms of Service","url":"https://foo.bar/tos"},{"title":"Privacy policy","url":"https://foo.bar/privacy-policy"}]` |
 | `com.docker.extension.changelog` | No | Changelog in plain text or HTML containing the change for the current version only. | `Extension changelog` or `<p>Extension changelog<ul><li>New feature A</li><li>Bug fix on feature B</li></ul></p>` |
 
-> "Missing required labels"
+> Missing required labels
 >
 > If any of the previous _required_ labels are missing in the `Dockerfile`, Docker Desktop considers the extension invalid and does not list it in the Marketplace.
 
-> "HTML content styling"
-
+> HTML content styling
+>
 > Docker Desktop CSS styles will be applied to the provided HTML content. You can make sure that it renders nicely [within the marketplace](#preview-extension-in-marketplace). We recommend that you follow our [CSS guidlines](../../design/design-overview/#design-principles).
 
 ## Preview the extension in the Marketplace
@@ -35,7 +35,7 @@ You can validate that the image labels render as you expect.
 
 When you build and install your unpublished extension, you can preview the extension in the Marketplace "installed" tab. You can see how the extension labels are rendered in the list and in the details page of the extension.
 
-> "Preview extensions already listed in Marketplace"
+> Preview extensions already listed in Marketplace
 >
 > When you install a local image of an extension already published in the Marketplace, for example with the tag `latest`, your local image is currently not detected as "unpublished".
 >

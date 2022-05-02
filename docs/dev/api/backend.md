@@ -22,8 +22,8 @@ ddClient.extension.vm.service
 
 See [Service API Reference](reference/interfaces/HttpService.md#Methods) for other methods such as POST, UPDATE, and DELETE.
 
-### Deprecated extension backend communication
-
+> Deprecated extension backend communication
+>
 > The methods below that use `window.ddClient.backend` are deprecated and will be removed in a future version. Use the methods specified above.
 
 The `window.ddClient.backend` object can be used to communicate with the backend
@@ -94,8 +94,8 @@ await ddClient.extension.vm.cli.exec("ls", ["-l"], {
 
 For more details, refer to the [Extension VM API Reference](reference/interfaces/ExtensionVM.md)
 
-### Deprecated extension backend command execution
-
+> Deprecated extension backend command execution
+>
 > This method is deprecated and will be removed in a future version. Use the specified method above.
 
 If your extension ships with additional binaries that should be run inside the
@@ -145,8 +145,8 @@ You can stream the output of the command executed in the backend container or in
 
 For more details, refer to the [Extension Host API Reference](reference/interfaces/ExtensionHost.md)
 
-### Deprecated invocation of extension binary
-
+> Deprecated invocation of extension binary
+>
 > This method is deprecated and will be removed in a future version. Use the method specified above.
 
 To execute a command in the host:

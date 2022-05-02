@@ -28,8 +28,8 @@ A promise that fails if the container doesn't exist.
 
 For more details about all navigation methods, see the [Navigation API reference](reference/interfaces/NavigationIntents.md).
 
-### Deprecated navigation methods
-
+> Deprecated navigation methods
+>
 > These methdos are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript

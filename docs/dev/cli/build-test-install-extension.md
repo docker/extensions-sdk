@@ -25,6 +25,8 @@ To install the extension, run:
 docker extension install my-extension
 ```
 
+> Using the CLI to install unpublished extensions
+>
 > Extensions can install binaries, invoke commands and access files on your machine. Make sure you trust extensions before installing them on your machine.
 > {: .warning}
 

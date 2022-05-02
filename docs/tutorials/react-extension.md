@@ -1,4 +1,4 @@
-Learn how to create a simple Docker extension that  contains only a UI part and is based on ReactJS.
+Learn how to create a simple Docker extension that contains only a UI part and is based on ReactJS.
 
 ## Prerequisites
 

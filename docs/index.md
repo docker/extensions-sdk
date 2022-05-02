@@ -21,6 +21,9 @@ Before you create your own extension, you need a specific Docker Desktop build t
 
 From the [releases page](https://github.com/docker/extensions-sdk/releases/latest), install both the Docker Desktop build and the Extensions CLI which is used to manage extensions later on.
 
+> Extensions can install binaries, invoke commands and access files on your machine. Make sure you trust extensions before installing them on your machine.
+> {: .warning}
+
 Once you've downloaded the Extensions CLI, extract the binary in to `~/.docker/cli-plugins`.
 
 In your terminal, run: 

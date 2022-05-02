@@ -1,5 +1,22 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: ExecStreamOptions
 
+## Table of contents
+
+### Methods
+
+- [onOutput](ExecStreamOptions.md#onoutput)
+- [onError](ExecStreamOptions.md#onerror)
+- [onClose](ExecStreamOptions.md#onclose)
+
+### Properties
+
+- [splitOutputLines](ExecStreamOptions.md#splitoutputlines)
 
 ## Methods
 
@@ -8,7 +25,9 @@
 ▸ `Optional` **onOutput**(`data`): `void`
 
 Invoked when receiving output from command execution.
-By default, the output is split into chunks at arbitrary boundaries. If you prefer the output to be split into complete lines, set `splitOutputLines` to true. The callback is then invoked once for each line.
+By default, the output is split into chunks at arbitrary boundaries.
+If you prefer the output to be split into complete lines, set `splitOutputLines`
+to true. The callback is then invoked once for each line.
 
 #### Parameters
 
@@ -20,6 +39,7 @@ By default, the output is split into chunks at arbitrary boundaries. If you pref
 
 `void`
 
+___
 
 ### onError
 
@@ -37,6 +57,7 @@ Invoked to report error if the executed command errors.
 
 `void`
 
+___
 
 ### onClose
 

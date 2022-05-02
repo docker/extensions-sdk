@@ -1,5 +1,34 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: NavigationIntents
 
+## Table of contents
+
+### Container Methods
+
+- [viewContainers](NavigationIntents.md#viewcontainers)
+- [viewContainer](NavigationIntents.md#viewcontainer)
+- [viewContainerLogs](NavigationIntents.md#viewcontainerlogs)
+- [viewContainerInspect](NavigationIntents.md#viewcontainerinspect)
+- [viewContainerStats](NavigationIntents.md#viewcontainerstats)
+
+### Images Methods
+
+- [viewImages](NavigationIntents.md#viewimages)
+- [viewImage](NavigationIntents.md#viewimage)
+
+### Other Methods
+
+- [viewDevEnvironments](NavigationIntents.md#viewdevenvironments)
+
+### Volume Methods
+
+- [viewVolumes](NavigationIntents.md#viewvolumes)
+- [viewVolume](NavigationIntents.md#viewvolume)
 
 ## Container Methods
 
@@ -17,6 +46,7 @@ ddClient.desktopUI.navigation.viewContainers()
 
 `Promise`<`void`\>
 
+___
 
 ### viewContainer
 
@@ -40,6 +70,7 @@ await ddClient.desktopUI.navigation.viewContainer(id)
 
 A promise that fails if the container doesn't exist.
 
+___
 
 ### viewContainerLogs
 
@@ -63,13 +94,13 @@ await ddClient.desktopUI.navigation.viewContainerLogs(id)
 
 A promise that fails if the container doesn't exist.
 
-
+___
 
 ### viewContainerInspect
 
 ▸ **viewContainerInspect**(`id`): `Promise`<`void`\>
 
-Navigate to the container inspect window in  Docker Desktop.
+Navigate to the container inspect window in Docker Desktop.
 
 ```typescript
 await ddClient.desktopUI.navigation.viewContainerInspect(id)
@@ -87,7 +118,7 @@ await ddClient.desktopUI.navigation.viewContainerInspect(id)
 
 A promise that fails if the container doesn't exist.
 
-
+___
 
 ### viewContainerStats
 
@@ -111,7 +142,7 @@ await ddClient.desktopUI.navigation.viewContainerStats(id)
 
 A promise that fails if the container doesn't exist.
 
-
+___
 
 ## Images Methods
 
@@ -129,12 +160,13 @@ await ddClient.desktopUI.navigation.viewImages()
 
 `Promise`<`void`\>
 
+___
 
 ### viewImage
 
 ▸ **viewImage**(`id`, `tag`): `Promise`<`void`\>
 
-Navigate to a specific image referenced by `id` and `tag` in the Docker Desktop.
+Navigate to a specific image referenced by `id` and `tag` in Docker Desktop.
 In this navigation route you can find the image layers, commands, created time and size.
 
 ```typescript
@@ -154,7 +186,7 @@ await ddClient.desktopUI.navigation.viewImage(id, tag)
 
 A promise that fails if the image doesn't exist.
 
-
+___
 
 ## Other Methods
 
@@ -172,7 +204,7 @@ ddClient.desktopUI.navigation.viewDevEnvironments()
 
 `Promise`<`void`\>
 
-
+___
 
 ## Volume Methods
 
@@ -190,7 +222,7 @@ ddClient.desktopUI.navigation.viewVolumes()
 
 `Promise`<`void`\>
 
-
+___
 
 ### viewVolume
 

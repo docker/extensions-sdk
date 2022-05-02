@@ -1,5 +1,18 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: OpenDialogResult
 
+## Table of contents
+
+### Properties
+
+- [canceled](OpenDialogResult.md#canceled)
+- [filePaths](OpenDialogResult.md#filepaths)
+- [bookmarks](OpenDialogResult.md#bookmarks)
 
 ## Properties
 
@@ -9,6 +22,7 @@
 
 Whether the dialog was canceled.
 
+___
 
 ### filePaths
 
@@ -16,6 +30,7 @@ Whether the dialog was canceled.
 
 An array of file paths chosen by the user. If the dialog is cancelled this will be an empty array.
 
+___
 
 ### bookmarks
 

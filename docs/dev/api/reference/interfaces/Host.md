@@ -1,5 +1,22 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: Host
 
+## Table of contents
+
+### Methods
+
+- [openExternal](Host.md#openexternal)
+
+### Properties
+
+- [platform](Host.md#platform)
+- [arch](Host.md#arch)
+- [hostname](Host.md#hostname)
 
 ## Methods
 
@@ -31,11 +48,15 @@ ddClient.host.openExternal("https://docker.com");
 
 Returns a string identifying the operating system platform. See https://nodejs.org/api/os.html#osplatform
 
+___
+
 ### arch
 
 • **arch**: `string`
 
 Returns the operating system CPU architecture. See https://nodejs.org/api/os.html#osarch
+
+___
 
 ### hostname
 

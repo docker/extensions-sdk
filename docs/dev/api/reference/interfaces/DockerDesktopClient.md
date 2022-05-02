@@ -1,9 +1,60 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: DockerDesktopClient
 
 When we moved from the v0 to v1 schema, we made sure
 window.ddClient satisfied both interfaces. This combined type
-describes the resulting API. When v0 is removed, the combined version will also be removed and window.ddClient will only satisfy v1.  
+describes the resulting API. We should delete it when we stop providing
+the v0 API.
 
+## Table of contents
+
+### Properties
+
+- [backend](DockerDesktopClient.md#backend)
+- [extension](DockerDesktopClient.md#extension)
+- [desktopUI](DockerDesktopClient.md#desktopui)
+- [host](DockerDesktopClient.md#host)
+- [docker](DockerDesktopClient.md#docker)
+
+### Container Methods
+
+- [listContainers](DockerDesktopClient.md#listcontainers)
+
+### Image Methods
+
+- [listImages](DockerDesktopClient.md#listimages)
+
+### Navigation Methods
+
+- [navigateToContainers](DockerDesktopClient.md#navigatetocontainers)
+- [navigateToContainer](DockerDesktopClient.md#navigatetocontainer)
+- [navigateToContainerLogs](DockerDesktopClient.md#navigatetocontainerlogs)
+- [navigateToContainerInspect](DockerDesktopClient.md#navigatetocontainerinspect)
+- [navigateToContainerStats](DockerDesktopClient.md#navigatetocontainerstats)
+- [navigateToImages](DockerDesktopClient.md#navigatetoimages)
+- [navigateToImage](DockerDesktopClient.md#navigatetoimage)
+- [navigateToVolumes](DockerDesktopClient.md#navigatetovolumes)
+- [navigateToVolume](DockerDesktopClient.md#navigatetovolume)
+- [navigateToDevEnvironments](DockerDesktopClient.md#navigatetodevenvironments)
+
+### Other Methods
+
+- [execHostCmd](DockerDesktopClient.md#exechostcmd)
+- [spawnHostCmd](DockerDesktopClient.md#spawnhostcmd)
+- [execDockerCmd](DockerDesktopClient.md#execdockercmd)
+- [spawnDockerCmd](DockerDesktopClient.md#spawndockercmd)
+- [openExternal](DockerDesktopClient.md#openexternal)
+
+### Toast Methods
+
+- [toastSuccess](DockerDesktopClient.md#toastsuccess)
+- [toastWarning](DockerDesktopClient.md#toastwarning)
+- [toastError](DockerDesktopClient.md#toasterror)
 
 ## Properties
 
@@ -11,7 +62,8 @@ describes the resulting API. When v0 is removed, the combined version will also 
 
 • `Readonly` **backend**: `undefined` \| [`BackendV0`](BackendV0.md)
 
-The `window.ddClient.backend` object can be used to communicate with the backend defined in the vm section of the extension metadata.
+The `window.ddClient.backend` object can be used to communicate with the backend defined in the vm section of
+the extension metadata.
 The client is already connected to the backend.
 
 **`deprecated`** :warning: It will be removed in a future version. Use [DockerDesktopClient.extension](DockerDesktopClient.md#extension) instead.
@@ -20,18 +72,21 @@ The client is already connected to the backend.
 
 DockerDesktopClientV0.backend
 
+___
 
 ### extension
 
 • `Readonly` **extension**: [`Extension`](Extension.md)
 
-The `ddClient.extension` object can be used to communicate with the backend defined in the vm section of the extension metadata.
+The `ddClient.extension` object can be used to communicate with the backend defined in the vm section of the
+extension metadata.
 The client is already connected to the backend.
 
 #### Inherited from
 
 DockerDesktopClientV1.extension
 
+___
 
 ### desktopUI
 
@@ -41,6 +96,7 @@ DockerDesktopClientV1.extension
 
 DockerDesktopClientV1.desktopUI
 
+___
 
 ### host
 
@@ -50,6 +106,7 @@ DockerDesktopClientV1.desktopUI
 
 DockerDesktopClientV1.host
 
+___
 
 ### docker
 
@@ -90,6 +147,7 @@ const containers = await window.ddClient.listContainers();
 
 DockerDesktopClientV0.listContainers
 
+___
 
 ## Image Methods
 
@@ -119,6 +177,7 @@ const images = await window.ddClient.listImages();
 
 DockerDesktopClientV0.listImages
 
+___
 
 ## Navigation Methods
 
@@ -126,7 +185,7 @@ DockerDesktopClientV0.listImages
 
 ▸ **navigateToContainers**(): `void`
 
-Navigate to the containers window in the Dashboard.
+Navigate to the containers window in Docker Desktop.
 ```typescript
 window.ddClient.navigateToContainers()
 ```
@@ -141,12 +200,13 @@ window.ddClient.navigateToContainers()
 
 DockerDesktopClientV0.navigateToContainers
 
+___
 
 ### navigateToContainer
 
 ▸ **navigateToContainer**(`id`): `Promise`<`any`\>
 
-Navigate to the container window in the Dashboard.
+Navigate to the container window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToContainer(id)
 ```
@@ -169,12 +229,13 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainer
 
+___
 
 ### navigateToContainerLogs
 
 ▸ **navigateToContainerLogs**(`id`): `Promise`<`any`\>
 
-Navigate to the container logs window in the Dashboard.
+Navigate to the container logs window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToContainerLogs(id)
 ```
@@ -197,12 +258,13 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainerLogs
 
+___
 
 ### navigateToContainerInspect
 
 ▸ **navigateToContainerInspect**(`id`): `Promise`<`any`\>
 
-Navigate to the container inspect window in the Dashboard.
+Navigate to the container inspect window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToContainerInspect(id)
 ```
@@ -225,6 +287,7 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainerInspect
 
+___
 
 ### navigateToContainerStats
 
@@ -254,12 +317,13 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToContainerStats
 
+___
 
 ### navigateToImages
 
 ▸ **navigateToImages**(): `void`
 
-Navigate to the images window in the Dashboard.
+Navigate to the images window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToImages(id)
 ```
@@ -274,12 +338,13 @@ await window.ddClient.navigateToImages(id)
 
 DockerDesktopClientV0.navigateToImages
 
+___
 
 ### navigateToImage
 
 ▸ **navigateToImage**(`id`, `tag`): `Promise`<`any`\>
 
-Navigate to a specific image referenced by `id` and `tag` in the Dashboard.
+Navigate to a specific image referenced by `id` and `tag` in Docker Desktop.
 In this navigation route you can find the image layers, commands, created time and size.
 
 ```typescript
@@ -305,12 +370,13 @@ A promise that fails if the container doesn't exist.
 
 DockerDesktopClientV0.navigateToImage
 
+___
 
 ### navigateToVolumes
 
 ▸ **navigateToVolumes**(): `void`
 
-Navigate to the volumes window in the Dashboard.
+Navigate to the volumes window in Docker Desktop.
 
 ```typescript
 await window.ddClient.navigateToVolumes()
@@ -326,12 +392,13 @@ await window.ddClient.navigateToVolumes()
 
 DockerDesktopClientV0.navigateToVolumes
 
+___
 
 ### navigateToVolume
 
 ▸ **navigateToVolume**(`volume`): `void`
 
-Navigate to a specific volume in the Dashboard.
+Navigate to a specific volume in Docker Desktop.
 
 ```typescript
 window.ddClient.navigateToVolume(volume)
@@ -353,12 +420,13 @@ window.ddClient.navigateToVolume(volume)
 
 DockerDesktopClientV0.navigateToVolume
 
+___
 
 ### navigateToDevEnvironments
 
 ▸ **navigateToDevEnvironments**(): `void`
 
-Navigate to the Dev Environments window in the Dashboard.
+Navigate to the Dev Environments window in Docker Desktop.
 
 ```typescript
 window.ddClient.navigateToDevEnvironments()
@@ -374,6 +442,7 @@ window.ddClient.navigateToDevEnvironments()
 
 DockerDesktopClientV0.navigateToDevEnvironments
 
+___
 
 ## Other Methods
 
@@ -405,6 +474,7 @@ window.ddClient.execHostCmd(`cliShippedOnHost xxx`).then((cmdResult: any) => {
 
 DockerDesktopClientV0.execHostCmd
 
+___
 
 ### spawnHostCmd
 
@@ -444,6 +514,7 @@ window.ddClient.spawnHostCmd(
 
 DockerDesktopClientV0.spawnHostCmd
 
+___
 
 ### execDockerCmd
 
@@ -487,7 +558,8 @@ For convenience, the command result object also has methods to easily parse it:
 - `output.parseJsonObject(): any` parses a well-formed json output.
 - `output.parseJsonLines(): any[]` parses each output line as a json object.
 
-If the output of the command is too long, or you need to get the output as a stream, you can use the spawnDockerCmd function:
+If the output of the command is too long, or you need to get the output as a stream you can use the
+spawnDockerCmd function:
 
 ```typescript
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
@@ -499,6 +571,7 @@ window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {
 
 DockerDesktopClientV0.execDockerCmd
 
+___
 
 ### spawnDockerCmd
 
@@ -522,6 +595,7 @@ DockerDesktopClientV0.execDockerCmd
 
 DockerDesktopClientV0.spawnDockerCmd
 
+___
 
 ### openExternal
 
@@ -549,6 +623,7 @@ window.ddClient.openExternal("https://docker.com");
 
 DockerDesktopClientV0.openExternal
 
+___
 
 ## Toast Methods
 
@@ -578,6 +653,7 @@ window.ddClient.toastSuccess("message");
 
 DockerDesktopClientV0.toastSuccess
 
+___
 
 ### toastWarning
 
@@ -605,6 +681,7 @@ window.ddClient.toastWarning("message");
 
 DockerDesktopClientV0.toastWarning
 
+___
 
 ### toastError
 

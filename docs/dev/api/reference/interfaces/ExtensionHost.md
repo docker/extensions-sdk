@@ -1,5 +1,16 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: ExtensionHost
 
+## Table of contents
+
+### Properties
+
+- [cli](ExtensionHost.md#cli)
 
 ## Properties
 
@@ -18,7 +29,7 @@ For example, execute the shipped binary `kubectl -h` command in the **host**:
  );
 ```
 
-
+---
 
 Streams the output of the command executed in the backend container or in the host.
 

@@ -1,7 +1,14 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: Toast
 
 Toasts provide a brief notification to the user.
-They appear temporarily and shouldn't interrupt the user experience, they don't require user input to disappear.
+They appear temporarily and shouldn't interrupt the user experience.
+They also don't require user input to disappear.
 
 ## Table of contents
 

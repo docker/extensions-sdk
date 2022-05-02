@@ -1,3 +1,9 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: Docker
 
 ## Table of contents
@@ -38,7 +44,7 @@ For convenience, the command result object also has methods to easily parse it. 
 ---
 
 Streams the output as a result of the execution of a docker command.
-Useful when the output of the command is too long, or you need to get the output as a stream.
+It is useful when the output of the command is too long, or you need to get the output as a stream.
 
 ```typescript linenums="1"
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {

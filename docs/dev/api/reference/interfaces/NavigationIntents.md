@@ -1,3 +1,9 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: NavigationIntents
 
 ## Table of contents
@@ -30,7 +36,7 @@
 
 ▸ **viewContainers**(): `Promise`<`void`\>
 
-Navigate to the containers window in the Dashboard.
+Navigate to the containers window in Docker Desktop.
 
 ```typescript
 ddClient.desktopUI.navigation.viewContainers()
@@ -46,7 +52,7 @@ ___
 
 ▸ **viewContainer**(`id`): `Promise`<`void`\>
 
-Navigate to the container window in the Dashboard.
+Navigate to the container window in Docker Desktop.
 
 ```typescript
 await ddClient.desktopUI.navigation.viewContainer(id)
@@ -70,7 +76,7 @@ ___
 
 ▸ **viewContainerLogs**(`id`): `Promise`<`void`\>
 
-Navigate to the container logs window in the Dashboard.
+Navigate to the container logs window in Docker Desktop.
 
 ```typescript
 await ddClient.desktopUI.navigation.viewContainerLogs(id)
@@ -94,7 +100,7 @@ ___
 
 ▸ **viewContainerInspect**(`id`): `Promise`<`void`\>
 
-Navigate to the container inspect window in the Dashboard.
+Navigate to the container inspect window in Docker Desktop.
 
 ```typescript
 await ddClient.desktopUI.navigation.viewContainerInspect(id)
@@ -144,7 +150,7 @@ ___
 
 ▸ **viewImages**(): `Promise`<`void`\>
 
-Navigate to the images window in the Dashboard.
+Navigate to the images window in Docker Desktop.
 
 ```typescript
 await ddClient.desktopUI.navigation.viewImages()
@@ -160,7 +166,7 @@ ___
 
 ▸ **viewImage**(`id`, `tag`): `Promise`<`void`\>
 
-Navigate to a specific image referenced by `id` and `tag` in the Dashboard.
+Navigate to a specific image referenced by `id` and `tag` in Docker Desktop.
 In this navigation route you can find the image layers, commands, created time and size.
 
 ```typescript
@@ -188,7 +194,7 @@ ___
 
 ▸ **viewDevEnvironments**(): `Promise`<`void`\>
 
-Navigate to the Dev Environments window in the Dashboard.
+Navigate to the Dev Environments window in Docker Desktop.
 
 ```typescript
 ddClient.desktopUI.navigation.viewDevEnvironments()
@@ -206,7 +212,7 @@ ___
 
 ▸ **viewVolumes**(): `Promise`<`void`\>
 
-Navigate to the volumes window in the Dashboard.
+Navigate to the volumes window in Docker Desktop.
 
 ```typescript
 ddClient.desktopUI.navigation.viewVolumes()
@@ -222,7 +228,7 @@ ___
 
 ▸ **viewVolume**(`volume`): `Promise`<`void`\>
 
-Navigate to a specific volume in the Dashboard.
+Navigate to a specific volume in Docker Desktop.
 
 ```typescript
 await ddClient.desktopUI.navigation.viewVolume(volume)

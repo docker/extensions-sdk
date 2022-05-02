@@ -1,3 +1,9 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: BackendV0
 
 ## Table of contents
@@ -35,7 +41,7 @@ Executes a command inside a container.
  console.log(output);
 ```
 
-**`deprecated`** :warning: It will be removed in a future version. Use {@link ???????????} instead.
+**`deprecated`** :warning: It will be removed in a future version.
 
 #### Parameters
 

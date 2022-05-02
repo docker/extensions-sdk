@@ -1,7 +1,13 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: DockerDesktopClient
 
 When we moved from the v0 to v1 schema, we made sure
-window.ddClient satisfied *both* interfaces. This combined type
+window.ddClient satisfied both interfaces. This combined type
 describes the resulting API. We should delete it when we stop providing
 the v0 API.
 
@@ -56,7 +62,8 @@ the v0 API.
 
 • `Readonly` **backend**: `undefined` \| [`BackendV0`](BackendV0.md)
 
-The `window.ddClient.backend` object can be used to communicate with the backend defined in the vm section of the extension metadata.
+The `window.ddClient.backend` object can be used to communicate with the backend defined in the vm section of
+the extension metadata.
 The client is already connected to the backend.
 
 **`deprecated`** :warning: It will be removed in a future version. Use [DockerDesktopClient.extension](DockerDesktopClient.md#extension) instead.
@@ -71,7 +78,8 @@ ___
 
 • `Readonly` **extension**: [`Extension`](Extension.md)
 
-The `ddClient.extension` object can be used to communicate with the backend defined in the vm section of the extension metadata.
+The `ddClient.extension` object can be used to communicate with the backend defined in the vm section of the
+extension metadata.
 The client is already connected to the backend.
 
 #### Inherited from
@@ -177,7 +185,7 @@ ___
 
 ▸ **navigateToContainers**(): `void`
 
-Navigate to the containers window in the Dashboard.
+Navigate to the containers window in Docker Desktop.
 ```typescript
 window.ddClient.navigateToContainers()
 ```
@@ -198,7 +206,7 @@ ___
 
 ▸ **navigateToContainer**(`id`): `Promise`<`any`\>
 
-Navigate to the container window in the Dashboard.
+Navigate to the container window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToContainer(id)
 ```
@@ -227,7 +235,7 @@ ___
 
 ▸ **navigateToContainerLogs**(`id`): `Promise`<`any`\>
 
-Navigate to the container logs window in the Dashboard.
+Navigate to the container logs window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToContainerLogs(id)
 ```
@@ -256,7 +264,7 @@ ___
 
 ▸ **navigateToContainerInspect**(`id`): `Promise`<`any`\>
 
-Navigate to the container inspect window in the Dashboard.
+Navigate to the container inspect window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToContainerInspect(id)
 ```
@@ -315,7 +323,7 @@ ___
 
 ▸ **navigateToImages**(): `void`
 
-Navigate to the images window in the Dashboard.
+Navigate to the images window in Docker Desktop.
 ```typescript
 await window.ddClient.navigateToImages(id)
 ```
@@ -336,7 +344,7 @@ ___
 
 ▸ **navigateToImage**(`id`, `tag`): `Promise`<`any`\>
 
-Navigate to a specific image referenced by `id` and `tag` in the Dashboard.
+Navigate to a specific image referenced by `id` and `tag` in Docker Desktop.
 In this navigation route you can find the image layers, commands, created time and size.
 
 ```typescript
@@ -368,7 +376,7 @@ ___
 
 ▸ **navigateToVolumes**(): `void`
 
-Navigate to the volumes window in the Dashboard.
+Navigate to the volumes window in Docker Desktop.
 
 ```typescript
 await window.ddClient.navigateToVolumes()
@@ -390,7 +398,7 @@ ___
 
 ▸ **navigateToVolume**(`volume`): `void`
 
-Navigate to a specific volume in the Dashboard.
+Navigate to a specific volume in Docker Desktop.
 
 ```typescript
 window.ddClient.navigateToVolume(volume)
@@ -418,7 +426,7 @@ ___
 
 ▸ **navigateToDevEnvironments**(): `void`
 
-Navigate to the Dev Environments window in the Dashboard.
+Navigate to the Dev Environments window in Docker Desktop.
 
 ```typescript
 window.ddClient.navigateToDevEnvironments()
@@ -546,11 +554,12 @@ In this example the docker command output is a json output.
 
 For convenience, the command result object also has methods to easily parse it:
 
-- `output.lines(): string[]` split output lines
-- `output.parseJsonObject(): any` parse a well-formed json output
-- `output.parseJsonLines(): any[]` parse each output line as a json object
+- `output.lines(): string[]` splits output lines.
+- `output.parseJsonObject(): any` parses a well-formed json output.
+- `output.parseJsonLines(): any[]` parses each output line as a json object.
 
-If the output of the command is too long, or you need to get the output as a stream, you can use the spawnDockerCmd function:
+If the output of the command is too long, or you need to get the output as a stream you can use the
+spawnDockerCmd function:
 
 ```typescript
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {

@@ -1,3 +1,9 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: Dialog
 
 Allows opening native dialog boxes.
@@ -24,7 +30,7 @@ ddClient.desktopUI.dialog.showOpenDialog({properties: ['openFile']});
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `dialogProperties` | `any` | properties to specify the open dialog behaviour, see https://www.electronjs.org/docs/latest/api/dialog#dialogshowopendialogbrowserwindow-options. |
+| `dialogProperties` | `any` | Properties to specify the open dialog behaviour, see https://www.electronjs.org/docs/latest/api/dialog#dialogshowopendialogbrowserwindow-options. |
 
 #### Returns
 

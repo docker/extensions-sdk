@@ -1,4 +1,4 @@
-This tutorial describes a minimal example running frontend extension based on plain HTML.
+Learn how to create a minimal frontend extension based on plain HTML.
 
 ## Prerequisites
 
@@ -7,9 +7,11 @@ This tutorial describes a minimal example running frontend extension based on pl
 
 ## Extension folder structure
 
-A Desktop Extension comprises several files, ranging from the extension's source code to required Extension-specific files.
+A Docker extension is made of several files which range from the extension's source code to the required extension-specific files.
 
-In the `minimal-frontend` sample folder, you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
+In the `minimal-frontend` [sample folder](https://github.com/docker/extensions-sdk/tree/main/samples), you can find a ready-to-go example that represents a UI Extension built on HTML. We will go through this code example in this tutorial.
+
+Although you can start from an empty directory, it is highly recommended that you start from the template below and change it accordingly to suit your needs.
 
 ```bash
 .
@@ -20,17 +22,17 @@ In the `minimal-frontend` sample folder, you can find a ready-to-go example that
 ```
 
 1. Contains everything required to build the extension and run it in Docker Desktop.
-2. A file that provides information about the extension such as the name, description, and version, among others.
-3. The source folder that contains all your HTML, CSS and JS files. These can also be other static assets like logos, icons, etc.
+2. A file that provides information about the extension such as the name, description, and version.
+3. The source folder that contains all your HTML, CSS and JS files. There can also be other static assets such as logos and icons.
 
-## The extension's Dockerfile
+## Create a Dockerfile
 
-An extension requires a `Dockerfile` to build, publish and run in Docker Desktop.
+An extension requires a `Dockerfile` to build, publish, and run in Docker Desktop.
 
-At minimum, your Dockerfile needs:
+At a minimum, your Dockerfile needs:
 
-- Labels - required to provide extra information about the extension.
-- The source code - in this case, an `index.html` that sits within the `ui` folder.
+- Labels which provide extra information about the extension.
+- The source code which in this case is an `index.html` that sits within the `ui` folder.
 - The `metadata.json` file.
 
 ```Dockerfile title="Dockerfile" linenums="1"
@@ -46,7 +48,7 @@ COPY ui ./ui
 COPY metadata.json .
 ```
 
-## Configure the Extension metadata file
+## Configure the metadata file
 
 A `metadata.json` file is required at the root of the image filesystem.
 
@@ -63,34 +65,32 @@ A `metadata.json` file is required at the root of the image filesystem.
 ```
 
 ## Build the extension
-
+To build the extension, run:
 ```bash
 docker build -t desktop-frontend-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
-
+To build the extension for multiple platforms, run:
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-frontend-minimal-extension:0.0.1 .
 ```
 
 ## Validate the extension
 
-Next, verify the extension image complies with the requisites to be a compliant Desktop Extension.
+Verify the extension image is compliant.
 
-The validation will check if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
+The validation checks if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
 ```bash
 docker extension validate desktop-frontend-minimal-extension:0.0.1
 ```
 
-If your extension is valid, you should see the following message:
+If your extension is valid, the message below displays:
 
 `The extension image "desktop-frontend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
-
-Now that the extension is packaged as a Docker image, let's proceed with the installation. To do so, we'll use the Docker Extensions CLI.
 
 !!! info "Enable Docker Desktop Extensions"
 
@@ -102,7 +102,7 @@ To install the extension in Docker Desktop, run:
 docker extension install desktop-frontend-minimal-extension:0.0.1
 ```
 
-If the installation was successful, you should see the following output:
+If the installation is successful, the output below displays:
 
 ```bash
 Installing new extension "MinimalFrontEnd" with desktop-frontend-minimal-extension:0.0.1 ...
@@ -113,7 +113,7 @@ Extension "MinimalFrontEnd" installed successfully
 
 ## Preview the extension
 
-You can verify that the extension has been installed successfully using the following CLI command:
+You can also enter the command below to verify the extension installed successfully:
 
 ```bash
 docker extension ls
@@ -126,17 +126,17 @@ PLUGIN              PROVIDER            IMAGE                                   
 MyExtension         Docker Inc.         desktop-frontend-minimal-extension:0.0.1  1 tab(Min FrontEnd Extension) -   -
 ```
 
-To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
+To preview the extension in Docker Desktop, close and open the Docker Desktop dashboard once the installation is complete.
 
-In the navigation sidebar, you should see a new item titled `Min FrontEnd Extension`. Click on it to load your extension content, with the `Hello, World!` message in the top-left corner.
+The left-hand menu displays a new tab with the name `Min FrontEnd Extension`. When you select the new tab, `Hello, World!` displays in the top-left corner.
 
 ![UI Extension](images/ui-minimal-extension.png)
 
 ## Update the extension
 
-You can update the extension by rebuilding, validating and then using the update command.
+To update the extension, you must first rebuild and revalidate your extension. You can then use the update command.
 
-Let's update the html file to include some inline CSS to support a dark mode.
+As an example, let's update the html file to include some inline CSS to support a dark mode.
 
 ```html
 <head>
@@ -155,20 +155,22 @@ Let's update the html file to include some inline CSS to support a dark mode.
 </head>
 ```
 
-Alternatively remove the `index.html` file and rename `updatedindex.html` to index.html in the ui directory. Rebuild and revalidate the extension.
+Alternatively remove the `index.html` file and rename `updatedindex.html` to index.html in the ui directory. 
+
+Rebuild and revalidate the extension:
 
 ```bash
 docker build -t desktop-frontend-minimal-extension:0.0.1 .
 docker extension validate desktop-frontend-minimal-extension:0.0.1
 ```
 
-Lastly update the extension.
+Now update the extension:
 
 ```bash
 docker extension update desktop-frontend-minimal-extension:0.0.1
 ```
 
-If the installation was successful, you should see the following output:
+If the update is successful, the following output displays:
 
 ```bash
 Removing extension desktop-frontend-minimal-extension:0.0.1...
@@ -180,43 +182,43 @@ Extension UI tab "Min FrontEnd Extension" added.
 Extension "MinimalFrontEnd" installed successfully
 ```
 
-Now when running Docker Desktop in dark mode and clicking the `Min FrontEnd Extension` it'll render with dark mode colors.
+When you run Docker Desktop in dark mode and click the `Min FrontEnd Extension` tab, it renders with dark mode colors.
 
 ![UI Extension](images/ui-minimal-extension-dark.png)
 
 ## Publish the extension
 
-In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
+To publish the extension, upload the Docker image to [DockerHub](https://hub.docker.com).
 
-Let's tag the previous image to prepend the account owner at the beginning of the image name:
+Tag the previous image to prepend the account owner at the beginning of the image name:
 
 ```bash
 docker tag desktop-frontend-minimal-extension:0.0.1 owner/desktop-frontend-minimal-extension:0.0.1
 ```
-
+Push the image to DockerHub:
 ```bash
 docker push owner/desktop-frontend-minimal-extension:0.0.1
 ```
 
 !!! warning
 
-    Note that for Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+    For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and the tags must follow semantic versioning, e.g: `0.0.1`.
 
     See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
 
     See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 
-!!! info "Having trouble to push the image?"
+!!! info "Unable to push the image?"
 
-    Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
+    Ensure you are logged in to DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
-
+To remove the extension, run:
 ```bash
 docker extension rm desktop-frontend-minimal-extension
 ```
 
-The following output should be displayed:
+The following output displays:
 
 ```bash
 Removing extension desktop-frontend-minimal-extension...
@@ -226,4 +228,4 @@ Extension "MinimalFrontEnd" removed
 
 ## What's next?
 
-See the next [tutorial](./react-extension.md) to create an extension using React.
+Learn how to [create an extension using React.](./react-extension.md)

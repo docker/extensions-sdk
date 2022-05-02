@@ -1,4 +1,4 @@
-In this tutorial you will learn how to create a simple Desktop Extension containing only a UI part based on ReactJS.
+Learn how to create a simple Docker extension that contains only a UI part and is based on ReactJS.
 
 ## Prerequisites
 
@@ -7,7 +7,11 @@ In this tutorial you will learn how to create a simple Desktop Extension contain
 
 ## Extension folder structure
 
-In the `react-extension` sample folder, you can find a ready-to-go example that represents a UI Extension built on ReactJS. Although you can start from an empty directory, it is highly recommended that you start from this official template and change it accordingly to suit your needs.
+A Docker extension is made of several files which range from the extension's source code to the required extension-specific files.
+
+In the `react-extension` [sample folder](https://github.com/docker/extensions-sdk/tree/main/samples), you can find a ready-to-go example that represents a UI Extension built on ReactJS. We will go through this code example in this tutorial.
+
+Although you can start from an empty directory, it is highly recommended that you start from the template below and change it accordingly to suit your needs.
 
 ```bash
 .
@@ -27,16 +31,16 @@ In the `react-extension` sample folder, you can find a ready-to-go example that 
 └── metadata.json # (6)
 ```
 
-1. Contains the labels, files, dependencies, metadata, and everything required for the extension to run in Docker Desktop.
+1. Contains everything required to build the extension and run it in Docker Desktop.
 2. High-level folder containing your front-end app source code.
 3. Assets that aren’t compiled or dynamically generated are stored here. These can be static assets like logos or the robots.txt file.
-4. The src, or source folder contains all of our React components, external CSS files, and dynamic assets that we'll bring into our component files.
-5. The icon that will be displayed in the left-menu of the Docker Desktop Dashboard.
-6. A file that provides information about the extension such as the name, description, and version, among others.
+4. The src, or source folder contains all the React components, external CSS files, and dynamic assets that are brough into the component files.
+5. The icon that is displayed in the left-menu of the Docker Desktop Dashboard.
+6. A file that provides information about the extension such as the name, description, and version.
 
 ## Create a Dockerfile
 
-A `Dockerfile` is one of the mandatory files needed to build and publish your Desktop Extension.
+An extension requires a `Dockerfile` to build, publish, and run in Docker Desktop.
 
 ```Dockerfile title="Dockerfile" linenums="1"
 FROM node:14.17-alpine3.13 AS client-builder
@@ -64,7 +68,7 @@ COPY metadata.json .
 
 ```
 
-## Configure the Extension metadata file
+## Configure the metadata file
 
 A `metadata.json` file is required at the root of your extension directory.
 
@@ -102,34 +106,32 @@ export function App() {
 ```
 
 ## Build the extension
-
+To build the extension, run:
 ```bash
 docker build -t desktop-react-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
-
+To build the extension for multiple platforms, run:
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-react-extension:0.0.1 .
 ```
 
 ## Validate the extension
 
-Next, verify the extension image complies with the requisites to be a compliant Desktop Extension.
+Verify the extension image is compliant.
+
+The validation checks if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
 ```bash
 docker extension validate desktop-backend-minimal-extension:0.0.1
 ```
 
-The validation will check if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
-
-If your extension is valid, you should see the following message:
+If your extension is valid, the message below displays:
 
 `The extension image "desktop-backend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
-
-Now that the extension is packaged as a Docker image, let's proceed with the installation. To do so, we'll use the Docker Extensions CLI.
 
 !!! info "Enable Docker Desktop Extensions"
 
@@ -141,7 +143,7 @@ To install the extension in Docker Desktop, run:
 docker extension install desktop-react-extension:0.0.1
 ```
 
-If the installation was successful, you should see the following output:
+If the installation is successful, the output below displays:
 
 ```bash
 Installing new extension "ui-extension" with desktop-react-extension:0.0.1 ...
@@ -152,7 +154,7 @@ Extension "ui-extension" installed successfully
 
 ## Preview the extension
 
-You can verify that the extension has been installed successfully using the following CLI command:
+You can also enter the command below to verify the extension installed successfully:
 
 ```bash
 docker extension ls
@@ -172,51 +174,51 @@ ui-extension #(1)   Docker Inc. (2)     desktop-react-extension:0.0.1 (3)  1 tab
 5. No backend services running in the Desktop VM.
 6. No binaries deployed on the host.
 
-To preview the extension in Docker Desktop, close and open the Docker Desktop Dashboard once the installation has completed.
+To preview the extension in Docker Desktop, close and open the Docker Desktop dashboard once the installation is complete.
 
-In the navigation sidebar, you should see a new item titled `UI Extension`. Click on it to view your extension's content; you should see a button in the top-left corner. When you click the button, a toast message will appear with the message `Hello, World!`.
+The left-hand menu displays a new tab with the name `UI Extension`. When you select the new tab, a button appears in the top-left corner. Click the button to display `Hello, World!`.
 
 ![UI Extension](images/ui-extension-react.png)
 
-### Opening Dev Tools
+### Open Dev Tools
 
-To open the Chrome Developer Tools, see [this](../../dev/overview).
+See the [Developer guide](../../dev/overview) for more information.
 
 ## Publish the extension
 
-In order to publish the extension, we have to upload the Docker image to [DockerHub](https://hub.docker.com).
+To publish the extension, upload the Docker image to [DockerHub](https://hub.docker.com).
 
-Let's tag the previous image to prepend the account owner at the beginning of the image name:
+Tag the previous image to prepend the account owner at the beginning of the image name:
 
 ```bash
 docker tag desktop-react-extension:0.0.1 owner/desktop-react-extension:0.0.1
 ```
-
+Push the image to DockerHub:
 ```bash
 docker push owner/desktop-react-extension:0.0.1
 ```
 
 !!! warning
 
-    Note that for Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+    For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
 
     See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
 
     See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 
-!!! info "Having trouble to push the image?"
+!!! info "Unable to push the image?"
 
     Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
 
-To remove the extension run:
+To remove the extension, run:
 
 ```bash
 docker extension rm ui-extension
 ```
 
-The following output should be displayed:
+The following output displays:
 
 ```bash
 Removing extension ui-extension...
@@ -226,4 +228,4 @@ Extension "ui-extension" removed
 
 ## What's next?
 
-See the next [tutorial](./minimal-frontend-using-docker-cli.md) to create a ReactJS-based extension.
+Learn how to [create an extension using Docker CLI commands.](./minimal-frontend-using-docker-cli.md) 

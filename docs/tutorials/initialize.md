@@ -1,4 +1,4 @@
-In this tutorial you will learn how to create a new Docker Desktop extension.
+Learn how to create a new Docker extension.
 
 ## Prerequisites
 
@@ -7,54 +7,46 @@ In this tutorial you will learn how to create a new Docker Desktop extension.
 - [NodeJS](https://nodejs.org)
 - [Go](https://go.dev/dl/)
 
-## Creating a new extension
+## Create a new extension
 
-To create a new extension, use the `init` subcommand and provide a name, for instance:
+To create a new extension, use the `init` subcommand and provide a name for your extension. 
 
 ```bash
 docker extension init my-extension
 ```
-
-You'll be prompted with a series of questions that will help the CLI to generate a set of boilerplate files for you to get started. The questions are related to the extension information, such as the name, description, vendor, etc.
-
-This will create a directory `my-extension` with a bare-bones extension code.
+You'll be asked a series of questions about your extension, such as its name, a description, and the name of your Hub repository. This helps the CLI to generate a set of boilerplate files for you to get started. The boilerplate files are stored in the directory `my-extension`. 
 
 The automatically generated extension contains:
 
-- A backend service that listens on a socket, it has one endpoint `/hello` that returns
+- A backend service that listens on a socket. It has one endpoint `/hello` that returns
   a JSON payload.
-- A React frontend that can call the backend and output the backend response.
+- A React frontend that can call the backend and output the backend's response.
 
 ## Build the extension
 
-As part of the extension boilerplate files, we provide a `Makefile` at the root of the extension directory with targets to build and push the extension.
+As part of the extension boilerplate files, a `Makefile` is generated at the root of the extension directory with targets to build and push the extension.
 
 To build the extension, run:
 
 ```bash
 cd my-extension
-make extension
+make build-extension
 ```
 
-The `make extension` will build your extension and as a result it will generate an image named after the hub repository input that was introduced in the first question.
-
-For instance, if you typed `john/my-extension` as the answer to the following question:
+ `make build-extension` builds your extension and also generates an image which is named after your chosen hub repository. For instance, if you typed `john/my-extension` as the answer to the following question:
 
 ```
 ? Hub repository (eg. namespace/repository on hub): john/my-extension
 ```
 
-The `make extension` will generate an image with name `john/my-extension`.
+The `make build-extension` generates an image with name `john/my-extension`.
 
 ## Install the extension
-
-Now that the extension is packaged as a Docker image, let's proceed with the
-installation. To do so, we'll use the Docker Extensions CLI.
 
 !!! info "Enable Docker Desktop Extensions"
 
     Ensure the Extensions capabilities are enabled in the Docker Desktop build
-    by running `docker extension enable`
+    by running `docker extension enable`.
 
 To install the extension in Docker Desktop, run:
 
@@ -62,7 +54,7 @@ To install the extension in Docker Desktop, run:
 docker extension install john/my-extension
 ```
 
-If the installation was successful, you should see the following output:
+If the installation is successful, the following output displays:
 
 ```bash
 Installing new extension "john/my-extension"
@@ -76,8 +68,7 @@ Extension "my-extension" installed successfully
 
 ## Preview the extension
 
-You can verify that the extension has been installed successfully using the
-following CLI command:
+You can also enter the command below to verify the extension installed successfully:
 
 ```bash
 docker extension ls
@@ -90,42 +81,44 @@ ID                    PROVIDER      VERSION   UI                  VM          HO
 john/my-extension     Docker Inc.             1 tab(My-Extension) Running(1)  -
 ```
 
-On the left-menu, you should see a new tab with the name `My-Extension`. Click
-on it to load the main window that will render a button. When you click on it,
-you should see the response from the backend
+In Docker Desktop, the left-hand menu now displays a new tab with the name `My-Extension`. When you select the new tab, a **Call Backend** button appears. When you select it, it displays a response from the backend. 
 
 ![UI Extension](images/initialized-extension.png)
 
 ### Opening Dev Tools
 
-To open the Chrome Developer Tools, see [this](../../dev/overview).
+You can now develop your custom Docker Extension. See the [Developer guide](../../dev/overview) for more information.
 
 ### Iterate faster while developing
 
-To iterate faster and try out new changes when developing the extension, use the `docker extension update` command to uninstall the previous version and install the new one with your latest changes.
+To iterate faster and try out new changes whilst you develop your extension, use the `docker extension update` command. This uninstalls the previous version and installs the new one with your latest changes.
 
 ### Developing the frontend
 
 During UI development, it's helpful to use hot reloading to test your changes without rebuilding your entire extension.
-To achieve that, you can configure Docker Desktop to load your UI from a development server (such as the one Create React
-App starts when invoked with yarn start). Start your UI app, and then run (assuming your app is running on the default port):
+To do this, you can configure Docker Desktop to load your UI from a development server, such as the one Create React
+App starts when invoked with yarn start. 
+
+Assuming your app runs on the default port, start your UI app and then run:
 
 ```bash
 cd ui
 npm start
 ```
 
-This will start a development server that listens on port 3000. You can now tell
-Docker Desktop to use this as the frontend source, in another terminal run:
+This starts a development server that listens on port 3000. 
+
+You can now tell
+Docker Desktop to use this as the frontend source. In another terminal run:
 
 ```bash
 docker extension dev ui-source my-extension http://localhost:3000
 ```
 
-Close and reopen the Docker Desktop dashboard and go to your extension, all the
-changes to the frontend code will now be immediately visible.
+Close and reopen the Docker Desktop dashboard and go to your extension. All the
+changes to the frontend code are immediately visible.
 
-Once you are done you can remove the ui-source override by running
+Once you're done you can remove the ui-source override:
 
 ```bash
 docker extension dev reset my-extension
@@ -133,13 +126,13 @@ docker extension dev reset my-extension
 
 ## Clean up
 
-To remove the extension run:
+To remove the extension, run:
 
 ```bash
 docker extension rm my-extension
 ```
 
-The following output should be displayed:
+The following output displays:
 
 ```bash
 Removing extension my-extension...

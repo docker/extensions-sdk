@@ -1,34 +1,33 @@
 # Docker Extension SDK
 
-This repository includes all resources to create your own Docker Extensions.
+Use the resources in this section to create your own Docker Extension.
 
 !!! warning
 
-    This work is experimental and still in progress, features and APIs detailed are subject to change.
+    This work is experimental and still in progress. The features and APIs detailed below are subject to change.
 
 ## Overview
 
-Extensions are packaged as specially formatted Docker images (our CLI tool helps to build these). The most fundamental requirement is a `metadata.json` file at the root of the image filesystem, describing the content of the extension.
+Extensions are packaged as specially formatted Docker images, which our CLI tool helps to build. At the root of the image filesystem is a `metadata.json` file which describes the content of the extension. It is a fundamental element of a Docker extension. 
 
-An extension can contain a UI part and backend parts (running either on the host or in the Desktop virtual machine).
+An extension can contain a UI part and backend parts that run either on the host or in the Desktop virtual machine. For further details, see [Extension metadata](extensions/METADATA.md).
 
-Details are described in [Extension structure](extensions/METADATA.md).
-
-Extension distribution will be done through the Docker Hub.
-Development of extensions can be done locally without the need to push the extension to Docker Hub.
-This is described in [Extension Distribution](extensions/DISTRIBUTION.md).
+Extensions are distributed through the Docker Hub.
+Development of extensions can be done locally without the need to push the extension to Docker Hub. See [Extensions distribution](extensions/DISTRIBUTION.md) for further details. 
 
 ## Prerequisites
 
-To get started with Docker Extensions you will need a specific Docker Desktop build that comes with extension capabilities.
+Before you create your own extension, you need a specific Docker Desktop build that comes with extension capabilities. 
 
-Go to the [releases page](https://github.com/docker/extensions-sdk/releases/latest) and install both the Docker Desktop build and the Extensions CLI to manage extensions later on.
+From the [releases page](https://github.com/docker/extensions-sdk/releases/latest), install both the Docker Desktop build and the Extensions CLI which is used to manage extensions later on.
 
-Once you've downloaded Extensions CLI, you need to extract the binary into `~/.docker/cli-plugins`.
+Once you've downloaded the Extensions CLI, extract the binary in to `~/.docker/cli-plugins`.
+
+In your terminal, run: 
 
 === ":fontawesome-brands-apple: MacOS (intel)"
 
-    In a terminal, run:
+  
 
     ```console
     tar -xvzf desktop-extension-cli-darwin-amd64.tar.gz
@@ -38,7 +37,7 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
 
 === ":fontawesome-brands-apple: MacOS (arm)"
 
-    In a terminal, run:
+
 
     ```console
     tar -xvzf desktop-extension-cli-darwin-arm64.tar.gz
@@ -48,7 +47,7 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
 
 === ":fontawesome-brands-windows: Windows"
 
-    In a PowerShell terminal, run:
+    
 
     ```powershell
     tar -xvzf desktop-extension-cli-windows-amd64.tar.gz
@@ -58,7 +57,7 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
 
 === ":fontawesome-brands-windows: :fontawesome-brands-linux: WSL2"
 
-    In a WSL2 terminal, run:
+   
 
     ```console
     tar -xvzf desktop-extension-cli-linux-amd64.tar.gz
@@ -68,7 +67,7 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
 
 === ":fontawesome-brands-linux: Linux"
 
-    In a terminal, run:
+    
 
     ```console
     tar -xvzf desktop-extension-cli-linux-amd64.tar.gz
@@ -76,19 +75,21 @@ Once you've downloaded Extensions CLI, you need to extract the binary into `~/.d
     mv docker-extension ~/.docker/cli-plugins
     ```
 
-You can now enable Docker Extensions by running 
+Next, enable Docker Extensions: 
 
 ```console
 docker extension enable
 ```
 
-Now that extensions are enabled, you can list installed extensions (the list should be empty initially):
+You can then list all your installed extensions:
 
 ```console
 docker extension ls 
 ID                  PROVIDER            VERSION             UI                  VM                  HOST
 ```
 
-And you should see a new "Add extensions" menu when opening the Docker Desktop Dashboard:
+The list will initially be empty.
+
+When you navigate to Docker Desktop, you'll see **Add Extensions** in the left-hand menu.
 
 ![Extensions enabled](images/extensions-enabled.png)

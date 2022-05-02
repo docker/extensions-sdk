@@ -1,13 +1,13 @@
 ## User notifications
 
 Toasts provide a brief notification to the user. They appear temporarily and
-shouldn't interrupt the user experience, they don't require user input to disappear.
+shouldn't interrupt the user experience. They also don't require user input to disappear.
 
 ### success
 
 ▸ **success**(`msg`): `void`
 
-Display a toast message of type success.
+Use to display a toast message of type success.
 
 ```typescript
 ddClient.desktopUI.toast.success("message");
@@ -17,7 +17,7 @@ ddClient.desktopUI.toast.success("message");
 
 ▸ **warning**(`msg`): `void`
 
-Display a toast message of type warning.
+Use to display a toast message of type warning.
 
 ```typescript
 ddClient.desktopUI.toast.warning("message");
@@ -27,19 +27,19 @@ ddClient.desktopUI.toast.warning("message");
 
 ▸ **error**(`msg`): `void`
 
-Display a toast message of type error.
+Use to display a toast message of type error.
 
 ```typescript
 ddClient.desktopUI.toast.error("message");
 ```
 
-More details about method parameters and return types are available in the [Toast API reference](reference/interfaces/Toast.md).
+For more details about method parameters and the return types available, see [Toast API reference](reference/interfaces/Toast.md).
 
 ### Deprecated user notifications
 
 !!! warning "Method deprecated"
 
-    These methods are deprecated and will be removed in a future version. Please use the ones specified above.
+    These methods are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.toastSuccess("message");
@@ -47,13 +47,13 @@ window.ddClient.toastWarning("message");
 window.ddClient.toastError("message");
 ```
 
-## Opening a file selection dialog
+## Open a file selection dialog
 
-This function opens a file selector dialog asking the user to select a file or folder.
+This function opens a file selector dialog that asks the user to select a file or folder.
 
 ▸ **showOpenDialog**(`dialogProperties`): `Promise`<[`OpenDialogResult`](reference/interfaces/OpenDialogResult.md)\>:
 
-The `dialogProperties` parameter is a list of flags passed to Electron to customize the dialog's behaviour - for instance, you can pass `multiSelections` to allow a user to select multiple files. See [Electron's documentation](https://www.electronjs.org/docs/latest/api/dialog) for a full list.
+The `dialogProperties` parameter is a list of flags passed to Electron to customize the dialog's behaviour. For example, you can pass `multiSelections` to allow a user to select multiple files. See [Electron's documentation](https://www.electronjs.org/docs/latest/api/dialog) for a full list.
 
 ```typescript
 const result = await ddClient.desktopUI.dialog.showOpenDialog({
@@ -64,13 +64,11 @@ if (!result.canceled) {
 }
 ```
 
-## Opening a URL
+## Open a URL
 
 This function opens an external URL with the system default browser.
 
 ▸ **openExternal**(`url`): `void`
-
-Opens an external URL with the system default browser.
 
 ```typescript
 ddClient.host.openExternal("https://docker.com");
@@ -80,13 +78,13 @@ ddClient.host.openExternal("https://docker.com");
 
     The URL must have the protocol `http` or `https`.
 
-More details about method parameters and return types are available in the [Desktop host API reference](reference/interfaces/Host.md).
+For more details about method parameters and the return types available, see [Desktop host API reference](reference/interfaces/Host.md).
 
 ### Deprecated user notifications
 
 !!! warning "Method deprecated"
 
-    This method is deprecated and will be removed in a future version. Please use the one specified above.
+    This method is deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.openExternal("https://docker.com");
@@ -94,6 +92,4 @@ window.ddClient.openExternal("https://docker.com");
 
 ## Navigation to Dashboard routes
 
-From your extension, you can navigate to other parts of the Docker Desktop Dashboard.
-
-See details [here](dashboard-routes-navigation.md).
+From your extension, you can also [navigate](dashboard-routes-navigation.md) to other parts of the Docker Desktop Dashboard.

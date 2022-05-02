@@ -1,3 +1,9 @@
+---
+title: Docker extension API reference
+description: Docker extension API reference
+keywords: Docker, extensions, sdk, API, reference
+---
+
 # Interface: ExtensionHost
 
 ## Table of contents
@@ -14,7 +20,7 @@
 
 Executes a command in the host.
 
-Example: Execute the shipped binary `kubectl -h` command in the **host**:
+For example, execute the shipped binary `kubectl -h` command in the **host**:
 
 ```typescript
  await ddClient.extension.host.cli.exec(
@@ -27,7 +33,7 @@ Example: Execute the shipped binary `kubectl -h` command in the **host**:
 
 Streams the output of the command executed in the backend container or in the host.
 
-Example: Provided the `kubectl` binary is shipped as part of your extension, you can spawn the `kubectl -h` command in the **host**:
+Provided the `kubectl` binary is shipped as part of your extension, you can spawn the `kubectl -h` command in the **host**:
 
 ```typescript linenums="1"
 await ddClient.extension.host.cli.exec("kubectl", ["-h"], {

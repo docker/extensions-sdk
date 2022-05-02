@@ -31,6 +31,9 @@ To install the extension, run:
 docker extension install my-extension
 ```
 
+> Extensions can install binaries, invoke commands and access files on your machine. Make sure you trust extensions before installing them on your machine.
+> {: .warning}
+
 To list all your installed extensions, run:
 
 ```console

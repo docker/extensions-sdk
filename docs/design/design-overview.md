@@ -4,6 +4,8 @@ description: Docker extension design
 keywords: Docker, extensions, design
 ---
 
+# UI Guidelines
+
 Our Design System is currently being developed. In the meantime, here are some basic [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771) you can follow.
 
 # Using Docker Material UI Theme

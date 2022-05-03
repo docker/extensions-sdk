@@ -1,3 +1,9 @@
+---
+title: Docker extension development API
+description: Docker extension API
+keywords: Docker, extensions, sdk, API
+---
+
 ## User notifications
 
 Toasts provide a brief notification to the user. They appear temporarily and
@@ -35,11 +41,9 @@ ddClient.desktopUI.toast.error("message");
 
 For more details about method parameters and the return types available, see [Toast API reference](reference/interfaces/Toast.md).
 
-### Deprecated user notifications
-
-!!! warning "Method deprecated"
-
-    These methods are deprecated and will be removed in a future version. Use the methods specified above.
+> Deprecated user notifications
+>
+> These methods are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.toastSuccess("message");
@@ -74,17 +78,13 @@ This function opens an external URL with the system default browser.
 ddClient.host.openExternal("https://docker.com");
 ```
 
-!!! note
-
-    The URL must have the protocol `http` or `https`.
+> The URL must have the protocol `http` or `https`.
 
 For more details about method parameters and the return types available, see [Desktop host API reference](reference/interfaces/Host.md).
 
-### Deprecated user notifications
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the methods specified above.
+> Deprecated user notifications
+>
+> This method is deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.openExternal("https://docker.com");

@@ -1,3 +1,9 @@
+---
+title: Docker extension development distribution
+description: Docker extension disctribution
+keywords: Docker, extensions, sdk, distribution
+---
+
 # Distribution
 
 ## Packaging
@@ -5,7 +11,7 @@
 Docker Extensions are packaged as Docker images. The entire extension runtime including the UI, backend services (host or VM) and any necessary binary must be included in the extension image.
 Every extension image must contain a metadata.json file at the root of its filesystem that [defines the contents of the extension](METADATA.md).
 
-The image must have [several labels](extensions/labels):
+The image must have [several labels](labels.md):
 
 - `org.opencontainers.image.title` for the name of the extension.
 - `org.opencontainers.image.vendor` for the provider for the extension.
@@ -14,7 +20,7 @@ The image must have [several labels](extensions/labels):
 Packaging and releasing an extension is done by running `docker build` to create the image, and `docker push` to make the image available on Docker Hub with a specific tag that allows you to manage versions of the extension.
 
 Take advantage of multi-arch images to build images that include ARM/AMD binaries. The right image will be used for Mac users depending on their architecture.
-For extensions on Docker Desktop for Windows, Windows binaries that are to be installed on the host must  be included in the same extension image. We will revisit this with some tag conventions to allow some images specific to Windows, and other images specific to Mac, based on a tag prefix. See [how to build extensions for multiple architectures](./multi-arch.md).
+For extensions on Docker Desktop for Windows, Windows binaries that are to be installed on the host must be included in the same extension image. We will revisit this with some tag conventions to allow some images specific to Windows, and other images specific to Mac, based on a tag prefix. See [how to build extensions for multiple architectures](./multi-arch.md).
 
 You can implement extensions without any constraints on the code repository. Docker does not need access to the code repository in order to use the extension. Release of new versions of the extension is managed you.
 

@@ -1,3 +1,9 @@
+---
+title: Docker extension development overview
+description: Docker extension development overview
+keywords: Docker, extensions, sdk, development
+---
+
 # Extension UI API
 
 The extensions UI runs in a sandboxed environment and doesn't have access to any

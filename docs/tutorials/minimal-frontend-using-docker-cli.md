@@ -1,4 +1,11 @@
-Learn how to create a simple Docker extension that invokes Docker CLI commands. 
+---
+title: Minimal docker CLI extension tutorial
+description: Minimal docker CLI extension tutorial
+keywords: Docker, extensions, sdk, tutorial
+---
+
+Learn how to create a simple Docker extension that invokes Docker CLI commands.
+
 ## Prerequisites
 
 - [Docker Desktop build with Extensions capabilities](https://github.com/docker/extensions-sdk/releases/)
@@ -37,18 +44,18 @@ Use the Docker Desktop Client object to discover extension APIs about `docker`. 
 We can invoke a Docker command with `ddClient.docker.cli.exec()`.
 For example, to run `docker info` and obtain json formatted results:
 
-`ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`.
+{% raw %}`ddClient.docker.cli.exec("info", ["--format", '"{{ json . }}"'])`{% endraw %}.
 
 We can use `result.parseJsonObject()` to read results as a json object and use it in our application.
 
-```typescript title="App.tsx"
+```typescript
 const ddClient = createDockerDesktopClient();
 const [dockerInfo, setDockerInfo] = useState<any>(null);
 
 async function runDockerInfo() {
   const result = await ddClient.docker.cli.exec("info", [
     "--format",
-    '"{{json .}}"',
+    {% raw %}'"{{json .}}"',{% endraw %}
   ]);
   setDockerInfo(result.parseJsonObject());
 }
@@ -66,7 +73,7 @@ At minimum, your Dockerfile needs:
 - The source code which in this case is an `index.html` that sits within the `ui` folder. `index.html` refers to javascript code in `script.js`.
 - The `metadata.json` file.
 
-```Dockerfile title="Dockerfile"
+```Dockerfile
 FROM node:17.7-alpine3.14 AS client-builder
 # ... build React application
 
@@ -86,7 +93,7 @@ COPY metadata.json .
 
 A `metadata.json` file is required at the root of the image filesystem.
 
-```json title="metadata.json" linenums="1"
+```json
 {
   "ui": {
     "dashboard-tab": {
@@ -99,20 +106,24 @@ A `metadata.json` file is required at the root of the image filesystem.
 ```
 
 ## Build the extension
+
 To build the extension, run:
+
 ```bash
 docker build -t desktop-docker-cli-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
+
 To build the extension for multiple platforms, run:
+
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-docker-cli-minimal-extension:0.0.1 .
 ```
 
 ## Validate the extension
 
-Verify the extension image is compliant.  
+Verify the extension image is compliant.
 
 The validation checks if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
@@ -125,10 +136,6 @@ If your extension is valid, the message below displays:
 `The extension image "desktop-docker-cli-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
-
-!!! info "Enable Docker Desktop Extensions"
-
-    Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
 
 To install the extension in Docker Desktop, run:
 
@@ -162,7 +169,7 @@ MyExtension         Docker Inc.         desktop-docker-cli-minimal-extension:0.0
 
 To preview the extension in Docker Desktop, close and open the Docker Desktop dashboard once the installation is complete.
 
-The left-hand menu displays a new tab with name `Docker VM info`. When you select the new tab, the result below is rendered. 
+The left-hand menu displays a new tab with name `Docker VM info`. When you select the new tab, the result below is rendered.
 
 ![UI Extension](images/docker-cli-minimal-extension.png)
 
@@ -175,25 +182,29 @@ Tag the previous image to prepend the account owner at the beginning of the imag
 ```bash
 docker tag desktop-docker-cli-minimal-extension:0.0.1 owner/desktop-docker-cli-minimal-extension:0.0.1
 ```
+
 Push the image to DockerHub:
+
 ```bash
 docker push owner/desktop-docker-cli-minimal-extension:0.0.1
 ```
 
-!!! warning
+> Publishing extensions in the marketplace
+>
+> For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+>
+> See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
+>
+> See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 
-    For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
-
-    See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
-
-    See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
-
-!!! info "Unable to push the image?"
-
-    Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
+> Having trouble to push the image?
+>
+> Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
+
 To remove the extension, run:
+
 ```bash
 docker extension rm desktop-docker-cli-minimal-extension
 ```

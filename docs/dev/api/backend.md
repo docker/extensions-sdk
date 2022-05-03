@@ -1,3 +1,9 @@
+---
+title: Docker extension development API
+description: Docker extension API
+keywords: Docker, extensions, sdk, API
+---
+
 # Communication with the extension backend
 
 The `ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../.. /extensions/METADATA.md#vm-section) of the extension metadata.
@@ -16,11 +22,9 @@ ddClient.extension.vm.service
 
 See [Service API Reference](reference/interfaces/HttpService.md#Methods) for other methods such as POST, UPDATE, and DELETE.
 
-### Deprecated extension backend communication
-
-!!! warning "Methods deprecated"
-
-    The methods below that use `window.ddClient.backend` are deprecated and will be removed in a future version. Use the methods specified above.
+> Deprecated extension backend communication
+>
+> The methods below that use `window.ddClient.backend` are deprecated and will be removed in a future version. Use the methods specified above.
 
 The `window.ddClient.backend` object can be used to communicate with the backend
 defined in the [vm section](../../extensions/METADATA.md#vm-section) of the
@@ -68,7 +72,7 @@ await ddClient.extension.vm.cli.exec("ls", ["-l"]);
 
 Stream the output of the command executed in the backend container. For example, spawn the command `ls -l` inside the backend container:
 
-```typescript linenums="1"
+```typescript
 await ddClient.extension.vm.cli.exec("ls", ["-l"], {
   stream: {
     onOutput(data) {
@@ -90,11 +94,9 @@ await ddClient.extension.vm.cli.exec("ls", ["-l"], {
 
 For more details, refer to the [Extension VM API Reference](reference/interfaces/ExtensionVM.md)
 
-### Deprecated extension backend command execution
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the specified method above.
+> Deprecated extension backend command execution
+>
+> This method is deprecated and will be removed in a future version. Use the specified method above.
 
 If your extension ships with additional binaries that should be run inside the
 backend container, you can use the `execInVMExtension` function:
@@ -119,7 +121,7 @@ await ddClient.extension.host.cli.exec("kubectl", ["-h"]);
 
 As long as the `kubectl` binary is shipped as part of your extension, you can spawn the `kubectl -h` command in the host and get the output stream:
 
-```typescript linenums="1"
+```typescript
 await ddClient.extension.host.cli.exec("kubectl", ["-h"], {
   stream: {
     onOutput(data: { stdout: string } | { stderr: string }): void {
@@ -143,11 +145,9 @@ You can stream the output of the command executed in the backend container or in
 
 For more details, refer to the [Extension Host API Reference](reference/interfaces/ExtensionHost.md)
 
-### Deprecated invocation of extension binary
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the method specified above.
+> Deprecated invocation of extension binary
+>
+> This method is deprecated and will be removed in a future version. Use the method specified above.
 
 To execute a command in the host:
 

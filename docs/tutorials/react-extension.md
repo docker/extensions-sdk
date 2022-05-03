@@ -1,3 +1,9 @@
+---
+title: Minimal react extension tutorial
+description: Minimal react extension tutorial
+keywords: Docker, extensions, sdk, tutorial
+---
+
 Learn how to create a simple Docker extension that contains only a UI part and is based on ReactJS.
 
 ## Prerequisites
@@ -42,7 +48,7 @@ Although you can start from an empty directory, it is highly recommended that yo
 
 An extension requires a `Dockerfile` to build, publish, and run in Docker Desktop.
 
-```Dockerfile title="Dockerfile" linenums="1"
+```Dockerfile
 FROM node:14.17-alpine3.13 AS client-builder
 WORKDIR /app/client
 # cache packages in layer
@@ -72,7 +78,7 @@ COPY metadata.json .
 
 A `metadata.json` file is required at the root of your extension directory.
 
-```json title="metadata.json" linenums="1"
+```json
 {
   "icon": "docker.svg",
   "ui": {
@@ -89,7 +95,7 @@ A `metadata.json` file is required at the root of your extension directory.
 
 The React application can import `@docker/extension-api-client` and use extension APIs to perform actions with Docker Desktop.
 
-```ts title="App.tsx" linenums="1"
+```ts
 import { Box, Button } from '@mui/material';
 import { createDockerDesktopClient } from '@docker/extension-api-client';
 
@@ -106,13 +112,17 @@ export function App() {
 ```
 
 ## Build the extension
+
 To build the extension, run:
+
 ```bash
 docker build -t desktop-react-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
+
 To build the extension for multiple platforms, run:
+
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-react-extension:0.0.1 .
 ```
@@ -132,10 +142,6 @@ If your extension is valid, the message below displays:
 `The extension image "desktop-backend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
-
-!!! info "Enable Docker Desktop Extensions"
-
-    Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
 
 To install the extension in Docker Desktop, run:
 
@@ -193,22 +199,24 @@ Tag the previous image to prepend the account owner at the beginning of the imag
 ```bash
 docker tag desktop-react-extension:0.0.1 owner/desktop-react-extension:0.0.1
 ```
+
 Push the image to DockerHub:
+
 ```bash
 docker push owner/desktop-react-extension:0.0.1
 ```
 
-!!! warning
+> Publishing extensions in the marketplace
+>
+> For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+>
+> See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
+>
+> See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 
-    For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
-
-    See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
-
-    See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
-
-!!! info "Unable to push the image?"
-
-    Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
+> Having trouble to push the image?
+>
+> Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
 
@@ -228,4 +236,4 @@ Extension "ui-extension" removed
 
 ## What's next?
 
-Learn how to [create an extension using Docker CLI commands.](./minimal-frontend-using-docker-cli.md) 
+Learn how to [create an extension using Docker CLI commands.](./minimal-frontend-using-docker-cli.md)

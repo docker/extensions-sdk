@@ -1,7 +1,12 @@
-Learn how to create a simple Docker Extension that runs CLI commands in the backend. 
+---
+title: Minimal backend extension tutorial
+description: Minimal backend extension tutorial
+keywords: Docker, extensions, sdk, tutorial
+---
+
+Learn how to create a simple Docker Extension that runs CLI commands in the backend.
 
 For extensions with a backend service running REST services over sockets or named pipes, see the `vm-ui extension` [sample](https://github.com/docker/extensions-sdk/tree/main/samples).
-
 
 ## Prerequisites
 
@@ -40,7 +45,7 @@ Let's reuse the React extension from the [React extension tutorial](./react-exte
 Use the Docker Desktop Client object and then invoke a binary provided in our backend container (that lives inside the Docker Desktop VM) with `ddClient.docker.extension.vm.cli.exec()`.
 In our example, our hello.sh script returns a string as result, we obtain it with `result?.stdout`.
 
-```typescript title="App.tsx"
+```typescript
 const ddClient = createDockerDesktopClient();
 const [backendInfo, setBackendInfo] = useState<string | undefined>();
 
@@ -62,7 +67,7 @@ At minimum, your Dockerfile needs:
 - The source code which in this case is an `index.html` that sits within the `ui` folder. `index.html` refers to javascript code in `script.js`.
 - The `metadata.json` file.
 
-```Dockerfile title="Dockerfile"
+```Dockerfile
 FROM node:17.7-alpine3.14 AS client-builder
 # ... build React application
 
@@ -85,7 +90,7 @@ CMD [ "sleep", "infinity" ]
 
 A `metadata.json` file is required at the root of the image filesystem.
 
-```json title="metadata.json" linenums="1"
+```json
 {
   "vm": {
     "image": "${DESKTOP_PLUGIN_IMAGE}"
@@ -100,25 +105,27 @@ A `metadata.json` file is required at the root of the image filesystem.
 }
 ```
 
-!!! warning
-
-    Do not replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder is replaced automatically with the correct image name when the extension is installed. 
+> Do not replace the `${DESKTOP_PLUGIN_IMAGE}` placeholder in the `metadata.json` file. The placeholder is replaced automatically with the correct image name when the extension is installed.
 
 ## Build the extension
+
 To build the extension, run:
+
 ```bash
 docker build -t desktop-backend-minimal-extension:0.0.1 .
 ```
 
 ### Build the extension for multiple platforms
+
 To build the extension for multiple platforms, run:
+
 ```bash
 docker buildx build --platform=linux/amd64,linux/arm64 -t desktop-backend-minimal-extension:0.0.1 .
 ```
 
 ## Validate the extension
 
-Verify the extension image is compliant. 
+Verify the extension image is compliant.
 
 The validation checks if the extension's `Dockerfile` specifies all the required labels and if the metadata file is valid against the JSON schema file.
 
@@ -131,10 +138,6 @@ If your extension is valid, the message below displays:
 `The extension image "desktop-backend-minimal-extension:0.0.1" is valid`.
 
 ## Install the extension
-
-!!! info Enable Docker Desktop Extensions
-
-    Ensure the Extensions capabilities are enabled in the Docker Desktop build by running `docker extension enable`
 
 To install the extension in Docker Desktop, run:
 
@@ -184,22 +187,24 @@ Tag the previous image to prepend the account owner at the beginning of the imag
 ```bash
 docker tag desktop-backend-minimal-extension:0.0.1 owner/desktop-backend-minimal-extension:0.0.1
 ```
+
 Push the image to DockerHub:
+
 ```bash
 docker push owner/desktop-backend-minimal-extension:0.0.1
 ```
 
-!!! warning
+> Publishing extensions in the marketplace
+>
+> For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
+>
+> See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
+>
+> See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 
-    For Docker Extensions images to be listed in Docker Desktop, they must be approved by Docker and be tagged following semantic versioning, e.g: `0.0.1`.
-
-    See [distribution and new releases](../extensions/DISTRIBUTION.md#distribution-and-new-releases) for more information.
-
-    See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
-
-!!! info "Unable to push the image?"
-
-    Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
+> Having trouble to push the image?
+>
+> Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up
 

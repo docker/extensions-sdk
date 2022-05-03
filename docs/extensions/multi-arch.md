@@ -1,3 +1,9 @@
+---
+title: Docker extension development multi-arch
+description: Docker extension multi-arch
+keywords: Docker, extensions, sdk, multi-arch
+---
+
 ## Introduction
 
 At a minimum, you must ensure your extension is supported for the following architectures:
@@ -36,7 +42,7 @@ The example below shows an extension that uses a binary as part of its operation
 
 In the `Dockerfile`, we download the binary depending on the target architecture:
 
-```Dockerfile title="Dockerfile" linenums="1" hl_lines="8-9 14-15"
+```Dockerfile
 #syntax=docker/dockerfile:1.3-labs
 
 FROM alpine AS dl
@@ -66,7 +72,7 @@ COPY --from=dl /out /
 
 In the `metadata.json` file, we specify the path for every binary on every platform:
 
-```json title="metadata.json" linenums="1" hl_lines="12-25"
+```json
 {
   "icon": "docker.svg",
   "ui": {
@@ -101,9 +107,7 @@ As a result, when `TARGETARCH` equals:
 
 - `amd64`, two `kubectl` binaries are fetched. One for Darwin and another for Windows. They are copied to `/darwin/kubectl` and `/windows/kubectl.exe` respectively, in the final stage.
 
-!!! info
-
-    Note that the binary destination path for `darwin` is `darwin/kubectl` in both cases. The only change is the architecture-specific binary that is downloaded.
+> Note that the binary destination path for `darwin` is `darwin/kubectl` in both cases. The only change is the architecture-specific binary that is downloaded.
 
 When the extension is installed, the extension framework copies the binaries from the extension image at `/darwin/kubectl` for Darwin, or `/windows/kubectl.exe` for Windows, to a specific location in the user's host filesystem.
 
@@ -111,4 +115,4 @@ When the extension is installed, the extension framework copies the binaries fro
 
 - Can I develop extensions that run Windows containers?
 
-Although Docker Extensions is supported on Docker Desktop for Windows, Mac, and Linux, the extension framework only supports linux containers. Therefore, you must target `linux` as the OS when you build your extension image. 
+Although Docker Extensions is supported on Docker Desktop for Windows, Mac, and Linux, the extension framework only supports linux containers. Therefore, you must target `linux` as the OS when you build your extension image.

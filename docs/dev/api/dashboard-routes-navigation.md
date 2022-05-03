@@ -1,3 +1,9 @@
+---
+title: Docker extension development API
+description: Docker extension API
+keywords: Docker, extensions, sdk, API
+---
+
 # Dashboard Routes Navigation
 
 `ddClient.desktopUI.navigation` enables navigation to specific screens of Docker Desktop such as the containers tab, the images tab, or a specific container's logs.
@@ -22,11 +28,9 @@ A promise that fails if the container doesn't exist.
 
 For more details about all navigation methods, see the [Navigation API reference](reference/interfaces/NavigationIntents.md).
 
-### Deprecated navigation methods
-
-!!! warning "Method deprecated"
-
-    These methdos are deprecated and will be removed in a future version. Use the methods specified above.
+> Deprecated navigation methods
+>
+> These methdos are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 window.ddClient.navigateToContainers();

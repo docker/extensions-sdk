@@ -1,3 +1,9 @@
+---
+title: Docker extension development
+description: Docker extension development
+keywords: Docker, extensions, sdk, development
+---
+
 ## Develop Docker extensions
 
 The section below describes how to get started developing your custom Docker extension.
@@ -14,7 +20,7 @@ For further inspiration, see the other examples in the [samples folder](https://
 
 ### Open Dev Tools
 
-In order to open the Chrome Dev Tools for your extension when you click on the extension tab,  run:
+In order to open the Chrome Dev Tools for your extension when you click on the extension tab, run:
 
 ```console
 docker extension dev debug my-extension
@@ -42,9 +48,7 @@ docker extension dev ui-source my-extension http://localhost:8080
 
 This changes the source of the extension UI to your local development server. Auto and hot-reload now work.
 
-!!! info
-
-    Make sure to reopen the Dashboard when you set a new source for the extension's UI.
+> Make sure to reopen the Dashboard when you set a new source for the extension's UI.
 
 Once finished, you can reset the extension configuration to the original settings. This will also reset opening Chrome dev tools if you used `docker extension dev debug my-extension`:
 
@@ -54,7 +58,7 @@ docker extension dev reset my-extension
 
 ## Show the extension containers
 
-If your extension is composed of one or more services running as containers in the Docker Desktop VM, you can access them easily from the dashboard in Docker Desktop. 
+If your extension is composed of one or more services running as containers in the Docker Desktop VM, you can access them easily from the dashboard in Docker Desktop.
 
-1. In Docker Desktop, navigate to **Settings**, or **Preferences** if you're a Mac user. 
+1. In Docker Desktop, navigate to **Settings**, or **Preferences** if you're a Mac user.
 2. Under the **Extensions** tab, select the **Show Docker Desktop Extensions system containers** option. You can now view your extension containers and their logs.

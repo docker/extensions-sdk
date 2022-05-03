@@ -1,6 +1,12 @@
+---
+title: Docker extension development metadata
+description: Docker extension metadata
+keywords: Docker, extensions, sdk, metadata
+---
+
 # Extension metadata
 
-The image for a  Docker extension must include a `metadata.json` file at the root of its filesystem. It describes the content of the extension that must be installed to make it work in Docker Desktop.
+The image for a Docker extension must include a `metadata.json` file at the root of its filesystem. It describes the content of the extension that must be installed to make it work in Docker Desktop.
 
 With each part being optional, an extension contains:
 
@@ -45,7 +51,7 @@ Other UI extension points will be available in the future.
 
 ## VM section
 
-The `vm` section defines a backend service that runs inside the Desktop VM. It must define either an `image` or a `composefile` value that specifies what service to run in the Desktop VM. 
+The `vm` section defines a backend service that runs inside the Desktop VM. It must define either an `image` or a `composefile` value that specifies what service to run in the Desktop VM.
 
 By default you should specify `image`. Only use `composefile` if you need to use several containers for the backend service or specific runtime options, such as mounting volumes or requesting CAPABILITIES, that can't be expressed just with a Docker image.
 
@@ -59,9 +65,7 @@ If you use the same image for the extension packaging and for the backend servic
 },
 ```
 
-!!! info
-
-    `${DESKTOP_PLUGIN_IMAGE}` is a specific keyword that allows an easy way to refer to the image packaging the extension. It is also possible to specify any other full image name here. However, in many cases using the same image makes things easier for extension development.
+> `${DESKTOP_PLUGIN_IMAGE}` is a specific keyword that allows an easy way to refer to the image packaging the extension. It is also possible to specify any other full image name here. However, in many cases using the same image makes things easier for extension development.
 
 For more advanced use cases, the extension can also:
 

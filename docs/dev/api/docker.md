@@ -1,3 +1,9 @@
+---
+title: Docker extension development API
+description: Docker extension API
+keywords: Docker, extensions, sdk, API
+---
+
 ## Docker objects
 
 ▸ **listContainers**(`options?`): `Promise`<`unknown`\>
@@ -18,11 +24,9 @@ const images = await ddClient.docker.listImages();
 
 See the [Docker API reference](reference/interfaces/Docker.md) for details about these methods.
 
-### Deprecated access to Docker objects
-
-!!! warning "Method deprecated"
-
-    The methods below are deprecated and will be removed in a future version. Use the methods specified above.
+> Deprecated access to Docker objects
+>
+> The methods below are deprecated and will be removed in a future version. Use the methods specified above.
 
 ```typescript
 const containers = await window.ddClient.listContainers();
@@ -39,7 +43,7 @@ Extensions can also directly execute the `docker` command line.
 ```typescript
 const result = await ddClient.docker.cli.exec("info", [
   "--format",
-  '"{{ json . }}"',
+  {% raw %}'"{{ json . }}"',{% endraw %}
 ]);
 ```
 
@@ -64,7 +68,7 @@ For convenience, the command result object also has methods to easily parse it:
 The command above streams the output as a result of the execution of a docker command.
 This is useful if you need to get the output as a stream or the output of the command is too long.
 
-```typescript linenums="1"
+```typescript
 await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     onOutput(data) {
@@ -88,7 +92,7 @@ await ddClient.docker.cli.exec("logs", ["-f", "..."], {
 The child process created by the extension is killed (`SIGTERM`) automatically when you close the dashboard in Docker Desktop or when you exit the extension UI.
 If needed, you can also use the result of the `exec(streamOptions)` call in order to kill (`SIGTERM`) the process.
 
-```typescript linenums="1"
+```typescript
 const logListener = await ddClient.docker.cli.exec("logs", ["-f", "..."], {
   stream: {
     // ...
@@ -101,10 +105,10 @@ logListener.close();
 
 This `exec(streamOptions)` API can also be used to listen to docker events:
 
-```typescript linenums="1"
+```typescript
 await ddClient.docker.cli.exec(
   "events",
-  ["--format", "{{ json . }}", "--filter", "container=my-container"],
+  {% raw %}["--format", "{{ json . }}", "--filter", "container=my-container"],{% endraw %}
   {
     stream: {
       onOutput(data) {
@@ -126,17 +130,15 @@ await ddClient.docker.cli.exec(
 
 See the [Exec API reference](reference/interfaces/Exec.md) for details about these methods.
 
-### Deprecated execution of Docker commands
-
-!!! warning "Method deprecated"
-
-    This method is deprecated and will be removed in a future version. Use the one specified just below.
+> Deprecated execution of Docker commands
+>
+> This method is deprecated and will be removed in a future version. Use the one specified just below.
 
 ```typescript
 const output = await window.ddClient.execDockerCmd(
   "info",
   "--format",
-  '"{{ json . }}"'
+  {% raw %}'"{{ json . }}"'{% endraw %}
 );
 
 window.ddClient.spawnDockerCmd("logs", ["-f", "..."], (data, error) => {

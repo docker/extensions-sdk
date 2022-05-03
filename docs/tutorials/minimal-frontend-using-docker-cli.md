@@ -197,8 +197,8 @@ docker push owner/desktop-docker-cli-minimal-extension:0.0.1
 >
 > See <a href="https://semver.org/" target="__blank">semver.org</a> to learn more about semantic versioning.
 
-Having trouble to push the image?
-
+> Having trouble to push the image?
+>
 > Ensure you are logged into DockerHub. Otherwise, run `docker login` to authenticate.
 
 ## Clean up

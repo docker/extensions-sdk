@@ -1,14 +1,8 @@
 # Docker Extensions
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/883a0d5e-15c4-471b-a3e3-84cf27d2fced/deploy-status)](https://app.netlify.com/sites/docker-desktop-extensions/deploys)
-
 This repository includes all resources to create Docker Extensions.
 
 :warning: **This work is experimental and still in progress, features and APIs are subject to change**
-
-## Documentation
-
-The documentation is published and best viewed at https://docker-desktop-extensions.netlify.app/.
 
 ## Prerequisites
 
@@ -46,16 +40,6 @@ Furthermore, you can communicate with your extension backend service or invoke a
 
 ### UI Guidelines
 
-We are currently in the process of developing our design system but in the meantime, here are some [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). Docker Desktop's UI is written in React and [Material-UI](https://mui.com/), and we strongly recommend adopting this combination in your extensions as well. This brings the benefit of using our [Material-UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination. 
+We are currently in the process of developing our design system but in the meantime, here are some [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). Docker Desktop's UI is written in React and [Material-UI](https://mui.com/), and we strongly recommend adopting this combination in your extensions as well. This brings the benefit of using our [Material-UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination.
 
 You can read more about our design principles [here](/docs/design/design-overview.md).
-
-## Build the documentation
-
-We use [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) to create a static site from a set of Markdown files under [docs](./docs).
-
-```bash
-docker run --rm -it -p 8000:8000 --rm -v ${PWD}:/docs squidfunk/mkdocs-material
-```
-
-Visit http://0.0.0.0:8000/

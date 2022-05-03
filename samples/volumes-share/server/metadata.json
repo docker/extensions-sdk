@@ -1,6 +1,0 @@
-{
-  "vm": {
-    "composefile": "docker-compose.yaml",
-    "exposes": { "socket": "volume-share.sock" }
-  }
-}

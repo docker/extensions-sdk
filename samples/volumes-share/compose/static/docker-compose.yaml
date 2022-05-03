@@ -1,9 +1,0 @@
-services:
-  db:
-    image: halverneus/static-file-server:latest
-    ports:
-      - 8080:8080
-    volumes:
-      - type: remote
-        source: rumpl/volume:latest
-        target: nginx-volume:/web

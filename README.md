@@ -2,7 +2,7 @@
 
 This repository includes all resources to create Docker Extensions.
 
-:warning: **This work is experimental and still in progress, features and APIs are subject to change**
+:warning: **Docker Extensions SDK is currently in Beta. Features and APIs are subject to change**
 
 ## Prerequisites
 

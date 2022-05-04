@@ -8,7 +8,7 @@ keywords: Docker, extensions, sdk, labels
 
 [Labels](https://docs.docker.com/engine/reference/builder/#label) are specified in the extension's `Dockerfile` and used to provide information about the extension.
 
-| Label <div style="width:170px"></div>| Required | Description | Example |
+| Label | Required | Description | Example |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------ | |
 | `org.opencontainers.image.title` | Yes | Human-readable title of the image (string). This appears in the UI for Docker Desktop. | my-extension |
 | `org.opencontainers.image.description` | Yes | Human-readable description of the software packaged in the image (string) | This extension is cool.|

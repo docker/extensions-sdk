@@ -84,7 +84,7 @@ The vm metadata section should define either `image` or `composefile`. When you 
 
 ## Host section
 
-The `host` section defines a few binaries that must be deployed on the host. The UI is able to invoke these binaries through JavaScript APIs. See [invoking an extension binary on the host](../dev/api/backend.md#invoking-an-extension-binary-on-the-host).
+The `host` section defines a few binaries that must be deployed on the host. The UI is able to invoke these binaries through JavaScript APIs. See [invoking an extension binary on the host](../dev/api/backend.md#invoke-an-extension-binary-on-the-host).
 
 ```json
   "host": {

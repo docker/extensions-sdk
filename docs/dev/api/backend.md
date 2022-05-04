@@ -6,7 +6,7 @@ keywords: Docker, extensions, sdk, API
 
 # Communication with the extension backend
 
-The `ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../.. /extensions/METADATA.md#vm-section) of the extension metadata.
+The `ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../../extensions/METADATA.md#vm-section) of the extension metadata.
 
 ## get
 
@@ -20,7 +20,7 @@ ddClient.extension.vm.service
  .then((value: any) => console.log(value)
 ```
 
-See [Service API Reference](reference/interfaces/HttpService.md#Methods) for other methods such as POST, UPDATE, and DELETE.
+See [Service API Reference](reference/interfaces/HttpService.md) for other methods such as POST, UPDATE, and DELETE.
 
 > Deprecated extension backend communication
 >

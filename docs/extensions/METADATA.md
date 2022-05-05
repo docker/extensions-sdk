@@ -51,11 +51,15 @@ Other UI extension points will be available in the future.
 
 ## VM section
 
+### Basic extension backend service
+
 The `vm` section defines a backend service that runs inside the Desktop VM. It must define either an `image` or a `composefile` value that specifies what service to run in the Desktop VM.
 
-By default you should specify `image`. Only use `composefile` if you need to use several containers for the backend service or specific runtime options, such as mounting volumes or requesting CAPABILITIES, that can't be expressed just with a Docker image.
+In simple cases you can specify `image` and define the Docker image to be executed for your backend.
 
-In many situations, extension backend services can be defined by using the same image also used to package the extension. This image must then have a defined `CMD` to start the backend service, in addition the extension packaging.
+You can use `composefile` if you need more specific options, such as mounting volumes or requesting CAPABILITIES, that can't be expressed just with a Docker image. You can also use a compose file to use multiple backend services.
+
+In many situations, extension backend services can be defined by using the same image also used to package the extension. This image must then have a defined `CMD` to start the backend service, in addition to `COPY` lines for the extension packaging.
 
 If you use the same image for the extension packaging and for the backend service, you make packaging/releasing easier in terms or version management or pushing extension images to Docker Hub, for example.
 
@@ -65,7 +69,11 @@ If you use the same image for the extension packaging and for the backend servic
 },
 ```
 
+The vm metadata section should define either `image` or `composefile`. When you use `image`, a default compose file is generated for the extension.
+
 > `${DESKTOP_PLUGIN_IMAGE}` is a specific keyword that allows an easy way to refer to the image packaging the extension. It is also possible to specify any other full image name here. However, in many cases using the same image makes things easier for extension development.
+
+### Defining your own compose file for extension backend
 
 For more advanced use cases, the extension can also:
 
@@ -80,7 +88,30 @@ For more advanced use cases, the extension can also:
 },
 ```
 
-The vm metadata section should define either `image` or `composefile`. When you use `image`, a default compose file is generated for the extension.
+The composefile would then look like (for exampe with a volume definition):
+
+```yaml
+services:
+  myExtension:
+    image: ${DESKTOP_PLUGIN_IMAGE}
+    volumes:
+      - /host/path:/container/path
+```
+
+### Using the docker socket from your extension backend
+
+Docker extensions can invoke Docker commands directly from the UI js API. In some cases it can be useful to also interact with the Docker engine from the backend. Extension backend containers can mount the docker socket and use it to interact with the Docker engine from the extension backend logic.
+
+However, when mounting the docker socket from an extension container that lives in the Desktop virtual machine, you want to mount the docker socket from inside the VM, and not mount `/var/run/docker.sock` from the host filsystem (using the docker socket from the host can lead to permission issues in containers).
+In order to do so, you can use `/var/run/docker.sock.raw` and Docker Desktop will treat this specifically to mount the socket that lives in the Desktop VM, and not from the host.
+
+```yaml
+services:
+  myExtension:
+    image: ${DESKTOP_PLUGIN_IMAGE}
+    volumes:
+      - /var/run/docker.sock.raw:/var/run/docker.sock
+```
 
 ## Host section
 

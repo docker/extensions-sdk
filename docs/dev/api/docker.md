@@ -49,7 +49,7 @@ const result = await ddClient.docker.cli.exec("info", [
 
 The result contains both the standard output and the standard error of the executed command:
 
-```
+```json
 {
   "stderr": "...",
   "stdout": "..."

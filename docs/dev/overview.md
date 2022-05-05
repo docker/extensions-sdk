@@ -23,14 +23,14 @@ For further inspiration, see the other examples in the [samples folder](https://
 In order to open the Chrome Dev Tools for your extension when you click on the extension tab, run:
 
 ```console
-docker extension dev debug my-extension
+$ docker extension dev debug my-extension
 ```
 
 Each subsequent click on the extension tab will also open Chrome Dev Tools.
 To stop this behaviour, run:
 
 ```console
-docker extension dev reset my-extension
+$ docker extension dev reset my-extension
 ```
 
 After an extension is deployed, it is also possible to open the Chrome Dev Tools from the UI extension part using a variation of the [Konami Code](https://en.wikipedia.org/wiki/Konami_Code).
@@ -43,7 +43,7 @@ For this you need to first install the extension.
 If you then run a development server locally, with `yarn start` for example, enter the following command:
 
 ```console
-docker extension dev ui-source my-extension http://localhost:8080
+$ docker extension dev ui-source my-extension http://localhost:8080
 ```
 
 This changes the source of the extension UI to your local development server. Auto and hot-reload now work.
@@ -53,7 +53,7 @@ This changes the source of the extension UI to your local development server. Au
 Once finished, you can reset the extension configuration to the original settings. This will also reset opening Chrome dev tools if you used `docker extension dev debug my-extension`:
 
 ```console
-docker extension dev reset my-extension
+$ docker extension dev reset my-extension
 ```
 
 ## Show the extension containers

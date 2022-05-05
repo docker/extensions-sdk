@@ -15,14 +15,14 @@ The `docker extension` commands are carried out by the Extension CLI which is a 
 To build the extension, run:
 
 ```console
-make extension
+$ make extension
 # or docker build -t my-extension .
 ```
 
 To install the extension, run:
 
 ```console
-docker extension install my-extension
+$ docker extension install my-extension
 ```
 
 > Using the CLI to install unpublished extensions
@@ -33,7 +33,7 @@ docker extension install my-extension
 To list all your installed extensions, run:
 
 ```console
-docker extension ls
+$ docker extension ls
 
 ID                              PROVIDER            VERSION             UI                   VM                  HOST
 docker/hub-explorer-extension   Docker Inc.         0.0.2               1 tab(Explore Hub)   Running(1)          1 binarie(s)
@@ -43,11 +43,11 @@ tailscale/docker-extension      Tailscale Inc.      0.0.2               1 tab(Ta
 To remove the extension, run:
 
 ```console
-docker extension rm my-extension
+$ docker extension rm my-extension
 ```
 
 To update an extension with a newer version (local or remote image), run:
 
 ```console
-docker extension update docker/hub-explorer-extension:0.0.3
+$ docker extension update docker/hub-explorer-extension:0.0.3
 ```

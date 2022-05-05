@@ -45,47 +45,47 @@ In your terminal, run:
 <div class="tab-content">
   <div id="prereq-macos-intel" class="tab-pane fade in active" markdown="1">
     
-    ```console
-    tar -xvzf desktop-extension-cli-darwin-amd64.tar.gz
-    mkdir -p ~/.docker/cli-plugins
-    mv docker-extension ~/.docker/cli-plugins
-    ```
+```console
+$ tar -xvzf desktop-extension-cli-darwin-amd64.tar.gz
+$ mkdir -p ~/.docker/cli-plugins
+$ mv docker-extension ~/.docker/cli-plugins
+```
 
   <hr></div>
   <div id="prereq-macos-m1" class="tab-pane fade" markdown="1">
     
-    ```console
-    tar -xvzf desktop-extension-cli-darwin-arm64.tar.gz
-    mkdir -p ~/.docker/cli-plugins
-    mv docker-extension ~/.docker/cli-plugins
-    ```
+```console
+$ tar -xvzf desktop-extension-cli-darwin-arm64.tar.gz
+$ mkdir -p ~/.docker/cli-plugins
+$ mv docker-extension ~/.docker/cli-plugins
+```
 
   <hr></div>
   <div id="prereq-windows" class="tab-pane fade" markdown="1">
     
-    ```powershell
-    tar -xvzf desktop-extension-cli-windows-amd64.tar.gz
-    mkdir -p ~/.docker/cli-plugins
-    mv docker-extension.exe ~/.docker/cli-plugins
-    ```
+```console
+PS> tar -xvzf desktop-extension-cli-windows-amd64.tar.gz
+PS> mkdir -p ~/.docker/cli-plugins
+PS> mv docker-extension.exe ~/.docker/cli-plugins
+```
 
   <hr></div>
   <div id="prereq-wsl2" class="tab-pane fade" markdown="1">
     
-    ```console
-    tar -xvzf desktop-extension-cli-linux-amd64.tar.gz
-    mkdir -p ~/.docker/cli-plugins
-    mv docker-extension ~/.docker/cli-plugins
-    ```
+```console
+$ tar -xvzf desktop-extension-cli-linux-amd64.tar.gz
+$ mkdir -p ~/.docker/cli-plugins
+$ mv docker-extension ~/.docker/cli-plugins
+```
 
   <hr></div>
   <div id="prereq-linux" class="tab-pane fade" markdown="1">
 
-    ```console
-    tar -xvzf desktop-extension-cli-linux-amd64.tar.gz
-    mkdir -p ~/.docker/cli-plugins
-    mv docker-extension ~/.docker/cli-plugins
-    ```
+```console
+$ tar -xvzf desktop-extension-cli-linux-amd64.tar.gz
+$ mkdir -p ~/.docker/cli-plugins
+$ mv docker-extension ~/.docker/cli-plugins
+```
 
   <hr></div>
 </div>
@@ -93,7 +93,7 @@ In your terminal, run:
 You can now list installed extensions (the list should be empty if you have not installed extensions already):
 
 ```console
-docker extension ls
+$ docker extension ls
 ID                  PROVIDER            VERSION             UI                  VM                  HOST
 ```
 

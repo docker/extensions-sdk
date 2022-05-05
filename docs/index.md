@@ -8,8 +8,10 @@ keywords: Docker, Extensions, sdk
 
 Use the resources in this section to create your own Docker Extension.
 
-> This work is experimental and still in progress. The features and APIs detailed below are subject to change.
-> {: .warning}
+> Beta
+>
+> The Docker Extensions SDK is currently in Beta.
+> Features and APIs detailed below are subject to change.
 
 ## Overview
 

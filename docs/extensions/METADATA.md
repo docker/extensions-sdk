@@ -73,7 +73,7 @@ The vm metadata section should define either `image` or `composefile`. When you 
 
 > `${DESKTOP_PLUGIN_IMAGE}` is a specific keyword that allows an easy way to refer to the image packaging the extension. It is also possible to specify any other full image name here. However, in many cases using the same image makes things easier for extension development.
 
-### Defining your own compose file for extension backend
+### Define your own compose file for the extension backend
 
 For more advanced use cases, the extension can also:
 
@@ -88,7 +88,7 @@ For more advanced use cases, the extension can also:
 },
 ```
 
-The composefile would then look like (for exampe with a volume definition):
+The composefile, with a volume definition for example, would look like:
 
 ```yaml
 services:
@@ -98,12 +98,12 @@ services:
       - /host/path:/container/path
 ```
 
-### Using the docker socket from your extension backend
+### Use the docker socket from your extension backend
 
 Docker extensions can invoke Docker commands directly from the frontend with the SDK. In some cases, it is useful to also interact with the Docker engine from the backend. Extension backend containers can mount the Docker socket and use it to interact with the Docker engine from the extension backend logic. (Learn more about the [Docker engine socket](https://docs.docker.com/engine/reference/commandline/dockerd/#examples))
 
 However, when mounting the docker socket from an extension container that lives in the Desktop virtual machine, you want to mount the Docker socket from inside the VM, and not mount `/var/run/docker.sock` from the host filsystem (using the Docker socket from the host can lead to permission issues in containers).
-In order to do so, you can use `/var/run/docker.sock.raw` and Docker Desktop will treat this specifically to mount the socket that lives in the Desktop VM, and not from the host.
+In order to do so, you can use `/var/run/docker.sock.raw`. Docker Desktop mounts the socket that lives in the Desktop VM, and not from the host.
 
 ```yaml
 services:

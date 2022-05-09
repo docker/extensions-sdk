@@ -29,7 +29,7 @@ Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 
 - The advantage we have with Docker Desktop over the CLI is that we have the opportunity to provide rich information to users. Make use of this interface as much as possible. Avoid embedding terminal windows.
 
-  <img src="images/terminal_window.png" width=75% height=75%>
+  <img src="images/terminal_window.png" width="75%" height="75%" />
 <br>
 
 ## Build Features Natively

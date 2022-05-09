@@ -1,0 +1,5 @@
+// This file explicitly configures prettier to use its default settings if no
+// more specific config file is found. It prevents it from detecting config files
+// in ancestor directories, to ensure that the formatting is consistent regardless
+// of the user's directory structure.
+{}

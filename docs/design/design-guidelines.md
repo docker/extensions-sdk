@@ -43,7 +43,7 @@ Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 
 - If a flow is too complicated or the concept is abstract, break down the flow into multiple steps with one simple call-to-action in each step. This helps when onboarding novice users to your extension
 
-  <img src="images/complicated_flows.png" width= 50% height=50%>
+  <img src="images/complicated_flows.png" width="50%" height="50%" />
 <br>
 
 - Where there are multiple call-to-actions, ensure you use the primary (filled button style) and secondary buttons (outline button style) to convey the importance of each action. 

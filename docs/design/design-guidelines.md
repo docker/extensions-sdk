@@ -24,7 +24,7 @@ Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 
 - Ensure that the navigational behaviour is consistent with the rest of Docker Desktop. Add a header to set the context for the extension.
 
-  <img src="images/header.png" width=50% height=50%>
+  <img src="images/header.png" width="50%" height="50%">
 <br>
 
 - The advantage we have with Docker Desktop over the CLI is that we have the opportunity to provide rich information to users. Make use of this interface as much as possible. Avoid embedding terminal windows.

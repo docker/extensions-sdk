@@ -36,7 +36,7 @@ Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 
 - In order not to disrupt the flow of users, avoid scenarios where the user has to navigate outside Docker Desktop, to the CLI or a webpage for example, in order to carry out certain functionalities. Instead, build features that are native to Docker Desktop.
 
-  <img src="images/switch_context.png" width=75% height=75%>
+  <img src="images/switch_context.png" width="75%" height="75%" />
 <br>
 
 ## Break Down Complicated User Flows

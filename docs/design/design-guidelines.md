@@ -64,7 +64,7 @@ When building your extension, ensure that first time users of the extension and 
     
 - If your extension has particularly complex functionality, add a demo or video to the start page. This helps onboard a first time user quickly.
 
-  <img src="images/start_page.png" width= 25% height=25%>
+  <img src="images/start_page.png" width="25%" height="25%" />
 <br>
 
 

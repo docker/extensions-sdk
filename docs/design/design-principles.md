@@ -1,5 +1,5 @@
 ---
-title: Docker extension design
+title: Docker design principles
 description: Docker extension design
 keywords: Docker, extensions, design
 ---

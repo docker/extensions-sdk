@@ -48,7 +48,7 @@ Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 
 - Where there are multiple call-to-actions, ensure you use the primary (filled button style) and secondary buttons (outline button style) to convey the importance of each action. 
 
-  <img src="images/cta.png" width= 50% height=50%>
+  <img src="images/cta.png" width="50%" height="50%" />
 <br>
 
 ## Onboarding New Users

@@ -29,14 +29,17 @@ Although you can start from an empty directory, it is highly recommended that yo
 │   └── src
 │       ├── App.tsx
 │       └── ... React aplication
-├── hello.sh # (3)
-└── metadata.json # (4)
+├── img
+│   └── Moby.png # (3)
+├── hello.sh # (4)
+└── metadata.json # (5)
 ```
 
 1. Contains everything required to build the extension and run it in Docker Desktop.
 2. The source folder that contains the UI application. In this example we use a React frontend, the main part of th extension is an App.tsx.
-3. The script that runs inside the container.
-4. A file that provides information about the extension such as the name, description, and version.
+3. The extension icon that will be displayed in the extension's list in Docker Desktop.
+4. The script that runs inside the container.
+5. A file that provides information about the extension such as the name, description, and version.
 
 ## Invoke the extension backend from your javascript code
 
@@ -76,15 +79,23 @@ FROM alpine:3.15
 LABEL org.opencontainers.image.title="HelloBackend" \
     org.opencontainers.image.description="A sample extension that runs a shell script inside a container's Desktop VM." \
     org.opencontainers.image.vendor="Docker Inc." \
-    com.docker.desktop.extension.api.version="1.0.0-beta.1" \
-    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
+    com.docker.desktop.extension.api.version=">= 0.2.0" \
+    com.docker.extension.screenshots="[]" \
+    com.docker.extension.detailed-description="A sample extension that runs a shell script inside a container's Desktop VM." \
+    com.docker.extension.publisher-url="https://www.docker.com" \
+    com.docker.extension.additional-urls="[]" \
+    com.docker.extension.changelog="" \
+    com.docker.desktop.extension.icon="/img/Moby-logo.png"
 
 COPY hello.sh .
 COPY metadata.json .
 COPY --from=client-builder /app/client/dist ui
+COPY img img
 
 CMD [ "sleep", "infinity" ]
 ```
+
+A list of all the available labels and their formats can be found [here](https://docs.docker.com/desktop/extensions-sdk/extensions/labels/).
 
 ## Configure the metadata file
 
@@ -92,6 +103,7 @@ A `metadata.json` file is required at the root of the image filesystem.
 
 ```json
 {
+  "icon": "/img/Moby.png",
   "vm": {
     "image": "${DESKTOP_PLUGIN_IMAGE}"
   },

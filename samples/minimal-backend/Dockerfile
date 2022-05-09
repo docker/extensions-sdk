@@ -16,10 +16,16 @@ LABEL org.opencontainers.image.title="HelloBackend" \
     org.opencontainers.image.description="A sample extension that runs a shell script inside a container's Desktop VM." \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version=">= 0.2.0" \
-    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png"
+    com.docker.extension.screenshots="[]" \
+    com.docker.extension.detailed-description="A sample extension that runs a shell script inside a container's Desktop VM." \
+    com.docker.extension.publisher-url="https://www.docker.com" \
+    com.docker.extension.additional-urls="[]" \
+    com.docker.extension.changelog="" \
+    com.docker.desktop.extension.icon="/img/Moby-logo.png"
 
 COPY hello.sh .
 COPY metadata.json .
 COPY --from=client-builder /app/client/dist ui
+COPY img img
 
 CMD [ "sleep", "infinity" ]

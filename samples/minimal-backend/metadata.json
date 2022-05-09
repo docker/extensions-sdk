@@ -1,4 +1,5 @@
 {
+  "icon": "/img/Moby.png",
   "vm": {
     "image": "${DESKTOP_PLUGIN_IMAGE}"
   },

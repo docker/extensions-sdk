@@ -14,7 +14,7 @@ Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 
 - Ensure the extension has both a light and dark theme. Using the components and styles as per the Docker styleguide will ensure that your extension meets the [level AA accessibility standard.](https://www.w3.org/WAI/WCAG2AA-Conformance)
 
-  <img src="images/light_dark_mode.png" width=50% height=50%>
+  <img src="images/light_dark_mode.png" width="50%" height="50%">
 <br>
 
 - Ensure that your extension icon is visible both in light and dark mode.

@@ -66,16 +66,3 @@ When building your extension, ensure that first time users of the extension and 
 
   <img src="images/start_page.png" width="25%" height="25%" />
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,7 +6,8 @@ keywords: Docker, extensions, design
 
 # Design Guidelines
 
-At Docker, we aim to build tools that integrate into a user's existing workflows rather than requiring them to adopt new ones. To that end, we strongly recommend that you follow these guidelines when building extensions.
+At Docker, we aim to build tools that integrate into a user's existing workflows rather than requiring them to adopt new ones. To that end, we strongly recommend that you follow these guidelines when building extensions. We will be reviewing and approving your Marketplace publication based on these requirements.
+
 
 ## Build a consistent experience with Docker Desktop.
 Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) and the [Docker Extensions Styleguide](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771) to ensure that your extension feels like it is part of Docker Desktop to create a seamless experience for users.

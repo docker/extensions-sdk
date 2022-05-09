@@ -6,7 +6,7 @@ keywords: Docker, extensions, design
 
 ## Docker UI Kit
 
-Our Design System is currently being developed. In the meantime, you will find some basic styles (color, typography) and components in this [Docker Extensions Styleguide](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). Using the components and styles as per the Docker Extensions Styleguide will ensure that your extension meets the [level AA accessibility standard.](https://www.w3.org/WAI/WCAG2AA-Conformance)
+Our Design System is currently being developed. In the meantime, you will find some basic styles (color, typography) and components in this [Docker Extensions Styleguide](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). Using the components and styles as per the Docker Extensions Styleguide, ensures your extension meets the [level AA accessibility standard.](https://www.w3.org/WAI/WCAG2AA-Conformance)
 
 <br>
 

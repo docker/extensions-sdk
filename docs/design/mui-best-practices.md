@@ -6,7 +6,7 @@ keywords: Docker, extensions, mui, theme, theming, material-ui, material
 
 # MUI Best Practices
 
-This article assumes you're following our recommended practice by using our [MUI theme](https://www.npmjs.com/package/@docker/docker-mui-theme). Following the steps below maximises compatibility with Docker Desktop and minimises the work you need to do as an extension author. They should be considered supplementary to the non-MUI-specific guidelines found in the [UI kit article](ui-kit.md).
+This article assumes you're following our recommended practice by using our [MUI theme](https://www.npmjs.com/package/@docker/docker-mui-theme). Following the steps below maximises compatibility with Docker Desktop and minimises the work you need to do as an extension author. They should be considered supplementary to the non-MUI-specific guidelines found in the [UI Styling overview](overview.md).
 
 ## Assume the theme can change at any time
 

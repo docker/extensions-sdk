@@ -14,35 +14,35 @@ Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-
 
 - Ensure the extension has both a light and dark theme. Using the components and styles as per the Docker style guide ensures that your extension meets the [level AA accessibility standard.](https://www.w3.org/WAI/WCAG2AA-Conformance)
 
-  <img src="./images/light_dark_mode.png" width="50%" height="50%">
+![light and dark mode](./images/light_dark_mode.png){:height="50%" width="50%"}
 
 - Ensure that your extension icon is visible both in light and dark mode.
 
-  <img src="./images/icon_colors.png" >
+![icon colors](./images/icon_colors.png)
 
 - Ensure that the navigational behaviour is consistent with the rest of Docker Desktop. Add a header to set the context for the extension.
 
-  <img src="./images/header.png" width="50%" height="50%">
+![header](./images/header.png){:height="50%" width="50%"}
 
 - The advantage we have with Docker Desktop over the CLI is that we have the opportunity to provide rich information to users. Make use of this interface as much as possible. Avoid embedding terminal windows.
 
-  <img src="./images/terminal_window.png" width="75%" height="75%" />
+![terminal window](./images/terminal_window.png){:height="75%" width="75%"}
 
 ## Build Features Natively
 
 - In order not to disrupt the flow of users, avoid scenarios where the user has to navigate outside Docker Desktop, to the CLI or a webpage for example, in order to carry out certain functionalities. Instead, build features that are native to Docker Desktop.
 
-  <img src="./images/switch_context.png" width="75%" height="75%" />
+![switch context](./images/switch_context.png){:height="75%" width="75%"}
 
 ## Break Down Complicated User Flows
 
 - If a flow is too complicated or the concept is abstract, break down the flow into multiple steps with one simple call-to-action in each step. This helps when onboarding novice users to your extension
 
-  <img src="./images/complicated_flows.png" width="50%" height="50%" />
+![complicated flow](./images/complicated_flows.png){:height="50%" width="50%"}
 
 - Where there are multiple call-to-actions, ensure you use the primary (filled button style) and secondary buttons (outline button style) to convey the importance of each action.
 
-  <img src="./images/cta.png" width="50%" height="50%" />
+![call to action](./images/cta.png){:height="50%" width="50%"}
 
 ## Onboarding New Users
 
@@ -54,4 +54,4 @@ When building your extension, ensure that first time users of the extension and 
   - Link to necessary resources such as documentation.
 - If your extension has particularly complex functionality, add a demo or video to the start page. This helps onboard a first time user quickly.
 
-  <img src="./images/start_page.png" width="25%" height="25%" />
+![start page](./images/start_page.png){:height="25%" width="25%"}

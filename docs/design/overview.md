@@ -1,10 +1,10 @@
 ---
-title: Docker UI Kit
+title: UI styling overview
 description: Docker extension design
 keywords: Docker, extensions, design
 ---
 
-# Docker UI Kit
+# UI styling overview
 
 Our Design System is a constantly evolving set of specifications that aim to ensure visual consistency across Docker products, and meet [level AA accessibility standards](https://www.w3.org/WAI/WCAG2AA-Conformance). We've opened parts of it to extension authors, documenting basic styles (color, typography) and components. See: [Docker Extensions Styleguide](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771).
 
@@ -18,8 +18,8 @@ To get started on your UI, follow the below steps.
 
 Docker Desktop's UI is written in React and [MUI](https://mui.com/) (a.k.a. Material UI). This is the only officially supported framework for building extensions, and the one that our `init` command automatically configures for you. Using it brings significant benefits to authors:
 
--  You can use our [MUI theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to automatically replicate Docker Desktop's look & feel.
--  In future, we'll release utilities and components specifically targeting this combination (e.g. custom MUI components, or React hooks for interacting with Docker).
+- You can use our [MUI theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to automatically replicate Docker Desktop's look & feel.
+- In future, we'll release utilities and components specifically targeting this combination (e.g. custom MUI components, or React hooks for interacting with Docker).
 
 Read our [MUI best practices](mui-best-practices.md) guide to learn future-proof ways to use MUI with Docker Desktop.
 
@@ -27,9 +27,9 @@ Read our [MUI best practices](mui-best-practices.md) guide to learn future-proof
 
 You may prefer to use another framework, perhaps because you or your team are more familiar with it or because you have existing assets you want to reuse. This is possible, but highly discouraged. It means that:
 
--  You'll need to manually replicate the look and feel of Docker Desktop. This will take a lot of effort, and if you don't match our theme closely enough, users will find your extension jarring and we may ask you to make changes during a review process.
--  You'll have a higher maintenance burden. Whenever Docker Desktop's theme changes (which could happen in any release), you'll need to manually change your extension to match it.
--  If your extension is open-source, deliberately avoiding common conventions will make it harder for the community to contribute to it.
+- You'll need to manually replicate the look and feel of Docker Desktop. This will take a lot of effort, and if you don't match our theme closely enough, users will find your extension jarring and we may ask you to make changes during a review process.
+- You'll have a higher maintenance burden. Whenever Docker Desktop's theme changes (which could happen in any release), you'll need to manually change your extension to match it.
+- If your extension is open-source, deliberately avoiding common conventions will make it harder for the community to contribute to it.
 
 ## 2. Follow the below recommendations
 

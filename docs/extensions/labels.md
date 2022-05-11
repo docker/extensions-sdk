@@ -27,7 +27,7 @@ keywords: Docker, extensions, sdk, labels
 
 > HTML content styling
 >
-> Docker Desktop CSS styles will be applied to the provided HTML content. You can make sure that it renders nicely [within the marketplace](#preview-the-extension-in-the-marketplace). We recommend that you follow our [CSS guidlines](../../design/design-overview/#design-principles).
+> Docker Desktop CSS styles will be applied to the provided HTML content. You can make sure that it renders nicely [within the marketplace](#preview-the-extension-in-the-marketplace). We recommend that you follow our [Styling guidelines](../design/overview.md).
 
 ## Preview the extension in the Marketplace
 

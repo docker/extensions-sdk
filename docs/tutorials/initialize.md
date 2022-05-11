@@ -126,6 +126,10 @@ Once you're done you can remove the ui-source override:
 docker extension dev reset my-extension
 ```
 
+## Submit your extension to the marketplace
+
+If you want to make your extension available to all Docker Desktop users, you can submit it for publication in the Marketplace. For more information, see [Publish your extension in the Marketplace](../extensions/DISTRIBUTION.md#publish-your-extension-in-the-marketplace).
+
 ## Clean up
 
 To remove the extension, run:

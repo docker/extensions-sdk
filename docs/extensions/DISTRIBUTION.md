@@ -36,9 +36,14 @@ Any new image pushed to a repository that is part of the allow-list corresponds 
 
 With a given release of Docker Desktop (including some extensions), users should not need to upgrade Docker Desktop in order to obtain new versions of a specific extension. Newer versions of the extension can be released independently of Docker Desktop releases, provided there is no Extension API mismatchs.
 
-Docker Desktop scans the allow-list for new versions regularly, and provides some notifications to users when they can upgrade a specific extension.
+Docker Desktop scans the list of published extensions for new versions regularly, and provides notifications to users when they can upgrade a specific extension.
 
 Users can download and install the newer version of an extension without updating Docker Desktop itself.
+
+## Publish your extension in the Marketplace
+
+Docker Desktop displays published extensions in the Extensions Marketplace.
+If you want your extension to be published in the Marketplace, you can submit your extension [here](https://www.docker.com/products/extensions/submissions/). We'll review your submission and provide feedback if changes are needed before we can validate and publish it to make it available to all Docker Desktop users.
 
 ## API dependencies
 

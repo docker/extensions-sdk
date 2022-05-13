@@ -4,8 +4,6 @@ description: Docker extension API reference
 keywords: Docker, extensions, sdk, API, reference
 ---
 
-# Extensions API Reference
-
 ## Table of contents
 
 ### Dashboard Interfaces

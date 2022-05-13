@@ -1,10 +1,8 @@
 ---
-title: Docker extension development API
+title: Navigation
 description: Docker extension API
 keywords: Docker, extensions, sdk, API
 ---
-
-# Dashboard Routes Navigation
 
 `ddClient.desktopUI.navigation` enables navigation to specific screens of Docker Desktop such as the containers tab, the images tab, or a specific container's logs.
 

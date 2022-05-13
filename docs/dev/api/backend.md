@@ -1,10 +1,8 @@
 ---
-title: Docker extension development API
+title: Extension Backend
 description: Docker extension API
 keywords: Docker, extensions, sdk, API
 ---
-
-# Communication with the extension backend
 
 The `ddClient.extension.vm` object can be used to communicate with the backend defined in the [vm section](../../extensions/METADATA.md#vm-section) of the extension metadata.
 

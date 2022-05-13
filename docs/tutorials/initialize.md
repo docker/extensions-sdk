@@ -1,6 +1,6 @@
 ---
 title: Extensions SDK tutorials
-description: ndex for Docker Extensions SDK tutorials
+description: index for Docker Extensions SDK tutorials
 keywords: Docker, Extensions, sdk, tutorial
 ---
 

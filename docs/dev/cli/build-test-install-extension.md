@@ -1,10 +1,8 @@
 ---
-title: Docker extension development CLI
+title: Build, test, and install an extension
 description: Docker extension CLI
 keywords: Docker, extensions, sdk, cli
 ---
-
-## Build, test, and install an extension
 
 The [sample folder](https://github.com/docker/extensions-sdk/tree/main/samples) contains multiple extensions.
 These are Docker developed samples that are not meant to be final products.

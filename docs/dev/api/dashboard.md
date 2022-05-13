@@ -1,5 +1,5 @@
 ---
-title: Docker extension development API
+title: Dashboard
 description: Docker extension API
 keywords: Docker, extensions, sdk, API
 ---

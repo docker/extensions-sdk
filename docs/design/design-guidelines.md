@@ -1,10 +1,8 @@
 ---
-title: Extension design guidelines
+title: Design guidelines
 description: Docker extension design
 keywords: Docker, extensions, design
 ---
-
-# Design Guidelines
 
 At Docker, we aim to build tools that integrate into a user's existing workflows rather than requiring them to adopt new ones. To that end, we strongly recommend that you follow these guidelines when building extensions. We will be reviewing and approving your Marketplace publication based on these requirements.
 

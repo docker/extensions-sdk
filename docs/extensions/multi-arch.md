@@ -1,5 +1,5 @@
 ---
-title: Docker extension development multi-arch
+title: Building multi-arch extensions
 description: Docker extension multi-arch
 keywords: Docker, extensions, sdk, multi-arch
 ---

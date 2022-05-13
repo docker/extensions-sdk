@@ -1,10 +1,8 @@
 ---
-title: Extensions SDK documentation
+title: Introduction
 description: Overall index for Docker Extensions SDK documentation
 keywords: Docker, Extensions, sdk
 ---
-
-# Docker Extension SDK
 
 Use the resources in this section to create your own Docker Extension.
 

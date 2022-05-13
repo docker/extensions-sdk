@@ -4,8 +4,6 @@ description: Docker extension design
 keywords: Docker, extensions, design
 ---
 
-# UI styling overview
-
 Our Design System is a constantly evolving set of specifications that aim to ensure visual consistency across Docker products, and meet [level AA accessibility standards](https://www.w3.org/WAI/WCAG2AA-Conformance). We've opened parts of it to extension authors, documenting basic styles (color, typography) and components. See: [Docker Extensions Styleguide](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771).
 
 We require extensions to match the wider Docker Desktop UI to a certain degree, and reserve the right to make this stricter in the future.

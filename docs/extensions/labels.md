@@ -1,10 +1,8 @@
 ---
-title: Docker extension development labels
+title: Extension image labels
 description: Docker extension labels
 keywords: Docker, extensions, sdk, labels
 ---
-
-# Extension image labels
 
 [Labels](https://docs.docker.com/engine/reference/builder/#label) are specified in the extension's `Dockerfile` and used to provide information about the extension.
 

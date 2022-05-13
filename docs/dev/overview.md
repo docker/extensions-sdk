@@ -1,10 +1,8 @@
 ---
-title: Docker extension development
+title: Overview
 description: Docker extension development
 keywords: Docker, extensions, sdk, development
 ---
-
-## Develop Docker extensions
 
 The section below describes how to get started developing your custom Docker extension.
 

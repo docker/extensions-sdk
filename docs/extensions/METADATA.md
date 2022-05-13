@@ -1,10 +1,8 @@
 ---
-title: Docker extension development metadata
+title: Extension metadata
 description: Docker extension metadata
 keywords: Docker, extensions, sdk, metadata
 ---
-
-# Extension metadata
 
 The image for a Docker extension must include a `metadata.json` file at the root of its filesystem. It describes the content of the extension that must be installed to make it work in Docker Desktop.
 

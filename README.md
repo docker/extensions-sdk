@@ -22,7 +22,7 @@ Desktop Extensions are packaged and distributed as Docker images.
 Development of extensions can be done locally without the need to push the extension to Docker Hub.
 This is described in [Extension Distribution](docs/extensions/DISTRIBUTION.md).
 
-The extension image must have some specific content, described [here](docs/extensions/METADATA.md)
+The extension image must have some specific content as described in [Extension Metadata](docs/extensions/METADATA.md).
 
 ## Developing Docker Extensions
 

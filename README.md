@@ -14,6 +14,7 @@ See [prerequisites](docs/index.md#prerequisites).
 
 - [Create a minimal frontend extension](docs/tutorials/minimal-frontend-extension.md) - a minimal Desktop Extension containing only a UI part based on HTML.
 - [Create a minimal backend extension](docs/tutorials/minimal-backend-extension.md) - a Desktop Extension containing a UI part connecting to a minimal backend.
+- [Create a minimal Docker CLI extension](docs/tutorials/minimal-frontend-using-docker-cli.md) - a minimal Desktop Extension containing only a UI part that invokes Docker CLI commands.
 - [Create a ReactJS-based extension](docs/tutorials/react-extension.md) - a minimal Desktop Extension containing only a UI part based on ReactJS.
 
 ## Docker Extension Model

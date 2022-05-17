@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/*"
+  to = "https://docs.docker.com/desktop/extensions-sdk"
+  status = 301
+  force = true # COMMENT: ensure that we always redirect

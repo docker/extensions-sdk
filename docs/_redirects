@@ -1,0 +1,5 @@
+# Redirects from what the browser requests to what we serve
+
+# See https://docs.netlify.com/routing/redirects/
+
+/ https://docs.docker.com/desktop/extensions-sdk/

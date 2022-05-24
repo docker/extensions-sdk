@@ -13,6 +13,10 @@ Learn how to create a new Docker extension.
 - [NodeJS](https://nodejs.org)
 - [Go](https://go.dev/dl/)
 
+> Note
+>
+> NodeJS and Go are only required if an extension is created using the `docker extension init` command. This command uses a template based on a ReactJS and Go application.
+
 ## Create a new extension
 
 To create a new extension, use the `init` subcommand and provide a name for your extension.

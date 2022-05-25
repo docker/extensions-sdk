@@ -1,14 +1,15 @@
 {
+  "icon": "docker.svg",
   "vm": {
     "composefile": "docker-compose.yaml",
-    "exposes": { "socket": "plugin-volumes.sock" }
+    "exposes": { "socket": "extension-volumes.sock" }
   },
   "ui": {
     "dashboard-tab": {
       "title": "Volumes",
-      "root": "/plugin-ui",
+      "root": "/ui",
       "src": "index.html",
-      "backend": { "socket": "plugin-volumes.sock" }
+      "backend": { "socket": "extension-volumes.sock" }
     }
   }
 }

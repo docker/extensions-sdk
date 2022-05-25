@@ -1,18 +1,14 @@
-IMAGE?=desktop-react-extension
+EXTENSION:=
+ifeq ($(OS),Windows_NT)
+  EXTENSION:=.exe
+endif
+
+IMAGE?=docker/vm-service-extension
 TAG?=latest
-
 BUILDER=buildx-multi-arch
-
-STATIC_FLAGS=CGO_ENABLED=0
-LDFLAGS="-s -w"
-GO_BUILD=$(STATIC_FLAGS) go build -trimpath -ldflags=$(LDFLAGS)
 
 INFO_COLOR = \033[0;36m
 NO_COLOR   = \033[m
-
-bin: ## Build the binary for the current platform
-	@echo "$(INFO_COLOR)Building...$(NO_COLOR)"
-	$(GO_BUILD) -o bin/service ./vm
 
 build-extension: ## Build service image to be deployed as a desktop extension
 	docker build --tag=$(IMAGE):$(TAG) .

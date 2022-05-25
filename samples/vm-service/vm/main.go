@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/sirupsen/logrus"
 
-	"github.com/docker/desktop-plugin-sample/internal/socket"
+	"github.com/docker/vm-service-extension/internal/socket"
 )
 
 var volumesRoot = flag.String("volumesRoot", "/var/lib/docker/volumes", "Root folder for volumes")

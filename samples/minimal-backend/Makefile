@@ -1,4 +1,4 @@
-IMAGE?=docker/desktop-minimal-backend-extension
+IMAGE?=docker/minimal-backend-extension
 TAG?=latest
 
 BUILDER=buildx-multi-arch

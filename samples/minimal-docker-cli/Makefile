@@ -3,16 +3,8 @@ TAG?=latest
 
 BUILDER=buildx-multi-arch
 
-STATIC_FLAGS=CGO_ENABLED=0
-LDFLAGS="-s -w"
-GO_BUILD=$(STATIC_FLAGS) go build -trimpath -ldflags=$(LDFLAGS)
-
 INFO_COLOR = \033[0;36m
 NO_COLOR   = \033[m
-
-bin: ## Build the binary for the current platform
-	@echo "$(INFO_COLOR)Building...$(NO_COLOR)"
-	$(GO_BUILD) -o bin/service ./vm
 
 build-extension: ## Build service image to be deployed as a desktop extension
 	docker build --tag=$(IMAGE):$(TAG) .
@@ -33,4 +25,4 @@ help: ## Show this help
 	@echo Please specify a build target. The choices are:
 	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "$(INFO_COLOR)%-30s$(NO_COLOR) %s\n", $$1, $$2}'
 
-.PHONY: bin extension push-extension help
+.PHONY: extension push-extension help

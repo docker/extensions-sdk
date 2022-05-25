@@ -1,4 +1,4 @@
-module github.com/docker/desktop-plugin-sample
+module github.com/docker/vm-service-extension
 
 go 1.17
 

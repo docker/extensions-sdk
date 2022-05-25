@@ -12,7 +12,7 @@ If you intend to develop an extension which consists exclusively of a visual par
 
 If your extension needs to invoke docker commands, see the [Docker cli extension](../tutorials/minimal-frontend-using-docker-cli.md) tutorial.
 
-If your extension requires additional services running in the Docker Desktop VM, see the [VM UI](https://github.com/docker/extensions-sdk/tree/main/samples/vm-ui-plugin) example.
+If your extension requires additional services running in the Docker Desktop VM, see the [VM UI](https://github.com/docker/extensions-sdk/tree/main/samples/vm-service) example.
 
 For further inspiration, see the other examples in the [samples folder](https://github.com/docker/extensions-sdk/tree/main/samples)
 

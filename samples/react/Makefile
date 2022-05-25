@@ -1,4 +1,4 @@
-IMAGE?=docker/minimal-frontend-extension
+IMAGE?=docker/react-extension
 TAG?=latest
 
 BUILDER=buildx-multi-arch

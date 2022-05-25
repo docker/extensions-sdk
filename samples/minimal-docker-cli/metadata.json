@@ -1,7 +1,7 @@
 {
   "ui": {
     "dashboard-tab": {
-      "title": "Docker VM info",
+      "title": "Minimal Docker CLI",
       "root": "/ui",
       "src": "index.html"
     }

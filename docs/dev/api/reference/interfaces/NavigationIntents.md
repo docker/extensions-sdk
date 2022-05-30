@@ -39,7 +39,7 @@ keywords: Docker, extensions, sdk, API, reference
 Navigate to the containers window in Docker Desktop.
 
 ```typescript
-ddClient.desktopUI.navigation.viewContainers()
+ddClient.desktopUI.navigate.viewContainers()
 ```
 
 #### Returns
@@ -55,7 +55,7 @@ ___
 Navigate to the container window in Docker Desktop.
 
 ```typescript
-await ddClient.desktopUI.navigation.viewContainer(id)
+await ddClient.desktopUI.navigate.viewContainer(id)
 ```
 
 #### Parameters
@@ -79,7 +79,7 @@ ___
 Navigate to the container logs window in Docker Desktop.
 
 ```typescript
-await ddClient.desktopUI.navigation.viewContainerLogs(id)
+await ddClient.desktopUI.navigate.viewContainerLogs(id)
 ```
 
 #### Parameters
@@ -103,7 +103,7 @@ ___
 Navigate to the container inspect window in Docker Desktop.
 
 ```typescript
-await ddClient.desktopUI.navigation.viewContainerInspect(id)
+await ddClient.desktopUI.navigate.viewContainerInspect(id)
 ```
 
 #### Parameters
@@ -127,7 +127,7 @@ ___
 Navigate to the container stats to see the CPU, memory, disk read/write and network I/O usage.
 
 ```typescript
-await ddClient.desktopUI.navigation.viewContainerStats(id)
+await ddClient.desktopUI.navigate.viewContainerStats(id)
 ```
 
 #### Parameters
@@ -153,7 +153,7 @@ ___
 Navigate to the images window in Docker Desktop.
 
 ```typescript
-await ddClient.desktopUI.navigation.viewImages()
+await ddClient.desktopUI.navigate.viewImages()
 ```
 
 #### Returns
@@ -170,7 +170,7 @@ Navigate to a specific image referenced by `id` and `tag` in Docker Desktop.
 In this navigation route you can find the image layers, commands, created time and size.
 
 ```typescript
-await ddClient.desktopUI.navigation.viewImage(id, tag)
+await ddClient.desktopUI.navigate.viewImage(id, tag)
 ```
 
 #### Parameters
@@ -197,7 +197,7 @@ ___
 Navigate to the Dev Environments window in Docker Desktop.
 
 ```typescript
-ddClient.desktopUI.navigation.viewDevEnvironments()
+ddClient.desktopUI.navigate.viewDevEnvironments()
 ```
 
 #### Returns
@@ -215,7 +215,7 @@ ___
 Navigate to the volumes window in Docker Desktop.
 
 ```typescript
-ddClient.desktopUI.navigation.viewVolumes()
+ddClient.desktopUI.navigate.viewVolumes()
 ```
 
 #### Returns
@@ -231,7 +231,7 @@ ___
 Navigate to a specific volume in Docker Desktop.
 
 ```typescript
-await ddClient.desktopUI.navigation.viewVolume(volume)
+await ddClient.desktopUI.navigate.viewVolume(volume)
 ```
 
 #### Parameters

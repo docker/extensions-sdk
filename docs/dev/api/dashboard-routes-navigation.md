@@ -4,12 +4,12 @@ description: Docker extension API
 keywords: Docker, extensions, sdk, API
 ---
 
-`ddClient.desktopUI.navigation` enables navigation to specific screens of Docker Desktop such as the containers tab, the images tab, or a specific container's logs.
+`ddClient.desktopUI.navigate` enables navigation to specific screens of Docker Desktop such as the containers tab, the images tab, or a specific container's logs.
 
 For example, navigate to a given container logs:
 
 ```typescript
-await ddClient.desktopUI.navigation.viewContainerLogs(id);
+await ddClient.desktopUI.navigate.viewContainerLogs(id);
 ```
 
 #### Parameters

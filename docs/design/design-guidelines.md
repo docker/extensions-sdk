@@ -7,7 +7,7 @@ keywords: Docker, extensions, design
 At Docker, we aim to build tools that integrate into a user's existing workflows rather than requiring them to adopt new ones. To that end, we strongly recommend that you follow these guidelines when building extensions. We will be reviewing and approving your Marketplace publication based on these requirements.
 
 Here is a simple checklist to go through when building your extension:
-- Is it easy to get started ?
+- Is it easy to get started?
 - Is it easy to use?
 - Is it easy to get help when needed?
 

@@ -13,7 +13,7 @@ The `docker extension` commands are carried out by the Extension CLI which is a 
 To build the extension, run:
 
 ```console
-$ make extension
+$ make build-extension
 # or docker build -t my-extension .
 ```
 

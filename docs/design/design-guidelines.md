@@ -6,41 +6,55 @@ keywords: Docker, extensions, design
 
 At Docker, we aim to build tools that integrate into a user's existing workflows rather than requiring them to adopt new ones. To that end, we strongly recommend that you follow these guidelines when building extensions. We will be reviewing and approving your Marketplace publication based on these requirements.
 
+Here is a simple checklist to go through when building your extension:
+- Is it easy to get started ?
+- Is it easy to use?
+- Is it easy to get help when needed?
+
+
 ## Build a consistent experience with Docker Desktop.
 
 Use the [Docker Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) and the [Docker Extensions Styleguide](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771) to ensure that your extension feels like it is part of Docker Desktop to create a seamless experience for users.
 
 - Ensure the extension has both a light and dark theme. Using the components and styles as per the Docker style guide ensures that your extension meets the [level AA accessibility standard.](https://www.w3.org/WAI/WCAG2AA-Conformance)
 
-![light and dark mode](./images/light_dark_mode.png){:height="75%" width="75%"}
+![light and dark mode](./images/light_dark_mode.png)
+<br>
 
 - Ensure that your extension icon is visible both in light and dark mode.
 
 ![icon colors](./images/icon_colors.png)
+<br> 
 
 - Ensure that the navigational behaviour is consistent with the rest of Docker Desktop. Add a header to set the context for the extension.
 
-![header](./images/header.png){:height="75%" width="75%"}
+![header](./images/header.png)
+<br> 
 
 - The advantage we have with Docker Desktop over the CLI is that we have the opportunity to provide rich information to users. Make use of this interface as much as possible. Avoid embedding terminal windows.
 
-![terminal window](./images/terminal_window.png){:height="100%" width="100%"}
+![terminal window dont](./images/terminal_window_dont.png){:height="=50%" width="50%"}
+
+![terminal window do](./images/terminal_window_do.png)
 
 ## Build Features Natively
 
 - In order not to disrupt the flow of users, avoid scenarios where the user has to navigate outside Docker Desktop, to the CLI or a webpage for example, in order to carry out certain functionalities. Instead, build features that are native to Docker Desktop.
 
-![switch context](./images/switch_context.png){:height="100%" width="100%"}
+![switch context dont](./images/switch_context_dont.png){:height="=50%" width="50%"}
+
+![switch context do](./images/switch_context_do.png)
 
 ## Break Down Complicated User Flows
 
 - If a flow is too complicated or the concept is abstract, break down the flow into multiple steps with one simple call-to-action in each step. This helps when onboarding novice users to your extension
 
-![complicated flow](./images/complicated_flows.png){:height="75%" width="75%"}
+![complicated flow](./images/complicated_flows.png)
+<br> 
 
 - Where there are multiple call-to-actions, ensure you use the primary (filled button style) and secondary buttons (outline button style) to convey the importance of each action.
 
-![call to action](./images/cta.png){:height="75%" width="75%"}
+![call to action](./images/cta.png)
 
 ## Onboarding New Users
 

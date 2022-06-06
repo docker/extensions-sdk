@@ -6,7 +6,19 @@ keywords: Docker, extensions, sdk, OAuth 2.0
 
 You may need users to authenticate from your Docker Extension using OAuth 2.0 via the web browser, and return them back into the Docker Extension.
 
-## Flow description
+> ** Note **
+>
+> This page assumes that you already have an identity provider (IdP) which handles the authentication process and returns an access token, like Google, Azure AD or Okta, among many others.
+
+## Introduction
+
+In OAuth 2.0, the term "grant type" refers to the way an application gets an access token. Although OAuth 2.0 defines several grant types, this page will only describe how to authorize users from your Docker Extension using the Authorization Code grant type.
+
+## Authorization Code Grant Flow
+
+The Authorization Code grant type is used by confidential and public clients to exchange an authorization code for an access token.
+
+After the user returns to the client via the redirect URL, the application will get the authorization code from the URL and use it to request an access token.
 
 ![oauth2-flow](./images/oauth2-flow.png){: style=width:80% }
 
@@ -43,20 +55,22 @@ window.ddClient.openExternal("https://authorization-server.com/authorize?
 
 > **Passing the access token**
 >
-> At the moment of this writing, passing the access token as a query parameter to the `docker-desktop://dashboard/open` URL is not supported.
+> At the moment of this writing, passing the authorization code as a query parameter to the `docker-desktop://dashboard/open` URL is not supported.
 > {: .warning}
 
-You will not be able to get the access token from the extension UI by listing `docker-desktop://dashboard/open` as the `redirect_uri` in the OAuth app you're using and concatenating the access token as a query parameter.
+You will not be able to get the authorization code from the extension UI by listing `docker-desktop://dashboard/open` as the `redirect_uri` in the OAuth app you're using and concatenating the authorization code as a query parameter.
 
-See [from backend service](#from-a-backend-service).
+See [from backend service](#from-a-backend-service) instead.
 
 ### From a backend service
 
 You will need a backend service running as part of your extension that handles the OAuth 2.0 flow. For this, you must ensure the Redirect URI has been registered with the API provider to redirect to that location after OAuth had completed, e.g. `http://localhost:8080/callback`.
 
+The default communication is socket-based, so the backend service will actually need to expose the port in order for the browser to connect to it.
+
 #### Authorization
 
-This is the step where the user enters its credentials in the browser. Once the user has been authorized successfully, he will be redirected back to your backend service, and you'll consume the authorization code that is part of the query parameters in the URL.
+This is the step where the user enters its credentials in the browser. After the authorization is completed successfully, the user will be redirected back to your backend service, and you'll consume the authorization code that is part of the query parameters in the URL.
 
 How you will consume the query parameters will depend on the technology that is used by the backend service.
 
@@ -83,3 +97,14 @@ grant_type=authorization_code
 #### Token Endpoint Response
 
 Finally, you can read the access token from the HTTP response and pass it to the extension UI by having the browser after OAuth be redirected to the backend service. The backend service, in turn, will have to explicitly redirect the browser to `docker-desktop://dashboard/open`.
+
+## Store the access token
+
+At the time of this writing, the Docker Extensions SDK does not provide a mechanism to safely store secrets.
+
+Therefore, it is highly recommended to use an external source of storage to store the access token.
+
+> ** Warning **
+>
+> Storing the access token in the client's localStorage would be a security risk as that storage is currently shared amongst all extensions.
+> {: .warning}

@@ -53,6 +53,7 @@ nav:
       - Validation: extensions/validation.md
       - Distribution: extensions/DISTRIBUTION.md
       - Building multi-arch extensions: extensions/multi-arch.md
+      - OAuth 2.0 flow: extensions/oauth2-flow.md
   - Developer guide:
       - Overview: dev/overview.md
       - CLI:

@@ -4,7 +4,7 @@ description: Guidelines for using MUI to maximise compatibility with Docker Desk
 keywords: Docker, extensions, mui, theme, theming, material-ui, material
 ---
 
-This article assumes you're following our recommended practice by using our [MUI theme](https://www.npmjs.com/package/@docker/docker-mui-theme). Following the steps below maximises compatibility with Docker Desktop and minimises the work you need to do as an extension author. They should be considered supplementary to the non-MUI-specific guidelines found in the [UI Styling overview](overview.md).
+This article assumes you're following our recommended practice by using our [Material UI theme](https://www.npmjs.com/package/@docker/docker-mui-theme). Following the steps below maximises compatibility with Docker Desktop and minimises the work you need to do as an extension author. They should be considered supplementary to the non-MUI-specific guidelines found in the [UI Styling overview](overview.md).
 
 ## Assume the theme can change at any time
 
@@ -39,4 +39,4 @@ If you still decide to build it yourself after contacting us, try and define the
 -  A MUI mixin (a freeform bundle of reuseable styling rules defined inside a theme)
 -  A new [reuseable component](https://mui.com/material-ui/customization/how-to-customize/#2-reusable-component)
 
-Some of the above options require you to extend our MUI theme. See the MUI documentation on [theme composition](https://mui.com/system/styles/advanced/#theme-nesting)
+Some of the above options require you to extend our MUI theme. See the MUI documentation on [theme composition](https://mui.com/material-ui/customization/theming/#nesting-the-theme).

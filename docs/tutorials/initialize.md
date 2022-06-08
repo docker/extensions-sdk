@@ -118,7 +118,7 @@ You can now tell
 Docker Desktop to use this as the frontend source. In another terminal run:
 
 ```bash
-docker extension dev ui-source my-extension http://localhost:3000
+docker extension dev ui-source john/my-extension http://localhost:3000
 ```
 
 Close and reopen the Docker Desktop dashboard and go to your extension. All the
@@ -127,7 +127,7 @@ changes to the frontend code are immediately visible.
 Once you're done you can remove the ui-source override:
 
 ```bash
-docker extension dev reset my-extension
+docker extension dev reset john/my-extension
 ```
 
 ## Submit your extension to the marketplace
@@ -139,16 +139,16 @@ If you want to make your extension available to all Docker Desktop users, you ca
 To remove the extension, run:
 
 ```bash
-docker extension rm my-extension
+docker extension rm john/my-extension
 ```
 
 The following output displays:
 
 ```bash
-Removing extension my-extension...
+Removing extension john/my-extension...
 Removing extension VM service...
 Extension removed from Desktop VM
 VM service socket forwarding stopped
 Extension UI tab My-Extension removed
-Extension "my-extension" removed
+Extension "john/my-extension" removed
 ```

@@ -1,6 +1,6 @@
 # Docker Extensions
 
-This repository includes all resources to create Docker Extensions.
+This repository includes the Extensions CLI and samples to create Docker Extensions.
 
 :warning: **Docker Extensions SDK is currently in Beta. Features and APIs are subject to change**
 
@@ -16,6 +16,12 @@ See [prerequisites](docs/index.md#prerequisites).
 - [Create a minimal backend extension](docs/tutorials/minimal-backend-extension.md) - a Desktop Extension containing a UI part connecting to a minimal backend.
 - [Create a minimal Docker CLI extension](docs/tutorials/minimal-frontend-using-docker-cli.md) - a minimal Desktop Extension containing only a UI part that invokes Docker CLI commands.
 - [Create a ReactJS-based extension](docs/tutorials/react-extension.md) - a minimal Desktop Extension containing only a UI part based on ReactJS.
+
+## Extensions SDK documentation
+
+Documentation about the Extensions SDK and creating your own extensions can be found [here](https://docs.docker.com/desktop/extensions-sdk/).
+
+[Contributions](https://github.com/docker/docker.github.io/blob/master/CONTRIBUTING.md) are welcome to update/improve documentation content (see extensions SDK under [desktop/extensions-sdk folder](https://github.com/docker/docker.github.io/tree/master/desktop/extensions-sdk))
 
 ## Docker Extension Model
 

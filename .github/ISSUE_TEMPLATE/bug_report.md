@@ -1,10 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
+title: ""
 labels: bug
-assignees: ''
-
+title: ""
 ---
 
 <!--
@@ -19,6 +18,7 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
+
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
@@ -37,6 +37,22 @@ If applicable, add screenshots to help explain your problem.
 ```
 
 **Output of `docker version`:**
+
+```
+(paste your output here)
+```
+
+**Diagnostics ID**
+
+<!--
+If you think the issue you are reporting is not only related to the Extension SDK itself but also affects the normal operations of Docker Desktop (e.g. Docker Desktop fails to start, Docker Extensions are not loaded in the Marketplace, etc.), consider to upload your diagnostics ID.
+
+See one of the links below for how to generate a diagnostics ID either from inside the app or from the command line:
+
+- Windows: https://docs.docker.com/desktop/windows/troubleshoot/#in-app-diagnostics
+- MacOS: https://docs.docker.com/desktop/mac/troubleshoot/#diagnose-and-feedback
+- Linux: https://docs.docker.com/desktop/linux/troubleshoot/#in-app-diagnostics
+-->
 
 ```
 (paste your output here)

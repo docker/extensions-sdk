@@ -8,8 +8,8 @@ title: ""
 
 <!--
 If you are reporting a new issue, make sure that we do not have any duplicates
-already open. You can ensure this by searching the issue list for this
-repository. If there is a duplicate, please close your issue and add a comment
+already open by searching the issue list for this
+repository. If there is a duplicate, close your issue and add a comment
 to the existing issue instead.
 -->
 
@@ -24,10 +24,10 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
-**Expected behavior**
+**Describe the expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+**Optional: Add screenshots**
 If applicable, add screenshots to help explain your problem.
 
 **Output of `docker extension version`:**
@@ -42,7 +42,7 @@ If applicable, add screenshots to help explain your problem.
 (paste your output here)
 ```
 
-**Diagnostics ID**
+**Include the Diagnostics ID**
 
 <!--
 If you think the issue you are reporting is not only related to the Extension SDK itself but also affects the normal operations of Docker Desktop (e.g. Docker Desktop fails to start, Docker Extensions are not loaded in the Marketplace, etc.), consider to upload your diagnostics ID.

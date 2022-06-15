@@ -16,7 +16,7 @@ to the existing issue instead.
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-**To Reproduce**
+**Add the steps to reproduce**
 Steps to reproduce the behavior:
 
 1. Go to '...'

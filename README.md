@@ -8,14 +8,14 @@ This repository includes the Extensions CLI and samples to create Docker Extensi
 
 To get started with Docker Extensions you will need a specific Docker Desktop build that comes with extension capabilities and the Extensions CLI.
 
-See [prerequisites](docs/index.md#prerequisites).
+See [prerequisites](https://docs.docker.com/desktop/extensions-sdk/build/get-started/#prerequisites).
 
 ## Tutorials
 
-- [Create a minimal frontend extension](docs/tutorials/minimal-frontend-extension.md) - a minimal Desktop Extension containing only a UI part based on HTML.
-- [Create a minimal backend extension](docs/tutorials/minimal-backend-extension.md) - a Desktop Extension containing a UI part connecting to a minimal backend.
-- [Create a minimal Docker CLI extension](docs/tutorials/minimal-frontend-using-docker-cli.md) - a minimal Desktop Extension containing only a UI part that invokes Docker CLI commands.
-- [Create a ReactJS-based extension](docs/tutorials/react-extension.md) - a minimal Desktop Extension containing only a UI part based on ReactJS.
+- [Create a minimal frontend extension](https://docs.docker.com/desktop/extensions-sdk/build/set-up/minimal-frontend-extension/) - a minimal Desktop Extension containing only a UI part based on HTML.
+- [Create a minimal backend extension](https://docs.docker.com/desktop/extensions-sdk/build/set-up/minimal-backend-extension/) - a Desktop Extension containing a UI part connecting to a minimal backend.
+- [Create a minimal Docker CLI extension](https://docs.docker.com/desktop/extensions-sdk/build/set-up/minimal-frontend-using-docker-cli/) - a minimal Desktop Extension containing only a UI part that invokes Docker CLI commands.
+- [Create a ReactJS-based extension](https://docs.docker.com/desktop/extensions-sdk/build/set-up/react-extension/) - a minimal Desktop Extension containing only a UI part based on ReactJS.
 
 ## Extensions SDK documentation
 
@@ -27,20 +27,20 @@ Documentation about the Extensions SDK and creating your own extensions can be f
 
 Desktop Extensions are packaged and distributed as Docker images.
 Development of extensions can be done locally without the need to push the extension to Docker Hub.
-This is described in [Extension Distribution](docs/extensions/DISTRIBUTION.md).
+This is described in [Extension Distribution](https://docs.docker.com/desktop/extensions-sdk/extensions/DISTRIBUTION/).
 
-The extension image must have some specific content as described in [Extension Metadata](docs/extensions/METADATA.md).
+The extension image must have some specific content as described in [Extension Metadata](https://docs.docker.com/desktop/extensions-sdk/extensions/METADATA/).
 
 ## Developing Docker Extensions
 
-The [Extensions CLI](docs/dev/cli/usage.md) is an extension development tool that can be used to manage Docker extensions.
+The [Extensions CLI](https://docs.docker.com/desktop/extensions-sdk/dev/usage/) is an extension development tool that can be used to manage Docker extensions.
 
 This repository contains multiple extensions, each one is defined in an individual directories at the root of the repository.
 These are Docker developed samples that are not meant to be final products.
 
-To try one of them, navigate to the directory of the extension then [use the CLI to build and install the extension](docs/dev/cli/build-test-install-extension.md) on Docker Desktop.
+To try one of them, navigate to the directory of the extension then [use the CLI to build and install the extension](https://docs.docker.com/desktop/extensions-sdk/build/build-install/) on Docker Desktop.
 
-The [overview](docs/dev/overview.md) describes how to get started developing your custom Docker Extension. It also covers how to open the Chrome Dev Tools and show the extension containers.
+The [Quickstart guide](https://docs.docker.com/desktop/extensions-sdk/quickstart/) describes how to get started developing your custom Docker Extension. It also covers how to open the Chrome Dev Tools and show the extension containers.
 
 The extension UI has access to an extension API to invoke backend operations from the UI, e.g. listing running containers, images, etc.
 Furthermore, you can communicate with your extension backend service or invoke a binary on the host or in the VM.
@@ -49,4 +49,4 @@ Furthermore, you can communicate with your extension backend service or invoke a
 
 We are currently in the process of developing our design system but in the meantime, here are some [UI guidelines](https://www.figma.com/file/U7pLWfEf6IQKUHLhdateBI/Docker-Design-Guidelines?node-id=1%3A28771). Docker Desktop's UI is written in React and [Material UI](https://mui.com/), and we strongly recommend adopting this combination in your extensions as well. This brings the benefit of using our [Material UI Theme](https://www.npmjs.com/package/@docker/docker-mui-theme) to easily replicate Docker Desktop's look & feel, and we'll continue to release libraries and utilities targeting this combination.
 
-You can read more about our design principles [here](/docs/design/design-principles.md).
+You can read more about our design guidelines [here](https://docs.docker.com/desktop/extensions-sdk/design/design-guidelines/).

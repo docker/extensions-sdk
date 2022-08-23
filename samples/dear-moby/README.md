@@ -1,5 +1,9 @@
 # Dear Moby Extension
 
+![A screenshot of the Dear Moby Extension](/dear-moby/screenshots/dearmobyextension.png)
+
+Dear Moby is our [Youtube show](https://www.youtube.com/playlist?list=PLkA60AVN3hh_aBXzjqu13dupUV1JdFnjI) where Kat and [Shy](https://twitter.com/shyruparel) answer technical questions that are submitted by our Docker Community members. This extension takes those youtube episodes enables you to watch them from inside Docker Desktop.
+
 ## How to install
 
 ### i. Using GitHub

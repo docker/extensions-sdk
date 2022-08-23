@@ -1,0 +1,11 @@
+{
+  "icon": "docker.svg",
+
+  "ui": {
+    "dashboard-tab": {
+      "title": "Dear Moby",
+      "root": "/ui",
+      "src": "index.html"
+    }
+  }
+}

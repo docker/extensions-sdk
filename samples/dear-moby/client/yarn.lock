@@ -7326,7 +7326,7 @@
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
 
-"react-dom@^17.0.0", "react-dom@^17.0.2", "react-dom@>=16.6.0":
+"react-dom@^17.0.0", "react-dom@^17.0.2", "react-dom@>=16.0.8", "react-dom@>=16.6.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -7354,6 +7354,11 @@
   "integrity" "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
+
+"react-lite-youtube-embed@^2.3.1":
+  "integrity" "sha512-14YlE6iZPHwqaQqSmwfI614qumdVAICU9PFmk34vcGnOfiixFjaATGkOfUd2TA6pFpVMP8DT2/l9ebu5/aKeag=="
+  "resolved" "https://registry.npmjs.org/react-lite-youtube-embed/-/react-lite-youtube-embed-2.3.1.tgz"
+  "version" "2.3.1"
 
 "react-refresh@^0.11.0", "react-refresh@>=0.10.0 <1.0.0":
   "integrity" "sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A=="
@@ -7434,7 +7439,7 @@
     "prop-types" "15.8.1"
     "youtube-player" "5.5.2"
 
-"react@^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=0.14.1", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
+"react@^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=0.14.1", "react@>=16.0.8", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

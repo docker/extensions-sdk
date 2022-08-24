@@ -1,16 +1,32 @@
 import {
   Grid,
   Typography,
+  CardActionArea,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogContentText,
   Box,
   Card,
   CardContent,
   CardMedia,
 } from '@mui/material';
 import { createDockerDesktopClient } from '@docker/extension-api-client';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { useState, useEffect } from 'react';
 
 export function App() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = (videoID) => {
+    setdialogVideo(videoID);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setdialogVideo([null, null]);
+    setOpen(false);
+  };
+  const [dialogVideo, setdialogVideo] = useState([null, null]);
   const ddClient = createDockerDesktopClient();
   let [dearMobyPlaylist, setdearMobyPlaylist] = useState(null);
   const playlistURL =
@@ -68,32 +84,37 @@ export function App() {
       </Box>
       <Grid container spacing={2} alignItems="center" justifyContent="center">
         {dearMobyPlaylist &&
-          dearMobyPlaylist.reverse().map((item) => (
-            <Grid item>
+          dearMobyPlaylist.reverse().map((item, key) => (
+            <Grid item key={key}>
               <Card sx={{ maxWidth: item.snippet.thumbnails.maxres.width / 3 }}>
-                <CardMedia
-                  component="video"
-                  height={item.snippet.thumbnails.maxres.height / 3}
-                  src={
-                    'https://www.youtube.com/embed/' +
-                    item.contentDetails.videoId
+                <CardActionArea
+                  onClick={() =>
+                    handleOpen([
+                      item.snippet.title,
+                      item.contentDetails.videoId,
+                    ])
                   }
-                  alt={'Video titled: ' + item.snippet.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {item.snippet.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.snippet.description.substring(0, 199)}
-                  </Typography>
-                </CardContent>
+                >
+                  <CardMedia
+                    component="img"
+                    height={item.snippet.thumbnails.maxres.height / 3}
+                    src={item.snippet.thumbnails.maxres.url}
+                    alt={'Video titled: ' + item.snippet.title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {item.snippet.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {item.snippet.description.substring(0, 199)}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Card>
             </Grid>
           ))}
       </Grid>
       <Box>
-        href="/"
         <Button
           variant="contained"
           href="#"
@@ -106,6 +127,12 @@ export function App() {
           Submit your questions here!{' '}
         </Button>
       </Box>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>{dialogVideo[0]}</DialogTitle>
+        <DialogContentText id="alert-dialog-description">
+          <LiteYouTubeEmbed id={dialogVideo[1]} title={dialogVideo[0]} />
+        </DialogContentText>
+      </Dialog>
     </div>
   );
 }

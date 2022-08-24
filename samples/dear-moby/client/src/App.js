@@ -5,7 +5,7 @@ import {
   Button,
   Dialog,
   DialogTitle,
-  DialogContentText,
+  DialogContent,
   Box,
   Card,
   CardContent,
@@ -15,7 +15,6 @@ import { createDockerDesktopClient } from '@docker/extension-api-client';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { useState, useEffect } from 'react';
-
 export function App() {
   const [open, setOpen] = useState(false);
   const handleOpen = (videoID) => {
@@ -44,95 +43,140 @@ export function App() {
 
   return (
     <div>
-      <Box sx={{ width: '100%' }}>
-        <Typography variant="h3" gutterBottom>
-          Dear Moby
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Born in 2013 and beloved ocean wide, Moby Dock is known for helping
-          simplify app development through normalizing and spreading the word
-          about the power of software containerization with the help of his
-          community of friends (read: the Mobyverse). Moby has accrued a
-          “whaleth” of knowledge over the years, and as it turns out, can’t wait
-          to share his advice and best practices with you — the Docker
-          community.
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Which is where you come in…Introducing our new developer advice
-          column, Dear Moby, the advice column made exclusively for developers.
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          So, how does it work?
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          All you have to do is submit your most pressing technical questions
-          and queries, gather a swarm (or school) of your friends (over krill
-          perhaps?), and tune in for some truly nautically-inspired advice.
-          Examples queries include: questions related to Docker, app
-          development, containerization, engineering, and the like.
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          You’re “whalecome” to include softer clam shell questions in your
-          submission, but Moby may or may not answer because first and foremost,
-          he wants to help developers achieve their goals.
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Chosen submissions will be featured in each installment of the column
-          (and will receive some Moby-approved gear). Check out our past
-          episodes below!
-        </Typography>
-      </Box>
-      <Grid container spacing={2} alignItems="center" justifyContent="center">
-        {dearMobyPlaylist &&
-          dearMobyPlaylist.reverse().map((item, key) => (
-            <Grid item key={key}>
-              <Card sx={{ maxWidth: item.snippet.thumbnails.maxres.width / 3 }}>
-                <CardActionArea
-                  onClick={() =>
-                    handleOpen([
-                      item.snippet.title,
-                      item.contentDetails.videoId,
-                    ])
-                  }
-                >
-                  <CardMedia
-                    component="img"
-                    height={item.snippet.thumbnails.maxres.height / 3}
-                    src={item.snippet.thumbnails.maxres.url}
-                    alt={'Video titled: ' + item.snippet.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item.snippet.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {item.snippet.description.substring(0, 199)}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
-      </Grid>
-      <Box>
-        <Button
-          variant="contained"
-          href="#"
-          onClick={() => {
-            ddClient.host.openExternal(
-              'https://www.docker.com/dear-moby/submissions/',
-            );
+      <main>
+        <Box
+          style={{
+            width: '100%',
+            maxWidth: 1000,
+            marginLeft: 'auto',
+            marginRight: 'auto',
           }}
         >
-          Submit your questions here!{' '}
-        </Button>
-      </Box>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{dialogVideo[0]}</DialogTitle>
-        <DialogContentText id="alert-dialog-description">
-          <LiteYouTubeEmbed id={dialogVideo[1]} title={dialogVideo[0]} />
-        </DialogContentText>
-      </Dialog>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            Dear Moby
+          </Typography>
+          <Typography
+            variant="h6"
+            align="center"
+            color="textSecondary"
+            paragraph
+          >
+            Born in 2013 and beloved ocean wide, Moby Dock is known for helping
+            simplify app development through normalizing and spreading the word
+            about the power of software containerization with the help of his
+            community of friends (read: the Mobyverse). Moby has accrued a
+            “whaleth” of knowledge over the years, and as it turns out, can’t
+            wait to share his advice and best practices with you — the Docker
+            community.
+          </Typography>
+          <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+            paddingBottom="1em"
+          >
+            <Grid item>
+              <Button
+                variant="contained"
+                color="primary"
+                href="#"
+                onClick={() => {
+                  ddClient.host.openExternal(
+                    'https://www.docker.com/dear-moby/submissions/',
+                  );
+                }}
+              >
+                Submit a Question
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="outlined"
+                color="primary"
+                href="#"
+                onClick={() => {
+                  ddClient.host.openExternal(
+                    'https://www.docker.com/blog/category/dear-moby/',
+                  );
+                }}
+              >
+                View Dear Moby on the Docker Blog
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+        <Grid
+          container
+          spacing={2}
+          alignItems="center"
+          justifyContent="center"
+          style={{
+            width: '100%',
+            maxWidth: 1000,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }}
+        >
+          {dearMobyPlaylist &&
+            dearMobyPlaylist.reverse().map((item, key) => (
+              <Grid item key={key} sm={12} md={6} lg={4}>
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <CardActionArea
+                    onClick={() =>
+                      handleOpen([
+                        item.snippet.title,
+                        item.contentDetails.videoId,
+                      ])
+                    }
+                  >
+                    <CardMedia
+                      component="img"
+                      src={item.snippet.thumbnails.maxres.url}
+                      style={{}}
+                      alt={'Video titled: ' + item.snippet.title}
+                    />
+                    <CardContent style={{ flexgrow: 1 }}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {item.snippet.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.snippet.description.substring(0, 199)}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))}
+        </Grid>
+
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>{dialogVideo[0]}</DialogTitle>
+          <DialogContent id="alert-dialog-description">
+            <LiteYouTubeEmbed id={dialogVideo[1]} title={dialogVideo[0]} />
+          </DialogContent>
+        </Dialog>
+      </main>
+      <footer>
+        <Typography variant="h6" align="center" gutterBottom paddingTop="1em">
+          Footer
+        </Typography>
+        <Typography variant="subtitle1" align="center" color="textSecondary">
+          Something here to give the footer a purpose!
+        </Typography>
+      </footer>
     </div>
   );
 }

@@ -107,7 +107,7 @@ export function App() {
                   );
                 }}
               >
-                View Dear Moby on the Docker Blog
+                Read Dear Moby on Docker's Blog
               </Button>
             </Grid>
           </Grid>

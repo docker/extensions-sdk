@@ -25,7 +25,7 @@ LABEL org.opencontainers.image.title="Dear Moby" \
     com.docker.extension.additional-urls='[{"title":"SDK Documentation","url":"https://docs.docker.com/desktop/extensions-sdk"}]' \
     com.docker.extension.changelog="<ul><li>Initial Commit.</li></ul>"
 
-COPY docker.svg .
+COPY moby.svg .
 COPY metadata.json .
 COPY --from=client-builder /app/client/dist ui
 

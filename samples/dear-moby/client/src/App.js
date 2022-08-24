@@ -46,8 +46,8 @@ export function App() {
       <main>
         <Box
           style={{
-            width: '100%',
-            maxWidth: 1000,
+            width: '95%',
+            maxWidth: 1080,
             marginLeft: 'auto',
             marginRight: 'auto',
           }}
@@ -118,48 +118,51 @@ export function App() {
           alignItems="center"
           justifyContent="center"
           style={{
-            width: '100%',
-            maxWidth: 1000,
+            width: '95%',
+            maxWidth: 1080,
             marginLeft: 'auto',
             marginRight: 'auto',
           }}
         >
           {dearMobyPlaylist &&
-            dearMobyPlaylist.reverse().map((item, key) => (
-              <Grid item key={key} sm={12} md={6} lg={4}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <CardActionArea
-                    onClick={() =>
-                      handleOpen([
-                        item.snippet.title,
-                        item.contentDetails.videoId,
-                      ])
-                    }
+            dearMobyPlaylist
+              .slice(0)
+              .reverse()
+              .map((item, key) => (
+                <Grid item key={key} sm={12} md={6} lg={6} xl={4}>
+                  <Card
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
                   >
-                    <CardMedia
-                      component="img"
-                      src={item.snippet.thumbnails.maxres.url}
-                      style={{}}
-                      alt={'Video titled: ' + item.snippet.title}
-                    />
-                    <CardContent style={{ flexgrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {item.snippet.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.snippet.description.substring(0, 199)}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
+                    <CardActionArea
+                      onClick={() =>
+                        handleOpen([
+                          item.snippet.title,
+                          item.contentDetails.videoId,
+                        ])
+                      }
+                    >
+                      <CardMedia
+                        component="img"
+                        src={item.snippet.thumbnails.maxres.url}
+                        style={{}}
+                        alt={'Video titled: ' + item.snippet.title}
+                      />
+                      <CardContent style={{ flexgrow: 1 }}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {item.snippet.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {item.snippet.description.substring(0, 199)}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              ))}
         </Grid>
 
         <Dialog open={open} onClose={handleClose}>

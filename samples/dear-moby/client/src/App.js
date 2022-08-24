@@ -14,7 +14,8 @@ export function App() {
   const ddClient = createDockerDesktopClient();
   let [dearMobyPlaylist, setdearMobyPlaylist] = useState(null);
   const playlistURL =
-    'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=PLkA60AVN3hh_aBXzjqu13dupUV1JdFnjI&key=AIzaSyBK8xyTKDz15LVAaQujikrcMTmrk8mX_Ho';
+    'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=PLkA60AVN3hh_aBXzjqu13dupUV1JdFnjI&key=' +
+    process.env.REACT_APP_YOUTUBE_KEY;
 
   useEffect(() => {
     fetch(playlistURL)
@@ -71,9 +72,9 @@ export function App() {
             <Grid item>
               <Card sx={{ maxWidth: item.snippet.thumbnails.maxres.width / 3 }}>
                 <CardMedia
-                  component="iframe"
+                  component="video"
                   height={item.snippet.thumbnails.maxres.height / 3}
-                  image={
+                  src={
                     'https://www.youtube.com/embed/' +
                     item.contentDetails.videoId
                   }
@@ -92,9 +93,15 @@ export function App() {
           ))}
       </Grid>
       <Box>
+        href="/"
         <Button
           variant="contained"
-          href="https://www.docker.com/dear-moby/submissions/"
+          href="#"
+          onClick={() => {
+            ddClient.host.openExternal(
+              'https://www.docker.com/dear-moby/submissions/',
+            );
+          }}
         >
           Submit your questions here!{' '}
         </Button>

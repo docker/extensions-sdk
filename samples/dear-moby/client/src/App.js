@@ -1,4 +1,5 @@
 import {
+  Fab,
   Grid,
   Typography,
   CardActionArea,
@@ -11,6 +12,12 @@ import {
   CardContent,
   CardMedia,
 } from '@mui/material';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YoutubeIcon from '@mui/icons-material/YouTube';
+import RssFeedIcon from '@mui/icons-material/RssFeed';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
 import { createDockerDesktopClient } from '@docker/extension-api-client';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
@@ -174,10 +181,59 @@ export function App() {
       </main>
       <footer>
         <Typography variant="h6" align="center" gutterBottom paddingTop="1em">
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary">
-          Something here to give the footer a purpose!
+          <Box sx={{ '& > :not(style)': { m: 1 } }}>
+            <Fab
+              size="small"
+              color="primary"
+              onClick={() => {
+                ddClient.host.openExternal(
+                  'https://www.facebook.com/docker.run',
+                );
+              }}
+            >
+              <FacebookIcon color="action" />
+            </Fab>
+            <Fab
+              size="small"
+              color="primary"
+              onClick={() => {
+                ddClient.host.openExternal('http://twitter.com/docker');
+              }}
+            >
+              <TwitterIcon color="action" />
+            </Fab>
+            <Fab
+              size="small"
+              color="primary"
+              onClick={() => {
+                ddClient.host.openExternal(
+                  'http://www.youtube.com/user/dockerrun',
+                );
+              }}
+            >
+              <YoutubeIcon color="action" />
+            </Fab>
+            <Fab
+              size="small"
+              color="primary"
+              onClick={() => {
+                ddClient.host.openExternal(
+                  'https://www.linkedin.com/company/docker',
+                );
+              }}
+            >
+              <LinkedInIcon color="action" />
+            </Fab>
+            <Fab
+              size="small"
+              color="primary"
+              onClick={() => {
+                ddClient.host.openExternal('https://www.docker.com/blog/feed');
+              }}
+            >
+              <RssFeedIcon color="action" />
+            </Fab>
+          </Box>
         </Typography>
       </footer>
     </div>

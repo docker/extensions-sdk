@@ -10,7 +10,6 @@ RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn
 COPY client /app/client
 RUN --mount=type=secret,id=REACT_APP_YOUTUBE_KEY \
     REACT_APP_YOUTUBE_KEY=$(cat /run/secrets/REACT_APP_YOUTUBE_KEY) \
-    --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} \
     yarn build
 
 FROM alpine:3.15

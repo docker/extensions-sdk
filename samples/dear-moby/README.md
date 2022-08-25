@@ -1,6 +1,6 @@
 # Dear Moby Extension
 
-![A screenshot of the Dear Moby Extension](/dear-moby/screenshots/dearmobyextension.png)
+![A screenshot of the Dear Moby Extension](/screenshots/dearmobyextension.png)
 
 ## What's this about?
 
@@ -12,7 +12,7 @@ To build this project you'll need to be running the latest version of [Docker De
 
 You'll also need to create an API key for the youtube v3 data API within the [google api console](https://console.cloud.google.com/apis/credentials). Add it to your local ENV as `REACT_APP_YOUTUBE_KEY`.
 
-![A screenshot of the google console](/dear-moby/screenshots/googleconsole.png)
+![A screenshot of the google console](/screenshots/googleconsole.png)
 
 ## How to install
 
@@ -40,7 +40,7 @@ To check that the extension has been installed successfully using the following 
 ```
  docker extension ls
 ```
-Th
+![A screenshot of the  docker extension ls](/screenshots/extensionps.png)
 
 #### Step 3. Update Docker Extensions
 

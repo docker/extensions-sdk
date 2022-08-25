@@ -17,7 +17,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import YoutubeIcon from '@mui/icons-material/YouTube';
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
 import { createDockerDesktopClient } from '@docker/extension-api-client';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
@@ -163,7 +162,7 @@ export function App() {
                           {item.snippet.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          {item.snippet.description.substring(0, 199)}
+                          {item.snippet.description.substring(0, 164)}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
@@ -191,7 +190,7 @@ export function App() {
                 );
               }}
             >
-              <FacebookIcon color="action" />
+              <FacebookIcon color="white" />
             </Fab>
             <Fab
               size="small"
@@ -200,7 +199,7 @@ export function App() {
                 ddClient.host.openExternal('http://twitter.com/docker');
               }}
             >
-              <TwitterIcon color="action" />
+              <TwitterIcon color="white" />
             </Fab>
             <Fab
               size="small"
@@ -211,7 +210,7 @@ export function App() {
                 );
               }}
             >
-              <YoutubeIcon color="action" />
+              <YoutubeIcon color="white" />
             </Fab>
             <Fab
               size="small"
@@ -222,7 +221,7 @@ export function App() {
                 );
               }}
             >
-              <LinkedInIcon color="action" />
+              <LinkedInIcon color="white" />
             </Fab>
             <Fab
               size="small"
@@ -231,7 +230,7 @@ export function App() {
                 ddClient.host.openExternal('https://www.docker.com/blog/feed');
               }}
             >
-              <RssFeedIcon color="action" />
+              <RssFeedIcon color="white" />
             </Fab>
           </Box>
         </Typography>

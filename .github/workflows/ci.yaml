@@ -31,3 +31,5 @@ jobs:
         run: cd ${{ matrix.dir }} ; make build-extension
         env:
           DOCKER_BUILDKIT: 1
+          REACT_APP_YOUTUBE_KEY: ${{ env.REACT_APP_YOUTUBE_KEY }}
+

@@ -37,7 +37,6 @@ export function App() {
   const playlistURL =
     'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=PLkA60AVN3hh_aBXzjqu13dupUV1JdFnjI&key=' +
     process.env.REACT_APP_YOUTUBE_KEY;
-
   useEffect(() => {
     fetch(playlistURL)
       .then((response) => response.json())
@@ -134,41 +133,54 @@ export function App() {
             dearMobyPlaylist
               .slice(0)
               .reverse()
-              .map((item, key) => (
-                <Grid item key={key} sm={12} md={6} lg={6} xl={4}>
-                  <Card
-                    sx={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                    }}
-                  >
-                    <CardActionArea
-                      onClick={() =>
-                        handleOpen([
-                          item.snippet.title,
-                          item.contentDetails.videoId,
-                        ])
-                      }
-                    >
-                      <CardMedia
-                        component="img"
-                        src={item.snippet.thumbnails.maxres.url}
-                        style={{}}
-                        alt={'Video titled: ' + item.snippet.title}
-                      />
-                      <CardContent style={{ flexgrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {item.snippet.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {item.snippet.description.substring(0, 164)}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-              ))}
+              .map((item, key) => {
+                if (
+                  Object.prototype.hasOwnProperty.call(
+                    item.snippet.thumbnails,
+                    'maxres',
+                  )
+                ) {
+                  console.log(item);
+                  return (
+                    <Grid item key={key} sm={12} md={6} lg={6} xl={4}>
+                      <Card
+                        sx={{
+                          height: '100%',
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}
+                      >
+                        <CardActionArea
+                          onClick={() =>
+                            handleOpen([
+                              item.snippet.title,
+                              item.contentDetails.videoId,
+                            ])
+                          }
+                        >
+                          <CardMedia
+                            component="img"
+                            src={item.snippet.thumbnails.high.url}
+                            alt={'Video titled: ' + item.snippet.title}
+                          />
+                          <CardContent style={{ flexgrow: 1 }}>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                            >
+                              {item.snippet.title}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              {item.snippet.description.substring(0, 164)}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Grid>
+                  ); //Skip
+                }
+              })}
         </Grid>
 
         <Dialog open={open} onClose={handleClose}>

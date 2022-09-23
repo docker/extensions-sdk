@@ -1133,10 +1133,10 @@
   dependencies:
     postcss-value-parser "^4.2.0"
 
-"@docker/docker-mui-theme@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@docker/docker-mui-theme/-/docker-mui-theme-0.0.8.tgz#f6426d791dc33e41dbbeffc804df9d008f4fa93c"
-  integrity sha512-l4tHuSJ1VbA+zOjrHsT+wu2BhiSaI8IFrPhP1Q0eQ0gaSYPkbICjaJ5iLlvQ0wLibeR6Hzho/EOOPYYqSIPE0A==
+"@docker/docker-mui-theme@<0.1.0":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@docker/docker-mui-theme/-/docker-mui-theme-0.0.9.tgz#0418bcc153da18621c39fc327f2b90b93e8b24a4"
+  integrity sha512-PtsyGJ6FbD+vw2xl0vLoqhS6kuznpKufIaZM4DoOmbcoHkYtamh/HugEbKKfRM6MI7Z0+KKKnA9Liz7ECRYh8Q==
 
 "@docker/extension-api-client-types@^0.3.0":
   version "0.3.0"

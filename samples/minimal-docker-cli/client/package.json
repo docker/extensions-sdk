@@ -9,7 +9,7 @@
   "dependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@docker/docker-mui-theme": "^0.0.8",
+    "@docker/docker-mui-theme": "<0.1.0",
     "@docker/extension-api-client": "^0.3.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",

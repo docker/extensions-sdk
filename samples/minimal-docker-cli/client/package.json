@@ -9,8 +9,8 @@
   "dependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@docker/docker-mui-theme": "^0.0.4",
-    "@docker/extension-api-client": "^0.2.2",
+    "@docker/docker-mui-theme": "<0.1.0",
+    "@docker/extension-api-client": "^0.3.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.4.1",
@@ -21,6 +21,6 @@
     "typescript": "^4.1.2"
   },
   "devDependencies": {
-    "@docker/extension-api-client-types": "^0.2.2"
+    "@docker/extension-api-client-types": "^0.3.0"
   }
 }

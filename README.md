@@ -2,8 +2,6 @@
 
 This repository includes the Extensions CLI and samples to create Docker Extensions.
 
-:warning: **Docker Extensions SDK is currently in Beta. Features and APIs are subject to change**
-
 ## Prerequisites
 
 To get started with Docker Extensions you will need the [latest version of Docker Desktop](https://docs.docker.com/desktop/release-notes/). The Docker extension CLI is bundled by default with Docker Desktop version 4.10.0 and higher.

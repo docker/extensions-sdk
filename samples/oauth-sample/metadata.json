@@ -1,0 +1,13 @@
+{
+  "icon": "docker.svg",
+  "ui": {
+    "dashboard-tab": {
+      "title": "Oauth sample",
+      "src": "index.html",
+      "root": "ui",
+      "backend": {
+        "socket": "backend.sock"
+      }
+    }
+  }
+}

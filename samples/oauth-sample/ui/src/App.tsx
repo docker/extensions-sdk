@@ -53,7 +53,7 @@ export function App() {
       </Typography>
       <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
         Pressing the below button will trigger a login flow and retrieve a
-        github authentication token once the user is authenticated.
+        GitHub authentication token once the user is authenticated.
       </Typography>
       <Stack direction="row" alignItems="start" spacing={2} sx={{ mt: 4 }}>
         <Button variant="contained" onClick={login} disabled={loggedIn}>

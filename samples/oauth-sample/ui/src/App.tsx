@@ -48,7 +48,7 @@ export function App() {
     <>
       <Typography variant="h3">Docker extension Oauth demo</Typography>
       <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
-        This is a basic page using Oauth to login in using github Oauth as an
+        This is a basic page using OAuth to login in using GitHub OAuth as an
         example.
       </Typography>
       <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>

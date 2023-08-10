@@ -6,7 +6,7 @@ This extension is composed of a [frontend](./ui) app in React that shows a login
 
 </details>
 
-## Prepare oauht configuration
+## Prepare oauth configuration
 
 In order to run this example, you needed to create a GitHub OAuth app. See details at https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app
 

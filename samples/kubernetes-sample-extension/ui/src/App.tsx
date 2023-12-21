@@ -24,7 +24,7 @@ export function App() {
 
   return (
     <>
-      <Typography variant="h3">Kuberntes Sample extension</Typography>
+      <Typography variant="h3">Kubernetes Sample extension</Typography>
       <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
         This is a sample Docker Extension that shows how to interact with a
         Kubernetes cluster by shipping the kubectl command line too to read the

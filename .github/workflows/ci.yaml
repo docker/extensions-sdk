@@ -13,7 +13,7 @@ jobs:
     outputs:
       dir: ${{ steps.set-dirs.outputs.dir }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
       - id: set-dirs # Give it an id to handle to get step outputs in the outputs key above
         run: echo "::set-output name=dir::$(ls -d samples/*/ | jq -R -s -c 'split("\n")[:-1]')"
   build:
@@ -25,7 +25,7 @@ jobs:
         dir: ${{fromJson(needs.directories.outputs.dir)}} # List matrix strategy from directories dynamically
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
 
       - name: Build sample ${{ matrix.dir }}
         run: cd ${{ matrix.dir }} ; make build-extension

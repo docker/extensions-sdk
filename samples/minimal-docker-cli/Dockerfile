@@ -3,6 +3,7 @@ WORKDIR /app/client
 # cache packages in layer
 COPY client/package.json /app/client/package.json
 COPY client/yarn.lock /app/client/yarn.lock
+COPY .yarnrc.yml .
 ARG TARGETARCH
 RUN yarn config set cache-folder /usr/local/share/.cache/yarn-${TARGETARCH}
 RUN --mount=type=cache,target=/usr/local/share/.cache/yarn-${TARGETARCH} yarn

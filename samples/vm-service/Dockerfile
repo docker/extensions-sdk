@@ -16,7 +16,7 @@ LABEL org.opencontainers.image.title="VM service" \
     org.opencontainers.image.description="A sample extension that uses a VM service to list all the Docker volumes." \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version=">= 0.2.0" \
-    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" \
+    com.docker.desktop.extension.icon="https://www.docker.com/app/uploads/external/logos/docker-favicon.png" \
     com.docker.extension.screenshots='[{"alt":"volumes list light mode", "url":"https://docker-extension-screenshots.s3.amazonaws.com/vm-service/vm-service-light.png"}, {"alt":"volumes list dark mode", "url":"https://docker-extension-screenshots.s3.amazonaws.com/vm-service/vm-service-dark.png"}]' \
     com.docker.extension.detailed-description="<h1>Description</h1><p>This is a sample extension that uses a VM service to list all the Docker volumes.</p>" \
     com.docker.extension.publisher-url="https://www.docker.com" \

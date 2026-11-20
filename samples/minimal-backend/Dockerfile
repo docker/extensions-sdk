@@ -17,7 +17,7 @@ LABEL org.opencontainers.image.title="HelloBackend" \
     org.opencontainers.image.description="A sample extension that runs a shell script inside a container's Desktop VM." \
     org.opencontainers.image.vendor="Docker Inc." \
     com.docker.desktop.extension.api.version=">= 0.3.0" \
-    com.docker.desktop.extension.icon="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" \
+    com.docker.desktop.extension.icon="https://www.docker.com/app/uploads/external/logos/docker-favicon.png" \
     com.docker.extension.screenshots='[{"alt":"Hello, Moby", "url":"https://docker-extension-screenshots.s3.amazonaws.com/minimal-backend/1-hello-moby.png"}]' \
     com.docker.extension.detailed-description="<h1>Description</h1><p>This is a sample extension that displays the text introduced in a textbox.</p>" \
     com.docker.extension.publisher-url="https://www.docker.com" \
